@@ -28,7 +28,7 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 270 20% 80%; /* For brutalist grid lines */
+    --border: 270 15% 15%; /* For brutalist grid lines */
     --input: 0 0% 100%;
     --ring: 125 100% 54%; /* #39FF14 */
 
@@ -66,7 +66,7 @@
     --destructive: 0 72.2% 50.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 270 5% 20%;
+    --border: 270 10% 85%;
     --input: 270 5% 15%;
     --ring: 125 100% 54%;
 
