@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 276 75% 96%; /* #F5EEFC */
-    --foreground: 270 15% 15%;
+    --background: 270 60% 97%; /* Lighter purple-white */
+    --foreground: 270 15% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 270 15% 15%;
+    --card-foreground: 270 15% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 270 15% 15%;
+    --popover-foreground: 270 15% 10%;
 
-    --primary: 270 50% 60%;
-    --primary-foreground: 270 10% 95%;
+    --primary: 270 70% 55%; /* A slightly more vibrant purple */
+    --primary-foreground: 270 20% 98%;
 
-    --secondary: 270 96% 85%; /* #D8B4FE */
+    --secondary: 270 60% 92%;
     --secondary-foreground: 270 15% 15%;
     
-    --muted: 270 50% 95%;
+    --muted: 270 40% 96%;
     --muted-foreground: 270 10% 45%;
 
-    --accent: 125 100% 54%; /* #39FF14 */
-    --accent-foreground: 125 100% 10%; /* Dark text on neon green */
+    --accent: 270 80% 65%; /* Intense Purple */
+    --accent-foreground: 270 20% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 270 15% 15%;
     --input: 0 0% 100%;
-    --ring: 125 100% 54%; /* #39FF14 */
+    --ring: 270 80% 65%; /* Intense Purple */
 
     --radius: 0.3rem;
 
@@ -42,33 +42,33 @@
   }
  
   .dark {
-    --background: 270 5% 7%;
-    --foreground: 270 10% 85%;
+    --background: 270 10% 8%;
+    --foreground: 270 15% 90%;
     
-    --card: 270 5% 11%;
-    --card-foreground: 270 10% 85%;
+    --card: 270_10%_12%;
+    --card-foreground: 270 15% 90%;
     
-    --popover: 270 5% 7%;
-    --popover-foreground: 270 10% 85%;
+    --popover: 270 10% 8%;
+    --popover-foreground: 270 15% 90%;
     
-    --primary: 270 50% 60%;
-    --primary-foreground: 270 10% 95%;
+    --primary: 270 70% 60%;
+    --primary-foreground: 270 20% 98%;
 
-    --secondary: 270 30% 40%;
-    --secondary-foreground: 270 10% 95%;
+    --secondary: 270 15% 20%;
+    --secondary-foreground: 270 15% 95%;
 
-    --muted: 270 5% 15%;
-    --muted-foreground: 270 5% 55%;
+    --muted: 270 15% 18%;
+    --muted-foreground: 270 10% 60%;
 
-    --accent: 125 100% 54%; /* #39FF14 */
-    --accent-foreground: 125 100% 10%;
+    --accent: 270 80% 70%; /* Intense Purple for dark mode */
+    --accent-foreground: 270 20% 98%;
 
     --destructive: 0 72.2% 50.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 270 10% 85%;
-    --input: 270 5% 15%;
-    --ring: 125 100% 54%;
+    --border: 270 15% 85%;
+    --input: 270 15% 18%;
+    --ring: 270 80% 70%;
 
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
