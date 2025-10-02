@@ -43,7 +43,7 @@ export function ProjectCard({ title, description, imageUrlId, link, tags }: Proj
         <p className="text-sm text-muted-foreground flex-1">{description}</p>
         <div className="flex flex-wrap gap-2 pt-2">
           {tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="border border-border">
+            <Badge key={tag} variant="secondary" className="border-2 border-border">
               {tag}
             </Badge>
           ))}

@@ -3,7 +3,7 @@
 import { useActionState, useEffect, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { useToast } from "@/hooks/use-toast";
-import { submitContactForm } from "@/lib/actions";
+import { submitContactForm } from "@/lib/schemas";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,7 +19,7 @@ const initialState: ContactFormState = {
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" variant="secondary" disabled={pending} className="w-full border border-border group transition-all hover:shadow-[0_0_15px_theme(colors.accent)] hover:border-accent">
+    <Button type="submit" variant="secondary" disabled={pending} className="w-full border-2 border-border group transition-all hover:shadow-[0_0_15px_theme(colors.accent)] hover:border-accent">
       {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
       Send Message
     </Button>
@@ -51,15 +51,15 @@ export function ContactForm() {
     <form ref={formRef} action={formAction} className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="name">Name</Label>
-        <Input id="name" name="name" type="text" placeholder="Your Name" required className="bg-background"/>
+        <Input id="name" name="name" type="text" placeholder="Your Name" required className="bg-background border-2"/>
       </div>
       <div className="space-y-2">
         <Label htmlFor="email">Email</Label>
-        <Input id="email" name="email" type="email" placeholder="your.email@example.com" required className="bg-background"/>
+        <Input id="email" name="email" type="email" placeholder="your.email@example.com" required className="bg-background border-2"/>
       </div>
       <div className="space-y-2">
         <Label htmlFor="message">Message</Label>
-        <Textarea id="message" name="message" placeholder="Your message..." required minLength={10} className="bg-background"/>
+        <Textarea id="message" name="message" placeholder="Your message..." required minLength={10} className="bg-background border-2"/>
       </div>
       <SubmitButton />
     </form>
