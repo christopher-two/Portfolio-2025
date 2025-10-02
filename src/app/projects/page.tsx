@@ -13,13 +13,13 @@ export default function ProjectsPage() {
         </p>
       </section>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 border-t border-l border-border">
+      <div className="grid grid-cols-1 md:grid-cols-2 border-t-2 border-l-2 border-border">
         {projects.map((project) => (
-          <div key={project.id} className="border-r border-b border-border p-4 md:p-6">
+          <div key={project.id} className="border-r-2 border-b-2 border-border p-4 md:p-6">
             <ProjectCard {...project} />
           </div>
         ))}
-        {projects.length % 2 !== 0 && <div className="border-r border-b border-border"></div>}
+        {projects.length % 2 !== 0 && <div className="border-r-2 border-b-2 border-border"></div>}
       </div>
     </div>
   );

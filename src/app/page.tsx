@@ -18,9 +18,9 @@ export default function Home() {
 
   return (
     <div className="container max-w-screen-lg mx-auto py-12 px-4 animate-fade-in">
-      <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-border">
+      <div className="grid grid-cols-1 md:grid-cols-3 border-t-2 border-l-2 border-border">
 
-        <div className="md:col-span-2 p-8 border-r border-b border-border">
+        <div className="md:col-span-2 p-8 border-r-2 border-b-2 border-border">
           <section className="space-y-6">
             <div className="flex items-center gap-4">
               {avatarImage && (
@@ -64,7 +64,7 @@ export default function Home() {
           </section>
         </div>
 
-        <div className="p-8 border-r border-b border-border bg-secondary/30">
+        <div className="p-8 border-r-2 border-b-2 border-border bg-secondary/30">
           <section>
             <h2 className="text-3xl font-headline font-bold mb-4">Get In Touch</h2>
             <p className="text-muted-foreground mb-6">Have a project in mind or just want to say hi? Send me a message.</p>
