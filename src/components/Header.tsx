@@ -4,11 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Code2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./theme-toggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/tools/summarizer", label: "Summarizer" },
 ];
 
 export function Header() {
@@ -36,6 +36,9 @@ export function Header() {
               </Link>
             ))}
           </nav>
+        </div>
+        <div className="flex flex-1 items-center justify-end">
+          <ThemeToggle />
         </div>
       </div>
     </header>

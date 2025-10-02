@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { summarizeProjectDescription as summarize } from "@/ai/flows/summarize-project-description";
 
 // --- Contact Form ---
 export const contactFormSchema = z.object({
@@ -43,53 +42,6 @@ export async function submitContactForm(
     console.error("Contact form submission error:", error);
     return {
       message: "An unexpected error occurred. Please try again.",
-      status: "error",
-    };
-  }
-}
-
-// --- Summarizer ---
-export const summarizerSchema = z.object({
-  description: z.string().min(50, { message: "Description must be at least 50 characters." }),
-});
-
-export type SummarizerState = {
-  summary: string;
-  message: string;
-  status: "success" | "error" | "idle";
-};
-
-export async function summarizeProjectDescriptionAction(
-  prevState: SummarizerState,
-  formData: FormData
-): Promise<SummarizerState> {
-  const validatedFields = summarizerSchema.safeParse({
-    description: formData.get("description"),
-  });
-
-  if (!validatedFields.success) {
-    return {
-      summary: prevState.summary, // Keep old summary if new input is invalid
-      message: validatedFields.error.flatten().fieldErrors.description?.[0] || "Invalid input.",
-      status: "error",
-    };
-  }
-  
-  try {
-    const result = await summarize({ projectDescription: validatedFields.data.description });
-    if (!result.summary) {
-      throw new Error("Failed to generate summary.");
-    }
-    return {
-      summary: result.summary,
-      message: "Summary generated successfully.",
-      status: "success",
-    };
-  } catch (error) {
-    console.error("Summarizer error:", error);
-    return {
-      summary: "",
-      message: "Failed to generate summary. Please try again.",
       status: "error",
     };
   }
