@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -32,6 +33,34 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <section className="border-t-2 border-border bg-background">
+        <div className="container max-w-screen-lg mx-auto py-16 px-4">
+          <div className="grid md:grid-cols-3 gap-12 items-center">
+            <div className="md:col-span-2 space-y-6">
+              <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">
+                About Me
+              </h2>
+              <div className="space-y-4 text-muted-foreground md:text-lg">
+                <p>
+                  Hello! I&apos;m a passionate developer with a knack for building beautiful, functional, and user-centric web applications. My journey in tech is driven by a curiosity for how things work and a desire to create meaningful digital experiences.
+                </p>
+                <p>
+                  With a strong foundation in modern web technologies, I specialize in the frontend ecosystem, particularly with React and Next.js. I enjoy tackling complex problems and turning them into simple, elegant solutions.
+                </p>
+              </div>
+            </div>
+            <div className="relative h-64 w-64 mx-auto md:h-80 md:w-80">
+               <Image
+                src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/foto.png"
+                alt="Christopher Alejandro Maldonado Chavez"
+                width={400}
+                height={400}
+                className="rounded-full object-cover border-2 border-border shadow-[8px_8px_0px_theme(colors.border)] w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
