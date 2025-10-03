@@ -38,7 +38,7 @@ export function Header() {
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-end gap-2">
-          <Button variant="outline" size="icon" asChild>
+           <Button asChild variant="outline" size="icon" className="border-2 border-border bg-background rounded-md shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
             <Link href="https://github.com/Chris-Alejandro" target="_blank">
               <Github className="h-[1.2rem] w-[1.2rem]" />
               <span className="sr-only">GitHub</span>
