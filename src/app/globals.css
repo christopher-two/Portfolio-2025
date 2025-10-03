@@ -86,3 +86,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .marquee {
+    animation: marquee var(--duration, 30s) linear infinite;
+  }
+
+  .marquee-hover:hover .marquee {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}

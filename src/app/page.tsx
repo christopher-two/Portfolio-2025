@@ -4,6 +4,7 @@ import { ArrowRight, Code, Cpu, Smartphone, Globe, Award, Download } from "lucid
 import { Button } from "@/components/ui/button";
 import { TechCard } from "@/components/TechCard";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { TechMarquee } from "@/components/TechMarquee";
 
 
 const techSkills = [
@@ -38,7 +39,7 @@ const techSkills = [
 ];
 
 const recognitions = [
-  {
+    {
     title: '1er Lugar',
     issuer: 'Innovatec Nacional 2025',
     description: 'Ganador en la categoría de "Salud", con el proyecto Lyra.',
@@ -136,6 +137,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <TechMarquee />
+
       <section className="border-t-2 border-border">
         <div className="grid grid-cols-1 md:grid-cols-2 w-full">
           {techSkills.map((skill, index) => (
