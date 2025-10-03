@@ -1,15 +1,17 @@
 import { SVGProps } from 'react';
 
 export const IconKotlin = (props: SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M24 24H0V0h24L12 12Z" />
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+    <path fill="#0094FF" d="M0 24h24L12 12 24 0H0v24z"/>
+    <path fill="#00C7FF" d="m12 12 12-12h-7L12 7Z"/>
+    <path fill="#00E5FF" d="m0 24 12-12v7L5 24Z"/>
   </svg>
 );
 
 export const IconReact = (props: SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="-11.5 -10.23174 23 20.46348" fill="none" stroke="currentColor" strokeWidth="1" {...props}>
-    <circle cx="0" cy="0" r="2.05" fill="currentColor" />
-    <g stroke="currentColor" strokeWidth="1" fill="none">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="-11.5 -10.23174 23 20.46348" fill="none" stroke="#61DAFB" strokeWidth="1" {...props}>
+    <circle cx="0" cy="0" r="2.05" fill="#61DAFB" />
+    <g stroke="#61DAFB" strokeWidth="1" fill="none">
       <ellipse rx="11" ry="4.2" />
       <ellipse rx="11" ry="4.2" transform="rotate(60)" />
       <ellipse rx="11" ry="4.2" transform="rotate(120)" />
@@ -18,15 +20,15 @@ export const IconReact = (props: SVGProps<SVGSVGElement>) => (
 );
 
 export const IconNextjs = (props: SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="currentColor" {...props}>
-    <path d="M64 128c35.346 0 64-28.654 64-64S99.346 0 64 0 0 28.654 0 64s28.654 64 64 64z" />
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" {...props}>
+    <path d="M64 128c35.346 0 64-28.654 64-64S99.346 0 64 0 0 28.654 0 64s28.654 64 64 64z" fill="#000" />
     <path fill="#fff" d="M95.663 40.558L54.34 99.84h-9.32L83.91 40.558h11.753zM54.34 99.84V40.558H42.768v59.282H54.34z" />
   </svg>
 );
 
 export const IconTailwind = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 154" fill="none" {...props}>
-    <path fill="currentColor" d="M128 0c-42.52 0-77.25 28.63-88.75 66.82 24.31-16 54-21.37 88.75-21.37 34.75 0 64.44 5.37 88.75 21.37C205.25 28.63 170.52 0 128 0zM40 76.5c-42.52 0-77.25 28.63-88.75 66.82 24.31-16 54-21.37 88.75-21.37 34.75 0 64.44 5.37 88.75 21.37C117.25 105.13 82.52 76.5 40 76.5z" transform="translate(48)" />
+    <path fill="#38B2AC" d="M128 0c-42.52 0-77.25 28.63-88.75 66.82 24.31-16 54-21.37 88.75-21.37 34.75 0 64.44 5.37 88.75 21.37C205.25 28.63 170.52 0 128 0zM40 76.5c-42.52 0-77.25 28.63-88.75 66.82 24.31-16 54-21.37 88.75-21.37 34.75 0 64.44 5.37 88.75 21.37C117.25 105.13 82.52 76.5 40 76.5z" transform="translate(48)" />
   </svg>
 );
 
@@ -48,8 +50,8 @@ export const IconVite = (props: SVGProps<SVGSVGElement>) => (
 );
 
 export const IconKtor = (props: SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M15.5 0h-7L3 8.5 8.5 24h7l5.5-8.5L15.5 0zM12 11l-2-6 5 3-2 6-5-3z" />
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+    <path fill="#0094FF" d="M15.5 0h-7L3 8.5 8.5 24h7l5.5-8.5L15.5 0zM12 11l-2-6 5 3-2 6-5-3z" />
   </svg>
 );
 
@@ -64,15 +66,15 @@ export const IconFirebase = (props: SVGProps<SVGSVGElement>) => (
 );
 
 export const IconGCP = (props: SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <path d="M12.2 16.5a4.2 4.2 0 1 0-4.2-4.2h-.5" />
-    <path d="M15.6 12.3a4.2 4.2 0 1 0-4.2-4.2V7.6" />
-    <path d="M11.8 12.3a4.2 4.2 0 1 0 4.3 4.2h.5" />
-    <path d="M7.6 12.3a4.2 4.2 0 1 0 4.2 4.2v.5" />
-    <path d="M12.2 11.8a4.2 4.2 0 1 0 4.2-4.3v-.5" />
-    <path d="M12.2 15.6a4.2 4.2 0 1 0 4.2-4.2h.5" />
-    <path d="M12.2 7.6a4.2 4.2 0 1 0-4.2 4.2h-.5" />
-    <path d="M8.4 12.3a4.2 4.2 0 1 0 4.2-4.2V7.6" />
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path stroke="#4285F4" d="M12.2 16.5a4.2 4.2 0 1 0-4.2-4.2h-.5" />
+    <path stroke="#34A853" d="M15.6 12.3a4.2 4.2 0 1 0-4.2-4.2V7.6" />
+    <path stroke="#FBBC05" d="M11.8 12.3a4.2 4.2 0 1 0 4.3 4.2h.5" />
+    <path stroke="#EA4335" d="M7.6 12.3a4.2 4.2 0 1 0 4.2 4.2v.5" />
+    <path stroke="#4285F4" d="M12.2 11.8a4.2 4.2 0 1 0 4.2-4.3v-.5" />
+    <path stroke="#34A853" d="M12.2 15.6a4.2 4.2 0 1 0 4.2-4.2h.5" />
+    <path stroke="#FBBC05" d="M12.2 7.6a4.2 4.2 0 1 0-4.2 4.2h-.5" />
+    <path stroke="#EA4335" d="M8.4 12.3a4.2 4.2 0 1 0 4.2-4.2V7.6" />
   </svg>
 );
 
@@ -89,7 +91,7 @@ export const IconDocker = (props: SVGProps<SVGSVGElement>) => (
 );
 
 export const IconCompose = (props: SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
-    <path d="M3.483 13.331l5.448 5.448a4.086 4.086 0 005.778-5.778L9.26 7.553a2.724 2.724 0 01-3.852 3.852l1.348 1.348a.681.681 0 10.963.963l-1.348-1.348a1.362 1.362 0 10-1.926-1.926l5.448-5.448a4.086 4.086 0 00-5.778 5.778l-5.448-5.448a2.724 2.724 0 013.852-3.852l1.348 1.348a.681.681 0 10.963.963L7.553 9.26a1.362 1.362 0 10-1.926-1.926l5.448-5.448a4.086 4.086 0 005.778 5.778l-5.448 5.448a2.724 2.724 0 01-3.852 3.852z" />
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4285F4" strokeWidth="1.5" {...props}>
+    <path d="M3.483 13.331l5.448 5.448a4.086 4.086 0 005.778-5.778L9.26 7.553a2.724 2.724 0 01-3.852 3.852l1.348 1.348a.681.681 0 10.963.963l-1.348-1.348a1.362 1.362 0 10-1.926-1.926l5.448-5.448a4.086 4.086 0 005.778 5.778l-5.448 5.448a2.724 2.724 0 01-3.852 3.852z" />
   </svg>
 );
