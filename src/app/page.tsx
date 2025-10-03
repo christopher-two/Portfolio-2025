@@ -113,7 +113,12 @@ export default function Home() {
             </h2>
             <div className="space-y-4 text-muted-foreground md:text-lg max-w-prose">
               <p>
-                Soy un Desarrollador Multiplataforma con experiencia en la creación de software. Estoy en el proceso de lanzar mi propia empresa, Override, con el objetivo de desarrollar productos digitales. He trabajado en varios proyectos de software, desde colaboraciones en productos multiplataforma como Quickness, hasta el desarrollo de mis propias aplicaciones como Lumi.
+                Soy un <span className="relative inline-block border-2 border-border rounded-md px-2 py-1 align-middle">
+                <span className="absolute inset-0 scale-x-0 animate-expand-from-center rounded-sm bg-primary/20 origin-center"></span>
+                <span className="relative font-bold text-primary">
+                  Desarrollador Multiplataforma
+                </span>
+              </span> con experiencia en la creación de software. Estoy en el proceso de lanzar mi propia empresa, Override, con el objetivo de desarrollar productos digitales. He trabajado en varios proyectos de software, desde colaboraciones en productos multiplataforma como Quickness, hasta el desarrollo de mis propias aplicaciones como Lumi.
               </p>
               <p>
                 Actualmente, me estoy centrando en la tecnología de Jetpack Compose y Compose Multiplataforma. Esto me permite construir productos que funcionan en diferentes sistemas, llegando a más usuarios con una experiencia consistente. Mi compromiso es seguir innovando y mejorando la forma en que la tecnología se conecta con las personas.
