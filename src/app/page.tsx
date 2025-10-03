@@ -15,7 +15,7 @@ export default function Home() {
 
             <p className="mx-auto max-w-[700px] text-muted-foreground text-lg md:text-xl">
               A passionate developer building{" "}
-              <span className="relative inline-block border-4 border-border bg-primary/20 px-2 py-1 rounded-md">
+              <span className="relative inline-block border-2 border-border bg-primary/20 px-2 py-1 rounded-md">
                 <Sparkles className="absolute -top-4 -left-4 h-6 w-6 text-accent" />
                 <Sparkles className="absolute -bottom-4 -right-4 h-6 w-6 text-accent" />
                 functional & beautiful
@@ -24,7 +24,7 @@ export default function Home() {
             </p>
 
             <div className="flex justify-center">
-              <Button asChild size="lg" className="border-4 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+              <Button asChild size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
                 <Link href="/projects">
                   View My Work <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -33,7 +33,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <section className="border-t-4 border-border bg-background overflow-hidden">
+      <section className="border-t-2 border-border bg-background overflow-hidden">
         <div className="grid md:grid-cols-3 items-stretch">
           <div className="md:col-span-2 space-y-6 container max-w-screen-lg mx-auto py-24 pr-12">
             <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">
