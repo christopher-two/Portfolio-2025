@@ -6,6 +6,7 @@ import { Command, Github, Search, Twitter } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
+import { Logo } from "./Logo";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -20,9 +21,7 @@ export function Header() {
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <div className="mr-4 flex items-center">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <div className="bg-primary text-primary-foreground font-bold p-2 rounded-md">
-              C
-            </div>
+            <Logo className="h-8 w-8 text-primary" />
             <span className="font-bold font-headline hidden sm:inline-block">ChristopherTwo</span>
           </Link>
           <nav className="hidden items-center gap-6 text-sm md:flex">
