@@ -1,3 +1,4 @@
+
 export const projects = [
   {
     id: "1",
@@ -33,6 +34,17 @@ export const projects = [
     tags: ["Compose Multiplatform", "Koin", "Ktor", "Coil", "Firebase", "Classroom API", "Backend (Ktor)", "Docker", "Google Cloud Functions", "Gemini API", "MVI", "Clean Architecture", "Multimodularity", "Layered Model", "Repository Pattern"],
   },
   {
+    id: "6",
+    slug: "override-mindstack",
+    title: "Override Mindstack",
+    description: "Organización de un desafiante concurso de programación centrado en la resolución de un único problema de alta complejidad (NP-HARD).",
+    longDescription: "Organización de un desafiante concurso de programación centrado en la resolución de un único problema de alta complejidad (NP-HARD). Mis responsabilidades incluyeron el diseño y desarrollo del problema, así como la planificación y ejecución de la logística completa del evento, el cual reunió a más de 30 estudiantes para poner a prueba sus límites en lógica y algoritmia.",
+    coverImageId: "mindstack-cover",
+    galleryImageIds: ["mindstack-gallery-1", "mindstack-gallery-2", "mindstack-gallery-3"],
+    link: "https://mindstack.override.com.mx",
+    tags: ["Event Organization", "Problem Design", "Logistics", "Competitive Programming"],
+  },
+  {
     id: "4",
     slug: "override-logistics",
     title: "Override Logistics",
@@ -53,16 +65,5 @@ export const projects = [
     galleryImageIds: ["news-gallery-1", "news-gallery-2", "news-gallery-3"],
     link: "https://www.override.com.mx",
     tags: ["Jetpack Compose", "Koin", "Ktor", "Coil", "Firebase", "Google Authentication", "Backend (Ktor)", "Docker", "Supabase", "Gemini API", "MVI", "Clean Architecture", "Multimodularity", "Layered Model", "Repository Pattern"],
-  },
-  {
-    id: "6",
-    slug: "override-mindstack",
-    title: "Override Mindstack",
-    description: "Organización de un desafiante concurso de programación centrado en la resolución de un único problema de alta complejidad (NP-HARD).",
-    longDescription: "Organización de un desafiante concurso de programación centrado en la resolución de un único problema de alta complejidad (NP-HARD). Mis responsabilidades incluyeron el diseño y desarrollo del problema, así como la planificación y ejecución de la logística completa del evento, el cual reunió a más de 30 estudiantes para poner a prueba sus límites en lógica y algoritmia.",
-    coverImageId: "mindstack-cover",
-    galleryImageIds: ["mindstack-gallery-1", "mindstack-gallery-2", "mindstack-gallery-3"],
-    link: "https://mindstack.override.com.mx",
-    tags: ["Event Organization", "Problem Design", "Logistics", "Competitive Programming"],
   },
 ];
