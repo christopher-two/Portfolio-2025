@@ -14,13 +14,7 @@ export default function Home() {
             </h1>
 
             <p className="mx-auto max-w-[700px] text-muted-foreground text-lg md:text-xl">
-              A passionate developer building{" "}
-              <span className="relative inline-block border-2 border-border bg-primary/20 px-2 py-1 rounded-md">
-                <Sparkles className="absolute -top-4 -left-4 h-6 w-6 text-accent" />
-                <Sparkles className="absolute -bottom-4 -right-4 h-6 w-6 text-accent" />
-                functional & beautiful
-              </span>{" "}
-              web applications.
+              Desarrollador Multiplataforma, Kotlin Multiplataforma y Jetpack Compose
             </p>
 
             <div className="flex justify-center">
