@@ -79,7 +79,7 @@ export function Footer() {
         
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Christopher Alejandro Maldonado Chavez. Todos los derechos reservados.</p>
-          <p className="mt-2 md:mt-0">Construido con &#x2764;&#xFE0F; y código.</p>
+          <p className="mt-2 md:mt-0">Desarrollado con &lt;3 por Override</p>
         </div>
       </div>
     </footer>
