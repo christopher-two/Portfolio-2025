@@ -21,7 +21,7 @@ const initialState: SummarizerState = {
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" disabled={pending} className="w-full group">
+    <Button type="submit" disabled={pending} className="w-full group border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
       {pending ? (
         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
       ) : (
@@ -58,6 +58,7 @@ export function SummarizerForm() {
             required
             minLength={50}
             rows={15}
+            className="border-2 border-border"
           />
         </div>
         <SubmitButton />
