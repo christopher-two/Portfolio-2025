@@ -7,16 +7,7 @@ import { ArrowRight } from "lucide-react";
 export default function ProjectsPage() {
   return (
     <div className="w-full animate-fade-in">
-      <section className="container max-w-screen-lg mx-auto py-12 px-4 text-center">
-        <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl md:text-6xl">
-          Mi Trabajo
-        </h1>
-        <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl mt-4">
-          Una colección de los proyectos que he construido. Cada uno es un paso en mi viaje como desarrollador.
-        </p>
-      </section>
-      
-      <div className="flex flex-col border-t-2 border-border">
+      <div className="flex flex-col">
         {projects.map((project) => {
           const coverImage: ImagePlaceholder | undefined = PlaceHolderImages.find(p => p.id === project.coverImageId);
           return (
