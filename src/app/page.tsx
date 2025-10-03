@@ -89,7 +89,6 @@ export default function Home() {
               fill
               className="object-contain object-bottom"
             />
-            <div className="absolute inset-0 animate-neon-border rounded-md pointer-events-none"></div>
           </div>
         </div>
       </section>
