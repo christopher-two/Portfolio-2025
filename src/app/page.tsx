@@ -133,7 +133,7 @@ export default function Home() {
                     <Card key={index} className="bg-card/80 backdrop-blur-sm border-2 border-border/20 transform transition-transform hover:-translate-y-2 hover:border-accent">
                         <CardHeader>
                             <div className="flex items-start justify-between">
-                                <CardTitle className="text-xl font-bold font-headline">{rec.title}</CardTitle>
+                                <CardTitle as="h3" className="text-xl font-bold font-headline">{rec.title}</CardTitle>
                                 <Award className="h-6 w-6 text-accent ml-4"/>
                             </div>
                             <CardDescription>{rec.issuer} - {rec.year}</CardDescription>

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PlaceHolderImages, type ImagePlaceholder } from "@/lib/placeholder-images";
 
 interface ProjectCardProps {
@@ -34,7 +34,7 @@ export function ProjectCard({ title, description, imageUrlId, link, tags }: Proj
       </CardHeader>
       <CardContent className="p-4 space-y-3 flex flex-col flex-1">
         <div className="flex justify-between items-start">
-          <h3 className="text-lg font-headline font-bold">{title}</h3>
+          <CardTitle as="h3" className="text-lg font-headline font-bold">{title}</CardTitle>
           <Link href={link} target="_blank" rel="noopener noreferrer" className="shrink-0 ml-4">
             <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-accent transition-colors" />
             <span className="sr-only">Visit project</span>

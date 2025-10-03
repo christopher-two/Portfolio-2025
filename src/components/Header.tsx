@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Command, Github, Search, Twitter } from "lucide-react";
+import { Github } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
@@ -38,28 +38,10 @@ export function Header() {
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-end gap-2">
-           <Button
-            variant="outline"
-            className="hidden md:flex items-center gap-2 text-muted-foreground w-40 justify-between"
-          >
-            <div className="flex items-center gap-2">
-              <Search className="h-4 w-4" />
-              Search
-            </div>
-            <div className="flex items-center gap-1 border rounded-md px-1 py-0.5 text-xs">
-              <Command className="h-3 w-3"/>K
-            </div>
-          </Button>
           <Button variant="outline" size="icon" asChild>
-            <Link href="https://github.com" target="_blank">
+            <Link href="https://github.com/Chris-Alejandro" target="_blank">
               <Github className="h-[1.2rem] w-[1.2rem]" />
               <span className="sr-only">GitHub</span>
-            </Link>
-          </Button>
-           <Button variant="outline" size="icon" asChild>
-            <Link href="https://x.com" target="_blank">
-              <Twitter className="h-[1.2rem] w-[1.2rem]" />
-              <span className="sr-only">Twitter</span>
             </Link>
           </Button>
           <ThemeToggle />
