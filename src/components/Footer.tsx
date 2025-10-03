@@ -28,8 +28,8 @@ export function Footer() {
             <Link href="/" className="font-bold font-headline text-lg">ChristopherTwo</Link>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
-                <Link key={social.name} href={social.href} target="_blank" rel="noopener noreferrer">
-                  <social.icon className="h-6 w-6 text-muted-foreground transition-colors hover:text-accent" />
+                <Link key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" className="block p-2 border-2 border-border bg-background rounded-md shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                  <social.icon className="h-6 w-6 text-foreground transition-colors hover:text-accent" />
                   <span className="sr-only">{social.name}</span>
                 </Link>
               ))}
