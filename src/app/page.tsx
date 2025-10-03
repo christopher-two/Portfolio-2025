@@ -154,7 +154,7 @@ export default function Home() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {recognitions.map((rec, index) => (
-                    <Card key={index} className="bg-card/80 backdrop-blur-sm border-2 border-border/20 transform transition-transform hover:-translate-y-2 hover:border-accent">
+                    <Card key={index} className="bg-card/80 backdrop-blur-sm border-2 border-border shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
                         <CardHeader>
                             <div className="flex items-start justify-between">
                                 <CardTitle as="h3" className="text-xl font-bold font-headline">{rec.title}</CardTitle>
