@@ -76,6 +76,10 @@ export default {
         'skill-2': 'hsl(270 60% 95%)',
         'skill-3': 'hsl(270 60% 93%)',
         'skill-4': 'hsl(270 60% 91%)',
+        'skill-1-dark': 'hsl(270 10% 10%)',
+        'skill-2-dark': 'hsl(270 10% 12%)',
+        'skill-3-dark': 'hsl(270 10% 14%)',
+        'skill-4-dark': 'hsl(270 10% 16%)',
       },
       borderRadius: {
         lg: 'var(--radius)',

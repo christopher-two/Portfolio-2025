@@ -10,28 +10,28 @@ const techSkills = [
     title: "Desarrollo Multiplataforma",
     skills: "Compose Multiplataforma, Kotlin Multiplataforma",
     description: "Cuento con una sólida experiencia en la creación de aplicaciones nativas para Android, iOS, Desktop y Web, todo ello gestionado desde una única base de código. Este enfoque me permite no solo optimizar los tiempos de desarrollo, sino también asegurar una experiencia de usuario consistente y fluida en todas las plataformas, manteniendo la calidad y el rendimiento esperados en cada entorno.",
-    bgColor: "bg-skill-1"
+    bgColor: "bg-skill-1 dark:bg-skill-1-dark"
   },
   {
     icon: Smartphone,
     title: "Desarrollo Móvil",
     skills: "Jetpack Compose, Kotlin",
     description: "Desde mis inicios en el desarrollo, he estado creando aplicaciones utilizando Jetpack Compose. En este ámbito, me considero un profesional con un nivel mid-senior, aportando una sólida y amplia experiencia en el desarrollo con esta tecnología.",
-    bgColor: "bg-skill-2"
+    bgColor: "bg-skill-2 dark:bg-skill-2-dark"
   },
   {
     icon: Globe,
     title: "Desarrollo Web",
     skills: "React, Next.js, Tailwind CSS, Vite",
     description: "Si bien mi área principal de especialización se centra en el desarrollo multiplataforma, también estoy explorando activamente el desarrollo web. He tenido la oportunidad de crear y entregar algunos proyectos web para diversas empresas. En esta faceta, me considero más un aspirante, buscando expandir mis conocimientos y habilidades en el campo.",
-    bgColor: "bg-skill-3"
+    bgColor: "bg-skill-3 dark:bg-skill-3-dark"
   },
   {
     icon: Cpu,
     title: "Backend y Cloud",
     skills: "Ktor, Firebase, Google Cloud, Supabase, Docker",
     description: "Habilidad para construir servicios backend robustos y escalables, así como para desplegar y administrar aplicaciones en la nube utilizando Docker y servicios de Firebase.",
-    bgColor: "bg-skill-4"
+    bgColor: "bg-skill-4 dark:bg-skill-4-dark"
   },
 ];
 
