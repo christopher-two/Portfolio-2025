@@ -4,13 +4,13 @@ import { useState, useEffect } from 'react';
 
 const toRotate = ["Two", "Chavez"];
 const baseName = "Christopher";
-const period = 3000; // Time to display full text before deleting
+const period = 2000; // Time to display full text before deleting
 
 export function AnimatedName() {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState('');
-  const [delta, setDelta] = useState(150 - Math.random() * 100);
+  const [delta, setDelta] = useState(100 - Math.random() * 50);
 
   useEffect(() => {
     let ticker = setInterval(() => {
@@ -34,7 +34,7 @@ export function AnimatedName() {
     setText(newText);
 
     if (isDeleting) {
-      setDelta(prevDelta => prevDelta / 2);
+      setDelta(prevDelta => prevDelta / 1.5);
     }
 
     if (!isDeleting && newText === fullText) {
@@ -43,7 +43,7 @@ export function AnimatedName() {
     } else if (isDeleting && newText === '') {
       setIsDeleting(false);
       setLoopNum(loopNum + 1);
-      setDelta(150 - Math.random() * 100);
+      setDelta(100 - Math.random() * 50);
     }
   }
 
