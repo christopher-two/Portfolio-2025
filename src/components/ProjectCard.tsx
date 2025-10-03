@@ -37,7 +37,7 @@ export function ProjectCard({ title, description, imageUrlId, link, tags }: Proj
           <CardTitle as="h3" className="text-lg font-headline font-bold">{title}</CardTitle>
           <Link href={link} target="_blank" rel="noopener noreferrer" className="shrink-0 ml-4">
             <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-accent transition-colors" />
-            <span className="sr-only">Visit project</span>
+            <span className="sr-only">Visitar proyecto</span>
           </Link>
         </div>
         <p className="text-sm text-muted-foreground flex-1">{description}</p>

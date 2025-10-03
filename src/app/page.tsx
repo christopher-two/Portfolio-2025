@@ -39,22 +39,22 @@ const techSkills = [
 
 const recognitions = [
     {
-      title: 'Certified Kotlin Developer',
+      title: 'Desarrollador Kotlin Certificado',
       issuer: 'JetBrains',
       year: '2023',
-      description: 'Demonstrated proficiency in Kotlin programming language and its ecosystem.',
+      description: 'Demostrada competencia en el lenguaje de programación Kotlin y su ecosistema.',
     },
     {
-      title: 'Google Cloud Certified - Associate Cloud Engineer',
+      title: 'Google Cloud Certified - Ingeniero de la Nube Asociado',
       issuer: 'Google Cloud',
       year: '2022',
-      description: 'Mastery of deploying applications, monitoring operations, and managing enterprise solutions on Google Cloud.',
+      description: 'Dominio en la implementación de aplicaciones, monitoreo de operaciones y gestión de soluciones empresariales en Google Cloud.',
     },
     {
-      title: 'Hackathon Winner - Best Mobile App',
+      title: 'Ganador de Hackathon - Mejor Aplicación Móvil',
       issuer: 'TechCrunch Disrupt',
       year: '2021',
-      description: 'Awarded for developing the most innovative and impactful mobile application during the hackathon.',
+      description: 'Premiado por desarrollar la aplicación móvil más innovadora e impactante durante el hackathon.',
     },
 ];
 
@@ -82,7 +82,7 @@ export default function Home() {
             <div className="flex justify-center">
               <Button asChild size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
                 <Link href="/projects">
-                  View My Work <ArrowRight className="ml-2 h-5 w-5" />
+                  Ver Mi Trabajo <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </div>
@@ -93,7 +93,7 @@ export default function Home() {
         <div className="grid md:grid-cols-3 items-stretch w-full">
           <div className="md:col-span-2 space-y-6 container max-w-screen-lg mx-auto py-24 pr-12 flex flex-col justify-center">
             <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">
-              About Me
+              Sobre Mí
             </h2>
             <div className="space-y-4 text-muted-foreground md:text-lg max-w-prose">
               <p>
@@ -126,7 +126,7 @@ export default function Home() {
       <section className="border-t-2 border-border flex min-h-screen items-center justify-center bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
         <div className="container max-w-screen-lg mx-auto py-24 px-4">
             <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-center mb-12">
-                Recognitions & Certificates
+                Reconocimientos y Certificados
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {recognitions.map((rec, index) => (

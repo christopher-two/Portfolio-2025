@@ -6,10 +6,10 @@ export default function ProjectsPage() {
     <div className="container max-w-screen-lg mx-auto py-12 px-4 animate-fade-in">
       <section className="space-y-4 mb-12 text-center">
         <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl md:text-6xl">
-          My Work
+          Mi Trabajo
         </h1>
         <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-          A collection of projects I've built. Each one is a step in my journey as a developer.
+          Una colección de los proyectos que he construido. Cada uno es un paso en mi viaje como desarrollador.
         </p>
       </section>
       
