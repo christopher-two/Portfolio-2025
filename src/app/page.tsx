@@ -14,7 +14,16 @@ export default function Home() {
             </h1>
 
             <p className="mx-auto max-w-[700px] text-muted-foreground text-lg md:text-xl">
-              Desarrollador Multiplataforma, Kotlin Multiplataforma y Jetpack Compose
+              Desarrollador Multiplataforma,{' '}
+              <span className="relative inline-block border-2 border-border rounded-md px-2 py-1 align-middle">
+                <span className="absolute inset-0 scale-x-0 animate-expand-from-center rounded-sm bg-primary/20 origin-center"></span>
+                <span className="relative font-bold text-primary">
+                  <Sparkles className="absolute -top-3 -left-4 h-4 w-4 text-accent" />
+                  Kotlin Multiplataforma
+                  <Sparkles className="absolute -bottom-3 -right-4 h-4 w-4 text-accent" />
+                </span>
+              </span>{' '}
+              y Jetpack Compose
             </p>
 
             <div className="flex justify-center">
