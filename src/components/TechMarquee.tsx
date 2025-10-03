@@ -1,26 +1,9 @@
-import {
-  IconKotlin,
-  IconReact,
-  IconNextjs,
-  IconTailwind,
-  IconVite,
-  IconKtor,
-  IconFirebase,
-  IconGCP,
-  IconSupabase,
-  IconDocker,
-  IconCompose,
-} from './icons';
 import { Asterisk } from 'lucide-react';
 
 const technologies = [
   { name: 'Compose Multiplatform' },
   { name: 'Kotlin' },
   { name: 'Jetpack Compose' },
-  { name: 'React' },
-  { name: 'Next.js' },
-  { name: 'Tailwind CSS' },
-  { name: 'Vite' },
   { name: 'Ktor' },
   { name: 'Firebase' },
   { name: 'Google Cloud' },
@@ -30,18 +13,18 @@ const technologies = [
 
 const MarqueeItem = ({ name }: { name: string }) => (
   <div className="flex items-center gap-4 px-8">
-    <span className="text-xl font-bold tracking-wider">{name}</span>
+    <span className="text-2xl font-bold tracking-wider">{name}</span>
     <Asterisk className="h-6 w-6 text-accent" />
   </div>
 );
 
 export function TechMarquee() {
-  const marqueeContent = Array(2).fill(technologies).flat();
+  const marqueeContent = Array(3).fill(technologies).flat();
 
   return (
     <section className="border-y-2 border-border bg-background">
       <div className="relative flex w-full overflow-hidden marquee-hover">
-        <div className="flex w-max animate-marquee items-center py-4">
+        <div className="flex w-max animate-marquee items-center py-4 [--duration:60s]">
           {marqueeContent.map((tech, index) => (
             <MarqueeItem key={index} name={tech.name} />
           ))}

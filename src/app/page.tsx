@@ -23,13 +23,6 @@ const techSkills = [
     bgColor: "bg-skill-2 dark:bg-skill-2-dark"
   },
   {
-    icon: Globe,
-    title: "Desarrollo Web",
-    skills: "React, Next.js, Tailwind CSS, Vite",
-    description: "Si bien mi área principal de especialización se centra en el desarrollo multiplataforma, también estoy explorando activamente el desarrollo web. He tenido la oportunidad de crear y entregar algunos proyectos web para diversas empresas. En esta faceta, me considero más un aspirante, buscando expandir mis conocimientos y habilidades en el campo.",
-    bgColor: "bg-skill-3 dark:bg-skill-3-dark"
-  },
-  {
     icon: Cpu,
     title: "Backend y Cloud",
     skills: "Ktor, Firebase, Google Cloud, Supabase, Docker",
@@ -141,7 +134,7 @@ export default function Home() {
       <TechMarquee />
 
       <section className="border-t-2 border-border">
-        <div className="grid grid-cols-1 md:grid-cols-2 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 w-full">
           {techSkills.map((skill, index) => (
             <div key={index} className="border-r-2 border-b-2 border-border">
               <TechCard {...skill} />
