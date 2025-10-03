@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { TechCard } from "@/components/TechCard";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { TechMarquee } from "@/components/TechMarquee";
+import { AnimatedName } from "@/components/AnimatedName";
 
 
 const techSkills = [
@@ -127,9 +128,7 @@ export default function Home() {
       <div className="relative flex h-screen w-full items-center justify-center bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
         <div className="container max-w-screen-lg mx-auto text-center px-4">
           <div className="animate-fade-in space-y-6">
-            <h1 className="text-5xl font-headline font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
-              Christopher Alejandro <br /> Maldonado Chavez
-            </h1>
+            <AnimatedName />
 
             <p className="mx-auto max-w-[700px] text-muted-foreground text-lg md:text-xl">
               Desarrollador Multiplataforma,{" "}
