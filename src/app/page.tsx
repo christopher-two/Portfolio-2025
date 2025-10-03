@@ -55,6 +55,7 @@ export default function Home() {
               fill
               className="object-cover"
             />
+            <div className="absolute inset-0 animate-neon-border rounded-md pointer-events-none"></div>
           </div>
         </div>
       </section>
