@@ -15,7 +15,7 @@ export default function Home() {
 
             <p className="mx-auto max-w-[700px] text-muted-foreground text-lg md:text-xl">
               A passionate developer building{" "}
-              <span className="relative inline-block border-2 border-border bg-primary/20 px-2 py-1 rounded-md">
+              <span className="relative inline-block border-4 border-border bg-primary/20 px-2 py-1 rounded-md">
                 <Sparkles className="absolute -top-4 -left-4 h-6 w-6 text-accent" />
                 <Sparkles className="absolute -bottom-4 -right-4 h-6 w-6 text-accent" />
                 functional & beautiful
@@ -24,7 +24,7 @@ export default function Home() {
             </p>
 
             <div className="flex justify-center">
-              <Button asChild size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+              <Button asChild size="lg" className="border-4 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
                 <Link href="/projects">
                   View My Work <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -33,18 +33,18 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <section className="border-t-2 border-border bg-background overflow-hidden">
+      <section className="border-t-4 border-border bg-background overflow-hidden">
         <div className="grid md:grid-cols-3 items-stretch">
-          <div className="md:col-span-2 space-y-6 container max-w-screen-lg mx-auto py-16 pr-12">
+          <div className="md:col-span-2 space-y-6 container max-w-screen-lg mx-auto py-24 pr-12">
             <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">
               About Me
             </h2>
             <div className="space-y-4 text-muted-foreground md:text-lg max-w-prose">
               <p>
-                Hello! I&apos;m a passionate developer with a knack for building beautiful, functional, and user-centric web applications. My journey in tech is driven by a curiosity for how things work and a desire to create meaningful digital experiences.
+                Soy un Desarrollador Multiplataforma con experiencia en la creación de software. Estoy en el proceso de lanzar mi propia empresa, Override, con el objetivo de desarrollar productos digitales. He trabajado en varios proyectos de software, desde colaboraciones en productos multiplataforma como Quickness, hasta el desarrollo de mis propias aplicaciones como Lumi.
               </p>
               <p>
-                With a strong foundation in modern web technologies, I specialize in the frontend ecosystem, particularly with React and Next.js. I enjoy tackling complex problems and turning them into simple, elegant solutions.
+                Actualmente, me estoy centrando en la tecnología de Jetpack Compose y Compose Multiplataforma. Esto me permite construir productos que funcionan en diferentes sistemas, llegando a más usuarios con una experiencia consistente. Mi compromiso es seguir innovando y mejorando la forma en que la tecnología se conecta con las personas.
               </p>
             </div>
           </div>
