@@ -64,7 +64,7 @@ export function Footer() {
             <ul className="space-y-2">
                <li>
                   <Link href="mailto:christopher_two@proton.me" className="text-muted-foreground hover:text-accent transition-colors">
-                    Contacto (Email)
+                    Email
                   </Link>
                 </li>
                 <li>
