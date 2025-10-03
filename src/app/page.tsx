@@ -39,7 +39,7 @@ const techSkills = [
 
 const recognitions = [
   {
-    title: '1er Lugar (2 Categorías)',
+    title: '1er Lugar',
     issuer: 'Innovatec Nacional 2025',
     description: 'Ganador en la categoría de "Salud", con el proyecto Lyra.',
   },
