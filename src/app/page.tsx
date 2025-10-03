@@ -87,7 +87,7 @@ export default function Home() {
               src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/foto.png"
               alt="Christopher Alejandro Maldonado Chavez"
               fill
-              className="object-contain"
+              className="object-contain object-bottom"
             />
             <div className="absolute inset-0 animate-neon-border rounded-md pointer-events-none"></div>
           </div>
