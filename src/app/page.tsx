@@ -33,10 +33,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <section className="border-t-2 border-border bg-background">
-        <div className="container max-w-screen-lg mx-auto py-16 px-4">
-          <div className="grid md:grid-cols-3 gap-12 items-center">
-            <div className="md:col-span-2 space-y-6">
+      <section className="border-t-2 border-border bg-background overflow-hidden">
+        <div className="container max-w-screen-lg mx-auto">
+          <div className="grid md:grid-cols-3 items-stretch">
+            <div className="md:col-span-2 space-y-6 py-16 pr-12">
               <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">
                 About Me
               </h2>
@@ -49,7 +49,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="relative h-64 w-64 mx-auto md:h-80 md:w-80 overflow-hidden rounded-md">
+            <div className="relative min-h-[320px] md:min-h-0">
                <Image
                 src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/foto.png"
                 alt="Christopher Alejandro Maldonado Chavez"
