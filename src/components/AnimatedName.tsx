@@ -27,7 +27,7 @@ export function AnimatedName() {
     setText(updatedText);
 
     if (isDeleting) {
-      setDelta(prevDelta => prevDelta / 2);
+      setDelta(prevDelta => prevDelta / 1.5);
     }
 
     if (!isDeleting && updatedText === fullText) {
@@ -37,6 +37,10 @@ export function AnimatedName() {
       setIsDeleting(false);
       setLoopNum(loopNum + 1);
       setDelta(300);
+    } else if (isDeleting) {
+      setDelta(50); // Faster deleting
+    } else {
+      setDelta(120); // Consistent typing speed
     }
   }
 
@@ -47,3 +51,5 @@ export function AnimatedName() {
     </h1>
   );
 }
+
+    
