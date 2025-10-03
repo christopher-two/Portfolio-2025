@@ -38,24 +38,24 @@ const techSkills = [
 ];
 
 const recognitions = [
-    {
-      title: 'Desarrollador Kotlin Certificado',
-      issuer: 'JetBrains',
-      year: '2023',
-      description: 'Demostrada competencia en el lenguaje de programación Kotlin y su ecosistema.',
-    },
-    {
-      title: 'Google Cloud Certified - Ingeniero de la Nube Asociado',
-      issuer: 'Google Cloud',
-      year: '2022',
-      description: 'Dominio en la implementación de aplicaciones, monitoreo de operaciones y gestión de soluciones empresariales en Google Cloud.',
-    },
-    {
-      title: 'Ganador de Hackathon - Mejor Aplicación Móvil',
-      issuer: 'TechCrunch Disrupt',
-      year: '2021',
-      description: 'Premiado por desarrollar la aplicación móvil más innovadora e impactante durante el hackathon.',
-    },
+  {
+    title: '1er Lugar (2 Categorías)',
+    issuer: 'Innovatec Nacional 2025 (Etapa Local)',
+    year: '2025',
+    description: 'Ganador en las categorías de "Salud" y "Tecnología".',
+  },
+  {
+    title: 'Ganador (2 ocasiones)',
+    issuer: 'Concurso Interno de Innovación',
+    year: '2023 y 2024',
+    description: 'Instituto Tecnológico Superior de Uruapan (TecNM) - Ediciones 2023 y 2024.',
+  },
+  {
+    title: 'Participante Destacado',
+    issuer: 'Coding Cup México',
+    year: '2021 y 2025',
+    description: 'Participación en las ediciones 2021 y 2025.',
+  },
 ];
 
 export default function Home() {
