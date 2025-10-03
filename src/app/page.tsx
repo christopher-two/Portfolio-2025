@@ -53,15 +53,21 @@ const recognitions = [
   {
     title: 'Participante Destacado',
     issuer: 'Coding Cup México',
-    year: '2021 y 2025',
-    description: 'Participación en las ediciones 2021 y 2025.',
+    year: '2021',
+    description: 'Participación en la edición 2021.',
+  },
+  {
+    title: 'Participante Destacado',
+    issuer: 'Coding Cup México',
+    year: '2025',
+    description: 'Participación en la edición 2025.',
   },
 ];
 
 export default function Home() {
   return (
     <div className="flex-1 w-full">
-      <div className="relative flex h-[calc(100vh-56px)] w-full items-center justify-center bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
+      <div className="relative flex h-screen w-full items-center justify-center bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
         <div className="container max-w-screen-lg mx-auto text-center px-4">
           <div className="animate-fade-in space-y-6">
             <h1 className="text-5xl font-headline font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
@@ -89,7 +95,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <section className="border-t-2 border-border bg-background overflow-hidden flex min-h-screen">
+      <section className="border-t-2 border-border bg-background overflow-hidden flex h-screen">
         <div className="grid md:grid-cols-3 items-stretch w-full">
           <div className="md:col-span-2 space-y-6 container max-w-screen-lg mx-auto py-24 pr-12 flex flex-col justify-center">
             <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">
@@ -104,7 +110,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="relative self-end h-full">
+          <div className="relative flex items-end">
              <Image
               src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/FotoPerfil.JPG"
               alt="Christopher Alejandro Maldonado Chavez"
@@ -114,7 +120,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="border-t-2 border-border flex min-h-screen">
+      <section className="border-t-2 border-border flex h-screen">
         <div className="grid grid-cols-1 md:grid-cols-2 w-full">
           {techSkills.map((skill, index) => (
             <div key={index} className="border-r-2 border-b-2 border-border">
@@ -123,7 +129,7 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section className="border-t-2 border-border flex min-h-screen items-center justify-center bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
+      <section className="border-t-2 border-border flex h-screen items-center justify-center bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
         <div className="container max-w-screen-lg mx-auto py-24 px-4">
             <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-center mb-12">
                 Reconocimientos y Certificados
