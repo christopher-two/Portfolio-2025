@@ -1,21 +1,15 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
+import { Github, Linkedin, Mail } from 'lucide-react';
+import { projects } from '@/lib/data';
 
 const navLinks = [
   { name: 'Inicio', href: '/' },
   { name: 'Proyectos', href: '/projects' },
 ];
 
-const projectLinks = [
-    { name: 'Proyecto Alpha', href: '#' },
-    { name: 'Proyecto Beta', href: '#' },
-    { name: 'Proyecto Gamma', href: '#' },
-];
-
-
 const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/Chris-Alejandro', icon: Github },
-  { name: 'LinkedIn', href: 'https://linkedin.com', icon: Linkedin },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/christopher-alejandro-maldonado-chavez/', icon: Linkedin },
 ];
 
 export function Footer() {
@@ -54,10 +48,10 @@ export function Footer() {
           <div>
             <h4 className="font-headline font-semibold mb-4">Proyectos</h4>
             <ul className="space-y-2">
-              {projectLinks.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-muted-foreground hover:text-accent transition-colors">
-                    {link.name}
+              {projects.slice(0, 3).map((project) => (
+                <li key={project.id}>
+                  <Link href={`/projects/${project.slug}`} className="text-muted-foreground hover:text-accent transition-colors">
+                    {project.title}
                   </Link>
                 </li>
               ))}
@@ -69,8 +63,13 @@ export function Footer() {
             <h4 className="font-headline font-semibold mb-4">Otros</h4>
             <ul className="space-y-2">
                <li>
-                  <Link href="mailto:christopher@example.com" className="text-muted-foreground hover:text-accent transition-colors">
+                  <Link href="mailto:christopher_two@proton.me" className="text-muted-foreground hover:text-accent transition-colors">
                     Contacto (Email)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://blog.christopher.com.mx" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
+                    Blog
                   </Link>
                 </li>
             </ul>
