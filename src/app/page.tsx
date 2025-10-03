@@ -34,29 +34,27 @@ export default function Home() {
         </div>
       </div>
       <section className="border-t-2 border-border bg-background overflow-hidden">
-        <div className="container max-w-screen-lg mx-auto">
-          <div className="grid md:grid-cols-3 items-stretch">
-            <div className="md:col-span-2 space-y-6 py-16 pr-12">
-              <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">
-                About Me
-              </h2>
-              <div className="space-y-4 text-muted-foreground md:text-lg">
-                <p>
-                  Hello! I&apos;m a passionate developer with a knack for building beautiful, functional, and user-centric web applications. My journey in tech is driven by a curiosity for how things work and a desire to create meaningful digital experiences.
-                </p>
-                <p>
-                  With a strong foundation in modern web technologies, I specialize in the frontend ecosystem, particularly with React and Next.js. I enjoy tackling complex problems and turning them into simple, elegant solutions.
-                </p>
-              </div>
+        <div className="grid md:grid-cols-3 items-stretch">
+          <div className="md:col-span-2 space-y-6 container max-w-screen-lg mx-auto py-16 pr-12">
+            <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">
+              About Me
+            </h2>
+            <div className="space-y-4 text-muted-foreground md:text-lg max-w-prose">
+              <p>
+                Hello! I&apos;m a passionate developer with a knack for building beautiful, functional, and user-centric web applications. My journey in tech is driven by a curiosity for how things work and a desire to create meaningful digital experiences.
+              </p>
+              <p>
+                With a strong foundation in modern web technologies, I specialize in the frontend ecosystem, particularly with React and Next.js. I enjoy tackling complex problems and turning them into simple, elegant solutions.
+              </p>
             </div>
-            <div className="relative min-h-[320px] md:min-h-0">
-               <Image
-                src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/foto.png"
-                alt="Christopher Alejandro Maldonado Chavez"
-                fill
-                className="object-cover"
-              />
-            </div>
+          </div>
+          <div className="relative min-h-[320px] md:min-h-0">
+             <Image
+              src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/foto.png"
+              alt="Christopher Alejandro Maldonado Chavez"
+              fill
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
