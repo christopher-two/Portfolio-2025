@@ -67,8 +67,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <section className="border-t-2 border-border bg-background overflow-hidden flex min-h-screen items-center">
-        <div className="grid md:grid-cols-3 items-center w-full">
+      <section className="border-t-2 border-border bg-background overflow-hidden flex min-h-screen">
+        <div className="grid md:grid-cols-3 items-stretch w-full">
           <div className="md:col-span-2 space-y-6 container max-w-screen-lg mx-auto py-24 pr-12 flex flex-col justify-center">
             <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">
               About Me
@@ -82,7 +82,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="relative self-stretch min-h-[320px] md:min-h-0">
+          <div className="relative self-end min-h-[320px] md:h-full md:min-h-0">
              <Image
               src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/foto.png"
               alt="Christopher Alejandro Maldonado Chavez"
