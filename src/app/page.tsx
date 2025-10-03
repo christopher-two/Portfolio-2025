@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Code, Cpu, Smartphone, Globe, Award, Download, Mail, Linkedin, Github, Instagram, Youtube, Film, Newspaper } from "lucide-react";
+import { ArrowRight, Code, Cpu, Smartphone, Globe, Award, Download, Mail, Linkedin, Github, Instagram, Youtube, Film, Newspaper, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TechCard } from "@/components/TechCard";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
@@ -142,17 +142,22 @@ export default function Home() {
               y Jetpack Compose
             </p>
 
-            <div className="flex justify-center gap-4">
-              <Button asChild size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                <Link href="/projects">
-                  Ver Mi Trabajo <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild variant="secondary" size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                <Link href="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/sign/docs/CV.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84OTUzOTBiNi0zZDUxLTQ4MGMtOWJjNC03NzE4ZmNhOWVkNjkiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkb2NzL0NWLnBkZiIsImlhdCI6MTc1OTQ1ODY2MSwiZXhwIjoxNzkwOTk0NjYxfQ.nkVAXaLxHcawMeV8-gxBca04d6kyum2Wuw_XC39WvoU" target="_blank" rel="noopener noreferrer">
-                  Descargar CV <Download className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/projects">
+                <Button size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                    Ver Mi Trabajo <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="#contact">
+                 <Button variant="secondary" size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                    Contacto <MessageSquare className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/sign/docs/CV.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84OTUzOTBiNi0zZDUxLTQ4MGMtOWJjNC03NzE4ZmNhOWVkNjkiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkb2NzL0NWLnBkZiIsImlhdCI6MTc1OTQ1ODY2MSwiZXhwIjoxOTA5OTk0NjYxfQ.nkVAXaLxHcawMeV8-gxBca04d6kyum2Wuw_XC39WvoU" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                    Descargar CV <Download className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -222,7 +227,7 @@ export default function Home() {
             </div>
         </div>
       </section>
-      <section className="border-t-2 border-border bg-background">
+      <section id="contact" className="border-t-2 border-border bg-background">
         <div className="container max-w-screen-lg mx-auto py-24 px-4">
           <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-center mb-12">
             Conecta Conmigo
@@ -245,5 +250,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
