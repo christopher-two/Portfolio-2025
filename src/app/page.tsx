@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Code, Cpu, Smartphone, Globe, Award } from "lucide-react";
+import { ArrowRight, Code, Cpu, Smartphone, Globe, Award, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TechCard } from "@/components/TechCard";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
@@ -96,19 +96,24 @@ export default function Home() {
               y Jetpack Compose
             </p>
 
-            <div className="flex justify-center">
+            <div className="flex justify-center gap-4">
               <Button asChild size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
                 <Link href="/projects">
                   Ver Mi Trabajo <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button asChild variant="secondary" size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                <Link href="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/sign/docs/CV.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84OTUzOTBiNi0zZDUxLTQ4MGMtOWJjNC03NzE4ZmNhOWVkNjkiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkb2NzL0NWLnBkZiIsImlhdCI6MTc1OTQ1ODY2MSwiZXhwIjoxNzkwOTk0NjYxfQ.nkVAXaLxHcawMeV8-gxBca04d6kyum2Wuw_XC39WvoU" target="_blank" rel="noopener noreferrer">
+                  Descargar CV <Download className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </div>
           </div>
         </div>
       </div>
-      <section className="border-t-2 border-border bg-background overflow-hidden flex h-screen">
-        <div className="grid md:grid-cols-3 items-stretch w-full">
-          <div className="md:col-span-2 space-y-6 container max-w-screen-lg mx-auto py-24 pr-12 flex flex-col justify-center">
+      <section className="border-t-2 border-border bg-background overflow-hidden">
+        <div className="grid md:grid-cols-2 items-stretch w-full">
+          <div className="md:col-span-1 space-y-6 container max-w-screen-lg mx-auto py-24 pr-12 flex flex-col justify-center">
             <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">
               Sobre Mí
             </h2>
@@ -121,7 +126,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="relative flex items-end">
+          <div className="relative flex items-end min-h-[400px] md:min-h-0">
             <Image
               src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/FotoPerfil.JPG"
               alt="Christopher Alejandro Maldonado Chavez"
@@ -131,7 +136,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="border-t-2 border-border flex h-screen">
+      <section className="border-t-2 border-border">
         <div className="grid grid-cols-1 md:grid-cols-2 w-full">
           {techSkills.map((skill, index) => (
             <div key={index} className="border-r-2 border-b-2 border-border">
@@ -140,7 +145,7 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section className="border-t-2 border-border flex h-screen items-center justify-center bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
+      <section className="border-t-2 border-border flex items-center justify-center bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
         <div className="container max-w-screen-lg mx-auto py-24 px-4">
             <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-center mb-12">
                 Reconocimientos y Certificados
