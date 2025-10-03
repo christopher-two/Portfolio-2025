@@ -47,13 +47,13 @@ export default function Home() {
             </h1>
 
             <p className="mx-auto max-w-[700px] text-muted-foreground text-lg md:text-xl">
-              Desarrollador Multiplataforma,{' '}
+              Desarrollador Multiplataforma,{" "}
               <span className="relative inline-block border-2 border-border rounded-md px-2 py-1 align-middle">
                 <span className="absolute inset-0 scale-x-0 animate-expand-from-center rounded-sm bg-primary/20 origin-center"></span>
                 <span className="relative font-bold text-primary">
                   Kotlin Multiplataforma
                 </span>
-              </span>{' '}
+              </span>{" "}
               y Jetpack Compose
             </p>
 
@@ -87,7 +87,7 @@ export default function Home() {
               src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/foto.png"
               alt="Christopher Alejandro Maldonado Chavez"
               fill
-              className="object-cover"
+              className="object-contain"
             />
             <div className="absolute inset-0 animate-neon-border rounded-md pointer-events-none"></div>
           </div>
