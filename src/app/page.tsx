@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Code, Cpu, Smartphone, Globe, Award, Download } from "lucide-react";
+import { ArrowRight, Code, Cpu, Smartphone, Globe, Award, Download, Mail, Linkedin, Github, Instagram, Youtube, Film, Newspaper } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TechCard } from "@/components/TechCard";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
@@ -68,6 +68,58 @@ const recognitions = [
     description: 'Edicion 2025',
   },
 ];
+
+const socialLinks = [
+  {
+    icon: Mail,
+    title: 'Email',
+    handle: 'christopher_two@proton.me',
+    href: 'mailto:christopher_two@proton.me',
+  },
+  {
+    icon: Linkedin,
+    title: 'LinkedIn',
+    handle: 'christopher-alejandro-maldonado-chavez',
+    href: 'https://www.linkedin.com/in/christopher-alejandro-maldonado-chavez/',
+  },
+  {
+    icon: Github,
+    title: 'GitHub',
+    handle: 'christopher-two',
+    href: 'https://github.com/Chris-Alejandro',
+  },
+  {
+    icon: Instagram,
+    title: 'Instagram',
+    handle: '@christopher_two_',
+    href: 'https://www.instagram.com/christopher_two_/',
+  },
+  {
+    icon: Youtube,
+    title: 'YouTube',
+    handle: 'ChristopherTwo',
+    href: 'https://www.youtube.com/channel/UC-o_0I2pA-1j4k2s-m_3_w',
+  },
+  {
+    icon: Film,
+    title: 'TikTok',
+    handle: '@christopher_two',
+    href: 'https://www.tiktok.com/@christopher_two',
+  },
+  {
+    icon: Newspaper,
+    title: 'Blog',
+    handle: 'blog.christopher.com.mx',
+    href: 'https://blog.christopher.com.mx',
+  },
+  {
+    icon: Globe,
+    title: 'Override',
+    handle: 'override.com.mx',
+    href: 'https://www.override.com.mx',
+  },
+];
+
 
 export default function Home() {
   return (
@@ -170,6 +222,28 @@ export default function Home() {
             </div>
         </div>
       </section>
+      <section className="border-t-2 border-border bg-background">
+        <div className="container max-w-screen-lg mx-auto py-24 px-4">
+          <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-center mb-12">
+            Conecta Conmigo
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {socialLinks.map((link) => (
+              <Link key={link.title} href={link.href} target="_blank" rel="noopener noreferrer" className="group">
+                <Card className="h-full bg-card/80 backdrop-blur-sm border-2 border-border shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                  <CardContent className="p-6 flex flex-col items-center justify-center text-center">
+                    <link.icon className="h-10 w-10 text-accent mb-4 transition-transform group-hover:scale-110" />
+                    <h3 className="font-bold font-headline text-lg">{link.title}</h3>
+                    <p className="text-sm text-muted-foreground break-all">{link.handle}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
+
+    
