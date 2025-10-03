@@ -82,12 +82,12 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="relative self-end min-h-[320px] md:h-full md:min-h-0">
+          <div className="relative self-end h-full">
              <Image
               src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/FotoPerfil.JPG"
               alt="Christopher Alejandro Maldonado Chavez"
               fill
-              className="object-contain object-bottom"
+              className="object-cover"
             />
           </div>
         </div>
