@@ -18,6 +18,7 @@ export function AnimatedName() {
     }, delta);
 
     return () => { clearInterval(ticker) };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text, delta]);
 
   const tick = () => {
@@ -48,7 +49,7 @@ export function AnimatedName() {
   }
 
   return (
-    <h1 className="text-5xl font-headline font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl whitespace-nowrap">
+    <h1 className="text-5xl font-headline font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
       {baseName} {text}
       <span className="animate-pulse">|</span>
     </h1>
