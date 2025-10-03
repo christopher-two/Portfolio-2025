@@ -67,9 +67,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <section className="border-t-2 border-border bg-background overflow-hidden">
-        <div className="grid md:grid-cols-3 items-stretch">
-          <div className="md:col-span-2 space-y-6 container max-w-screen-lg mx-auto py-24 pr-12">
+      <section className="border-t-2 border-border bg-background overflow-hidden flex min-h-screen">
+        <div className="grid md:grid-cols-3 items-stretch w-full">
+          <div className="md:col-span-2 space-y-6 container max-w-screen-lg mx-auto py-24 pr-12 flex flex-col justify-center">
             <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">
               About Me
             </h2>
@@ -93,8 +93,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="border-t-2 border-border">
-        <div className="grid grid-cols-1 md:grid-cols-2">
+      <section className="border-t-2 border-border flex min-h-screen">
+        <div className="grid grid-cols-1 md:grid-cols-2 w-full">
           {techSkills.map((skill, index) => (
             <div key={index} className="border-r-2 border-b-2 border-border">
               <TechCard {...skill} />
