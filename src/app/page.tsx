@@ -40,27 +40,38 @@ const techSkills = [
 const recognitions = [
   {
     title: '1er Lugar (2 Categorías)',
-    issuer: 'Innovatec Nacional 2025 (Etapa Local)',
-    year: '2025',
-    description: 'Ganador en las categorías de "Salud" y "Tecnología".',
+    issuer: 'Innovatec Nacional 2025',
+    description: 'Ganador en la categoría de "Salud", con el proyecto Lyra.',
   },
   {
-    title: 'Ganador (2 ocasiones)',
+    title: '1er Lugar',
+    issuer: 'Innovatec Nacional 2025',
+    description: 'Ganador en la categoría de "Tecnologia", con el proyecto Lerna.',
+  },
+  {
+    title: 'Participante Destacado',
+    issuer: 'Innovatec Nacional 2023',
+    description: 'Ganador en la categoría de "Tecnologia", con el proyecto Quickness.',
+  },
+  {
+    title: 'Ganador',
     issuer: 'Concurso Interno de Innovación',
-    year: '2023 y 2024',
-    description: 'Instituto Tecnológico Superior de Uruapan (TecNM) - Ediciones 2023 y 2024.',
+    description: 'Instituto Tecnológico Superior de Uruapan (TecNM) - Edicion 2024. Con el proyecto de Lyra.',
+  },
+  {
+    title: 'Ganador',
+    issuer: 'Concurso Interno de Innovación',
+    description: 'Instituto Tecnológico Superior de Uruapan (TecNM) - Edicion 2023. Con el proyecto Quickness.',
   },
   {
     title: 'Participante Destacado',
     issuer: 'Coding Cup México',
-    year: '2021',
-    description: 'Participación en la edición 2021.',
+    description: 'Edicion 2021',
   },
   {
     title: 'Participante Destacado',
     issuer: 'Coding Cup México',
-    year: '2025',
-    description: 'Participación en la edición 2025.',
+    description: 'Edicion 2025',
   },
 ];
 
@@ -111,7 +122,7 @@ export default function Home() {
             </div>
           </div>
           <div className="relative flex items-end">
-             <Image
+            <Image
               src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/FotoPerfil.JPG"
               alt="Christopher Alejandro Maldonado Chavez"
               fill
@@ -142,7 +153,7 @@ export default function Home() {
                                 <CardTitle as="h3" className="text-xl font-bold font-headline">{rec.title}</CardTitle>
                                 <Award className="h-6 w-6 text-accent ml-4"/>
                             </div>
-                            <CardDescription>{rec.issuer} - {rec.year}</CardDescription>
+                            <CardDescription>{rec.issuer}</CardDescription>
                         </CardHeader>
                         <CardContent>
                             <p className="text-sm text-muted-foreground">{rec.description}</p>
