@@ -12,7 +12,7 @@ export default function ProjectsPage() {
           const coverImage: ImagePlaceholder | undefined = PlaceHolderImages.find(p => p.id === project.coverImageId);
           return (
             <Link href={`/projects/${project.slug}`} key={project.id}>
-              <div className="group relative flex h-[60vh] w-full items-center justify-center overflow-hidden border-b-2 border-border bg-black">
+              <div className="group relative flex h-[60vh] w-full items-end justify-start overflow-hidden border-b-2 border-border bg-black p-8">
                 {coverImage && (
                   <Image
                     src={coverImage.imageUrl}
@@ -22,11 +22,11 @@ export default function ProjectsPage() {
                     data-ai-hint={coverImage.imageHint}
                   />
                 )}
-                <div className="relative z-10 text-center text-primary-foreground p-4">
+                <div className="relative z-10 text-primary-foreground">
                   <h2 className="text-5xl font-headline font-bold tracking-tight text-white transition-transform duration-300 group-hover:-translate-y-1 sm:text-6xl md:text-7xl">
                     {project.title}
                   </h2>
-                  <div className="mt-4 flex items-center justify-center gap-2 text-lg font-semibold text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="mt-4 flex items-center gap-2 text-lg font-semibold text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     Ver Proyecto <ArrowRight className="h-5 w-5" />
                   </div>
                 </div>
