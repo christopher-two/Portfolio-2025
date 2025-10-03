@@ -72,6 +72,10 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
         },
+        'skill-1': 'hsl(270 60% 97%)',
+        'skill-2': 'hsl(270 60% 95%)',
+        'skill-3': 'hsl(270 60% 93%)',
+        'skill-4': 'hsl(270 60% 91%)',
       },
       borderRadius: {
         lg: 'var(--radius)',
