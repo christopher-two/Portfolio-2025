@@ -14,24 +14,24 @@ import {
 import { Asterisk } from 'lucide-react';
 
 const technologies = [
-  { name: 'Compose Multiplatform', icon: <IconCompose className="h-6 w-6" /> },
-  { name: 'Kotlin', icon: <IconKotlin className="h-6 w-6" /> },
-  { name: 'Jetpack Compose', icon: <IconCompose className="h-6 w-6" /> },
-  { name: 'React', icon: <IconReact className="h-6 w-6" /> },
-  { name: 'Next.js', icon: <IconNextjs className="h-6 w-6" /> },
-  { name: 'Tailwind CSS', icon: <IconTailwind className="h-6 w-6" /> },
-  { name: 'Vite', icon: <IconVite className="h-6 w-6" /> },
-  { name: 'Ktor', icon: <IconKtor className="h-6 w-6" /> },
-  { name: 'Firebase', icon: <IconFirebase className="h-6 w-6" /> },
-  { name: 'Google Cloud', icon: <IconGCP className="h-6 w-6" /> },
-  { name: 'Supabase', icon: <IconSupabase className="h-6 w-6" /> },
-  { name: 'Docker', icon: <IconDocker className="h-6 w-6" /> },
+  { name: 'Compose Multiplatform' },
+  { name: 'Kotlin' },
+  { name: 'Jetpack Compose' },
+  { name: 'React' },
+  { name: 'Next.js' },
+  { name: 'Tailwind CSS' },
+  { name: 'Vite' },
+  { name: 'Ktor' },
+  { name: 'Firebase' },
+  { name: 'Google Cloud' },
+  { name: 'Supabase' },
+  { name: 'Docker' },
 ];
 
-const MarqueeItem = ({ name, icon }: { name: string, icon: React.ReactNode }) => (
-  <div className="flex items-center gap-4 px-6">
-    <span className="text-lg font-medium">{name}</span>
-    {icon}
+const MarqueeItem = ({ name }: { name: string }) => (
+  <div className="flex items-center gap-4 px-8">
+    <span className="text-xl font-bold tracking-wider">{name}</span>
+    <Asterisk className="h-6 w-6 text-accent" />
   </div>
 );
 
@@ -41,9 +41,9 @@ export function TechMarquee() {
   return (
     <section className="border-y-2 border-border bg-background">
       <div className="relative flex w-full overflow-hidden marquee-hover">
-        <div className="flex w-max animate-marquee items-center">
+        <div className="flex w-max animate-marquee items-center py-4">
           {marqueeContent.map((tech, index) => (
-            <MarqueeItem key={index} name={tech.name} icon={tech.icon} />
+            <MarqueeItem key={index} name={tech.name} />
           ))}
         </div>
       </div>
