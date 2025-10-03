@@ -23,7 +23,7 @@ export default function ProjectsPage() {
                   />
                 )}
                 <div className="relative z-10 text-primary-foreground">
-                  <h2 className="text-5xl font-headline font-bold tracking-tight text-white transition-transform duration-300 group-hover:-translate-y-1 sm:text-6xl md:text-7xl">
+                  <h2 className="relative inline-block text-5xl font-headline font-bold tracking-tight text-white transition-transform duration-300 group-hover:-translate-y-1 sm:text-6xl md:text-7xl after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100">
                     {project.title}
                   </h2>
                   <div className="mt-4 flex items-center gap-2 text-lg font-semibold text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
