@@ -49,13 +49,12 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="relative h-64 w-64 mx-auto md:h-80 md:w-80">
+            <div className="relative h-64 w-64 mx-auto md:h-80 md:w-80 overflow-hidden rounded-md">
                <Image
                 src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/foto.png"
                 alt="Christopher Alejandro Maldonado Chavez"
-                width={400}
-                height={400}
-                className="rounded-full object-cover border-2 border-border shadow-[8px_8px_0px_theme(colors.border)] w-full h-full"
+                fill
+                className="object-cover"
               />
             </div>
           </div>
