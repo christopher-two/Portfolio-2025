@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Code, Cpu, Smartphone, Globe } from "lucide-react";
+import { ArrowRight, Code, Cpu, Smartphone, Globe, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TechCard } from "@/components/TechCard";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+
 
 const techSkills = [
   {
@@ -35,6 +37,26 @@ const techSkills = [
   },
 ];
 
+const recognitions = [
+    {
+      title: 'Certified Kotlin Developer',
+      issuer: 'JetBrains',
+      year: '2023',
+      description: 'Demonstrated proficiency in Kotlin programming language and its ecosystem.',
+    },
+    {
+      title: 'Google Cloud Certified - Associate Cloud Engineer',
+      issuer: 'Google Cloud',
+      year: '2022',
+      description: 'Mastery of deploying applications, monitoring operations, and managing enterprise solutions on Google Cloud.',
+    },
+    {
+      title: 'Hackathon Winner - Best Mobile App',
+      issuer: 'TechCrunch Disrupt',
+      year: '2021',
+      description: 'Awarded for developing the most innovative and impactful mobile application during the hackathon.',
+    },
+];
 
 export default function Home() {
   return (
@@ -99,6 +121,29 @@ export default function Home() {
               <TechCard {...skill} />
             </div>
           ))}
+        </div>
+      </section>
+      <section className="border-t-2 border-border flex min-h-screen items-center justify-center bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
+        <div className="container max-w-screen-lg mx-auto py-24 px-4">
+            <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-center mb-12">
+                Recognitions & Certificates
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {recognitions.map((rec, index) => (
+                    <Card key={index} className="bg-card/80 backdrop-blur-sm border-2 border-border/20 transform transition-transform hover:-translate-y-2 hover:border-accent">
+                        <CardHeader>
+                            <div className="flex items-start justify-between">
+                                <CardTitle className="text-xl font-bold font-headline">{rec.title}</CardTitle>
+                                <Award className="h-6 w-6 text-accent ml-4"/>
+                            </div>
+                            <CardDescription>{rec.issuer} - {rec.year}</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-sm text-muted-foreground">{rec.description}</p>
+                        </CardContent>
+                    </Card>
+                ))}
+            </div>
         </div>
       </section>
     </div>
