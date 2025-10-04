@@ -30,6 +30,7 @@ export default function OverridePage() {
                 >
                     {section.letter}
                 </div>
+                <h1 className={`pointer-events-none text-[10rem] lg:text-[15rem] font-bold font-headline select-none ${section.textColor} opacity-10 leading-none`}>VERRIDE</h1>
                 <OverrideLogo className={`text-[30rem] lg:text-[40rem] ${section.textColor} opacity-10`} />
               </div>
             ) : (
