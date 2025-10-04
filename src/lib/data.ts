@@ -1,4 +1,65 @@
 
+import { Github, Linkedin, Mail, Instagram, Youtube, Film, Newspaper, Globe, LucideIcon } from "lucide-react";
+
+export type SocialLink = {
+  icon: LucideIcon;
+  title: string;
+  handle: string;
+  href: string;
+};
+
+export const socialLinks: SocialLink[] = [
+  {
+    icon: Mail,
+    title: 'Email',
+    handle: 'christopher_two@proton.me',
+    href: 'mailto:christopher_two@proton.me',
+  },
+  {
+    icon: Linkedin,
+    title: 'LinkedIn',
+    handle: 'christopher-alejandro-maldonado-chavez',
+    href: 'https://www.linkedin.com/in/christopher-alejandro-maldonado-chavez/',
+  },
+  {
+    icon: Github,
+    title: 'GitHub',
+    handle: 'christopher-two',
+    href: 'https://github.com/Chris-Alejandro',
+  },
+  {
+    icon: Instagram,
+    title: 'Instagram',
+    handle: '@christopher_two_',
+    href: 'https://www.instagram.com/christopher_two_/',
+  },
+  {
+    icon: Youtube,
+    title: 'YouTube',
+    handle: 'ChristopherTwo',
+    href: 'https://www.youtube.com/channel/UC-o_0I2pA-1j4k2s-m_3_w',
+  },
+  {
+    icon: Film,
+    title: 'TikTok',
+    handle: '@christopher_two',
+    href: 'https://www.tiktok.com/@christopher_two',
+  },
+  {
+    icon: Newspaper,
+    title: 'Blog',
+    handle: 'blog.christopher.com.mx',
+    href: 'https://blog.christopher.com.mx',
+  },
+  {
+    icon: Globe,
+    title: 'Override',
+    handle: 'override.com.mx',
+    href: 'https://www.override.com.mx',
+  },
+];
+
+
 export const projects = [
   {
     id: "1",
