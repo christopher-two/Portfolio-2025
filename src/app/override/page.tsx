@@ -26,17 +26,17 @@ export default function OverridePage() {
              <div className="container mx-auto max-w-screen-xl w-full h-full flex items-center justify-between">
                 <div
                     aria-hidden="true"
-                    className={`pointer-events-none text-[30rem] lg:text-[40rem] font-bold font-headline select-none ${section.textColor} opacity-10 leading-none`}
+                    className={`pointer-events-none text-[30vw] lg:text-[25vw] font-bold font-headline select-none ${section.textColor} opacity-10 leading-none`}
                 >
                     {section.letter}
                 </div>
-                <h1 className={`pointer-events-none text-[10rem] lg:text-[15rem] font-bold font-headline select-none ${section.textColor} opacity-10 leading-none`}>VERRIDE</h1>
-                <OverrideLogo className={`text-[30rem] lg:text-[40rem] ${section.textColor} opacity-10`} />
+                <h1 className={`pointer-events-none text-[15vw] lg:text-[10vw] font-bold font-headline select-none ${section.textColor} opacity-10 leading-none`}>VERRIDE</h1>
+                <OverrideLogo className={`text-[30vw] lg:text-[25vw] ${section.textColor} opacity-10`} />
               </div>
             ) : (
                 <div
                 aria-hidden="true"
-                className={`pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[40rem] lg:text-[50rem] font-bold font-headline select-none ${section.textColor} opacity-10 leading-none`}
+                className={`pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[50vw] font-bold font-headline select-none ${section.textColor} opacity-10 leading-none`}
               >
                 {section.letter}
               </div>
