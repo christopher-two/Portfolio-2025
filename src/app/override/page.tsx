@@ -51,18 +51,13 @@ const OverrideLogo = () => (
 
 export default function OverridePage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-black text-white p-4 animate-fade-in">
-      <main className="container mx-auto flex max-w-screen-lg flex-1 flex-col items-center justify-center gap-12 md:flex-row md:gap-16">
-        <div className="flex-shrink-0">
-            <OverrideLogo />
-        </div>
-
-        <div className="flex flex-col items-start gap-8">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-wider text-white select-none">
-                OVERRIDE
-            </h1>
-        </div>
-      </main>
+    <div className="relative flex min-h-screen flex-col items-center justify-center bg-black text-white p-4 animate-fade-in">
+      <h1 className="absolute top-4 right-4 text-6xl md:text-8xl lg:text-9xl font-bold tracking-wider text-white select-none">
+          OVERRIDE
+      </h1>
+      <div className="absolute bottom-4 left-4">
+        <OverrideLogo />
+      </div>
     </div>
   );
 }
