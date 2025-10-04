@@ -19,13 +19,13 @@ export const socialLinks: SocialLink[] = [
     icon: Linkedin,
     title: 'LinkedIn',
     handle: 'christopher-alejandro-maldonado-chavez',
-    href: 'https://www.linkedin.com/in/christopher-alejandro-maldonado-chavez/',
+    href: 'https://www.linkedin.com/in/christopher-alejandro-maldonado-chavez-8784ba37a/',
   },
   {
     icon: Github,
     title: 'GitHub',
     handle: 'christopher-two',
-    href: 'https://github.com/Chris-Alejandro',
+    href: 'https://github.com/christopher-two',
   },
   {
     icon: Instagram,
@@ -37,7 +37,7 @@ export const socialLinks: SocialLink[] = [
     icon: Youtube,
     title: 'YouTube',
     handle: 'ChristopherTwo',
-    href: 'https://www.youtube.com/channel/UC-o_0I2pA-1j4k2s-m_3_w',
+    href: 'https://www.youtube.com/@ChristopherTwo',
   },
   {
     icon: Film,
