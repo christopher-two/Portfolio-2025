@@ -52,7 +52,7 @@ export function OverrideNav({ sections }: OverrideNavProps) {
   const word = "OVERRIDE";
 
   return (
-    <nav className="fixed left-0 top-1/2 -translate-y-1/2 z-50 p-4">
+    <nav className="fixed right-0 top-1/2 -translate-y-1/2 z-50 p-4">
       <ul className="flex flex-col items-center justify-center gap-2">
         {word.split('').map((char, index) => {
           const section = sections[index];
