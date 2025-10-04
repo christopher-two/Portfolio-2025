@@ -66,10 +66,10 @@ export function OverrideNav({ sections }: OverrideNavProps) {
               <button
                 onClick={() => scrollToSection(section.id)}
                 className={cn(
-                  "flex h-8 w-8 items-center justify-center rounded-full border-2 font-bold font-headline transition-all duration-300",
-                  "border-neutral-700 bg-black/50 backdrop-blur-sm",
-                  isRevealed ? "text-white" : "text-neutral-600",
-                  isActive ? "border-white scale-125" : "hover:border-neutral-500 hover:scale-110"
+                  "flex h-8 w-8 items-center justify-center rounded-md border-2 font-bold font-headline transition-all duration-300",
+                  "border-border bg-background shadow-[4px_4px_0px_theme(colors.border)]",
+                  isRevealed ? "text-foreground" : "text-muted-foreground",
+                  isActive ? "shadow-none translate-x-1 translate-y-1" : "hover:shadow-none hover:translate-x-1 hover:translate-y-1"
                 )}
                 aria-label={`Scroll to section ${char}`}
               >
