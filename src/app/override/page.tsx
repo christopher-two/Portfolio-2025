@@ -1,4 +1,3 @@
-import { OverrideLogo } from '@/components/OverrideLogo';
 import { OverrideNav } from '@/components/OverrideNav';
 
 const sections = [
@@ -6,7 +5,7 @@ const sections = [
   { id: 'v', letter: 'V', bgColor: 'bg-neutral-900', textColor: 'text-neutral-400' },
   { id: 'e', letter: 'E', bgColor: 'bg-neutral-800', textColor: 'text-neutral-500' },
   { id: 'r', letter: 'R', bgColor: 'bg-neutral-700', textColor: 'text-neutral-600' },
-  { id: 'r2', letter: 'R', bgColor: 'bg-neutral-600', textColor: 'text-neutral-700' },
+  { id: 'r2', letter: 'R', bgColor: 'bg-neutral-600', textColor: 'text-neutral-200' },
   { id: 'i', letter: 'I', bgColor: 'bg-neutral-500', textColor: 'text-neutral-800' },
   { id: 'd', letter: 'D', bgColor: 'bg-neutral-400', textColor: 'text-neutral-900' },
   { id: 'e2', letter: 'E', bgColor: 'bg-neutral-300', textColor: 'text-black' },
