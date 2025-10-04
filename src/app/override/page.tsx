@@ -26,11 +26,10 @@ const OverrideLogo = () => (
           stroke: "none",
           strokeWidth: 1.52367,
         }}
-        id="path259-2-0-7"
-        cx={76.672585}
-        cy={-96.884048}
-        rx={24.195728}
-        ry={24.917837}
+        cx="76.672585"
+        cy="-96.884048"
+        rx="24.195728"
+        ry="24.917837"
         transform="rotate(90)"
       />
       <path
@@ -58,15 +57,9 @@ export default function OverridePage() {
         </div>
 
         <div className="flex flex-col items-start gap-8 md:w-1/2">
-            <div className="relative w-full overflow-hidden">
-                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-wider text-white select-none">
-                    OVERRIDE
-                </h1>
-                <div className="absolute top-0 left-0 h-1/2 w-full bg-white" />
-                <h1 className="absolute top-0 left-0 text-6xl md:text-8xl lg:text-9xl font-bold tracking-wider text-black select-none mix-blend-lighten">
-                    OVERRIDE
-                </h1>
-            </div>
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-wider text-white select-none">
+                OVERRIDE
+            </h1>
             
             <p className="max-w-prose text-base md:text-lg text-neutral-300">
                 En Override diseñamos el futuro con innovación y tecnología.
