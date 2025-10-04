@@ -10,7 +10,6 @@ import { Button } from "./ui/button";
 const navLinks = [
   { href: "/", label: "Inicio" },
   { href: "/projects", label: "Proyectos" },
-  { href: "/override", label: "Override" },
 ];
 
 export function Header() {

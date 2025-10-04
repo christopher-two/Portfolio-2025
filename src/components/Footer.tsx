@@ -5,7 +5,6 @@ import { projects } from '@/lib/data';
 const navLinks = [
   { name: 'Inicio', href: '/' },
   { name: 'Proyectos', href: '/projects' },
-  { name: 'Override', href: '/override' },
 ];
 
 const socialLinks = [
