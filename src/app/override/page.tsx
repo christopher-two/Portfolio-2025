@@ -32,11 +32,11 @@ export default function OverridePage() {
                   >
                     O
                   </div>
-                  <div className="flex flex-col">
-                    <h1 className="text-5xl md:text-7xl font-bold font-headline tracking-tighter -ml-8">
+                  <div className="flex flex-col -ml-8">
+                    <h1 className="text-5xl md:text-7xl font-bold font-headline tracking-tighter">
                       VERRIDE
                     </h1>
-                    <div className="flex items-center gap-4 -ml-4">
+                    <div className="flex items-center gap-4 mt-2">
                        <OverrideLogo className="w-12 h-12" />
                        <p className="text-sm text-muted-foreground max-w-xs">
                           En Override diseñamos el futuro con innovación y tecnología.
