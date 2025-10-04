@@ -22,30 +22,24 @@ export default function OverridePage() {
           id={section.id}
           className={`relative flex min-h-screen items-center justify-center overflow-hidden p-4 ${section.bgColor}`}
         >
-          <div className="container mx-auto max-w-screen-lg w-full h-full flex items-center justify-center">
             {index === 0 ? (
-              <div className="flex flex-col items-center gap-8 text-white relative z-10 animate-fade-in w-full text-center">
-                <div className="flex items-center justify-center gap-4">
-                  <OverrideLogo className="w-16 h-16" />
-                  <h1 className="text-5xl md:text-7xl font-bold font-headline tracking-tighter">
-                    OVERRIDE
-                  </h1>
+             <div className="container mx-auto max-w-screen-xl w-full h-full flex items-center justify-between">
+                <div
+                    aria-hidden="true"
+                    className={`pointer-events-none text-[30rem] lg:text-[40rem] font-bold font-headline select-none ${section.textColor} opacity-10 leading-none`}
+                >
+                    {section.letter}
                 </div>
-                 <p className="text-sm text-muted-foreground max-w-xs text-center">
-                    En Override diseñamos el futuro con innovación y tecnología.
-                 </p>
-                 <p className="text-muted-foreground md:text-lg text-center max-w-prose">
-                    Somos una empresa que combina creatividad, tecnología y pasión para desarrollar soluciones que transforman ideas en realidades. Nos especializamos en el desarrollo de software, sistemas embebidos y hardware, ofreciendo una amplia gama de servicios que incluyen aplicaciones móviles, páginas web, software a medida y productos tecnológicos innovadores.
-                  </p>
+                <OverrideLogo className={`text-[30rem] lg:text-[40rem] ${section.textColor} opacity-10`} />
               </div>
-            ) : null}
-          </div>
-          <div
-            aria-hidden="true"
-            className={`pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[40rem] lg:text-[50rem] font-bold font-headline select-none ${section.textColor} opacity-10 leading-none`}
-          >
-            {section.letter}
-          </div>
+            ) : (
+                <div
+                aria-hidden="true"
+                className={`pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[40rem] lg:text-[50rem] font-bold font-headline select-none ${section.textColor} opacity-10 leading-none`}
+              >
+                {section.letter}
+              </div>
+            )}
         </section>
       ))}
     </div>
