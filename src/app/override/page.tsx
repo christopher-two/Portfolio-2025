@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
@@ -56,26 +57,10 @@ export default function OverridePage() {
             <OverrideLogo />
         </div>
 
-        <div className="flex flex-col items-start gap-8 md:w-1/2">
+        <div className="flex flex-col items-start gap-8">
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-wider text-white select-none">
                 OVERRIDE
             </h1>
-            
-            <p className="max-w-prose text-base md:text-lg text-neutral-300">
-                En Override diseñamos el futuro con innovación y tecnología.
-                Somos una empresa que combina creatividad, tecnología y
-                pasión para desarrollar soluciones que transforman ideas en
-                realidades. Nos especializamos en el desarrollo de software,
-                sistemas embebidos y hardware, ofreciendo una amplia gama de
-                servicios que incluyen aplicaciones móviles, páginas web,
-                software a medida y productos tecnológicos innovadores.
-            </p>
-          <Button asChild variant="outline" size="lg" className="bg-transparent text-white border-2 border-white rounded-full hover:bg-white hover:text-black transition-colors duration-300 group">
-            <Link href="/projects">
-                Detalles
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Button>
         </div>
       </main>
     </div>
