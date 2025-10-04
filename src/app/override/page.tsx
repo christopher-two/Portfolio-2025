@@ -20,10 +20,10 @@ export default function OverridePage() {
         <section
           key={section.id}
           id={section.id}
-          className={`relative flex min-h-screen items-center justify-center overflow-hidden p-4 ${section.bgColor}`}
+          className={`relative flex min-h-screen items-center justify-start overflow-hidden ${section.bgColor}`}
         >
             {index === 0 ? (
-             <div className="container mx-auto max-w-screen-xl w-full h-full flex items-center justify-between">
+             <div className="w-full h-full flex items-center justify-start">
                 <div
                     aria-hidden="true"
                     className={`pointer-events-none text-[30vw] lg:text-[25vw] font-bold font-headline select-none ${section.textColor} opacity-10 leading-none`}
