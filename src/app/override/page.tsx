@@ -36,7 +36,7 @@ export default function OverridePage() {
             ) : (
                 <div
                 aria-hidden="true"
-                className={`pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[50vw] font-bold font-headline select-none ${section.textColor} opacity-10 leading-none`}
+                className={`pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-[30vw] lg:text-[25vw] font-bold font-headline select-none ${section.textColor} opacity-10 leading-none`}
               >
                 {section.letter}
               </div>
