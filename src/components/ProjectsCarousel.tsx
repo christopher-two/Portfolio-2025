@@ -6,11 +6,11 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { projects } from "@/lib/data";
 import { ProjectCard } from "./ProjectCard";
+import { CarouselControls } from "./CarouselControls";
 
 type Project = typeof projects[0];
 
@@ -19,32 +19,36 @@ interface ProjectsCarouselProps {
 }
 
 export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
+  const [api, setApi] = React.useState<CarouselApi>();
   const plugin = React.useRef(
     Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })
   );
 
   return (
-    <Carousel
-      plugins={[plugin.current]}
-      className="w-full"
-      opts={{
-        align: "start",
-        loop: true,
-      }}
-    >
-      <CarouselContent>
-        {projects.map((project) => (
-          <CarouselItem key={project.id} className="md:basis-1/2">
-            <ProjectCard
-              slug={project.slug}
-              title={project.title}
-              coverImageId={project.coverImageId}
-            />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
-      <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
-    </Carousel>
+    <div className="relative">
+      <Carousel
+        setApi={setApi}
+        plugins={[plugin.current]}
+        className="w-full"
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+      >
+        <CarouselContent>
+          {projects.map((project) => (
+            <CarouselItem key={project.id} className="md:basis-1/2">
+              <ProjectCard
+                slug={project.slug}
+                title={project.title}
+                coverImageId={project.coverImageId}
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+      {api && <CarouselControls api={api} className="absolute bottom-8 left-1/2 -translate-x-1/2" />}
+    </div>
   );
 }
+

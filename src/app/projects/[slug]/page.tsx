@@ -1,4 +1,5 @@
 
+'use client';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,12 +12,14 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from '@/components/ui/card';
+import { useState, useEffect } from 'react';
+import { CarouselControls } from '@/components/CarouselControls';
 
 export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
+  const [api, setApi] = useState<CarouselApi>();
   const project = projects.find((p) => p.slug === params.slug);
 
   if (!project) {
@@ -49,29 +52,30 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
             
             <section className="py-8">
               <h3 className="text-2xl font-headline font-bold mb-6">Galería del Proyecto</h3>
-              <Carousel className="w-full">
-                <CarouselContent>
-                  {galleryImages.map((img, index) => img && (
-                    <CarouselItem key={index}>
-                      <Card className="overflow-hidden border-2 border-border">
-                        <CardContent className="p-0">
-                          <div className="aspect-video relative">
-                            <Image
-                              src={img.imageUrl}
-                              alt={`${project.title} - imagen ${index + 1}`}
-                              fill
-                              className="object-cover"
-                              data-ai-hint={img.imageHint}
-                            />
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
-                <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
-              </Carousel>
+              <div className="relative">
+                <Carousel setApi={setApi} className="w-full" opts={{loop: true}}>
+                  <CarouselContent>
+                    {galleryImages.map((img, index) => img && (
+                      <CarouselItem key={index}>
+                        <Card className="overflow-hidden border-2 border-border">
+                          <CardContent className="p-0">
+                            <div className="aspect-video relative">
+                              <Image
+                                src={img.imageUrl}
+                                alt={`${project.title} - imagen ${index + 1}`}
+                                fill
+                                className="object-cover"
+                                data-ai-hint={img.imageHint}
+                              />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
+                {api && <CarouselControls api={api} className="absolute bottom-8 left-1/2 -translate-x-1/2" />}
+              </div>
             </section>
           </div>
 
