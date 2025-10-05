@@ -6,8 +6,8 @@ import { TechCard } from "@/components/TechCard";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { TechMarquee } from "@/components/TechMarquee";
 import { AnimatedName } from "@/components/AnimatedName";
-import { socialLinks } from "@/lib/data";
-import { ProductSlider } from "@/components/ProductSlider";
+import { socialLinks, products } from "@/lib/data";
+import { ProductCard } from "@/components/ProductCard";
 
 
 const techSkills = [
@@ -113,11 +113,20 @@ export default function Home() {
       </div>
 
       <section className="border-t-2 border-border bg-background">
-        <div className="container max-w-screen-lg mx-auto py-24 px-4">
-          <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-center mb-12">
+        <div className="py-24">
+          <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-center mb-12 px-4">
             Productos
           </h2>
-          <ProductSlider />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                href={product.href}
+                title={product.title}
+                bgColor={product.bgColor}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -209,5 +218,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
