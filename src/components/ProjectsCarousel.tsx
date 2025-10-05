@@ -20,7 +20,7 @@ interface ProjectsCarouselProps {
 
 export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
   const plugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: true, stopOnMouseEnter: true })
+    Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })
   );
 
   return (
@@ -43,8 +43,8 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="ml-16 hidden md:flex" />
-      <CarouselNext className="mr-16 hidden md:flex" />
+      <CarouselPrevious className="ml-4 md:ml-16" />
+      <CarouselNext className="mr-4 md:mr-16" />
     </Carousel>
   );
 }

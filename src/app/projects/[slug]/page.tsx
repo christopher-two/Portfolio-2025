@@ -68,8 +68,8 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="ml-16" />
-                <CarouselNext className="mr-16" />
+                <CarouselPrevious className="ml-4 sm:ml-16" />
+                <CarouselNext className="mr-4 sm:mr-16" />
               </Carousel>
             </section>
           </div>
