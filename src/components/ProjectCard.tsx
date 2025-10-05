@@ -1,54 +1,37 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
 import { PlaceHolderImages, type ImagePlaceholder } from "@/lib/placeholder-images";
 
 interface ProjectCardProps {
+  slug: string;
   title: string;
-  description: string;
-  imageUrlId: string;
-  link: string;
-  tags: string[];
+  coverImageId: string;
 }
 
-export function ProjectCard({ title, description, imageUrlId, link, tags }: ProjectCardProps) {
-  const placeholder: ImagePlaceholder | undefined = PlaceHolderImages.find(p => p.id === imageUrlId);
-
+export function ProjectCard({ slug, title, coverImageId }: ProjectCardProps) {
+  const coverImage: ImagePlaceholder | undefined = PlaceHolderImages.find(p => p.id === coverImageId);
   return (
-    <Card className="group overflow-hidden border-2 border-transparent hover:border-accent transition-colors duration-300 h-full flex flex-col">
-      <CardHeader className="p-0">
-        {placeholder && (
-          <div className="relative h-48 w-full">
-            <Image
-              src={placeholder.imageUrl}
-              alt={placeholder.description}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-              data-ai-hint={placeholder.imageHint}
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
+    <Link href={`/projects/${slug}`}>
+      <div className="group relative flex h-[60vh] w-full items-end justify-start overflow-hidden border-b-2 border-r-2 border-border bg-black p-8">
+        {coverImage && (
+          <Image
+            src={coverImage.imageUrl}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 opacity-40 group-hover:opacity-30"
+            data-ai-hint={coverImage.imageHint}
+          />
         )}
-      </CardHeader>
-      <CardContent className="p-4 space-y-3 flex flex-col flex-1">
-        <div className="flex justify-between items-start">
-          <CardTitle as="h3" className="text-lg font-headline font-bold">{title}</CardTitle>
-          <Link href={link} target="_blank" rel="noopener noreferrer" className="shrink-0 ml-4">
-            <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-accent transition-colors" />
-            <span className="sr-only">Visitar proyecto</span>
-          </Link>
+        <div className="relative z-10 text-primary-foreground">
+          <h2 className="relative inline-block text-4xl font-headline font-bold tracking-tight text-white transition-transform duration-300 group-hover:-translate-y-1 sm:text-5xl after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100">
+            {title}
+          </h2>
+          <div className="mt-4 flex items-center gap-2 text-lg font-semibold text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            Ver Proyecto <ArrowRight className="h-5 w-5" />
+          </div>
         </div>
-        <p className="text-sm text-muted-foreground flex-1">{description}</p>
-        <div className="flex flex-wrap gap-2 pt-2">
-          {tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="border-2 border-border">
-              {tag}
-            </Badge>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  );
+      </div>
+    </Link>
+  )
 }
