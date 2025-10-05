@@ -2,10 +2,10 @@
 import { OverrideNav } from '@/components/OverrideNav';
 
 const sections = [
-  { id: 'l', letter: 'L', title: 'uz', bgColor: 'bg-yellow-100', textColor: 'text-yellow-900' },
-  { id: 'u', letter: 'U', title: 'nión', bgColor: 'bg-yellow-200', textColor: 'text-yellow-900' },
-  { id: 'm', letter: 'M', title: 'agia', bgColor: 'bg-yellow-300', textColor: 'text-yellow-800' },
-  { id: 'i', letter: 'I', title: 'lusión', bgColor: 'bg-yellow-400', textColor: 'text-yellow-950' },
+  { id: 'l', letter: 'L', title: 'uz', bgColor: 'bg-yellow-100', textColor: 'text-yellow-900', scrollbarColor: 'hsl(54, 100%, 80%)', scrollbarHoverColor: 'hsl(54, 100%, 70%)' },
+  { id: 'u', letter: 'U', title: 'nión', bgColor: 'bg-yellow-200', textColor: 'text-yellow-900', scrollbarColor: 'hsl(54, 100%, 75%)', scrollbarHoverColor: 'hsl(54, 100%, 65%)' },
+  { id: 'm', letter: 'M', title: 'agia', bgColor: 'bg-yellow-300', textColor: 'text-yellow-800', scrollbarColor: 'hsl(54, 100%, 70%)', scrollbarHoverColor: 'hsl(54, 100%, 60%)' },
+  { id: 'i', letter: 'I', title: 'lusión', bgColor: 'bg-yellow-400', textColor: 'text-yellow-950', scrollbarColor: 'hsl(54, 100%, 65%)', scrollbarHoverColor: 'hsl(54, 100%, 55%)' },
 ];
 
 export default function LumiPage() {

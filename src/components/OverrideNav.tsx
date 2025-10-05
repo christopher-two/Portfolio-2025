@@ -1,10 +1,17 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { cn } from '@/lib/utils';
 
+type Section = { 
+  id: string; 
+  letter: string; 
+  scrollbarColor?: string; 
+  scrollbarHoverColor?: string;
+};
+
 type OverrideNavProps = {
-  sections: { id: string; letter: string }[];
+  sections: Section[];
   word?: string;
 };
 
@@ -12,17 +19,35 @@ export function OverrideNav({ sections, word = "OVERRIDE" }: OverrideNavProps) {
   const [activeSection, setActiveSection] = useState(sections[0]?.id || '');
   const [revealedLetters, setRevealedLetters] = useState(new Set([sections[0]?.id]));
 
+  const resetScrollbarToDefault = useCallback(() => {
+    // These values are from globals.css as a fallback
+    document.documentElement.style.setProperty('--scrollbar-thumb', 'hsl(var(--primary))');
+    document.documentElement.style.setProperty('--scrollbar-thumb-hover', 'hsl(var(--accent))');
+  }, []);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+            const sectionId = entry.target.id;
+            const section = sections.find(s => s.id === sectionId);
+            setActiveSection(sectionId);
+
+            if (section?.scrollbarColor && section?.scrollbarHoverColor) {
+              document.documentElement.style.setProperty('--scrollbar-thumb', section.scrollbarColor);
+              document.documentElement.style.setProperty('--scrollbar-thumb-hover', section.scrollbarHoverColor);
+            } else {
+              resetScrollbarToDefault();
+            }
+
             setRevealedLetters(prev => {
               const newSet = new Set(prev);
-              const currentIndex = sections.findIndex(s => s.id === entry.target.id);
+              const currentIndex = sections.findIndex(s => s.id === sectionId);
               for (let i = 0; i <= currentIndex; i++) {
-                newSet.add(sections[i].id);
+                if (sections[i]) {
+                    newSet.add(sections[i].id);
+                }
               }
               return newSet;
             });
@@ -37,13 +62,15 @@ export function OverrideNav({ sections, word = "OVERRIDE" }: OverrideNavProps) {
       if (el) observer.observe(el);
     });
 
+    // Reset scrollbar color on component unmount
     return () => {
+      resetScrollbarToDefault();
       sections.forEach((section) => {
         const el = document.getElementById(section.id);
         if (el) observer.unobserve(el);
       });
     };
-  }, [sections]);
+  }, [sections, resetScrollbarToDefault]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);

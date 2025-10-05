@@ -2,14 +2,14 @@
 import { OverrideNav } from '@/components/OverrideNav';
 
 const sections = [
-  { id: 'o', letter: 'O', title: 'VERRIDE', bgColor: 'bg-black', textColor: 'text-neutral-300' },
-  { id: 'v', letter: 'V', title: 'isión', bgColor: 'bg-neutral-900', textColor: 'text-neutral-400' },
-  { id: 'e', letter: 'E', title: 'xcelencia', bgColor: 'bg-neutral-800', textColor: 'text-neutral-500' },
-  { id: 'r', letter: 'R', title: 'esultados', bgColor: 'bg-neutral-700', textColor: 'text-neutral-300' },
-  { id: 'r2', letter: 'R', title: 'espaldo', bgColor: 'bg-neutral-600', textColor: 'text-neutral-200' },
-  { id: 'i', letter: 'I', title: 'nnovación', bgColor: 'bg-neutral-500', textColor: 'text-neutral-800' },
-  { id: 'd', letter: 'D', title: 'esarrollo', bgColor: 'bg-neutral-400', textColor: 'text-neutral-900' },
-  { id: 'e2', letter: 'E', title: 'ficiencia', bgColor: 'bg-neutral-300', textColor: 'text-black' },
+  { id: 'o', letter: 'O', title: 'VERRIDE', bgColor: 'bg-black', textColor: 'text-neutral-300', scrollbarColor: 'hsl(0, 0%, 0%)', scrollbarHoverColor: 'hsl(0, 0%, 20%)' },
+  { id: 'v', letter: 'V', title: 'isión', bgColor: 'bg-neutral-900', textColor: 'text-neutral-400', scrollbarColor: 'hsl(0, 0%, 10%)', scrollbarHoverColor: 'hsl(0, 0%, 30%)' },
+  { id: 'e', letter: 'E', title: 'xcelencia', bgColor: 'bg-neutral-800', textColor: 'text-neutral-500', scrollbarColor: 'hsl(0, 0%, 20%)', scrollbarHoverColor: 'hsl(0, 0%, 40%)' },
+  { id: 'r', letter: 'R', title: 'esultados', bgColor: 'bg-neutral-700', textColor: 'text-neutral-300', scrollbarColor: 'hsl(0, 0%, 30%)', scrollbarHoverColor: 'hsl(0, 0%, 50%)' },
+  { id: 'r2', letter: 'R', title: 'espaldo', bgColor: 'bg-neutral-600', textColor: 'text-neutral-200', scrollbarColor: 'hsl(0, 0%, 40%)', scrollbarHoverColor: 'hsl(0, 0%, 60%)' },
+  { id: 'i', letter: 'I', title: 'nnovación', bgColor: 'bg-neutral-500', textColor: 'text-neutral-800', scrollbarColor: 'hsl(0, 0%, 50%)', scrollbarHoverColor: 'hsl(0, 0%, 70%)' },
+  { id: 'd', letter: 'D', title: 'esarrollo', bgColor: 'bg-neutral-400', textColor: 'text-neutral-900', scrollbarColor: 'hsl(0, 0%, 60%)', scrollbarHoverColor: 'hsl(0, 0%, 80%)' },
+  { id: 'e2', letter: 'E', title: 'ficiencia', bgColor: 'bg-neutral-300', textColor: 'text-black', scrollbarColor: 'hsl(0, 0%, 70%)', scrollbarHoverColor: 'hsl(0, 0%, 90%)' },
 ];
 
 export default function OverridePage() {
