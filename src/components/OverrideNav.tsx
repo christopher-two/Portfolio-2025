@@ -5,9 +5,10 @@ import { cn } from '@/lib/utils';
 
 type OverrideNavProps = {
   sections: { id: string; letter: string }[];
+  word?: string;
 };
 
-export function OverrideNav({ sections }: OverrideNavProps) {
+export function OverrideNav({ sections, word = "OVERRIDE" }: OverrideNavProps) {
   const [activeSection, setActiveSection] = useState(sections[0]?.id || '');
   const [revealedLetters, setRevealedLetters] = useState(new Set([sections[0]?.id]));
 
@@ -48,8 +49,6 @@ export function OverrideNav({ sections }: OverrideNavProps) {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: 'smooth' });
   };
-  
-  const word = "OVERRIDE";
 
   return (
     <nav className="fixed right-0 top-1/2 -translate-y-1/2 z-50 p-4">

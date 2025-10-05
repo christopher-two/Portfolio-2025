@@ -6,15 +6,50 @@ import { Github } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
+import React from "react";
 
-const navLinks = [
+const mainNavLinks = [
   { href: "/", label: "Inicio" },
   { href: "/override", label: "Override" },
   { href: "/projects", label: "Proyectos" },
 ];
 
+const featuredNavLinks = [
+    { href: "/lumi", label: "Lumi" },
+    { href: "/daelia", label: "Daelia" },
+]
+
+function NavLinks() {
+    const pathname = usePathname();
+    const [isClient, setIsClient] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    const renderLink = (link: {href: string, label: string}) => (
+        <Link
+            key={link.href}
+            href={link.href}
+            className={cn(
+                "transition-colors hover:text-foreground/80",
+                isClient && pathname === link.href ? "text-foreground" : "text-foreground/60"
+            )}
+        >
+            {link.label}
+        </Link>
+    );
+
+    return (
+        <>
+            {mainNavLinks.map(renderLink)}
+            <span className="text-foreground/60">|</span>
+            {featuredNavLinks.map(renderLink)}
+        </>
+    );
+}
+
 export function Header() {
-  const pathname = usePathname();
 
   return (
     <header className="w-full border-b-2 border-border bg-background" suppressHydrationWarning>
@@ -24,18 +59,7 @@ export function Header() {
             <span className="font-bold font-headline">ChristopherTwo</span>
           </Link>
           <nav className="hidden items-center gap-6 text-sm md:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "transition-colors hover:text-foreground/80",
-                  pathname === link.href ? "text-foreground" : "text-foreground/60"
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
+             <NavLinks />
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-end gap-2">
