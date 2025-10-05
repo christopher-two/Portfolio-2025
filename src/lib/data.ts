@@ -77,7 +77,19 @@ export const products = [
     title: "Daelia",
     href: "/daelia",
     bgColor: "bg-blue-800"
-  }
+  },
+  {
+    id: "prod-4",
+    title: "Lyra",
+    href: "/projects/lyra",
+    bgColor: "bg-green-800"
+  },
+  {
+    id: "prod-5",
+    title: "Override Pass",
+    href: "/projects/override-pass",
+    bgColor: "bg-red-800"
+  },
 ];
 
 
@@ -149,5 +161,3 @@ export const projects = [
     tags: ["Jetpack Compose", "Koin", "Ktor", "Coil", "Firebase", "Google Authentication", "Backend (Ktor)", "Docker", "Supabase", "Gemini API", "MVI", "Clean Architecture", "Multimodularity", "Layered Model", "Repository Pattern"],
   },
 ];
-
-    

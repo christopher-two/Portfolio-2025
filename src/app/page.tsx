@@ -114,7 +114,7 @@ export default function Home() {
 
       <section className="border-t-2 border-border bg-background">
         <div className="container max-w-screen-lg mx-auto py-24 px-4">
-          <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-center mb-12">
+          <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-left mb-12">
             Productos
           </h2>
           <ProductSlider />
@@ -209,5 +209,3 @@ export default function Home() {
     </div>
   );
 }
-
-    

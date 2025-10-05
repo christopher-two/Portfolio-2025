@@ -11,11 +11,15 @@ import { Card, CardContent } from "@/components/ui/card";
 import { DaeliaLogo } from "./DaeliaLogo";
 import { LumiLogo } from "./LumiLogo";
 import { OverrideLogo } from "./OverrideLogo";
+import { LyraLogo } from "./LyraLogo";
+import { OverridePassLogo } from "./OverridePassLogo";
 
 const logoComponents: { [key: string]: React.ElementType } = {
   "Override": OverrideLogo,
   "Lumi": LumiLogo,
   "Daelia": DaeliaLogo,
+  "Lyra": LyraLogo,
+  "Override Pass": OverridePassLogo,
 };
 
 export function ProductSlider() {
@@ -48,5 +52,3 @@ export function ProductSlider() {
     </Carousel>
   );
 }
-
-    
