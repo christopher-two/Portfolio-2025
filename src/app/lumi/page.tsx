@@ -2,10 +2,10 @@
 import { OverrideNav } from '@/components/OverrideNav';
 
 const sections = [
-  { id: 'l', letter: 'L', title: 'uz', bgColor: 'bg-black', textColor: 'text-neutral-300' },
-  { id: 'u', letter: 'U', title: 'nión', bgColor: 'bg-neutral-900', textColor: 'text-neutral-400' },
-  { id: 'm', letter: 'M', title: 'agia', bgColor: 'bg-neutral-800', textColor: 'text-neutral-500' },
-  { id: 'i', letter: 'I', title: 'lusión', bgColor: 'bg-neutral-700', textColor: 'text-neutral-300' },
+  { id: 'l', letter: 'L', title: 'uz', bgColor: 'bg-yellow-100', textColor: 'text-yellow-900' },
+  { id: 'u', letter: 'U', title: 'nión', bgColor: 'bg-yellow-200', textColor: 'text-yellow-900' },
+  { id: 'm', letter: 'M', title: 'agia', bgColor: 'bg-yellow-300', textColor: 'text-yellow-800' },
+  { id: 'i', letter: 'I', title: 'lusión', bgColor: 'bg-yellow-400', textColor: 'text-yellow-950' },
 ];
 
 export default function LumiPage() {
