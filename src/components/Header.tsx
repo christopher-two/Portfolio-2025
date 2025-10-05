@@ -10,11 +10,11 @@ import React from "react";
 
 const mainNavLinks = [
   { href: "/", label: "Inicio" },
-  { href: "/override", label: "Override" },
   { href: "/projects", label: "Proyectos" },
 ];
 
 const featuredNavLinks = [
+    { href: "/override", label: "Override" },
     { href: "/lumi", label: "Lumi" },
     { href: "/daelia", label: "Daelia" },
 ]
