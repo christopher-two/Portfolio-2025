@@ -37,12 +37,6 @@ const nextConfig: NextConfig = {
       }
     ],
   },
-  serverActions: {
-    bodySizeLimit: '2mb',
-    defaultJobOptions: {
-      timeout: 120,
-    },
-  },
 };
 
 export default nextConfig;

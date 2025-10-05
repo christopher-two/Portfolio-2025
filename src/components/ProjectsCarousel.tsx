@@ -6,6 +6,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { projects } from "@/lib/data";
 import { ProjectCard } from "./ProjectCard";
@@ -41,6 +43,8 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
           </CarouselItem>
         ))}
       </CarouselContent>
+      <CarouselPrevious className="ml-16 hidden md:flex" />
+      <CarouselNext className="mr-16 hidden md:flex" />
     </Carousel>
   );
 }
