@@ -107,16 +107,14 @@ export function Header() {
                   <SheetTitle>Menú de Navegación</SheetTitle>
                 </SheetHeader>
                 <NavLinks isMobile={true} />
-                <div className="mt-auto flex items-center gap-2 p-4">
-                  <Button asChild variant="outline" size="icon" className="flex-1 border-2 border-border bg-background rounded-md shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                <div className="mt-auto flex items-center justify-center gap-2 p-4">
+                  <Button asChild variant="outline" size="icon" className="border-2 border-border bg-background rounded-md shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
                     <Link href="https://github.com/Chris-Alejandro" target="_blank">
                       <Github className="h-[1.2rem] w-[1.2rem]" />
                       <span className="sr-only">GitHub</span>
                     </Link>
                   </Button>
-                  <div className="flex-1">
-                    <ThemeToggle />
-                  </div>
+                  <ThemeToggle />
                 </div>
               </SheetContent>
             </Sheet>
