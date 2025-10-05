@@ -90,6 +90,30 @@ export const products = [
     href: "/projects/override-pass",
     bgColor: "bg-red-800"
   },
+  {
+    id: "prod-6",
+    title: "Override Learning",
+    href: "/projects/override-learning",
+    bgColor: "bg-sky-800",
+  },
+  {
+    id: "prod-7",
+    title: "Override Mindstack",
+    href: "/projects/override-mindstack",
+    bgColor: "bg-purple-800",
+  },
+  {
+    id: "prod-8",
+    title: "Override Logistics",
+    href: "/projects/override-logistics",
+    bgColor: "bg-slate-800",
+  },
+  {
+    id: "prod-9",
+    title: "Override News",
+    href: "/projects/override-news",
+    bgColor: "bg-gray-800",
+  },
 ];
 
 
@@ -161,3 +185,5 @@ export const projects = [
     tags: ["Jetpack Compose", "Koin", "Ktor", "Coil", "Firebase", "Google Authentication", "Backend (Ktor)", "Docker", "Supabase", "Gemini API", "MVI", "Clean Architecture", "Multimodularity", "Layered Model", "Repository Pattern"],
   },
 ];
+
+    
