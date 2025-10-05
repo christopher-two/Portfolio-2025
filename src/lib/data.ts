@@ -59,6 +59,27 @@ export const socialLinks: SocialLink[] = [
   },
 ];
 
+export const products = [
+  {
+    id: "prod-1",
+    title: "Override",
+    href: "/override",
+    bgColor: "bg-black"
+  },
+  {
+    id: "prod-2",
+    title: "Lumi",
+    href: "/lumi",
+    bgColor: "bg-yellow-300"
+  },
+  {
+    id: "prod-3",
+    title: "Daelia",
+    href: "/daelia",
+    bgColor: "bg-blue-800"
+  }
+];
+
 
 export const projects = [
   {
@@ -128,3 +149,5 @@ export const projects = [
     tags: ["Jetpack Compose", "Koin", "Ktor", "Coil", "Firebase", "Google Authentication", "Backend (Ktor)", "Docker", "Supabase", "Gemini API", "MVI", "Clean Architecture", "Multimodularity", "Layered Model", "Repository Pattern"],
   },
 ];
+
+    

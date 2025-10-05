@@ -7,6 +7,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { TechMarquee } from "@/components/TechMarquee";
 import { AnimatedName } from "@/components/AnimatedName";
 import { socialLinks } from "@/lib/data";
+import { ProductSlider } from "@/components/ProductSlider";
 
 
 const techSkills = [
@@ -110,6 +111,16 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <section className="border-t-2 border-border bg-background">
+        <div className="container max-w-screen-lg mx-auto py-24 px-4">
+          <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-center mb-12">
+            Productos
+          </h2>
+          <ProductSlider />
+        </div>
+      </section>
+
       <section className="border-t-2 border-border bg-background overflow-hidden">
         <div className="grid md:grid-cols-2 items-stretch w-full">
           <div className="md:col-span-1 space-y-6 container max-w-screen-lg mx-auto py-24 pr-12 flex flex-col justify-center">
@@ -198,3 +209,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
