@@ -6,7 +6,7 @@ import { Github, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 
 
@@ -22,9 +22,9 @@ const featuredNavLinks = [
 
 function NavLinks({ isMobile = false }: { isMobile?: boolean }) {
     const pathname = usePathname();
-    const [isClient, setIsClient] = React.useState(false);
+    const [isClient, setIsClient] = useState(false);
 
-    React.useEffect(() => {
+    useEffect(() => {
         setIsClient(true);
     }, []);
 
@@ -48,20 +48,15 @@ function NavLinks({ isMobile = false }: { isMobile?: boolean }) {
         return <React.Fragment key={link.href}>{linkElement}</React.Fragment>;
     }
     
-    const allLinks = [...mainNavLinks, { href: "/projects", label: "Proyectos" }, ...featuredNavLinks];
+    const allLinks = [...mainNavLinks, { href: "/projects", label: "Proyectos" }];
+    const separator = <span key="separator-projects" className={cn("text-foreground/60", isMobile && "py-2 text-lg")}>|</span>;
+    const featuredLinks = featuredNavLinks.map(renderLink);
 
-    const navItems = allLinks.map((link, index) => {
-        const renderedLink = renderLink(link);
-        if (link.label === 'Proyectos' && index < allLinks.length -1) {
-            return (
-                <React.Fragment key={link.href + "-fragment"}>
-                    {renderedLink}
-                    <span key="separator-projects" className={cn("text-foreground/60", isMobile && "py-2 text-lg")}>|</span>
-                </React.Fragment>
-            );
-        }
-        return renderedLink;
-    });
+    const navItems = [
+        ...allLinks.map(renderLink),
+        separator,
+        ...featuredLinks
+    ];
     
     if (isMobile) {
         return (
@@ -79,6 +74,15 @@ function NavLinks({ isMobile = false }: { isMobile?: boolean }) {
 }
 
 export function Header() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <header className="w-full border-b-2 border-border bg-background" suppressHydrationWarning>
