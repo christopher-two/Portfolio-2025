@@ -12,7 +12,6 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 
 const mainNavLinks = [
   { href: "/", label: "Inicio" },
-  { href: "/projects", label: "Proyectos" },
 ];
 
 const featuredNavLinks = [
@@ -49,13 +48,20 @@ function NavLinks({ isMobile = false }: { isMobile?: boolean }) {
         return <React.Fragment key={link.href}>{linkElement}</React.Fragment>;
     }
     
-    const separator = <span key="separator" className={cn("text-foreground/60", isMobile && "py-2 text-lg")}>|</span>;
+    const allLinks = [...mainNavLinks, { href: "/projects", label: "Proyectos" }, ...featuredNavLinks];
 
-    const navItems = [
-        ...mainNavLinks.map(renderLink),
-        separator,
-        ...featuredNavLinks.map(renderLink),
-    ];
+    const navItems = allLinks.map((link, index) => {
+        const renderedLink = renderLink(link);
+        if (link.label === 'Proyectos' && index < allLinks.length -1) {
+            return (
+                <React.Fragment key={link.href + "-fragment"}>
+                    {renderedLink}
+                    <span key="separator-projects" className={cn("text-foreground/60", isMobile && "py-2 text-lg")}>|</span>
+                </React.Fragment>
+            );
+        }
+        return renderedLink;
+    });
     
     if (isMobile) {
         return (
@@ -95,13 +101,15 @@ export function Header() {
               <SheetContent side="left" className="flex flex-col">
                 <NavLinks isMobile={true} />
                 <div className="mt-auto flex items-center gap-2 p-4">
-                  <Button asChild variant="outline" size="icon" className="flex-1">
+                  <Button asChild variant="outline" size="icon" className="flex-1 border-2 border-border bg-background rounded-md shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
                     <Link href="https://github.com/Chris-Alejandro" target="_blank">
                       <Github className="h-[1.2rem] w-[1.2rem]" />
                       <span className="sr-only">GitHub</span>
                     </Link>
                   </Button>
-                  <ThemeToggle />
+                  <div className="flex-1">
+                    <ThemeToggle />
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
@@ -112,7 +120,9 @@ export function Header() {
               <span className="sr-only">GitHub</span>
             </Link>
           </Button>
-          <ThemeToggle />
+          <div className="hidden md:block">
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </header>
