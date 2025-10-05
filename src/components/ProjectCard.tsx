@@ -35,5 +35,3 @@ export function ProjectCard({ slug, title, coverImageId }: ProjectCardProps) {
     </Link>
   )
 }
-
-    
