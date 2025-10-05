@@ -1,3 +1,4 @@
+
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -68,8 +69,8 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="ml-4 sm:ml-16" />
-                <CarouselNext className="mr-4 sm:mr-16" />
+                <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
+                <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
               </Carousel>
             </section>
           </div>

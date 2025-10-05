@@ -43,8 +43,8 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="ml-4 md:ml-16" />
-      <CarouselNext className="mr-4 md:mr-16" />
+      <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
+      <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
     </Carousel>
   );
 }
