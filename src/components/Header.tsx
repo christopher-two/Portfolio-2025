@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
 import React from "react";
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 
 
 const mainNavLinks = [
@@ -99,6 +99,9 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="flex flex-col">
+                <SheetHeader className="sr-only">
+                  <SheetTitle>Menú de Navegación</SheetTitle>
+                </SheetHeader>
                 <NavLinks isMobile={true} />
                 <div className="mt-auto flex items-center gap-2 p-4">
                   <Button asChild variant="outline" size="icon" className="flex-1 border-2 border-border bg-background rounded-md shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
