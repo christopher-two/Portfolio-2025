@@ -13,7 +13,7 @@ export function ProjectCard({ slug, title, coverImageId }: ProjectCardProps) {
   const coverImage: ImagePlaceholder | undefined = PlaceHolderImages.find(p => p.id === coverImageId);
   return (
     <Link href={`/projects/${slug}`}>
-      <div className="group relative flex h-[60vh] w-full items-end justify-start overflow-hidden border-b-2 border-r-2 border-border bg-black p-8">
+      <div className="group relative flex h-full min-h-[60vh] md:min-h-[50vh] w-full items-end justify-start overflow-hidden border-b-2 border-r-2 border-border bg-black p-8">
         {coverImage && (
           <Image
             src={coverImage.imageUrl}
@@ -35,3 +35,5 @@ export function ProjectCard({ slug, title, coverImageId }: ProjectCardProps) {
     </Link>
   )
 }
+
+    

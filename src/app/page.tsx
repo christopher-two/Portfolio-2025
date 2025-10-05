@@ -6,8 +6,8 @@ import { TechCard } from "@/components/TechCard";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { TechMarquee } from "@/components/TechMarquee";
 import { AnimatedName } from "@/components/AnimatedName";
-import { socialLinks, products } from "@/lib/data";
-import { ProductCard } from "@/components/ProductCard";
+import { socialLinks, projects } from "@/lib/data";
+import { ProjectCard } from "@/components/ProjectCard";
 
 
 const techSkills = [
@@ -73,6 +73,8 @@ const recognitions = [
 ];
 
 export default function Home() {
+  const featuredProjects = projects.slice(0, 6);
+
   return (
     <div className="flex-1 w-full">
       <div className="relative flex h-screen w-full items-center justify-center bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
@@ -113,21 +115,16 @@ export default function Home() {
       </div>
 
       <section className="border-t-2 border-border bg-background">
-        <div className="py-24">
-          <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-center mb-12 px-4">
-            Productos
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                href={product.href}
-                title={product.title}
-                bgColor={product.bgColor}
+        <div className="grid grid-cols-1 md:grid-cols-2">
+            {featuredProjects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                slug={project.slug}
+                title={project.title}
+                coverImageId={project.coverImageId}
               />
             ))}
           </div>
-        </div>
       </section>
 
       <section className="border-t-2 border-border bg-background overflow-hidden">
@@ -218,3 +215,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
