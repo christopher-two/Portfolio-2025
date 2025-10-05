@@ -7,7 +7,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { TechMarquee } from "@/components/TechMarquee";
 import { AnimatedName } from "@/components/AnimatedName";
 import { socialLinks, projects } from "@/lib/data";
-import { ProjectCard } from "@/components/ProjectCard";
+import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 
 
 const techSkills = [
@@ -115,16 +115,7 @@ export default function Home() {
       </div>
 
       <section className="border-t-2 border-border bg-background">
-        <div className="grid grid-cols-1 md:grid-cols-2">
-            {featuredProjects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                slug={project.slug}
-                title={project.title}
-                coverImageId={project.coverImageId}
-              />
-            ))}
-          </div>
+         <ProjectsCarousel projects={featuredProjects} />
       </section>
 
       <section className="border-t-2 border-border bg-background overflow-hidden">
