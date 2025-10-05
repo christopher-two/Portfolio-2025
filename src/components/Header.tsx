@@ -32,7 +32,6 @@ function NavLinks({ isMobile = false }: { isMobile?: boolean }) {
     const renderLink = (link: {href: string, label: string}) => {
         const linkElement = (
              <Link
-                key={link.href}
                 href={link.href}
                 className={cn(
                     "transition-colors hover:text-foreground/80",
@@ -45,12 +44,12 @@ function NavLinks({ isMobile = false }: { isMobile?: boolean }) {
         );
 
         if (isMobile) {
-            return <SheetClose asChild>{linkElement}</SheetClose>;
+            return <SheetClose key={link.href} asChild>{linkElement}</SheetClose>;
         }
-        return linkElement;
+        return <React.Fragment key={link.href}>{linkElement}</React.Fragment>;
     }
     
-    const separator = <span className={cn("text-foreground/60", isMobile && "py-2 text-lg")}>|</span>;
+    const separator = <span key="separator" className={cn("text-foreground/60", isMobile && "py-2 text-lg")}>|</span>;
 
     const navItems = [
         ...mainNavLinks.map(renderLink),
