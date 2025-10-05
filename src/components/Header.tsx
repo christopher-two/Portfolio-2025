@@ -92,8 +92,17 @@ export function Header() {
                   <span className="sr-only">Abrir menú</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left">
+              <SheetContent side="left" className="flex flex-col">
                 <NavLinks isMobile={true} />
+                <div className="mt-auto flex items-center gap-2 p-4">
+                  <Button asChild variant="outline" size="icon" className="flex-1">
+                    <Link href="https://github.com/Chris-Alejandro" target="_blank">
+                      <Github className="h-[1.2rem] w-[1.2rem]" />
+                      <span className="sr-only">GitHub</span>
+                    </Link>
+                  </Button>
+                  <ThemeToggle />
+                </div>
               </SheetContent>
             </Sheet>
           </div>
