@@ -2,12 +2,12 @@
 import { OverrideNav } from '@/components/OverrideNav';
 
 const sections = [
-  { id: 'd', letter: 'D', title: 'iseño', bgColor: 'bg-black', textColor: 'text-neutral-300', scrollbarColor: 'hsl(0, 0%, 0%)', scrollbarHoverColor: 'hsl(0, 0%, 20%)' },
-  { id: 'a', letter: 'A', title: 'rte', bgColor: 'bg-neutral-900', textColor: 'text-neutral-400', scrollbarColor: 'hsl(0, 0%, 10%)', scrollbarHoverColor: 'hsl(0, 0%, 30%)' },
-  { id: 'e', letter: 'E', title: 'legancia', bgColor: 'bg-neutral-800', textColor: 'text-neutral-500', scrollbarColor: 'hsl(0, 0%, 20%)', scrollbarHoverColor: 'hsl(0, 0%, 40%)' },
-  { id: 'l', letter: 'L', title: 'ibertad', bgColor: 'bg-neutral-700', textColor: 'text-neutral-300', scrollbarColor: 'hsl(0, 0%, 30%)', scrollbarHoverColor: 'hsl(0, 0%, 50%)' },
-  { id: 'i', letter: 'I', title: 'nspiración', bgColor: 'bg-neutral-600', textColor: 'text-neutral-200', scrollbarColor: 'hsl(0, 0%, 40%)', scrollbarHoverColor: 'hsl(0, 0%, 60%)' },
-  { id: 'a2', letter: 'A', title: 'rmonía', bgColor: 'bg-neutral-500', textColor: 'text-neutral-800', scrollbarColor: 'hsl(0, 0%, 50%)', scrollbarHoverColor: 'hsl(0, 0%, 70%)' },
+  { id: 'd', letter: 'D', title: 'iseño', bgColor: 'bg-blue-950', textColor: 'text-blue-300', scrollbarColor: 'hsl(224, 71%, 10%)', scrollbarHoverColor: 'hsl(224, 71%, 20%)' },
+  { id: 'a', letter: 'A', title: 'rte', bgColor: 'bg-blue-900', textColor: 'text-blue-400', scrollbarColor: 'hsl(224, 71%, 15%)', scrollbarHoverColor: 'hsl(224, 71%, 25%)' },
+  { id: 'e', letter: 'E', title: 'legancia', bgColor: 'bg-blue-800', textColor: 'text-blue-300', scrollbarColor: 'hsl(224, 71%, 20%)', scrollbarHoverColor: 'hsl(224, 71%, 30%)' },
+  { id: 'l', letter: 'L', title: 'ibertad', bgColor: 'bg-blue-700', textColor: 'text-blue-200', scrollbarColor: 'hsl(224, 71%, 30%)', scrollbarHoverColor: 'hsl(224, 71%, 40%)' },
+  { id: 'i', letter: 'I', title: 'nspiración', bgColor: 'bg-blue-600', textColor: 'text-blue-100', scrollbarColor: 'hsl(224, 71%, 40%)', scrollbarHoverColor: 'hsl(224, 71%, 50%)' },
+  { id: 'a2', letter: 'A', title: 'rmonía', bgColor: 'bg-blue-500', textColor: 'text-blue-950', scrollbarColor: 'hsl(224, 71%, 50%)', scrollbarHoverColor: 'hsl(224, 71%, 60%)' },
 ];
 
 export default function DaeliaPage() {
