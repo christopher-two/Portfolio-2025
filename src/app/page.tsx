@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Code, Cpu, Smartphone, Award, Download, MessageSquare } from "lucide-react";
@@ -138,13 +139,17 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="relative flex items-end min-h-[400px] md:min-h-0">
-            <Image
-              src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/FotoPerfil.JPG"
-              alt="Christopher Alejandro Maldonado Chavez"
-              fill
-              className="object-cover"
-            />
+          <div className="relative md:col-span-1 w-full min-h-[400px] md:min-h-0">
+            <div className="md:absolute md:inset-0">
+                <div className="relative h-full w-full aspect-video">
+                    <Image
+                      src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/FotoPerfil.JPG"
+                      alt="Christopher Alejandro Maldonado Chavez"
+                      fill
+                      className="object-cover"
+                    />
+                </div>
+            </div>
           </div>
         </div>
       </section>
