@@ -36,7 +36,7 @@ const techSkills = [
 ];
 
 const recognitions = [
-    {
+  {
     title: '1er Lugar',
     issuer: 'Innovatec Nacional 2025',
     description: 'Ganador en la categoría de "Salud", con el proyecto Lyra.',
@@ -97,17 +97,17 @@ export default function Home() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/projects">
                 <Button size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                    Ver Mi Trabajo <ArrowRight className="ml-2 h-5 w-5" />
+                  Ver Mi Trabajo <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link href="#contact">
-                 <Button variant="secondary" size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                    Contacto <MessageSquare className="ml-2 h-5 w-5" />
+                <Button variant="secondary" size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                  Contacto <MessageSquare className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/sign/docs/CV.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84OTUzOTBiNi0zZDUxLTQ4MGMtOWJjNC03NzE4ZmNhOWVkNjkiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkb2NzL0NWLnBkZiIsImlhdCI6MTc1OTQ1ODY2MSwiZXhwIjoxOTA5OTk0NjYxfQ.nkVAXaLxHcawMeV8-gxBca04d6kyum2Wuw_XC39WvoU" target="_blank" rel="noopener noreferrer">
+              <Link href="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/sign/docs/CV.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84OTUzOTBiNi0zZDUxLTQ4MGMtOWJjNC03NzE4ZmNhOWVkNjkiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkb2NzL0NWLnBkZiIsImlhdCI6MTc2NTM4NjI4MywiZXhwIjoxNzk2OTIyMjgzfQ.XixXdIKl4re3H3o0yZPc4M0gj19rAzrIidXEmEN7lJA" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                    Descargar CV <Download className="ml-2 h-5 w-5" />
+                  Descargar CV <Download className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
             </div>
@@ -116,7 +116,7 @@ export default function Home() {
       </div>
 
       <section className="border-t-2 border-border bg-background">
-         <ProjectsCarousel projects={featuredProjects} />
+        <ProjectsCarousel projects={featuredProjects} />
       </section>
 
       <section className="border-t-2 border-border bg-background overflow-hidden">
@@ -128,11 +128,11 @@ export default function Home() {
             <div className="space-y-4 text-muted-foreground md:text-lg max-w-prose">
               <p>
                 Soy un <span className="relative inline-block border-2 border-border rounded-md px-2 py-1 align-middle">
-                <span className="absolute inset-0 scale-x-0 animate-expand-from-center rounded-sm bg-primary/20 origin-center"></span>
-                <span className="relative font-bold text-primary">
-                  Desarrollador Multiplataforma
-                </span>
-              </span> con experiencia en la creación de software. Estoy en el proceso de lanzar mi propia empresa, Override, con el objetivo de desarrollar productos digitales. He trabajado en varios proyectos de software, desde colaboraciones en productos multiplataforma como Quickness, hasta el desarrollo de mis propias aplicaciones como Lumi.
+                  <span className="absolute inset-0 scale-x-0 animate-expand-from-center rounded-sm bg-primary/20 origin-center"></span>
+                  <span className="relative font-bold text-primary">
+                    Desarrollador Multiplataforma
+                  </span>
+                </span> con experiencia en la creación de software. Estoy en el proceso de lanzar mi propia empresa, Override, con el objetivo de desarrollar productos digitales. He trabajado en varios proyectos de software, desde colaboraciones en productos multiplataforma como Quickness, hasta el desarrollo de mis propias aplicaciones como Lumi.
               </p>
               <p>
                 Actualmente, me estoy centrando en la tecnología de Jetpack Compose y Compose Multiplataforma. Esto me permite construir productos que funcionan en diferentes sistemas, llegando a más usuarios con una experiencia consistente. Mi compromiso es seguir innovando y mejorando la forma en que la tecnología se conecta con las personas.
@@ -141,14 +141,14 @@ export default function Home() {
           </div>
           <div className="relative md:col-span-1 w-full min-h-[400px] md:min-h-0">
             <div className="md:absolute md:inset-0">
-                <div className="relative h-full w-full aspect-video">
-                    <Image
-                      src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/FotoPerfil.JPG"
-                      alt="Christopher Alejandro Maldonado Chavez"
-                      fill
-                      className="object-cover"
-                    />
-                </div>
+              <div className="relative h-full w-full aspect-video">
+                <Image
+                  src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/imagenes/FotoPerfil.JPG"
+                  alt="Christopher Alejandro Maldonado Chavez"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -167,25 +167,25 @@ export default function Home() {
       </section>
       <section className="border-t-2 border-border flex items-center justify-center bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
         <div className="container max-w-screen-lg mx-auto py-24 px-4">
-            <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-center mb-12">
-                Reconocimientos y Certificados
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {recognitions.map((rec, index) => (
-                    <Card key={index} className="bg-card/80 backdrop-blur-sm border-2 border-border shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                        <CardHeader>
-                            <div className="flex items-start justify-between">
-                                <CardTitle as="h3" className="text-xl font-bold font-headline">{rec.title}</CardTitle>
-                                <Award className="h-6 w-6 text-accent ml-4"/>
-                            </div>
-                            <CardDescription>{rec.issuer}</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <p className="text-sm text-muted-foreground">{rec.description}</p>
-                        </CardContent>
-                    </Card>
-                ))}
-            </div>
+          <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-center mb-12">
+            Reconocimientos y Certificados
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {recognitions.map((rec, index) => (
+              <Card key={index} className="bg-card/80 backdrop-blur-sm border-2 border-border shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <CardTitle as="h3" className="text-xl font-bold font-headline">{rec.title}</CardTitle>
+                    <Award className="h-6 w-6 text-accent ml-4" />
+                  </div>
+                  <CardDescription>{rec.issuer}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">{rec.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
       <section id="contact" className="border-t-2 border-border bg-background">
