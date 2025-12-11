@@ -274,15 +274,4 @@ export const projects = [
     link: "/lumi",
     tags: ["Jetpack Compose", "Koin", "MVI", "Firebase AI", "Google Auth"],
   },
-  {
-    id: "test-x",
-    slug: "x",
-    title: "Project X",
-    description: "Proyecto de prueba para verificar el enrutamiento.",
-    longDescription: "Este es un proyecto de prueba creado para verificar que las nuevas páginas funcionan correctamente cuando se agregan a la base de datos.",
-    coverImageId: "lyra-cover",
-    galleryImageIds: [],
-    link: "",
-    tags: ["Test", "Debug"],
-  },
 ];
