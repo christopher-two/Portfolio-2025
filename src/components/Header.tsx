@@ -15,62 +15,62 @@ const mainNavLinks = [
 ];
 
 const featuredNavLinks = [
-    { href: "/override", label: "Override" },
-    { href: "/lumi", label: "Lumi" },
-    { href: "/daelia", label: "Daelia" },
+  { href: "/override", label: "Override" },
+  { href: "/lumi", label: "Lumi" },
+  { href: "/daelia", label: "Daelia" },
 ]
 
 function NavLinks({ isMobile = false }: { isMobile?: boolean }) {
-    const pathname = usePathname();
-    const [isClient, setIsClient] = useState(false);
+  const pathname = usePathname();
+  const [isClient, setIsClient] = useState(false);
 
-    useEffect(() => {
-        setIsClient(true);
-    }, []);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
-    const renderLink = (link: {href: string, label: string}) => {
-        const linkElement = (
-             <Link
-                href={link.href}
-                className={cn(
-                    "transition-colors hover:text-foreground/80",
-                    isClient && pathname === link.href ? "text-foreground" : "text-foreground/60",
-                    isMobile && "py-2 text-lg"
-                )}
-            >
-                {link.label}
-            </Link>
-        );
-
-        if (isMobile) {
-            return <SheetClose key={link.href} asChild>{linkElement}</SheetClose>;
-        }
-        return <React.Fragment key={link.href}>{linkElement}</React.Fragment>;
-    }
-    
-    const allLinks = [...mainNavLinks, { href: "/projects", label: "Proyectos" }];
-    const separator = <span key="separator-projects" className={cn("text-foreground/60", isMobile && "py-2 text-lg")}>|</span>;
-    const featuredLinks = featuredNavLinks.map(renderLink);
-
-    const navItems = [
-        ...allLinks.map(renderLink),
-        separator,
-        ...featuredLinks
-    ];
-    
-    if (isMobile) {
-        return (
-            <nav className="flex flex-col items-start gap-4 p-4">
-                 {navItems}
-            </nav>
-        );
-    }
-
-    return (
-        <nav className="hidden items-center gap-6 text-sm md:flex">
-             {navItems}
-        </nav>
+  const renderLink = (link: { href: string, label: string }) => {
+    const linkElement = (
+      <Link
+        href={link.href}
+        className={cn(
+          "transition-colors hover:text-foreground/80",
+          isClient && pathname === link.href ? "text-foreground" : "text-foreground/60",
+          isMobile && "py-2 text-lg"
+        )}
+      >
+        {link.label}
+      </Link>
     );
+
+    if (isMobile) {
+      return <SheetClose key={link.href} asChild>{linkElement}</SheetClose>;
+    }
+    return <React.Fragment key={link.href}>{linkElement}</React.Fragment>;
+  }
+
+  const allLinks = [...mainNavLinks, { href: "/projects", label: "Proyectos" }];
+  const separator = <span key="separator-projects" className={cn("text-foreground/60", isMobile && "py-2 text-lg")}>|</span>;
+  const featuredLinks = featuredNavLinks.map(renderLink);
+
+  const navItems = [
+    ...allLinks.map(renderLink),
+    separator,
+    ...featuredLinks
+  ];
+
+  if (isMobile) {
+    return (
+      <nav className="flex flex-col items-start gap-4 p-4">
+        {navItems}
+      </nav>
+    );
+  }
+
+  return (
+    <nav className="hidden items-center gap-6 text-sm md:flex">
+      {navItems}
+    </nav>
+  );
 }
 
 export function Header() {
@@ -106,7 +106,7 @@ export function Header() {
                   <NavLinks isMobile={true} />
                   <div className="mt-auto flex items-center justify-center gap-2 p-4">
                     <Button asChild variant="outline" size="icon" className="flex-1 border-2 border-border bg-background rounded-md shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                      <Link href="https://github.com/Chris-Alejandro" target="_blank">
+                      <Link href="https://github.com/christopher-two" target="_blank">
                         <Github className="h-[1.2rem] w-[1.2rem]" />
                         <span className="sr-only">GitHub</span>
                       </Link>
@@ -119,7 +119,7 @@ export function Header() {
               </Sheet>
             </div>
             <Button asChild variant="outline" size="icon" className="hidden md:flex border-2 border-border bg-background rounded-md shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-              <Link href="https://github.com/Chris-Alejandro" target="_blank">
+              <Link href="https://github.com/christopher-two" target="_blank">
                 <Github className="h-[1.2rem] w-[1.2rem]" />
                 <span className="sr-only">GitHub</span>
               </Link>
