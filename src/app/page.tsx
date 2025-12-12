@@ -105,7 +105,7 @@ export default function Home() {
                   Contacto <MessageSquare className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/sign/docs/CV.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84OTUzOTBiNi0zZDUxLTQ4MGMtOWJjNC03NzE4ZmNhOWVkNjkiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkb2NzL0NWLnBkZiIsImlhdCI6MTc2NTM4NjI4MywiZXhwIjoxNzk2OTIyMjgzfQ.XixXdIKl4re3H3o0yZPc4M0gj19rAzrIidXEmEN7lJA" target="_blank" rel="noopener noreferrer">
+              <Link href="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/sign/docs/CV-2026.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84OTUzOTBiNi0zZDUxLTQ4MGMtOWJjNC03NzE4ZmNhOWVkNjkiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkb2NzL0NWLTIwMjYucGRmIiwiaWF0IjoxNzY1NTE1OTY2LCJleHAiOjE3OTcwNTE5NjZ9.o2DBshiz7dqCMbht2ybjK2xGZnV7oo_eH-w3Dbqa2EE" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
                   Descargar CV <Download className="ml-2 h-5 w-5" />
                 </Button>
