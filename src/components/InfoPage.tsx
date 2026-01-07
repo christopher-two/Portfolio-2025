@@ -52,10 +52,17 @@ export function InfoPage({
                 </header>
 
                 {/* Content Box */}
-                <div className={`border-4 border-zinc-700 bg-zinc-900/50 p-6 md:p-10 shadow-[8px_8px_0px_0px_rgba(39,39,42,1)] prose prose-invert prose-zinc max-w-none 
-          prose-headings:font-headline prose-headings:text-lime-400 prose-headings:uppercase prose-headings:tracking-tight
-          prose-strong:${secondaryColor} prose-a:${accentColor} prose-li:marker:${accentColor}
-        `}>
+                <div className={`border-4 border-zinc-700 bg-zinc-900/50 p-6 md:p-10 shadow-[8px_8px_0px_0px_rgba(39,39,42,1)] 
+                    prose prose-invert prose-zinc max-w-none 
+                    prose-headings:font-headline prose-headings:text-lime-400 prose-headings:uppercase prose-headings:tracking-tighter prose-headings:mt-8 prose-headings:mb-4
+                    prose-h2:text-3xl md:prose-h2:text-4xl prose-h2:border-b-2 prose-h2:border-lime-400 prose-h2:pb-2
+                    prose-h3:text-xl md:prose-h3:text-2xl prose-h3:text-cyan-400
+                    prose-p:text-zinc-300 prose-p:leading-relaxed prose-p:text-lg
+                    prose-strong:text-cyan-400 prose-strong:font-bold
+                    prose-a:text-lime-400 prose-a:no-underline hover:prose-a:underline
+                    prose-li:text-zinc-300 prose-li:marker:text-lime-400
+                    prose-hr:border-zinc-800
+                `}>
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
                         {content}
                     </ReactMarkdown>
