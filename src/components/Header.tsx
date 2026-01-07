@@ -18,6 +18,7 @@ const featuredNavLinks = [
   { href: "/override", label: "Override" },
   { href: "/lumi", label: "Lumi" },
   { href: "/daelia", label: "Daelia" },
+  { href: "/spot", label: "Spot" },
 ]
 
 function NavLinks({ isMobile = false }: { isMobile?: boolean }) {
