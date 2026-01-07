@@ -51,11 +51,11 @@ export default function SpotPage() {
             <OverrideNav sections={sections} word="SPOT" />
 
             {/* Intro Section */}
-            <section className="relative flex min-h-screen flex-col items-center justify-center bg-zinc-950 p-4 md:p-12 overflow-hidden">
+            <section className="relative flex min-h-screen flex-col items-center justify-center bg-zinc-950 px-6 py-20 md:p-12 overflow-hidden">
                 <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto space-y-12">
 
                     {/* Massive Title */}
-                    <h1 className="text-[25vw] leading-none font-black font-headline text-lime-400 select-none tracking-tighter drop-shadow-[0_0_25px_rgba(163,230,53,0.3)]">
+                    <h1 className="text-9xl sm:text-[20vw] md:text-[25vw] leading-none font-black font-headline text-lime-400 select-none tracking-tighter drop-shadow-[0_0_50px_rgba(163,230,53,0.3)] whitespace-nowrap">
                         SPOT
                     </h1>
 
@@ -67,6 +67,7 @@ export default function SpotPage() {
                 p-8 md:p-12
                 shadow-[12px_12px_0px_0px_rgba(163,230,53,1)]
                 flex flex-col gap-8
+                transform-gpu
             ">
                         <p className="font-mono text-lg md:text-xl text-zinc-100 font-bold leading-relaxed">
                             La app que convierte coordenadas GPS en cápsulas del tiempo visuales. Donde tus fotos y mensajes se reconcilian con el mundo físico.
@@ -75,9 +76,9 @@ export default function SpotPage() {
                         {/* Actions */}
                         <div className="flex justify-center pt-4">
                             <button className="
-                        px-10 py-5 
+                        px-8 py-4 md:px-10 md:py-5 
                         bg-lime-400 text-black 
-                        font-headline font-bold text-xl uppercase tracking-widest
+                        font-headline font-bold text-lg md:text-xl uppercase tracking-widest
                         border-4 border-transparent
                         hover:bg-lime-300 transition-colors
                         shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)]
@@ -92,9 +93,9 @@ export default function SpotPage() {
                 </div>
 
                 {/* Decorative Elements */}
-                <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-10">
-                    <div className="absolute top-10 left-10 text-[12rem] text-lime-600 font-black rotate-[-15deg]">S</div>
-                    <div className="absolute bottom-10 right-10 text-[18rem] text-cyan-600 font-black rotate-[15deg]">P</div>
+                <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20 overflow-hidden">
+                    <div className="absolute top-[-5%] left-[-10%] text-[40vw] md:text-[50vh] lg:text-[35rem] text-lime-600 font-black rotate-[-15deg] leading-none">S</div>
+                    <div className="absolute bottom-[-5%] right-[-5%] text-[50vw] md:text-[60vh] lg:text-[45rem] text-cyan-600 font-black rotate-[15deg] leading-none">P</div>
                 </div>
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(163,230,53,0.1),transparent_70%)] pointer-events-none"></div>
             </section>
@@ -110,11 +111,11 @@ export default function SpotPage() {
                         <div className="flex items-baseline relative z-0">
                             <div
                                 aria-hidden="true"
-                                className={`text-[30vh] md:text-[40vh] font-black font-headline select-none ${section.textColor} opacity-20 leading-none`}
+                                className={`text-[60vw] md:text-[70vh] font-black font-headline select-none ${section.textColor} opacity-15 md:opacity-20 leading-none`}
                             >
                                 {section.letter}
                             </div>
-                            <h2 className={`text-[8vh] md:text-[12vh] font-bold font-headline select-none ${section.textColor} opacity-40 leading-none -ml-4 md:-ml-8`}>
+                            <h2 className={`text-[15vw] md:text-[15vh] font-bold font-headline select-none ${section.textColor} opacity-40 leading-none -ml-12 md:-ml-24`}>
                                 {section.title}
                             </h2>
                         </div>
@@ -125,9 +126,10 @@ export default function SpotPage() {
                     border-4 border-current ${section.textColor}
                     p-6 md:p-8 
                     backdrop-blur-sm bg-black/40
-                    shadow-[12px_12px_0px_0px_rgba(0,0,0,0.5)]
+                    shadow-[8px_8px_0px_0px_rgba(0,0,0,0.5)] md:shadow-[12px_12px_0px_0px_rgba(0,0,0,0.5)]
+                    pointer-events-auto
                 `}>
-                            <p className={`font-mono text-lg md:text-xl font-bold ${section.textColor} opacity-90`}>
+                            <p className={`font-mono text-base md:text-xl font-bold ${section.textColor} opacity-90 leading-snug md:leading-normal`}>
                                 {section.description}
                             </p>
                         </div>
@@ -138,20 +140,20 @@ export default function SpotPage() {
             {/* Final Phrase Section */}
             <section className="relative flex min-h-screen flex-col items-center justify-center bg-zinc-950 p-8 overflow-hidden">
                 <div className="relative z-10 max-w-7xl mx-auto text-center mb-24">
-                    <h2 className="text-[12vw] leading-[0.8] font-black font-headline text-lime-400 select-none tracking-tighter opacity-90">
+                    <h2 className="text-[10vw] md:text-[12vw] leading-[0.8] font-black font-headline text-lime-400 select-none tracking-tighter opacity-90">
                         TUS RECUERDOS<br />TIENEN UN LUGAR.
                     </h2>
                 </div>
 
                 {/* Footer Navigation */}
-                <div className="relative z-10 w-full max-w-4xl border-t-2 border-zinc-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-6 font-mono text-xs uppercase font-bold">
+                <div className="relative z-10 w-full max-w-4xl border-t-2 border-zinc-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-6 font-mono text-[10px] md:text-xs uppercase font-bold text-center md:text-left">
                     <div className="text-zinc-600">
                         SPOT © 2026 • CÁPSULAS GEOLOCALIZADAS
                     </div>
-                    <div className="flex gap-8">
-                        <Link href="/spot/privacy" className="text-zinc-500 hover:text-cyan-400 transition-colors">Privacidad</Link>
-                        <Link href="/spot/terms" className="text-zinc-500 hover:text-cyan-400 transition-colors">Términos</Link>
-                        <Link href="/spot/versions" className="text-zinc-500 hover:text-lime-400 transition-colors">Versiones</Link>
+                    <div className="flex gap-6 md:gap-8">
+                        <Link href="/spot/privacy" className="text-zinc-500 hover:text-cyan-400 transition-colors py-2 px-1">Privacidad</Link>
+                        <Link href="/spot/terms" className="text-zinc-500 hover:text-cyan-400 transition-colors py-2 px-1">Términos</Link>
+                        <Link href="/spot/versions" className="text-zinc-500 hover:text-lime-400 transition-colors py-2 px-1">Versiones</Link>
                     </div>
                 </div>
 
