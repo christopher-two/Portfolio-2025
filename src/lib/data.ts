@@ -248,7 +248,13 @@ export const projects = [
     description: "Ecosistema integral para la gestión administrativa y operativa de EikoColors.",
     longDescription: "Un ecosistema para el control total de la empresa Eikocolors, para gestionar usuarios, gestion de trabajos, de proyectos y de finanzas, resulto muy beneficioso para la empresa.",
     coverImageId: "eiko-cover",
-    galleryImageIds: ["eiko-gallery-1"],
+    galleryImageIds: [
+      "eiko-gallery-1",
+      "eiko-gallery-2",
+      "eiko-gallery-3",
+      "eiko-gallery-4",
+      "eiko-gallery-5",
+    ],
     link: "", // No se proporcionó link específico en la descripción
     tags: ["Kmp JVM", "Koin", "Firebase", "Coil", "Room", "Datastore"],
   },

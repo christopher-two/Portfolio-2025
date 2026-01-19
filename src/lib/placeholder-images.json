@@ -149,6 +149,42 @@
       "description": "Gallery image 3 for Override Mindstack project",
       "imageUrl": "https://images.unsplash.com/photo-1539627831859-a911cf04d3cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9ibGVtJTIwc29sdmluZ3xlbnwwfHx8fDE3NTk0MDI0MTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "problem solving"
+    },
+    {
+      "id": "eiko-cover",
+      "description": "Cover image for EikoColors System",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Eiko%20colors/Productos.gif",
+      "imageHint": "product catalog"
+    },
+    {
+      "id": "eiko-gallery-1",
+      "description": "Gallery image 1 for EikoColors System (cotizacion a trabajo)",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Eiko%20colors/Cotizacion%20a%20trabajo.gif",
+      "imageHint": "quote to job flow"
+    },
+    {
+      "id": "eiko-gallery-2",
+      "description": "Gallery image 2 for EikoColors System (personalizacion)",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Eiko%20colors/Personalizacion.gif",
+      "imageHint": "order customization"
+    },
+    {
+      "id": "eiko-gallery-3",
+      "description": "Gallery image 3 for EikoColors System (productos)",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Eiko%20colors/Productos.gif",
+      "imageHint": "product listing"
+    },
+    {
+      "id": "eiko-gallery-4",
+      "description": "Gallery image 4 for EikoColors System (trabajos)",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Eiko%20colors/Trabajos.gif",
+      "imageHint": "jobs dashboard"
+    },
+    {
+      "id": "eiko-gallery-5",
+      "description": "Gallery image 5 for EikoColors System (cotizaciones)",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Eiko%20colors/cotizaciones.gif",
+      "imageHint": "quotes overview"
     }
   ]
 }
