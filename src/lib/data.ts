@@ -246,7 +246,7 @@ export const projects = [
     slug: "eikocolors-system",
     title: "EikoColors System",
     description: "Ecosistema integral para la gestión administrativa y operativa de EikoColors.",
-    longDescription: "Un ecosistema para el control total de la empresa Eikocolors, para gestionar usuarios, gestion de trabajos, de proyectos y de finanzas, resulto muy beneficioso para la empresa.",
+    longDescription: "**Eikocolors System** es un sistema de gestión empresarial diseñado para:\n\n- ✅ Gestionar clientes y sus trabajos\n- ✅ Administrar catálogos de productos\n- ✅ Controlar inventario y distribuidores\n- ✅ Generar cotizaciones y reportes PDF\n- ✅ Sincronizar datos en la nube (Supabase)\n- ✅ Trabajar offline con base de datos local (Room)",
     coverImageId: "eiko-cover",
     galleryImageIds: [
       "eiko-gallery-1",
@@ -255,8 +255,8 @@ export const projects = [
       "eiko-gallery-4",
       "eiko-gallery-5",
     ],
-    link: "", // No se proporcionó link específico en la descripción
-    tags: ["Kmp JVM", "Koin", "Firebase", "Coil", "Room", "Datastore"],
+    link: "https://eikocolors.atomo.click", // No se proporcionó link específico en la descripción
+    tags: ["Kmp JVM", "Koin", "Supabase", "Coil", "Room", "Datastore", "Ktor", "MVI", "Clean Architecture", "Multimodularity", "Layered Model", "Repository Pattern"],
   },
   {
     id: "11",
