@@ -16,6 +16,13 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from '@/components/ui/card';
 import { CarouselControls } from '@/components/CarouselControls';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 type Project = (typeof projects)[0];
 
@@ -26,6 +33,8 @@ interface ProjectDetailClientProps {
 
 export function ProjectDetailClient({ project, galleryImages }: ProjectDetailClientProps) {
   const [api, setApi] = useState<CarouselApi>();
+  const [lightboxImage, setLightboxImage] = useState<ImagePlaceholder | null>(null);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   return (
     <div className="animate-fade-in">
@@ -58,22 +67,38 @@ export function ProjectDetailClient({ project, galleryImages }: ProjectDetailCli
                       <CarouselItem key={index}>
                         <Card className="overflow-hidden border-2 border-border">
                           <CardContent className="p-0">
-                            <div className="aspect-video relative">
+                            <button
+                              type="button"
+                              className="group relative block w-full aspect-video"
+                              onClick={() => {
+                                setLightboxImage(img);
+                                setIsLightboxOpen(true);
+                              }}
+                              aria-label="Ver imagen en grande"
+                            >
                               <Image
                                 src={img.imageUrl}
                                 alt={`${project.title} - imagen ${index + 1}`}
                                 fill
                                 className="object-cover"
                                 data-ai-hint={img.imageHint}
+                                unoptimized={img.isGif}
                               />
-                            </div>
+                              <span className="absolute right-3 top-3 rounded-md bg-black/60 px-3 py-1 text-xs font-semibold uppercase tracking-tight text-white shadow-lg opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                                Ver grande
+                              </span>
+                            </button>
                           </CardContent>
                         </Card>
                       </CarouselItem>
                     ))}
                   </CarouselContent>
                 </Carousel>
-                {api && <CarouselControls api={api} className="absolute top-8 left-1/2 -translate-x-1/2 z-10" />}
+                {api && (
+                  <div className="mt-6 flex justify-center">
+                    <CarouselControls api={api} />
+                  </div>
+                )}
               </div>
             </section>
           </div>
@@ -106,6 +131,29 @@ export function ProjectDetailClient({ project, galleryImages }: ProjectDetailCli
           </aside>
         </div>
       </div>
+
+      <Dialog open={isLightboxOpen} onOpenChange={setIsLightboxOpen}>
+        <DialogContent className="max-w-5xl">
+          {lightboxImage && (
+            <div className="space-y-4">
+              <DialogHeader>
+                <DialogTitle>{project.title}</DialogTitle>
+                <DialogDescription>{lightboxImage.description}</DialogDescription>
+              </DialogHeader>
+              <div className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-lg border border-border bg-background">
+                <Image
+                  src={lightboxImage.imageUrl}
+                  alt={lightboxImage.description}
+                  fill
+                  className="object-contain"
+                  data-ai-hint={lightboxImage.imageHint}
+                  unoptimized={lightboxImage.isGif}
+                />
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

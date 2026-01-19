@@ -21,6 +21,7 @@ export function ProjectCard({ slug, title, coverImageId }: ProjectCardProps) {
             fill
             className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 opacity-40 group-hover:opacity-30"
             data-ai-hint={coverImage.imageHint}
+            unoptimized={coverImage.isGif}
           />
         )}
         <div className="relative z-10 text-primary-foreground">
