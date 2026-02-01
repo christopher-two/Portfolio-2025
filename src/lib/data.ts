@@ -434,15 +434,15 @@ El proyecto no es solo una landing page, sino el portal de entrada a un ecosiste
 
 Lerna se enfoca en devolver el tiempo valioso a los profesores, permitiéndoles concentrarse en lo que realmente importa: la enseñanza.
 
-- 🤖 **IA Educativa:** Integración de herramientas de inteligencia artificial para la creación de contenido y personalización del aprendizaje.
-- ⚡ **Productividad Aumentada:** Flujos de trabajo diseñados para reducir drásticamente la carga administrativa y de planeación.
-- 📚 **Gestión Inteligente:** Organización eficiente de recursos didácticos y seguimiento del progreso académico.
-- 🎨 **Interfaz Sofisticada:** Una experiencia de usuario limpia y profesional que facilita la adopción tecnológica en el aula.
+- 🤖 **Integración con Gemini AI:** Utiliza modelos de lenguaje avanzados para la generación de contenido didáctico, resúmenes y asistencia personalizada.
+- ⚡ **Tecnología de Punta:** Desarrollado con **Kotlin Multiplatform (KMP)** y **Compose Multiplatform**, garantizando una experiencia fluida y nativa en la web mediante **WasmJs**.
+- 📐 **Arquitectura Robusta:** Implementado bajo principios de **Clean Architecture**, asegurando escalabilidad y facilidad de mantenimiento.
+- 🚀 **Productividad Aumentada:** Flujos de trabajo diseñados para reducir drásticamente la carga administrativa y de planeación docente.
 
 Lerna representa el siguiente paso en la evolución educativa, donde la tecnología actúa como un aliado estratégico del docente para crear experiencias de aprendizaje más ricas y efectivas.`,
     r2Folder: "Lerna",
     link: "https://lerna.override.com.mx",
-    categories: [TECH_CATEGORIES.WEB, TECH_CATEGORIES.AI],
-    tags: ["Next.js", "AI", "Education", "Productivity", "Tailwind CSS"],
+    categories: [TECH_CATEGORIES.WEB, TECH_CATEGORIES.AI, TECH_CATEGORIES.KMP],
+    tags: ["KMP", "Compose Multiplatform", "Gemini AI", "WasmJs", "Clean Architecture"],
   },
 ];
