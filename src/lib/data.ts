@@ -72,6 +72,7 @@ export const products = [
   { id: "prod-10", title: "Charmstar Web", href: "/projects/charmstar-web", bgColor: "bg-rose-900" },
   { id: "prod-11", title: "Dependency", href: "/projects/dependency", bgColor: "bg-cyan-800" },
   { id: "prod-12", title: "Colors RGB", href: "/projects/colors", bgColor: "bg-gradient-to-br from-red-500 via-green-500 to-blue-500" },
+  { id: "prod-13", title: "Web Experiments", href: "/projects/web-experiments", bgColor: "bg-indigo-600" },
 ];
 
 export const TECH_CATEGORIES = {
@@ -375,5 +376,27 @@ Construido con una arquitectura **MVI** sólida para una gestión de estado pred
     link: "https://wasm.christopher.com.mx/colors",
     categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB],
     tags: ["Compose Multiplatform", "Kotlin", "WasmJs", "Android", "MVI"],
+  },
+  {
+    id: "13",
+    slug: "web-experiments",
+    title: "Web Experiments & Prototypes",
+    description: "Colección de interfaces experimentales y componentes de vanguardia.",
+    longDescription: `**Web Experiments & Prototypes** es un laboratorio digital donde exploro las fronteras de la interfaz de usuario y la experiencia de desarrollo moderno.
+    
+### Naturaleza del Proyecto
+
+Esta es una **colección curada de despliegues rápidos, prototipos de componentes y exploraciones visuales** que no necesariamente forman parte de un producto comercial, pero que demuestran capacidades técnicas específicas:
+
+- 🧪 **Laboratorio de UI:** Experimentación con nuevas librerías de animación como Framer Motion y Three.js.
+- 📐 **Arquitectura de Componentes:** Pruebas de patrones de diseño escalables y sistemas de diseño atómicos.
+- ⚡ **Rendimiento Web:** Optimizaciones extremas en frameworks como Next.js, Astro y Qwik.
+- 🎨 **Estética Visual:** Exploración de tendencias como Neobrutalismo, Glassmorphism y Bento Grids.
+
+Cada pieza en esta colección representa un desafío técnico superado, desde micro-interacciones complejas hasta integraciones experimentales con APIs del navegador.`,
+    r2Folder: "projects/webs",
+    link: "https://www.christopher.com.mx",
+    categories: [TECH_CATEGORIES.WEB],
+    tags: ["Experimental", "UI/UX", "Next.js", "Tailwind CSS", "Framer Motion"],
   },
 ];
