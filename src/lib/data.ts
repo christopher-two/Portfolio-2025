@@ -75,7 +75,8 @@ export const products = [
   { id: "prod-13", title: "Web Experiments", href: "/projects/webs", bgColor: "bg-indigo-600" },
   { id: "prod-14", title: "MindStack", href: "/projects/mindstack", bgColor: "bg-zinc-950" },
   { id: "prod-15", title: "Lerna", href: "/projects/lerna", bgColor: "bg-stone-900" },
-  { id: "prod-16", title: "Squid Games", href: "/projects/squid-games", bgColor: "bg-pink-900" },
+  { id: "prod-16", title: "Squid Games App", href: "/projects/squid-games-app", bgColor: "bg-pink-900" },
+  { id: "prod-17", title: "Squid Games Desktop", href: "/projects/squid-games-desktop", bgColor: "bg-slate-900" },
 ];
 
 export const TECH_CATEGORIES = {
@@ -448,25 +449,47 @@ Lerna representa el siguiente paso en la evolución educativa, donde la tecnolog
   },
   {
     id: "16",
-    slug: "squid-games",
-    title: "Squid Games: Puente de Cristal",
-    description: "Sistema interactivo que integra hardware embebido, software de escritorio y reconocimiento facial.",
-    longDescription: `**Squid Games: Puente de Cristal** es un proyecto de ingeniería de alta complejidad que recrea la tensión y mecánica del famoso juego de la serie, integrando múltiples capas tecnológicas en una solución única.
+    slug: "squid-games-app",
+    title: "Squid Games: Mobile App",
+    description: "Interfaz de jugador con reconocimiento facial biométrico para el ecosistema Puente de Cristal.",
+    longDescription: `**Squid Games Mobile** es la interfaz de interacción del jugador, diseñada para llevar la biometría y el tiempo real al ecosistema del Puente de Cristal.
 
-### Ingeniería Multidisciplinaria
+### Innovación en la Interfaz
 
-Este proyecto fue concebido como un desafío de superación técnica, logrando una integración fluida entre hardware y software:
+La aplicación móvil actúa como el terminal de identidad y estado para los participantes:
 
-- 🎮 **Sistema Embebido Interactivo:** Construcción física del puente con sensores para detectar acciones del jugador en tiempo real y reaccionar según las reglas del juego.
-- 🖥️ **Centro de Control Desktop:** Aplicación robusta para la gestión total de la partida, monitorización de jugadores y configuración de parámetros lógicos.
-- 🤖 **IA y Reconocimiento Facial:** Implementación de una aplicación móvil que utiliza **Teachable Machine** para la identificación biométrica y registro de participantes.
-- 📡 **Ecosistema Integrado:** Comunicación bidireccional entre el hardware, la app móvil y el centro de control para una experiencia de usuario coherente y sin latencia.
-- 🏆 **Excelencia Técnica:** Un proyecto diseñado bajo estándares de alta fidelidad, optimizando el rendimiento y la fiabilidad de cada componente desde el hardware hasta la interfaz de usuario.
+- 🤖 **Identificación Biométrica:** Integración de **Teachable Machine** para el reconocimiento facial, permitiendo el registro y validación de jugadores de forma automatizada.
+- ⏱️ **Estado en Tiempo Real:** Visualización dinámica del estatus del jugador (Vivo, Eliminado o Ganador) sincronizado instantáneamente con el sistema central.
+- 📱 **Experiencia Inmersiva:** Interfaz diseñada para mantener la tensión del juego, sirviendo como el vínculo directo entre el jugador y la lógica del puente físico.
+- 📡 **Sincronización Total:** Comunicación fluida con la suite de escritorio para asegurar que la identidad del jugador sea consistente en todo el ecosistema.
 
-El "Puente de Cristal" representa nuestra capacidad para materializar ideas ambiciosas, combinando visión creativa con ingeniería de software y hardware de precisión.`,
-    r2Folder: "SquidGames/desktop",
+Este componente demuestra nuestra capacidad para integrar visión por computadora en dispositivos móviles dentro de una solución de ingeniería compleja.`,
+    r2Folder: "SquidGames/app",
     link: "https://github.com/christopher-two",
     categories: [TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.AI],
-    tags: ["Embedded Systems", "Desktop App", "Computer Vision", "Kotlin", "Teachable Machine"],
+    tags: ["Android Native", "Teachable Machine", "AI", "Real-time", "Biometrics"],
+  },
+  {
+    id: "17",
+    slug: "squid-games-desktop",
+    title: "Squid Games: Desktop Control",
+    description: "Centro de control robusto para la gestión centralizada y monitorización del Puente de Cristal.",
+    longDescription: `**Squid Games Desktop** es el núcleo de inteligencia y mando que orquestra todo el ecosistema del Puente de Cristal.
+
+### Centro de Mando Centralizado
+
+Desarrollada para ofrecer una gestión total de la experiencia, esta aplicación actúa como el cerebro del sistema:
+
+- 🖥️ **Gestión de Partida:** Control absoluto sobre el flujo del juego, configuración de reglas y administración de la lógica del puente.
+- 📊 **Monitorización Avanzada:** Visualización en tiempo real del estado de todos los jugadores y del sistema físico embebido.
+- 🔌 **Integración de Hardware:** Comunicación de bajo nivel para el control de los sensores y actuadores del puente físico.
+- 🏆 **Excelencia en Ingeniería:** Construida con un enfoque en la fiabilidad y el rendimiento, asegurando que la coordinación entre la app móvil y el hardware sea perfecta.
+- 📡 **Hub de Comunicación:** Centraliza la recepción de datos biométricos de las apps móviles y los sincroniza con las reacciones físicas del puente.
+
+El software de escritorio representa el pilar de robustez del proyecto, demostrando nuestra capacidad para desarrollar sistemas de control centralizados para entornos interactivos complejos.`,
+    r2Folder: "SquidGames/desktop",
+    link: "https://github.com/christopher-two",
+    categories: [TECH_CATEGORIES.WEB],
+    tags: ["Desktop Software", "Control System", "Hardware Integration", "Kotlin", "Real-time"],
   },
 ];
