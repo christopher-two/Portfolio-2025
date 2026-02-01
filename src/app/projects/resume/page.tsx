@@ -3,11 +3,13 @@
 import { projects } from "@/lib/data";
 import ReactMarkdown from "react-markdown";
 import { Button } from "@/components/ui/button";
-import { Download, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 
 export default function ResumePage() {
   const handlePrint = () => {
-    window.print();
+    if (typeof window !== "undefined") {
+      window.print();
+    }
   };
 
   return (
@@ -94,51 +96,6 @@ export default function ResumePage() {
           </p>
         </footer>
       </div>
-    </div>
-
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="md:col-span-1 space-y-4">
-                <div>
-                  <h3 className="text-xs font-black uppercase text-muted-foreground mb-2">Tecnologías</h3>
-                  <div className="flex flex-wrap gap-1">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="text-[10px] font-bold border border-border/30 px-2 py-0.5">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                {project.link && (
-                  <div>
-                    <h3 className="text-xs font-black uppercase text-muted-foreground mb-1">Link</h3>
-                    <a 
-                      href={project.link} 
-                      target="_blank" 
-                      className="text-xs font-bold underline decoration-2 hover:text-accent transition-colors break-all"
-                    >
-                      {project.link.replace(/^https?:\/\//, '')}
-                    </a>
-                  </div>
-                )}
-              </div>
-
-              <div className="md:col-span-3 prose dark:prose-invert max-w-none prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tight prose-p:leading-relaxed prose-strong:text-accent">
-                <ReactMarkdown>{project.longDescription}</ReactMarkdown>
-              </div>
-            </div>
-            
-            <div className="mt-12 border-t border-border/10" />
-          </article>
-        ))}
-      </div>
-
-      <footer className="mt-20 pt-8 border-t-4 border-border text-center">
-        <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground">
-          Christopher Alejandro Maldonado Chavez &copy; {new Date().getFullYear()}
-        </p>
-      </footer>
     </div>
   );
 }
