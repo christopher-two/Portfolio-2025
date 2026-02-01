@@ -77,6 +77,7 @@ export const products = [
   { id: "prod-15", title: "Lerna", href: "/projects/lerna", bgColor: "bg-stone-900" },
   { id: "prod-16", title: "Squid Games App", href: "/projects/squid-games-app", bgColor: "bg-pink-900" },
   { id: "prod-17", title: "Squid Games Desktop", href: "/projects/squid-games-desktop", bgColor: "bg-slate-900" },
+  { id: "prod-18", title: "Override Menu", href: "/projects/override-menu", bgColor: "bg-orange-500" },
 ];
 
 export const TECH_CATEGORIES = {
@@ -467,29 +468,30 @@ Este componente demuestra nuestra capacidad para integrar visión por computador
     r2Folder: "SquidGames/mobile",
     link: "https://github.com/christopher-two",
     categories: [TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.AI],
-    tags: ["Android Native", "Teachable Machine", "AI", "Real-time", "Biometrics"],
-  },
-  {
-    id: "17",
-    slug: "squid-games-desktop",
-    title: "Squid Games: Desktop Control",
-    description: "Centro de control robusto para la gestión centralizada y monitorización del Puente de Cristal.",
-    longDescription: `**Squid Games Desktop** es el núcleo de inteligencia y mando que orquestra todo el ecosistema del Puente de Cristal.
-
-### Centro de Mando Centralizado
-
-Desarrollada para ofrecer una gestión total de la experiencia, esta aplicación actúa como el cerebro del sistema:
-
-- 🖥️ **Gestión de Partida:** Control absoluto sobre el flujo del juego, configuración de reglas y administración de la lógica del puente.
-- 📊 **Monitorización Avanzada:** Visualización en tiempo real del estado de todos los jugadores y del sistema físico embebido.
-- 🔌 **Integración de Hardware:** Comunicación de bajo nivel para el control de los sensores y actuadores del puente físico.
-- 🏆 **Excelencia en Ingeniería:** Construida con un enfoque en la fiabilidad y el rendimiento, asegurando que la coordinación entre la app móvil y el hardware sea perfecta.
-- 📡 **Hub de Comunicación:** Centraliza la recepción de datos biométricos de las apps móviles y los sincroniza con las reacciones físicas del puente.
-
-El software de escritorio representa el pilar de robustez del proyecto, demostrando nuestra capacidad para desarrollar sistemas de control centralizados para entornos interactivos complejos.`,
-    r2Folder: "SquidGames/desktop",
-    link: "https://github.com/christopher-two",
-    categories: [TECH_CATEGORIES.WEB],
     tags: ["Desktop Software", "Control System", "Hardware Integration", "Kotlin", "Real-time"],
   },
+  {
+    id: "18",
+    slug: "override-menu",
+    title: "Override Menu",
+    description: "Aplicación multiplataforma premium para la gestión de menús digitales en tiempo real.",
+    longDescription: `**Override Menu** es una solución integral diseñada para revolucionar la gestión de menús en la industria gastronómica, permitiendo a los restaurantes digitalizar su oferta con una experiencia premium.
+
+### Potencia Multiplataforma
+
+Desarrollado bajo un ecosistema **Kotlin Multiplatform (KMP)**, el sistema ofrece una base de código única para Android, iOS, Desktop y Web.
+
+- 🚀 **Sincronización en Tiempo Real:** Gracias a la integración con **Supabase**, cualquier cambio en el menú se refleja instantáneamente en todas las plataformas.
+- 📴 **Filosofía Offline-First:** Capacidad de funcionamiento sin conexión con sincronización inteligente una vez recuperada la red.
+- 📸 **Gestión de Multimedia:** Subida y optimización de imágenes de platillos directamente desde la app.
+- 📐 **Arquitectura de Élite:** Construido sobre **Clean Architecture** y patrón **MVI**, garantizando una robustez industrial y escalabilidad sin límites.
+- 🎨 **Experiencia de Usuario:** Interfaz moderna y fluida desarrollada con **Compose Multiplatform**, siguiendo los estándares del *Override Design System*.
+
+**Override Menu** no es solo un catálogo digital, es una herramienta de gestión multi-tenant que permite a cada establecimiento controlar su inventario, categorías y disponibilidad con la eficiencia de un sistema empresarial de alto nivel.`,
+    r2Folder: "OverrideMenu",
+    link: "https://menu.override.com.mx",
+    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB],
+    tags: ["KMP", "Compose Multiplatform", "Supabase", "Clean Architecture", "MVI", "Koin"],
+  },
 ];
+
