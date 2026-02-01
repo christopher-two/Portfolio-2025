@@ -12,6 +12,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle 
 
 const mainNavLinks = [
   { href: "/", label: "Inicio" },
+  { href: "/projects", label: "Proyectos" },
 ];
 
 const featuredNavLinks = [
@@ -34,8 +35,8 @@ function NavLinks({ isMobile = false }: { isMobile?: boolean }) {
       <Link
         href={link.href}
         className={cn(
-          "transition-colors hover:text-foreground/80",
-          isClient && pathname === link.href ? "text-foreground" : "text-foreground/60",
+          "transition-colors hover:text-foreground/80 whitespace-nowrap",
+          isClient && pathname === link.href ? "text-foreground font-bold" : "text-foreground/60",
           isMobile && "py-2 text-lg"
         )}
       >
@@ -49,14 +50,12 @@ function NavLinks({ isMobile = false }: { isMobile?: boolean }) {
     return <React.Fragment key={link.href}>{linkElement}</React.Fragment>;
   }
 
-  const allLinks = [...mainNavLinks, { href: "/projects", label: "Proyectos" }];
-  const separator = <span key="separator-projects" className={cn("text-foreground/60", isMobile && "py-2 text-lg")}>|</span>;
-  const featuredLinks = featuredNavLinks.map(renderLink);
-
+  const separator = <span key="separator-projects" className={cn("text-foreground/20 mx-2", isMobile && "hidden")}>|</span>;
+  
   const navItems = [
-    ...allLinks.map(renderLink),
+    ...mainNavLinks.map(renderLink),
     separator,
-    ...featuredLinks
+    ...featuredNavLinks.map(renderLink)
   ];
 
   if (isMobile) {
@@ -68,7 +67,7 @@ function NavLinks({ isMobile = false }: { isMobile?: boolean }) {
   }
 
   return (
-    <nav className="hidden items-center gap-6 text-sm md:flex">
+    <nav className="hidden items-center gap-4 text-sm md:flex">
       {navItems}
     </nav>
   );
@@ -82,10 +81,10 @@ export function Header() {
   }, []);
 
   return (
-    <header className="w-full border-b-2 border-border bg-background" suppressHydrationWarning>
+    <header className="w-full border-b-2 border-border bg-background sticky top-0 z-50" suppressHydrationWarning>
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <div className="mr-4 flex items-center">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
+          <Link href="/" className="mr-8 flex items-center space-x-2">
             <span className="font-bold font-headline">ChristopherTwo</span>
           </Link>
           {isClient && <NavLinks />}

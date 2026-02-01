@@ -60,224 +60,320 @@ export const socialLinks: SocialLink[] = [
 ];
 
 export const products = [
-  {
-    id: "prod-1",
-    title: "Override",
-    href: "/override",
-    bgColor: "bg-black"
-  },
-  {
-    id: "prod-2",
-    title: "Lumi",
-    href: "/lumi",
-    bgColor: "bg-yellow-300"
-  },
-  {
-    id: "prod-3",
-    title: "Daelia",
-    href: "/daelia",
-    bgColor: "bg-blue-800"
-  },
-  {
-    id: "prod-4",
-    title: "Override Health", // Actualizado de Lyra
-    href: "/projects/lyra", // Mantenemos el href interno o puedes cambiarlo a /projects/override-health si cambias la ruta
-    bgColor: "bg-green-800"
-  },
-  {
-    id: "prod-5",
-    title: "Override Pass",
-    href: "/projects/override-pass",
-    bgColor: "bg-red-800"
-  },
-  {
-    id: "prod-6",
-    title: "Override Learning",
-    href: "/projects/override-learning",
-    bgColor: "bg-sky-800",
-  },
-  {
-    id: "prod-7",
-    title: "Override Mindstack",
-    href: "/projects/override-mindstack",
-    bgColor: "bg-purple-800",
-  },
-  {
-    id: "prod-8",
-    title: "Override Logistics",
-    href: "/projects/override-logistics",
-    bgColor: "bg-slate-800",
-  },
-  {
-    id: "prod-9",
-    title: "Override News",
-    href: "/projects/override-news",
-    bgColor: "bg-gray-800",
-  },
-  {
-    id: "prod-10",
-    title: "Override Shop",
-    href: "/projects/override-shop",
-    bgColor: "bg-pink-800",
-  },
-  {
-    id: "prod-11",
-    title: "Dependency",
-    href: "/projects/dependency",
-    bgColor: "bg-indigo-600",
-  },
-  {
-    id: "prod-12",
-    title: "Cotizador Yazbek",
-    href: "/projects/cotizador-yazbek",
-    bgColor: "bg-orange-600",
-  },
-  {
-    id: "prod-13",
-    title: "EikoColors System",
-    href: "/projects/eikocolors-system",
-    bgColor: "bg-teal-700",
-  },
+  { id: "prod-1", title: "Override Shop", href: "/projects/override-shop", bgColor: "bg-pink-800" },
+  { id: "prod-2", title: "EikoColors System", href: "/projects/eikocolors-system", bgColor: "bg-teal-700" },
+  { id: "prod-3", title: "Cotizador Yazbek", href: "/projects/cotizador-yazbek", bgColor: "bg-orange-600" },
+  { id: "prod-4", title: "Spot", href: "/projects/spot", bgColor: "bg-blue-600" },
+  { id: "prod-5", title: "Atomo Web", href: "/projects/atomo-web", bgColor: "bg-purple-900" },
+  { id: "prod-6", title: "Atomo App", href: "/projects/atomo-app", bgColor: "bg-indigo-900" },
+  { id: "prod-7", title: "Override Web", href: "/projects/override-web", bgColor: "bg-zinc-900" },
+  { id: "prod-8", title: "Override Logistics", href: "/projects/override-logistics", bgColor: "bg-slate-900" },
+  { id: "prod-9", title: "EikoColors Web", href: "/projects/eikocolors-web", bgColor: "bg-emerald-900" },
+  { id: "prod-10", title: "Charmstar Web", href: "/projects/charmstar-web", bgColor: "bg-rose-900" },
+  { id: "prod-11", title: "Dependency", href: "/projects/dependency", bgColor: "bg-cyan-800" },
+  { id: "prod-12", title: "Colors RGB", href: "/projects/colors", bgColor: "bg-gradient-to-br from-red-500 via-green-500 to-blue-500" },
 ];
 
+export const TECH_CATEGORIES = {
+  WEB: "Web",
+  ANDROID: "Jetpack Compose",
+  KMP: "Kotlin Multiplatform",
+  AI: "IA",
+} as const;
 
 export const projects = [
   {
     id: "1",
-    slug: "lyra",
-    title: "Override Health", // Actualizado
-    description: "Aplicación móvil diseñada para optimizar la interacción entre profesionales de la salud y sus pacientes.",
-    longDescription: "Aplicación móvil diseñada para optimizar la interacción entre profesionales de la salud y sus pacientes. Lyra digitaliza los planes de alimentación, eliminando los registros en papel y facilitando un seguimiento continuo y eficaz. La plataforma incorpora herramientas avanzadas, como una IA que asiste a los usuarios en la gestión de su dieta y proporciona recomendaciones personalizadas para mejorar sus hábitos.",
-    coverImageId: "lyra-cover",
-    galleryImageIds: ["lyra-gallery-1", "lyra-gallery-2", "lyra-gallery-3"],
-    link: "https://www.override.com.mx", // Link actualizado
-    tags: ["Jetpack Compose", "Room", "Datastore", "Koin", "Ktor", "Coil", "Firebase", "Docker", "Google Cloud Functions", "Gemini API", "MVI", "DeepLinks", "Clean Architecture", "Multimodularity", "Layered Model", "Repository Pattern", "Google Authentication"],
+    slug: "override-shop",
+    title: "Override Shop",
+    description: "Plataforma de comercio electrónico completa con panel de administración y aplicaciones web y móviles.",
+    longDescription: `Override Shop es una plataforma de **comercio electrónico completa** que incluye tienda web, backend escalable y aplicación móvil. 
+
+### Características Principales
+
+- **Gestión Centralizada:** Control total sobre productos, categorías, inventarios y pedidos.
+- **Arquitectura Reutilizable:** Diseñada para ser escalable y adaptable a diferentes tipos de comercio.
+- **Inteligencia Artificial:** Incorpora herramientas basadas en IA para automatizar tareas administrativas.
+- **Experiencia Multiplataforma:** Aplicaciones nativas optimizadas para ofrecer la mejor experiencia al cliente.
+
+El sistema permite a los administradores gestionar promociones y configuraciones cambiando únicamente credenciales, lo que lo convierte en una solución robusta y flexible para el mercado actual.`,
+    r2Folder: "OverrideShop",
+    link: "https://shop.override.com.mx",
+    categories: [TECH_CATEGORIES.WEB, TECH_CATEGORIES.ANDROID],
+    tags: ["Android", "Jetpack Compose", "Room", "Koin", "Ktor", "Firebase"],
   },
   {
     id: "2",
-    slug: "override-pass",
-    title: "Override Pass",
-    description: "Solución de control de accesos para empresas que buscan la máxima seguridad y eficiencia.",
-    longDescription: "Solución de control de accesos para empresas que buscan la máxima seguridad y eficiencia. Mediante el uso de códigos QR encriptados con el sistema propietario Stack3, la aplicación centraliza y agiliza la gestión de entradas y salidas. Su diseño permite una implementación rápida en cualquier entorno, sin requerir la compleja infraestructura de los sistemas de acceso tradicionales, garantizando un control robusto y confiable.",
-    coverImageId: "quickness-cover",
-    galleryImageIds: ["quickness-gallery-1", "quickness-gallery-2", "quickness-gallery-3"],
-    link: "https://pass.override.com.mx",
-    tags: ["Compose Multiplatform", "Room", "Datastore", "Koin", "Ktor", "Firebase", "Gemini API", "Biometric", "Moko Permissions", "Coil", "MVVM", "Clean Architecture", "Multimodularity", "Layered Model", "Repository Pattern", "DeepLinks", "Wasm"],
-  },
-  {
-    id: "3",
-    slug: "override-learning",
-    title: "Override Learning",
-    description: "Plataforma educativa que utiliza inteligencia artificial para automatizar tareas administrativas y potenciar la labor docente.",
-    longDescription: "Plataforma educativa que utiliza inteligencia artificial para automatizar tareas administrativas y potenciar la labor docente. La herramienta permite a los profesores generar y publicar tareas en Google Classroom, monitorear el progreso de los estudiantes y asignar ejercicios de refuerzo basados en el desempeño individual. Al reducir el tiempo dedicado al papeleo, Lerna moderniza el proceso educativo y permite a los educadores centrarse en la enseñanza.",
-    coverImageId: "lerna-cover",
-    galleryImageIds: ["lerna-gallery-1", "lerna-gallery-2", "lerna-gallery-3"],
-    link: "https://learning.override.com.mx",
-    tags: ["Compose Multiplatform", "Koin", "Ktor", "Coil", "Firebase", "Classroom API", "Backend (Ktor)", "Docker", "Google Cloud Functions", "Gemini API", "MVI", "Clean Architecture", "Multimodularity", "Layered Model", "Repository Pattern"],
-  },
-  {
-    id: "6",
-    slug: "override-mindstack",
-    title: "Override Mindstack",
-    description: "Organización de un desafiante concurso de programación centrado en la resolución de un único problema de alta complejidad (NP-HARD).",
-    longDescription: "Organización de un desafiante concurso de programación centrado en la resolución de un único problema de alta complejidad (NP-HARD). Mis responsabilidades incluyeron el diseño y desarrollo del problema, así como la planificación y ejecución de la logística completa del evento, el cual reunió a más de 30 estudiantes para poner a prueba sus límites en lógica y algoritmia.",
-    coverImageId: "mindstack-cover",
-    galleryImageIds: ["mindstack-gallery-1", "mindstack-gallery-2", "mindstack-gallery-3"],
-    link: "https://mindstack.override.com.mx",
-    tags: ["Event Organization", "Problem Design", "Logistics", "Competitive Programming"],
-  },
-  {
-    id: "4",
-    slug: "override-logistics",
-    title: "Override Logistics",
-    description: "Plataforma integral diseñada para optimizar las operaciones de logística en el sector de comercio internacional.",
-    longDescription: "Una plataforma desarrollada para la empresa plasticos del cupatizio aqui la explicacion: Para mitigar estas problemáticas, se propone la migración hacia un ecosistema digital modular y escalable. La solución técnica consiste en una plataforma integral compuesta por cuatro elementos clave: una App Móvil para Conductores, una App Móvil para Almacén, un sistema de visualización TV Almacén (Google TV) y O360 (Suite Logística de Escritorio y App) para la administración central. Todo el ecosistema está potenciado por funcionalidades de Inteligencia Artificial y soportado por una infraestructura en la nube de alta disponibilidad. Este sistema permite la desmaterialización total de la prueba de entrega, la optimización de rutas mediante 'Modo Viaje' y la gestión eficiente de ciclos de carga, asegurando la integridad de la información y la competitividad de la empresa.",
-    coverImageId: "logistics-cover",
-    galleryImageIds: ["logistics-gallery-1", "logistics-gallery-2", "logistics-gallery-3"],
-    link: "https://logistics.override.com.mx", // Actualizado
-    tags: ["Jetpack Compose", "Koin", "Ktor", "Coil", "Room", "Datastore", "Firebase", "Google Authentication", "Backend (Ktor)", "Docker", "Supabase", "Gemini API", "MVI", "Clean Architecture", "Multimodularity", "Layered Model", "Repository Pattern", "KMP JVM"], // Actualizado
-  },
-  {
-    id: "5",
-    slug: "override-news",
-    title: "Override News",
-    description: "Aplicación de noticias que utiliza inteligencia artificial para agilizar el consumo de información.",
-    longDescription: "Aplicación de noticias que utiliza inteligencia artificial para agilizar el consumo de información. La plataforma genera resúmenes concisos de cualquier artículo, permitiendo a los usuarios mantenerse informados de manera rápida y eficiente. Su diseño minimalista y una interfaz de usuario simplificada garantizan una experiencia de uso intuitiva y directa.",
-    coverImageId: "news-cover",
-    galleryImageIds: ["news-gallery-1", "news-gallery-2", "news-gallery-3"],
-    link: "https://www.override.com.mx",
-    tags: ["Jetpack Compose", "Koin", "Ktor", "Coil", "Firebase", "Google Authentication", "Backend (Ktor)", "Docker", "Supabase", "Gemini API", "MVI", "Clean Architecture", "Multimodularity", "Layered Model", "Repository Pattern"],
-  },
-  {
-    id: "7",
-    slug: "override-shop",
-    title: "Override Shop",
-    description: "Ecosistema de ventas completo con web, backend y app móvil administrable.",
-    longDescription: "Ecosistema de ventas, desarrolle tanto la web, como el backend y la App movil que permite a los administradores controlar el contenido completo de la app, permite ser usada la app y el backend en cualquier otro e comers solo falta cambiar las credenciales y listo, tienes un ecosistema completo para tu ecomers, todo esto impulsado con IA para hacer mas rapido el trabajo del administrador.",
-    coverImageId: "shop-cover",
-    galleryImageIds: ["shop-gallery-1", "shop-gallery-2"],
-    link: "https://shop.override.com.mx",
-    tags: ["Jetpack Compose", "Koin", "Ktor", "Coil", "Firebase", "Google Authentication", "Backend (Ktor)", "Docker", "Gemini API", "MVI", "Clean Architecture", "Multimodularity", "Layered Model", "Repository Pattern"],
-  },
-  {
-    id: "8",
-    slug: "dependency",
-    title: "Dependency",
-    description: "Proyecto de código abierto para gestión eficiente de dependencias multiplataforma.",
-    longDescription: "Un proyecto de codigo abierto para que los programadores Multiplataforma o de android, tengan la posiblidad de tener las dependencias actualizadas y listas desde el primer momento sin necesidad de buscarlas en ninungun otro lado, salio de la necesidad de eficientar el trabajo.",
-    coverImageId: "dependency-cover",
-    galleryImageIds: ["dependency-gallery-1"],
-    link: "https://dependency.christopher.com.mx",
-    tags: ["Vite", "React", "Typescript", "Talwaind", "Vercel"],
-  },
-  {
-    id: "9",
-    slug: "cotizador-yazbek",
-    title: "Cotizador Yazbek",
-    description: "Solución rápida y sencilla para cotizar productos de Yazbek.",
-    longDescription: "Desarrollado para la empresa EikoColors, es una solucion rapida y sencilla para cotizar todos los productos de yazbek, rapido y facil, con una interfaz amigable y sencilla.",
-    coverImageId: "cotizador-cover",
-    galleryImageIds: ["cotizador-gallery-1"],
-    link: "https://wasm.christopher.com.mx/cotizador/yazbek",
-    tags: ["WasmJs", "KMP", "Koin", "Clean Arquitecture", "MVI", "Github Actions"],
-  },
-  {
-    id: "10",
     slug: "eikocolors-system",
     title: "EikoColors System",
     description: "Ecosistema integral para la gestión administrativa y operativa de EikoColors.",
-    longDescription: "**Eikocolors System** es un sistema de gestión empresarial diseñado para:\n\n- ✅ Gestionar clientes y sus trabajos\n- ✅ Administrar catálogos de productos\n- ✅ Controlar inventario y distribuidores\n- ✅ Generar cotizaciones y reportes PDF\n- ✅ Sincronizar datos en la nube (Supabase)\n- ✅ Trabajar offline con base de datos local (Room)",
-    coverImageId: "eiko-cover",
-    galleryImageIds: [
-      "eiko-gallery-1",
-      "eiko-gallery-2",
-      "eiko-gallery-3",
-      "eiko-gallery-4",
-      "eiko-gallery-5",
-    ],
-    link: "https://eikocolors.atomo.click", // No se proporcionó link específico en la descripción
-    tags: ["Kmp JVM", "Koin", "Supabase", "Coil", "Room", "Datastore", "Ktor", "MVI", "Clean Architecture", "Multimodularity", "Layered Model", "Repository Pattern"],
+    longDescription: `**Eikocolors System** es un sistema de gestión empresarial de alto rendimiento diseñado para optimizar la operativa diaria.
+
+### Capacidades del Sistema
+
+- ✅ **Gestión de Clientes:** Seguimiento detallado de clientes y sus respectivos trabajos.
+- ✅ **Administración de Catálogos:** Control total sobre los productos y stock.
+- ✅ **Logística e Inventario:** Gestión eficiente de distribuidores y movimientos de almacén.
+- ✅ **Generación de Reportes:** Creación automática de cotizaciones y reportes técnicos en formato PDF.
+- ✅ **Sincronización Híbrida:** Trabajo offline con base de datos local (**Room**) y sincronización en la nube con **Supabase**.
+
+Desarrollado bajo una arquitectura multimodular siguiendo patrones de **Clean Architecture** y **MVI**, garantizando un mantenimiento sencillo y una escalabilidad sólida.`,
+    r2Folder: "EikoColorsSystem",
+    link: "https://eikocolors.atomo.click", 
+    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID],
+    tags: ["Kmp JVM", "Supabase", "Room", "MVI", "Clean Architecture"],
+  },
+  {
+    id: "3",
+    slug: "cotizador-yazbek",
+    title: "Cotizador Yazbek",
+    description: "Solución rápida y sencilla para cotizar productos de Yazbek.",
+    longDescription: `**Cotizador Yazbek** es una herramienta web de alta eficiencia desarrollada para facilitar el proceso de ventas de productos textiles.
+
+### Características del Cotizador
+
+- ⚡ **Cotización Instantánea:** Cálculo automático de precios basado en volumen y personalización.
+- 🎨 **Interfaz Intuitiva:** Experiencia de usuario optimizada para que los vendedores generen presupuestos en segundos.
+- 📱 **Multiplataforma:** Accesible desde cualquier navegador gracias a su arquitectura moderna.
+- 🏗️ **Arquitectura Robusta:** Construido con **Kotlin Multiplatform (WasmJs)** y siguiendo patrones de arquitectura limpia.
+
+Diseñado específicamente para el ecosistema de **EikoColors**, integrándose perfectamente en su flujo de trabajo diario para agilizar la atención al cliente.`,
+    r2Folder: "CotizadorYazbek",
+    link: "https://wasm.christopher.com.mx/cotizador/yazbek",
+    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.WEB],
+    tags: ["WasmJs", "KMP", "Compose Multiplatform", "Clean Architecture"],
+  },
+  {
+    id: "4",
+    slug: "spot",
+    title: "Spot",
+    description: "Aplicación de geocaching emocional para crear cápsulas del tiempo visuales georreferenciadas.",
+    longDescription: `**Spot** es una aplicación móvil innovadora de **geocaching emocional** que transforma coordenadas GPS en experiencias visuales y significativas.
+
+### Concepto y Propósito
+
+Los usuarios pueden crear "spots" (puntos de interés georreferenciados) con fotografías, títulos y descripciones que solo se revelan cuando otros usuarios se encuentran físicamente dentro de un radio de 30 metros. Es una mezcla única entre **red social, geocaching y realidad aumentada**.
+
+### Características Técnicas
+
+- 🗺️ **Mapa Interactivo 3D:** Visualización avanzada con **Mapbox SDK** con inclinación de 60° y zoom dinámico.
+- 📸 **Cápsulas del Tiempo:** Creación de spots públicos o privados con hasta 10 imágenes y metadatos detallados.
+- 👥 **Ecosistema Social:** Sistema de amigos, búsqueda de usuarios y perfiles personalizados.
+- 🎨 **Personalización Material You:** Temas dinámicos que se adaptan al sistema y esquemas de color personalizados.
+- 🔐 **Seguridad Avanzada:** Autenticación con Google (Firebase) y protección biométrica opcional.
+- 📴 **Offline-First:** Sincronización inteligente y funcionamiento sin conexión gracias a **Room**.
+
+Desarrollada con **Kotlin 2.3.0** y **Jetpack Compose**, siguiendo principios de **Clean Architecture** y patrones **MVI** para un estado de UI predecible y robusto.`,
+    r2Folder: "Spot",
+    link: "https://github.com/christophertwo/spot",
+    categories: [TECH_CATEGORIES.ANDROID],
+    tags: ["Android", "Mapbox SDK", "Clean Architecture", "MVI", "Firebase"],
+  },
+  {
+    id: "5",
+    slug: "atomo-web",
+    title: "Atomo Digital Services",
+    description: "Plataforma de servicios digitales premium para negocios gastronómicos y creativos.",
+    longDescription: `**Atomo** es un ecosistema digital de vanguardia diseñado para ofrecer experiencias elegantes y altamente personalizables para restaurantes, negocios gastronómicos y perfiles profesionales.
+
+### Ecosistema de Servicios
+
+- 🍽️ **Digital Menu:** Cartas interactivas y dinámicas para restaurantes.
+- 🎨 **Portfolio:** Galerías visuales sofisticadas para creativos.
+- 🛍️ **Shop:** Tiendas minimalistas con gestión de categorías.
+- 📄 **Digital CV:** Hojas de vida profesionales de alto impacto.
+- ✉️ **Invitations:** Sistema de invitaciones digitales con RSVP integrado.
+
+### Innovación Tecnológica
+
+- ⚡ **Astro v5:** Generación estática y dinámica ultrarrápida (SSR).
+- 🚀 **Incremental Static Regeneration (ISR):** Caché inteligente en el borde mediante **Cloudflare Global Network**.
+- 🎨 **Tailwind CSS v4:** Estilizado moderno y eficiente con tokens de diseño personalizados.
+- 🔐 **Supabase Backend:** Gestión robusta de base de datos, autenticación y tiempo real.
+- 🌐 **Cloudflare Infrastructure:** Despliegue en **Cloudflare Pages** para máxima disponibilidad global.
+
+### Experiencia Premium
+
+La plataforma cuenta con múltiples plantillas (**Minimalist, Elegance, Modern, Luxury, Cyber**) que permiten a cada negocio adaptar la identidad visual de forma precisa, garantizando una presencia digital de alta gama.`,
+    r2Folder: "Atomo/web",
+    link: "https://atomo.click",
+    categories: [TECH_CATEGORIES.WEB],
+    tags: ["Astro v5", "Tailwind CSS v4", "Supabase", "Cloudflare Pages"],
+  },
+  {
+    id: "6",
+    slug: "atomo-app",
+    title: "Atomo App",
+    description: "Aplicación Android nativa para la gestión integral de servicios digitales y presencia profesional.",
+    longDescription: `**Atomo App** es la extensión móvil nativa del ecosistema Atomo, diseñada para ofrecer una gestión potente y fluida de servicios digitales directamente desde el dispositivo Android.
+
+### Gestión Integral de Servicios
+
+La aplicación permite administrar de forma centralizada todo el ecosistema de Atomo:
+- 🍽️ **Menús Digitales:** Edición de platos, precios y disponibilidad en tiempo real.
+- 🎨 **Portafolios:** Carga de proyectos y actualización de galerías visuales.
+- 🛍️ **Tiendas:** Control de inventario y visualización de productos.
+- 📄 **CVs e Invitaciones:** Personalización rápida de perfiles profesionales y eventos.
+
+### Excelencia Técnica (Android Nativo)
+
+- 🎨 **Jetpack Compose & Material 3:** Interfaz de usuario moderna con soporte para **temas dinámicos** y navegación adaptativa.
+- 🏗️ **Clean Architecture:** Estructura modular robusta que separa la lógica de negocio, datos y presentación.
+- 📴 **Offline-First con Room:** Capacidad completa de trabajo sin conexión con sincronización inteligente mediante **WorkManager**.
+- 🔐 **Supabase Integration:** Autenticación segura (Google ID), base de datos en tiempo real y almacenamiento escalable.
+- 🚀 **Kotlin Coroutines & Flow:** Programación asíncrona y reactiva para una experiencia de usuario fluida y sin bloqueos.
+- 🛡️ **Seguridad Biométrica:** Protección adicional de datos sensibles mediante huella digital o reconocimiento facial.
+
+### Sincronización Inteligente
+
+Gracias a una arquitectura basada en **Workers**, la aplicación garantiza que cualquier cambio realizado offline se sincronice automáticamente con la nube una vez que se recupera la conexión, manteniendo la integridad de los datos en todo momento.`,
+    r2Folder: "Atomo/app",
+    link: "https://atomo.click",
+    categories: [TECH_CATEGORIES.ANDROID],
+    tags: ["Android Native", "Kotlin", "Jetpack Compose", "Room", "WorkManager"],
+  },
+  {
+    id: "7",
+    slug: "override-web",
+    title: "Override Official Web",
+    description: "Sitio web oficial de la marca Override, enfocado en servicios de software de alto rendimiento.",
+    longDescription: `**Override Web** es la plataforma central de la marca, diseñada para proyectar una imagen tecnológica, profesional y de alto impacto. El sitio actúa como el hub principal para los servicios de desarrollo de software y soluciones digitales de la compañía.
+
+### Excelencia Técnica
+
+- ⚡ **React + Vite:** Rendimiento optimizado con tiempos de carga instantáneos.
+- 🎨 **Tailwind CSS:** Diseño neobrutalista moderno con tipografías técnicas y acentos de color vibrantes.
+- 🌐 **Vercel Deployment:** Infraestructura de alta disponibilidad y despliegue continuo.
+- 📱 **Responsive Design:** Adaptación fluida para ofrecer una experiencia premium en cualquier dispositivo.
+
+### Propósito del Proyecto
+
+El sitio busca centralizar la identidad de Override, permitiendo a los clientes potenciales explorar el portafolio de servicios, contactar directamente con el equipo y conocer la visión tecnológica de la marca.`,
+    r2Folder: "Override/Web",
+    link: "https://www.override.com.mx",
+    categories: [TECH_CATEGORIES.WEB],
+    tags: ["React", "Vite", "Tailwind CSS", "Vercel"],
+  },
+  {
+    id: "8",
+    slug: "override-logistics",
+    title: "Override Logistics",
+    description: "Ecosistema digital modular diseñado para la optimización de operaciones logísticas internacionales.",
+    longDescription: `**Override Logistics** es una solución integral de alto rendimiento diseñada para mitigar problemáticas operativas mediante la digitalización y automatización de procesos logísticos.
+
+### Ecosistema Modular
+
+La plataforma se compone de cuatro pilares fundamentales:
+- 🚛 **App para Conductores:** Gestión de rutas, carga y prueba de entrega digital.
+- 📦 **App para Almacén:** Control de inventarios y ciclos de carga en tiempo real.
+- 📺 **TV Dashboard:** Visualización de estado de almacén optimizada para Google TV.
+- 🖥️ **O360 Suite:** Panel de administración central para la gestión de toda la operación.
+
+### Innovación y Tecnología
+
+- 🤖 **Inteligencia Artificial:** Funcionalidades avanzadas para la optimización de rutas y gestión eficiente.
+- 🏗️ **Clean Architecture:** Estructura multimodular basada en **Jetpack Compose** y **Kotlin Multiplatform (KMP)**.
+- 🔐 **Seguridad:** Autenticación robusta y sincronización en tiempo real mediante **Supabase** y **Firebase**.
+
+Esta plataforma permite la desmaterialización total de procesos físicos, asegurando la competitividad y eficiencia en el sector de comercio internacional.`,
+    r2Folder: "Override/Logistics",
+    link: "https://logistics.override.com.mx",
+    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID],
+    tags: ["KMP", "Jetpack Compose", "Supabase", "Firebase", "Google TV"],
+  },
+  {
+    id: "9",
+    slug: "eikocolors-web",
+    title: "EikoColors Official E-commerce",
+    description: "Tienda en línea minimalista y moderna para la venta de productos personalizados de EikoColors.",
+    longDescription: `**EikoColors Web** es la plataforma de comercio electrónico definitiva de la marca, diseñada para ofrecer una experiencia de compra fluida, visual y altamente eficiente para productos personalizados.
+
+### Experiencia de Compra Premium
+
+La plataforma combina presencia corporativa con capacidades de venta directa:
+- 🛒 **Gestión de Carrito:** Sistema dinámico y reactivo para una compra sin fricciones.
+- 📦 **Catálogo Inteligente:** Organización de productos por categorías y colecciones exclusivas (Decor, Life Style).
+- 📱 **Diseño Ultra-Responsivo:** Optimizada para dispositivos móviles y escritorio con una estética neobrutalista limpia.
+- 🎨 **Interfaz Moderna:** Uso de **Framer Motion** para animaciones fluidas y **Tailwind CSS v4** para un estilo vanguardista.
+
+### Potencia Tecnológica
+
+- ⚡ **Next.js 15:** Rendimiento excepcional aprovechando las últimas capacidades del framework.
+- 🔥 **Firebase Integration:** Gestión de datos de productos y autenticación en tiempo real mediante Firestore.
+- 🛠️ **Arquitectura Robusta:** Código modular y escalable construido con **TypeScript**.
+- 🚀 **Rendimiento Optimizado:** Tiempos de respuesta mínimos y carga de imágenes eficiente desde R2.
+
+Este proyecto representa la madurez digital de EikoColors, integrando toda su oferta comercial en una única experiencia web de alto rendimiento.`,
+    r2Folder: "EikoColorsSystem/web",
+    link: "https://eikocolors.atomo.click",
+    categories: [TECH_CATEGORIES.WEB],
+    tags: ["Next.js 15", "React 19", "Firebase", "Tailwind CSS v4"],
+  },
+  {
+    id: "10",
+    slug: "charmstar-web",
+    title: "Charmstar E-commerce",
+    description: "Tienda en línea especializada en la venta de charms y accesorios personalizados con una experiencia visual premium.",
+    longDescription: `**Charmstar** es una plataforma de comercio electrónico de alta gama diseñada específicamente para el mercado de joyería y accesorios personalizados. La web ofrece una experiencia de usuario inmersiva, destacando el detalle y la calidad de cada producto.
+
+### Experiencia de Usuario & Ventas
+
+- 🛒 **E-commerce Fluido:** Proceso de compra optimizado desde la selección hasta el checkout.
+- ✨ **Visualización de Charms:** Presentación detallada de productos con galerías de alta resolución.
+- 📱 **Mobile First:** Diseño totalmente adaptado para compras rápidas desde dispositivos móviles.
+- 🎨 **Estética Premium:** Interfaz elegante que resalta la exclusividad de los accesorios.
+
+### Especificaciones Técnicas
+
+- ⚡ **Next.js 15 + React 19:** El stack más moderno para garantizar velocidad y SEO.
+- 🔥 **Firebase:** Gestión integral de base de datos, stock y autenticación de usuarios.
+- 🎨 **Tailwind CSS v4:** Estilizado de última generación con animaciones suaves mediante **Framer Motion**.
+- 🛠️ **Despliegue Profesional:** Infraestructura escalable para soportar picos de tráfico.
+
+Charmstar representa la combinación perfecta entre diseño estético y funcionalidad técnica, ofreciendo una solución de e-commerce robusta para el nicho de accesorios de lujo.`,
+    r2Folder: "Charmstar",
+    link: "https://charmstar.atomo.click",
+    categories: [TECH_CATEGORIES.WEB],
+    tags: ["Next.js 15", "React 19", "Firebase", "Tailwind CSS v4"],
   },
   {
     id: "11",
-    slug: "daelia",
-    title: "Daelia Experiments",
-    description: "Serie de productos experimentales y pruebas de nuevas tecnologías.",
-    longDescription: "Es una serie de productos pequeños y algunos experimentos, Daelia se enfoca en probar y desarrollar nuevas tecnologias como: \n- Daelia Social: Hecho para dar explicaciones sobre como se conforma una red social.\n- Daelia Camera Color Detector: Desarrollado para comprobar como funcionan los detectores de la camara.\n- Daelia Weather: Un reloj minimalista que muestra la hora y el clima.",
-    coverImageId: "daelia-cover",
-    galleryImageIds: ["daelia-gallery-1"],
-    link: "/daelia",
-    tags: ["Firebase", "Google Auth", "Jetpack Compose", "Koin", "MVI", "WasmJs KMP", "OpenWather Api", "Ktor"],
+    slug: "dependency",
+    title: "Dependency Hub",
+    description: "Catálogo centralizado de dependencias para Android y Kotlin Multiplatform (KMP).",
+    longDescription: `**Dependency Hub** es una solución diseñada para optimizar el flujo de trabajo de desarrolladores Android y KMP, eliminando la necesidad de buscar dependencias en múltiples repositorios externos.
+
+### Eficiencia en el Desarrollo
+
+- 📦 **Catálogo Unificado:** Repositorio central con las dependencias más utilizadas y actualizadas del ecosistema.
+- ⚡ **Acceso Rápido:** Copia y pega configuraciones de Gradle instantáneamente.
+- 🏗️ **KMP Ready:** Enfocado en facilitar la configuración de proyectos multiplataforma.
+- 🛠️ **Curaduría Técnica:** Selección de librerías verificadas por la comunidad y expertos.
+
+Este proyecto nació de la necesidad de eficientar la fase inicial de configuración de software, permitiendo a los programadores centrarse en la lógica de negocio desde el primer minuto.`,
+    r2Folder: "Dependency",
+    link: "https://dependency.christopher.com.mx",
+    categories: [TECH_CATEGORIES.WEB, TECH_CATEGORIES.KMP],
+    tags: ["React", "TypeScript", "Tailwind CSS", "Gradle", "KMP"],
   },
   {
     id: "12",
-    slug: "lumi",
-    title: "Lumi (Daelia)",
-    description: "Generador de códigos QR impulsado con IA.",
-    longDescription: "Un generador de codigos QR impulsado con IA, capaz de recibir una instruccion simple y generar un qr, facil rapido y sencillo. Parte de la serie Daelia.",
-    coverImageId: "lumi-cover",
-    galleryImageIds: ["lumi-gallery-1"],
-    link: "/lumi",
-    tags: ["Jetpack Compose", "Koin", "MVI", "Firebase AI", "Google Auth"],
+    slug: "colors",
+    title: "Colors RGB Guess",
+    description: "Juego de adivinanza de colores desarrollado con Compose Multiplatform.",
+    longDescription: `**Colors RGB Guess** es un mini juego interactivo que desafía a los usuarios a recrear un color aleatorio ajustando sus componentes RGB.
+
+### Características del Juego
+
+- 🎲 **Desafío Aleatorio:** Generación dinámica de colores objetivo.
+- 🎨 **Interfaz Adaptativa:** Los elementos visuales cambian según el color actual para mantener la legibilidad.
+- 📊 **Feedback de Precisión:** Muestra un porcentaje de coincidencia exacto tras cada intento.
+- 🏗️ **Compose Multiplatform:** Ejecución nativa en Android, Desktop y Web (WasmJs).
+
+Construido con una arquitectura **MVI** sólida para una gestión de estado predecible y reactiva.`,
+    r2Folder: "colors",
+    link: "https://wasm.christopher.com.mx/colors",
+    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB],
+    tags: ["Compose Multiplatform", "Kotlin", "WasmJs", "Android", "MVI"],
   },
 ];

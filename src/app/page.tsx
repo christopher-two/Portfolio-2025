@@ -9,6 +9,7 @@ import { TechMarquee } from "@/components/TechMarquee";
 import { AnimatedName } from "@/components/AnimatedName";
 import { socialLinks, projects } from "@/lib/data";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
+import { getProjectImages } from "@/lib/r2-client";
 
 
 const techSkills = [
@@ -73,8 +74,17 @@ const recognitions = [
   },
 ];
 
-export default function Home() {
-  const featuredProjects = projects.slice(0, 6);
+export default async function Home() {
+  const featuredProjects = await Promise.all(
+    projects.slice(0, 6).map(async (project) => {
+      if (!project.r2Folder) return { ...project, coverImage: "" };
+      const images = await getProjectImages(project.r2Folder);
+      return {
+        ...project,
+        coverImage: images[0]?.url || ""
+      };
+    })
+  );
 
   return (
     <div className="flex-1 w-full">

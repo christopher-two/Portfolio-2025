@@ -1,19 +1,22 @@
 import { projects } from "@/lib/data";
-import { ProjectCard } from "@/components/ProjectCard";
+import { ProjectsGrid } from "@/components/ProjectsGrid";
+import { getProjectImages } from "@/lib/r2-client";
 
-export default function ProjectsPage() {
-  return (
-    <div className="w-full animate-fade-in">
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            slug={project.slug}
-            title={project.title}
-            coverImageId={project.coverImageId}
-          />
-        ))}
-      </div>
-    </div>
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+export default async function ProjectsPage() {
+  const projectsWithCovers = await Promise.all(
+    projects.map(async (project) => {
+      if (!project.r2Folder) return { ...project, coverImage: "" };
+      
+      const images = await getProjectImages(project.r2Folder);
+      return {
+        ...project,
+        coverImage: images[0]?.url || ""
+      };
+    })
   );
+
+  return <ProjectsGrid initialProjects={projectsWithCovers} />;
 }

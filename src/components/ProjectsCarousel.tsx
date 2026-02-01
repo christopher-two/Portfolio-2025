@@ -41,7 +41,7 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
               <ProjectCard
                 slug={project.slug}
                 title={project.title}
-                coverImageId={project.coverImageId}
+                coverImage={project.coverImage}
               />
             </CarouselItem>
           ))}

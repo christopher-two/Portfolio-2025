@@ -1,156 +1,6 @@
 {
   "placeholderImages": [
     {
-      "id": "avatar",
-      "description": "Avatar for Christopher",
-      "imageUrl": "https://images.unsplash.com/photo-1583195763986-0231686dcd43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NTkzNjQ5MDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "man portrait"
-    },
-    {
-      "id": "lyra-cover",
-      "description": "Cover image for Lyra project",
-      "imageUrl": "https://images.unsplash.com/photo-1663661759279-5edbf3d58e0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxoZWFsdGglMjBhcHB8ZW58MHx8fHwxNzU5NDMwNzI0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "health app"
-    },
-    {
-      "id": "lyra-gallery-1",
-      "description": "Gallery image 1 for Lyra project",
-      "imageUrl": "https://images.unsplash.com/photo-1638328740227-1c4b1627614d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxudXRyaXRpb24lMjBwbGFufGVufDB8fHx8MTc1OTQ2NzU4MHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "nutrition plan"
-    },
-    {
-      "id": "lyra-gallery-2",
-      "description": "Gallery image 2 for Lyra project",
-      "imageUrl": "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8MTc1OTM0NTI4M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "doctor patient"
-    },
-    {
-      "id": "lyra-gallery-3",
-      "description": "Gallery image 3 for Lyra project",
-      "imageUrl": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBpbnRlcmZhY2V8ZW58MHx8fHwxNzU5NDMxMzEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "mobile interface"
-    },
-    {
-      "id": "quickness-cover",
-      "description": "Cover image for Quickness project",
-      "imageUrl": "https://images.unsplash.com/photo-1600147131759-880e94a6185f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxxciUyMGNvZGV8ZW58MHx8fHwxNzU5NDQ4OTExfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "qr code"
-    },
-    {
-      "id": "quickness-gallery-1",
-      "description": "Gallery image 1 for Quickness project",
-      "imageUrl": "https://images.unsplash.com/photo-1759107547027-1fd15603aaa2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzZWN1cml0eSUyMGFjY2Vzc3xlbnwwfHx8fDE3NTk0Njc1ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "security access"
-    },
-    {
-      "id": "quickness-gallery-2",
-      "description": "Gallery image 2 for Quickness project",
-      "imageUrl": "https://images.unsplash.com/photo-1490299585466-5b2c9073b204?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxlbmNyeXB0ZWQlMjBkYXRhfGVufDB8fHx8MTc1OTQ2NzU4MHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "encrypted data"
-    },
-    {
-      "id": "quickness-gallery-3",
-      "description": "Gallery image 3 for Quickness project",
-      "imageUrl": "https://images.unsplash.com/photo-1682187516046-addee7e1ffc4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjb3Jwb3JhdGUlMjBidWlsZGluZ3xlbnwwfHx8fDE3NTk0MTcxNDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "corporate building"
-    },
-    {
-      "id": "lerna-cover",
-      "description": "Cover image for Lerna project",
-      "imageUrl": "https://images.unsplash.com/photo-1636772523547-5577d04e8dc1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxlZHVjYXRpb24lMjBwbGF0Zm9ybXxlbnwwfHx8fDE3NTk0Njc1ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "education platform"
-    },
-    {
-      "id": "lerna-gallery-1",
-      "description": "Gallery image 1 for Lerna project",
-      "imageUrl": "https://images.unsplash.com/photo-1722096651044-932c4fbc36e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2xhc3Nyb29tJTIwYXV0b21hdGlvbnxlbnwwfHx8fDE3NTk0Njc1ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "classroom automation"
-    },
-    {
-      "id": "lerna-gallery-2",
-      "description": "Gallery image 2 for Lerna project",
-      "imageUrl": "https://images.unsplash.com/photo-1649920442906-3c8ef428fb6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0ZWFjaGVyJTIwc3R1ZGVudHxlbnwwfHx8fDE3NTk0MTI2OTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "teacher student"
-    },
-    {
-      "id": "lerna-gallery-3",
-      "description": "Gallery image 3 for Lerna project",
-      "imageUrl": "https://images.unsplash.com/photo-1633671475650-4cdee4db2277?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhaSUyMGxlYXJuaW5nfGVufDB8fHx8MTc1OTQ2NzU4MHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "ai learning"
-    },
-    {
-      "id": "logistics-cover",
-      "description": "Cover image for Override Logistics project",
-      "imageUrl": "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxsb2dpc3RpY3MlMjB0cnVja3xlbnwwfHx8fDE3NTk0NjQ1NzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "logistics truck"
-    },
-    {
-      "id": "logistics-gallery-1",
-      "description": "Gallery image 1 for Override Logistics project",
-      "imageUrl": "https://images.unsplash.com/photo-1568347877321-f8935c7dc5a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjYXJnbyUyMHNoaXB8ZW58MHx8fHwxNzU5MzQ1MTQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "cargo ship"
-    },
-    {
-      "id": "logistics-gallery-2",
-      "description": "Gallery image 2 for Override Logistics project",
-      "imageUrl": "https://images.unsplash.com/photo-1740914994162-0b2a49280aeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3YXJlaG91c2UlMjBtYW5hZ2VtZW50fGVufDB8fHx8MTc1OTQ2NzU4MHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "warehouse management"
-    },
-    {
-      "id": "logistics-gallery-3",
-      "description": "Gallery image 3 for Override Logistics project",
-      "imageUrl": "https://images.unsplash.com/photo-1634638026221-4c1c4cf9f881?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzdXBwbHklMjBjaGFpbnxlbnwwfHx8fDE3NTkzOTE5MDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "supply chain"
-    },
-    {
-      "id": "news-cover",
-      "description": "Cover image for Override News project",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxuZXdzJTIwYXJ0aWNsZXxlbnwwfHx8fDE3NTk0Njc1ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "news article"
-    },
-    {
-      "id": "news-gallery-1",
-      "description": "Gallery image 1 for Override News project",
-      "imageUrl": "https://images.unsplash.com/photo-1692337735336-f8b7fdb558f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtb2JpbGUlMjBuZXdzfGVufDB8fHx8MTc1OTQ2NzU4MHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "mobile news"
-    },
-    {
-      "id": "news-gallery-2",
-      "description": "Gallery image 2 for Override News project",
-      "imageUrl": "https://images.unsplash.com/photo-1595060938450-303491bc5577?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxpbmZvcm1hdGlvbiUyMG92ZXJsb2FkfGVufDB8fHx8MTc1OTQ2NzU4MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "information overload"
-    },
-    {
-      "id": "news-gallery-3",
-      "description": "Gallery image 3 for Override News project",
-      "imageUrl": "https://images.unsplash.com/photo-1733630776252-252b6717ce9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhaSUyMHN1bW1hcnl8ZW58MHx8fHwxNzU5NDY3NTgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "ai summary"
-    },
-    {
-      "id": "mindstack-cover",
-      "description": "Cover image for Override Mindstack project",
-      "imageUrl": "https://images.unsplash.com/photo-1637073849667-91120a924221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjb2RpbmclMjBjb21wZXRpdGlvbnxlbnwwfHx8fDE3NTk0MDQyMDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "coding competition"
-    },
-    {
-      "id": "mindstack-gallery-1",
-      "description": "Gallery image 1 for Override Mindstack project",
-      "imageUrl": "https://images.unsplash.com/photo-1746422125898-b88912e01582?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21wbGV4JTIwYWxnb3JpdGhtfGVufDB8fHx8MTc1OTQ2NzU4MHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "complex algorithm"
-    },
-    {
-      "id": "mindstack-gallery-2",
-      "description": "Gallery image 2 for Override Mindstack project",
-      "imageUrl": "https://images.unsplash.com/photo-1733824204474-e1b329a33612?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzdHVkZW50cyUyMHByb2dyYW1taW5nfGVufDB8fHx8MTc1OTQ2NzU4MHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "students programming"
-    },
-    {
-      "id": "mindstack-gallery-3",
-      "description": "Gallery image 3 for Override Mindstack project",
-      "imageUrl": "https://images.unsplash.com/photo-1539627831859-a911cf04d3cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9ibGVtJTIwc29sdmluZ3xlbnwwfHx8fDE3NTk0MDI0MTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "problem solving"
-    },
-    {
       "id": "eiko-cover",
       "description": "Cover image for EikoColors System",
       "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Eiko%20colors/Productos.gif",
@@ -185,6 +35,72 @@
       "description": "Gallery image 5 for EikoColors System (cotizaciones)",
       "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Eiko%20colors/cotizaciones.gif",
       "imageHint": "quotes overview"
+    },
+    {
+      "id": "shop-cover",
+      "description": "Cover GIF for Override Shop (tienda y panel de administración)",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Override%20Shop/override_shop_update.gif",
+      "imageHint": "override shop cover gif"
+    },
+    {
+      "id": "shop-original",
+      "description": "Original GIF for Override Shop",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Override%20Shop/override_shop.gif",
+      "imageHint": "override shop original gif"
+    },
+    {
+      "id": "shop-gallery-1",
+      "description": "Gallery GIF 1 for Override Shop (customizer)",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Override%20Shop/override_shop_customizer.gif",
+      "imageHint": "override shop customizer gif"
+    },
+    {
+      "id": "shop-gallery-2",
+      "description": "Gallery video for Override Shop (products overview)",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Override%20Shop/override_shop_products.mp4",
+      "imageHint": "override shop products video"
+    },
+    {
+      "id": "shop-custom",
+      "description": "Customizer view for Override Shop",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Override%20Shop/Cutom.png",
+      "imageHint": "override shop customizer"
+    },
+    {
+      "id": "shop-edit-product-2",
+      "description": "Edit Product 2 view",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Override%20Shop/Edit%20Product%202.png",
+      "imageHint": "override shop edit product 2"
+    },
+    {
+      "id": "shop-edit-product",
+      "description": "Edit Product view",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Override%20Shop/Edit%20Product.png",
+      "imageHint": "override shop edit product"
+    },
+    {
+      "id": "shop-products",
+      "description": "Products list view",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Override%20Shop/Products.png",
+      "imageHint": "override shop products"
+    },
+    {
+      "id": "shop-update-product-info",
+      "description": "Update Product Info view",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Override%20Shop/Update%20Product%20Info.png",
+      "imageHint": "override shop update product info"
+    },
+    {
+      "id": "shop-update-product",
+      "description": "Update Product view",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Override%20Shop/Update%20Product.png",
+      "imageHint": "override shop update product"
+    },
+    {
+      "id": "shop-update",
+      "description": "Update view",
+      "imageUrl": "https://pub-ad04204414e64e578b7a9699ec696226.r2.dev/Override%20Shop/Update.png",
+      "imageHint": "override shop update"
     }
   ]
 }
