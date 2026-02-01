@@ -468,6 +468,29 @@ Este componente demuestra nuestra capacidad para integrar visión por computador
     r2Folder: "SquidGames/mobile",
     link: "https://github.com/christopher-two",
     categories: [TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.AI],
+    tags: ["Android Native", "Teachable Machine", "AI", "Real-time", "Biometrics"],
+  },
+  {
+    id: "17",
+    slug: "squid-games-desktop",
+    title: "Squid Games: Desktop Control",
+    description: "Centro de control robusto para la gestión centralizada y monitorización del Puente de Cristal.",
+    longDescription: `**Squid Games Desktop** es el núcleo de inteligencia y mando que orquestra todo el ecosistema del Puente de Cristal.
+
+### Centro de Mando Centralizado
+
+Desarrollada para ofrecer una gestión total de la experiencia, esta aplicación actúa como el cerebro del sistema:
+
+- 🖥️ **Gestión de Partida:** Control absoluto sobre el flujo del juego, configuración de reglas y administración de la lógica del puente.
+- 📊 **Monitorización Avanzada:** Visualización en tiempo real del estado de todos los jugadores y del sistema físico embebido.
+- 🔌 **Integración de Hardware:** Comunicación de bajo nivel para el control de los sensores y actuadores del puente físico.
+- 🏆 **Excelencia en Ingeniería:** Construida con un enfoque en la fiabilidad y el rendimiento, asegurando que la coordinación entre la app móvil y el hardware sea perfecta.
+- 📡 **Hub de Comunicación:** Centraliza la recepción de datos biométricos de las apps móviles y los sincroniza con las reacciones físicas del puente.
+
+El software de escritorio representa el pilar de robustez del proyecto, demostrando nuestra capacidad para desarrollar sistemas de control centralizados para entornos interactivos complejos.`,
+    r2Folder: "SquidGames/desktop",
+    link: "https://github.com/christopher-two",
+    categories: [TECH_CATEGORIES.WEB],
     tags: ["Desktop Software", "Control System", "Hardware Integration", "Kotlin", "Real-time"],
   },
   {
