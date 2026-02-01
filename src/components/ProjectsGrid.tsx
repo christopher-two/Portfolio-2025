@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { projects, TECH_CATEGORIES } from "@/lib/data";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Search, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Search, X, ArrowUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ProjectsGridProps {
@@ -15,8 +16,22 @@ interface ProjectsGridProps {
 export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const categories = Object.values(TECH_CATEGORIES);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const filteredProjects = useMemo(() => {
     return initialProjects.filter((project) => {
@@ -35,7 +50,7 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
   return (
     <div className="w-full space-y-8 pb-20">
       {/* Search and Filter Bar */}
-      <div className="sticky top-14 z-30 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b-2 border-border p-4 md:p-6">
+      <div className="sticky top-[58px] z-30 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b-2 border-border p-4 md:p-6">
         <div className="container max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-6 items-center justify-between">
           
           {/* Search Input */}
@@ -58,32 +73,34 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
           </div>
 
           {/* Category Filters */}
-          <div className="flex flex-wrap justify-center gap-2">
-            <button
-              onClick={() => setActiveCategory(null)}
-              className={cn(
-                "px-4 py-2 text-xs font-black uppercase tracking-widest border-2 transition-all",
-                !activeCategory 
-                  ? "bg-accent text-accent-foreground border-border shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" 
-                  : "bg-background text-muted-foreground border-border/50 hover:border-border hover:text-foreground"
-              )}
-            >
-              Todos
-            </button>
-            {categories.map((category) => (
+          <div className="w-full md:w-auto overflow-x-auto pb-2 md:pb-0 no-scrollbar">
+            <div className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 min-w-max md:min-w-0 px-2 md:px-0">
               <button
-                key={category}
-                onClick={() => setActiveCategory(category === activeCategory ? null : category)}
+                onClick={() => setActiveCategory(null)}
                 className={cn(
-                  "px-4 py-2 text-xs font-black uppercase tracking-widest border-2 transition-all",
-                  activeCategory === category
-                    ? "bg-accent text-accent-foreground border-border shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                  "px-4 py-2 text-xs font-black uppercase tracking-widest border-2 transition-all whitespace-nowrap",
+                  !activeCategory 
+                    ? "bg-accent text-accent-foreground border-border shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" 
                     : "bg-background text-muted-foreground border-border/50 hover:border-border hover:text-foreground"
                 )}
               >
-                {category}
+                Todos
               </button>
-            ))}
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category === activeCategory ? null : category)}
+                  className={cn(
+                    "px-4 py-2 text-xs font-black uppercase tracking-widest border-2 transition-all whitespace-nowrap",
+                    activeCategory === category
+                      ? "bg-accent text-accent-foreground border-border shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                      : "bg-background text-muted-foreground border-border/50 hover:border-border hover:text-foreground"
+                  )}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -119,6 +136,19 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
           </div>
         )}
       </div>
+
+      {/* Scroll to Top Button */}
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={scrollToTop}
+        className={cn(
+          "fixed bottom-8 right-8 z-50 h-12 w-12 rounded-none border-2 border-border bg-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none",
+          showScrollTop ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none"
+        )}
+      >
+        <ArrowUp className="h-6 w-6" />
+      </Button>
     </div>
   );
 }
