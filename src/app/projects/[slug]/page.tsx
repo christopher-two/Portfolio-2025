@@ -7,40 +7,47 @@ import { getProjectImages } from '@/lib/r2-client';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-// Project detail page handler with dynamic R2 gallery support.
+// Set to true to allow dynamic parameters that weren't generated at build time
+export const dynamicParams = true;
+
+/**
+ * Project detail page handler.
+ * Fetches dynamic gallery from Cloudflare R2 on every request.
+ */
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   
-  // Debug log to terminal
-  console.log(`[ROUTE DEBUG] Requesting detail for: "${slug}"`);
-  console.log(`[ROUTE DEBUG] Available slugs: ${projects.map(p => p.slug).join(', ')}`);
+  // Debug for Vercel/Local logs
+  console.log(`[ROUTE] Fetching detail for: "${slug}"`);
 
-  // Normalize slug to match lib/data.ts exactly
+  // Robust slug matching
   const normalizedSlug = slug.toLowerCase().trim();
   const project = projects.find((p) => p.slug.toLowerCase().trim() === normalizedSlug);
 
   if (!project) {
-    console.error(`[ROUTE ERROR] Project not found for slug: ${slug}`);
+    console.warn(`[ROUTE] Project NOT FOUND for slug: "${slug}"`);
+    console.info(`[ROUTE] Available slugs: ${projects.map(p => p.slug).join(', ')}`);
     notFound();
   }
 
-  // Use dynamic gallery or empty array if not found
   let gallery = [];
   try {
     if (project.r2Folder) {
-      console.log(`[R2 DEBUG] Fetching images from folder: ${project.r2Folder}`);
-      gallery = await getProjectImages(project.r2Folder);
-      // Shuffle gallery on server to avoid hydration mismatch
-      gallery = [...gallery].sort(() => Math.random() - 0.5);
+      console.log(`[R2] Scanning folder: "${project.r2Folder}"`);
+      const dynamicImages = await getProjectImages(project.r2Folder);
+      // Shuffle on server to ensure consistent hydration but dynamic view
+      gallery = [...dynamicImages].sort(() => Math.random() - 0.5);
     }
   } catch (error) {
-    console.error(`[R2 ERROR] Failed to fetch gallery for ${slug}:`, error);
+    console.error(`[R2] Error scanning folder for "${slug}":`, error);
   }
   
   return <ProjectDetailClient project={project} gallery={gallery} />;
 }
 
-// generateStaticParams provides hints to Next.js
+/**
+ * Generate static params to help Next.js with routing hints.
+ */
 export async function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,

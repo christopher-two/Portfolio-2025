@@ -1,9 +1,12 @@
 import { S3Client, ListObjectsV2Command } from "@aws-sdk/client-s3";
 
+// These are public constants for your R2 setup
 const ACCOUNT_ID = "1827203a2c62ad3b7a9aaace51eb44b7";
 const BUCKET_NAME = "projects";
 const PUBLIC_URL = "https://pub-f9c51555bfe841b8af90cf9dc30b962d.r2.dev";
 
+// Initialize S3 Client for Cloudflare R2
+// Note: On Vercel, ensure R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY are set in the dashboard
 const s3Client = new S3Client({
   region: "auto",
   endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
@@ -16,12 +19,13 @@ const s3Client = new S3Client({
 export async function getProjectImages(folder: string) {
   const cleanFolder = folder.replace(/^\/+|\/+$/g, "");
   
+  // Safety check for environment variables
   if (!process.env.R2_ACCESS_KEY_ID || !process.env.R2_SECRET_ACCESS_KEY) {
+    console.warn("[R2 WARNING] R2 credentials missing. If you are on Vercel, check the Dashboard Environment Variables.");
     return [];
   }
 
   try {
-    // Try with trailing slash first (standard for folders)
     const command = new ListObjectsV2Command({
       Bucket: BUCKET_NAME,
       Prefix: `${cleanFolder}/`,
@@ -29,7 +33,6 @@ export async function getProjectImages(folder: string) {
 
     let { Contents } = await s3Client.send(command);
 
-    // If empty, try without trailing slash just in case
     if (!Contents || Contents.length === 0) {
       const fallbackCommand = new ListObjectsV2Command({
         Bucket: BUCKET_NAME,
@@ -55,7 +58,7 @@ export async function getProjectImages(folder: string) {
         };
       });
   } catch (error) {
-    console.error("Error fetching images from R2:", error);
+    console.error(`[R2 ERROR] Failed to fetch images for "${folder}":`, error);
     return [];
   }
 }
