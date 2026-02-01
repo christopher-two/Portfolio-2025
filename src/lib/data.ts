@@ -464,7 +464,7 @@ La aplicación móvil actúa como el terminal de identidad y estado para los par
 - 📡 **Sincronización Total:** Comunicación fluida con la suite de escritorio para asegurar que la identidad del jugador sea consistente en todo el ecosistema.
 
 Este componente demuestra nuestra capacidad para integrar visión por computadora en dispositivos móviles dentro de una solución de ingeniería compleja.`,
-    r2Folder: "SquidGames/app",
+    r2Folder: "SquidGames/mobile",
     link: "https://github.com/christopher-two",
     categories: [TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.AI],
     tags: ["Android Native", "Teachable Machine", "AI", "Real-time", "Biometrics"],
