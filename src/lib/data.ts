@@ -74,6 +74,7 @@ export const products = [
   { id: "prod-12", title: "Colors RGB", href: "/projects/colors", bgColor: "bg-gradient-to-br from-red-500 via-green-500 to-blue-500" },
   { id: "prod-13", title: "Web Experiments", href: "/projects/webs", bgColor: "bg-indigo-600" },
   { id: "prod-14", title: "MindStack", href: "/projects/mindstack", bgColor: "bg-zinc-950" },
+  { id: "prod-15", title: "Lerna", href: "/projects/lerna", bgColor: "bg-stone-900" },
 ];
 
 export const TECH_CATEGORIES = {
@@ -421,5 +422,27 @@ El proyecto no es solo una landing page, sino el portal de entrada a un ecosiste
     link: "https://mindstack.override.com.mx",
     categories: [TECH_CATEGORIES.WEB],
     tags: ["React", "Tailwind CSS", "UI/UX", "Space Theme", "Competition"],
+  },
+  {
+    id: "15",
+    slug: "lerna",
+    title: "Lerna",
+    description: "Plataforma de productividad para educadores impulsada por inteligencia artificial.",
+    longDescription: `**Lerna** es una herramienta de vanguardia diseñada para transformar la labor docente mediante la automatización y la optimización de flujos de trabajo educativos.
+
+### Empoderando a los Educadores
+
+Lerna se enfoca en devolver el tiempo valioso a los profesores, permitiéndoles concentrarse en lo que realmente importa: la enseñanza.
+
+- 🤖 **IA Educativa:** Integración de herramientas de inteligencia artificial para la creación de contenido y personalización del aprendizaje.
+- ⚡ **Productividad Aumentada:** Flujos de trabajo diseñados para reducir drásticamente la carga administrativa y de planeación.
+- 📚 **Gestión Inteligente:** Organización eficiente de recursos didácticos y seguimiento del progreso académico.
+- 🎨 **Interfaz Sofisticada:** Una experiencia de usuario limpia y profesional que facilita la adopción tecnológica en el aula.
+
+Lerna representa el siguiente paso en la evolución educativa, donde la tecnología actúa como un aliado estratégico del docente para crear experiencias de aprendizaje más ricas y efectivas.`,
+    r2Folder: "Lerna",
+    link: "https://lerna.override.com.mx",
+    categories: [TECH_CATEGORIES.WEB, TECH_CATEGORIES.AI],
+    tags: ["Next.js", "AI", "Education", "Productivity", "Tailwind CSS"],
   },
 ];
