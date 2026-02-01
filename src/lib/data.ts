@@ -72,7 +72,7 @@ export const products = [
   { id: "prod-10", title: "Charmstar Web", href: "/projects/charmstar-web", bgColor: "bg-rose-900" },
   { id: "prod-11", title: "Dependency", href: "/projects/dependency", bgColor: "bg-cyan-800" },
   { id: "prod-12", title: "Colors RGB", href: "/projects/colors", bgColor: "bg-gradient-to-br from-red-500 via-green-500 to-blue-500" },
-  { id: "prod-13", title: "Web Experiments", href: "/projects/web-experiments", bgColor: "bg-indigo-600" },
+  { id: "prod-13", title: "Web Experiments", href: "/projects/webs", bgColor: "bg-indigo-600" },
 ];
 
 export const TECH_CATEGORIES = {
@@ -379,7 +379,7 @@ Construido con una arquitectura **MVI** sólida para una gestión de estado pred
   },
   {
     id: "13",
-    slug: "web-experiments",
+    slug: "webs",
     title: "Web Experiments & Prototypes",
     description: "Colección de interfaces experimentales y componentes de vanguardia.",
     longDescription: `**Web Experiments & Prototypes** es un laboratorio digital donde exploro las fronteras de la interfaz de usuario y la experiencia de desarrollo moderno.
