@@ -75,6 +75,7 @@ export const products = [
   { id: "prod-13", title: "Web Experiments", href: "/projects/webs", bgColor: "bg-indigo-600" },
   { id: "prod-14", title: "MindStack", href: "/projects/mindstack", bgColor: "bg-zinc-950" },
   { id: "prod-15", title: "Lerna", href: "/projects/lerna", bgColor: "bg-stone-900" },
+  { id: "prod-16", title: "Squid Games", href: "/projects/squid-games", bgColor: "bg-pink-900" },
 ];
 
 export const TECH_CATEGORIES = {
@@ -444,5 +445,28 @@ Lerna representa el siguiente paso en la evolución educativa, donde la tecnolog
     link: "https://lerna.override.com.mx",
     categories: [TECH_CATEGORIES.WEB, TECH_CATEGORIES.AI, TECH_CATEGORIES.KMP],
     tags: ["KMP", "Compose Multiplatform", "Gemini AI", "WasmJs", "Clean Architecture"],
+  },
+  {
+    id: "16",
+    slug: "squid-games",
+    title: "Squid Games: Puente de Cristal",
+    description: "Sistema interactivo que integra hardware embebido, software de escritorio y reconocimiento facial.",
+    longDescription: `**Squid Games: Puente de Cristal** es un proyecto de ingeniería de alta complejidad que recrea la tensión y mecánica del famoso juego de la serie, integrando múltiples capas tecnológicas en una solución única.
+
+### Ingeniería Multidisciplinaria
+
+Este proyecto fue concebido como un desafío de superación técnica, logrando una integración fluida entre hardware y software:
+
+- 🎮 **Sistema Embebido Interactivo:** Construcción física del puente con sensores para detectar acciones del jugador en tiempo real y reaccionar según las reglas del juego.
+- 🖥️ **Centro de Control Desktop:** Aplicación robusta para la gestión total de la partida, monitorización de jugadores y configuración de parámetros lógicos.
+- 🤖 **IA y Reconocimiento Facial:** Implementación de una aplicación móvil que utiliza **Teachable Machine** para la identificación biométrica y registro de participantes.
+- 📡 **Ecosistema Integrado:** Comunicación bidireccional entre el hardware, la app móvil y el centro de control para una experiencia de usuario coherente y sin latencia.
+- 🏆 **Excelencia Técnica:** Un proyecto diseñado bajo estándares de alta fidelidad, optimizando el rendimiento y la fiabilidad de cada componente desde el hardware hasta la interfaz de usuario.
+
+El "Puente de Cristal" representa nuestra capacidad para materializar ideas ambiciosas, combinando visión creativa con ingeniería de software y hardware de precisión.`,
+    r2Folder: "SquidGames/desktop",
+    link: "https://github.com/christopher-two",
+    categories: [TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.AI],
+    tags: ["Embedded Systems", "Desktop App", "Computer Vision", "Kotlin", "Teachable Machine"],
   },
 ];
