@@ -395,7 +395,7 @@ Esta es una **colección curada de despliegues rápidos, prototipos de component
 - 🎨 **Estética Visual:** Exploración de tendencias como Neobrutalismo, Glassmorphism y Bento Grids.
 
 Cada pieza en esta colección representa un desafío técnico superado, desde micro-interacciones complejas hasta integraciones experimentales con APIs del navegador.`,
-    r2Folder: "projects/webs",
+    r2Folder: "webs",
     link: "https://www.christopher.com.mx",
     categories: [TECH_CATEGORIES.WEB],
     tags: ["Experimental", "UI/UX", "Next.js", "Tailwind CSS", "Framer Motion"],
@@ -417,7 +417,7 @@ Bajo el lema "Desafía los Límites de la Lógica", MindStack propone un entorno
 - 💻 **Arquitectura Moderna:** Construido con tecnologías web de última generación para garantizar estabilidad durante picos de tráfico de competidores.
 
 El proyecto no es solo una landing page, sino el portal de entrada a un ecosistema de resolución de problemas donde la eficiencia del código y la creatividad lógica son los únicos requisitos para alcanzar la cima del ranking.`,
-    r2Folder: "projects/MindStack",
+    r2Folder: "Mindstack",
     link: "https://mindstack.override.com.mx",
     categories: [TECH_CATEGORIES.WEB],
     tags: ["React", "Tailwind CSS", "UI/UX", "Space Theme", "Competition"],
