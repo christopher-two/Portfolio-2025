@@ -22,7 +22,7 @@ function createS3Client() {
   console.log(`[R2 CLIENT] Secret Key Check (Len: ${secretAccessKey.length})`);
 
   return new S3Client({
-    region: "us-east-1",
+    region: "auto",
     endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
     credentials: {
       accessKeyId,
