@@ -73,6 +73,7 @@ export const products = [
   { id: "prod-11", title: "Dependency", href: "/projects/dependency", bgColor: "bg-cyan-800" },
   { id: "prod-12", title: "Colors RGB", href: "/projects/colors", bgColor: "bg-gradient-to-br from-red-500 via-green-500 to-blue-500" },
   { id: "prod-13", title: "Web Experiments", href: "/projects/webs", bgColor: "bg-indigo-600" },
+  { id: "prod-14", title: "MindStack", href: "/projects/mindstack", bgColor: "bg-zinc-950" },
 ];
 
 export const TECH_CATEGORIES = {
@@ -398,5 +399,27 @@ Cada pieza en esta colección representa un desafío técnico superado, desde mi
     link: "https://www.christopher.com.mx",
     categories: [TECH_CATEGORIES.WEB],
     tags: ["Experimental", "UI/UX", "Next.js", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    id: "14",
+    slug: "mindstack",
+    title: "Override MindStack",
+    description: "Competencia de programación de élite con temática espacial y retos de complejidad galáctica.",
+    longDescription: `**Override MindStack** es una plataforma diseñada para albergar una de las competencias de programación más desafiantes para el talento tecnológico.
+
+### El Desafío
+
+Bajo el lema "Desafía los Límites de la Lógica", MindStack propone un entorno de alta presión y complejidad técnica:
+
+- 🌌 **Temática Galáctica:** Una interfaz inmersiva inspirada en el espacio profundo que eleva la experiencia del usuario.
+- 🏆 **Programación de Élite:** Diseñado específicamente para detectar y potenciar el talento de alto rendimiento.
+- ⏱️ **Eventos en Tiempo Real:** Sistema de cuenta regresiva y registro dinámico para participantes.
+- 💻 **Arquitectura Moderna:** Construido con tecnologías web de última generación para garantizar estabilidad durante picos de tráfico de competidores.
+
+El proyecto no es solo una landing page, sino el portal de entrada a un ecosistema de resolución de problemas donde la eficiencia del código y la creatividad lógica son los únicos requisitos para alcanzar la cima del ranking.`,
+    r2Folder: "projects/MindStack",
+    link: "https://mindstack.override.com.mx",
+    categories: [TECH_CATEGORIES.WEB],
+    tags: ["React", "Tailwind CSS", "UI/UX", "Space Theme", "Competition"],
   },
 ];
