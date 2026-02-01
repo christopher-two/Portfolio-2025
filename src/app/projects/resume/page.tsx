@@ -1,10 +1,30 @@
+"use client";
+
 import { projects } from "@/lib/data";
 import ReactMarkdown from "react-markdown";
+import { Button } from "@/components/ui/button";
+import { Download, FileText } from "lucide-react";
 
 export default function ResumePage() {
+  const handlePrint = () => {
+    window.print();
+  };
+
   return (
     <div className="container max-w-4xl mx-auto py-20 px-6">
-      <header className="mb-16 border-b-4 border-border pb-8">
+      <div className="flex justify-end mb-8 no-print">
+        <Button 
+          onClick={handlePrint}
+          variant="outline"
+          className="border-2 border-border rounded-none font-black uppercase tracking-widest shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all gap-2"
+        >
+          <FileText className="h-4 w-4" />
+          Exportar PDF
+        </Button>
+      </div>
+
+      <div id="resume-content">
+        <header className="mb-16 border-b-4 border-border pb-8">
         <h1 className="text-6xl font-black uppercase italic tracking-tighter mb-4">
           Project Resume
         </h1>
