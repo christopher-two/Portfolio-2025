@@ -10,8 +10,8 @@ const PUBLIC_URL = "https://pub-f9c51555bfe841b8af90cf9dc30b962d.r2.dev";
  * This ensures environment variables are read at runtime on Vercel.
  */
 function createS3Client() {
-  const accessKeyId = process.env.R2_ACCESS_KEY_ID;
-  const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
+  const accessKeyId = process.env.R2_ACCESS_KEY_ID?.trim();
+  const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY?.trim();
 
   if (!accessKeyId || !secretAccessKey) {
     return null;
@@ -24,6 +24,8 @@ function createS3Client() {
       accessKeyId,
       secretAccessKey,
     },
+    // Force path-style to ensure better compatibility with Cloudflare R2 signature process
+    forcePathStyle: true,
   });
 }
 
@@ -33,7 +35,7 @@ export async function getProjectImages(folder: string) {
   const s3Client = createS3Client();
 
   if (!s3Client) {
-    console.warn("[R2 WARNING] R2 credentials missing in process.env. Make sure R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY are set in Vercel.");
+    console.warn("[R2 WARNING] R2 credentials missing in process.env.");
     return [];
   }
 
