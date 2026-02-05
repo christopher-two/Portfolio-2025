@@ -20,6 +20,7 @@ const featuredNavLinks = [
   { href: "/lumi", label: "Lumi" },
   { href: "/daelia", label: "Daelia" },
   { href: "/spot", label: "Spot" },
+  { href: "/parse", label: "Parse" },
 ]
 
 function NavLinks({ isMobile = false }: { isMobile?: boolean }) {
