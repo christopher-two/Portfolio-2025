@@ -97,7 +97,7 @@ export default function ParsePage() {
                 Ir a la Web
               </a>
               <a 
-                href="https://play.google.com/store/apps/details?id=com.christopher.parse"
+                href="https://play.google.com/store/apps/details?id=org.christophertwo.parse"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="
