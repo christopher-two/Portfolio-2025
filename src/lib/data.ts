@@ -62,22 +62,24 @@ export const socialLinks: SocialLink[] = [
 export const products = [
   { id: "prod-1", title: "Override Shop", href: "/projects/override-shop", bgColor: "bg-pink-800" },
   { id: "prod-2", title: "EikoColors System", href: "/projects/eikocolors-system", bgColor: "bg-teal-700" },
-  { id: "prod-3", title: "Cotizador Yazbek", href: "/projects/cotizador-yazbek", bgColor: "bg-orange-600" },
-  { id: "prod-4", title: "Spot", href: "/projects/spot", bgColor: "bg-blue-600" },
-  { id: "prod-5", title: "Atomo Web", href: "/projects/atomo-web", bgColor: "bg-purple-900" },
   { id: "prod-6", title: "Atomo App", href: "/projects/atomo-app", bgColor: "bg-indigo-900" },
-  { id: "prod-7", title: "Override Web", href: "/projects/override-web", bgColor: "bg-zinc-900" },
+  { id: "prod-5", title: "Atomo Web", href: "/projects/atomo-web", bgColor: "bg-purple-900" },
   { id: "prod-8", title: "Override Logistics", href: "/projects/override-logistics", bgColor: "bg-slate-900" },
+  { id: "prod-18", title: "Override Menu", href: "/projects/override-menu", bgColor: "bg-orange-500" },
+  { id: "prod-20", title: "Parse", href: "/projects/parse", bgColor: "bg-violet-900" },
+  { id: "prod-19", title: "Override Sense", href: "/projects/override-sense", bgColor: "bg-green-700" },
   { id: "prod-9", title: "EikoColors Web", href: "/projects/eikocolors-web", bgColor: "bg-emerald-900" },
   { id: "prod-10", title: "Charmstar Web", href: "/projects/charmstar-web", bgColor: "bg-rose-900" },
+  { id: "prod-7", title: "Override Web", href: "/projects/override-web", bgColor: "bg-zinc-900" },
+  { id: "prod-3", title: "Cotizador Yazbek", href: "/projects/cotizador-yazbek", bgColor: "bg-orange-600" },
+  { id: "prod-4", title: "Spot", href: "/projects/spot", bgColor: "bg-blue-600" },
   { id: "prod-11", title: "Dependency", href: "/projects/dependency", bgColor: "bg-cyan-800" },
-  { id: "prod-12", title: "Colors RGB", href: "/projects/colors", bgColor: "bg-gradient-to-br from-red-500 via-green-500 to-blue-500" },
-  { id: "prod-13", title: "Web Experiments", href: "/projects/webs", bgColor: "bg-indigo-600" },
-  { id: "prod-14", title: "MindStack", href: "/projects/mindstack", bgColor: "bg-zinc-950" },
   { id: "prod-15", title: "Lerna", href: "/projects/lerna", bgColor: "bg-stone-900" },
+  { id: "prod-14", title: "MindStack", href: "/projects/mindstack", bgColor: "bg-zinc-950" },
+  { id: "prod-13", title: "Web Experiments", href: "/projects/webs", bgColor: "bg-indigo-600" },
+  { id: "prod-12", title: "Colors RGB", href: "/projects/colors", bgColor: "bg-gradient-to-br from-red-500 via-green-500 to-blue-500" },
   { id: "prod-16", title: "Squid Games App", href: "/projects/squid-games-app", bgColor: "bg-pink-900" },
   { id: "prod-17", title: "Squid Games Desktop", href: "/projects/squid-games-desktop", bgColor: "bg-slate-900" },
-  { id: "prod-18", title: "Override Menu", href: "/projects/override-menu", bgColor: "bg-orange-500" },
 ];
 
 export const TECH_CATEGORIES = {
@@ -130,50 +132,36 @@ Desarrollado bajo una arquitectura multimodular siguiendo patrones de **Clean Ar
     tags: ["Kmp JVM", "Supabase", "Room", "MVI", "Clean Architecture"],
   },
   {
-    id: "3",
-    slug: "cotizador-yazbek",
-    title: "Cotizador Yazbek",
-    description: "Solución rápida y sencilla para cotizar productos de Yazbek.",
-    longDescription: `**Cotizador Yazbek** es una herramienta web de alta eficiencia desarrollada para facilitar el proceso de ventas de productos textiles.
+    id: "6",
+    slug: "atomo-app",
+    title: "Atomo App",
+    description: "Aplicación Android nativa para la gestión integral de servicios digitales y presencia profesional.",
+    longDescription: `**Atomo App** es la extensión móvil nativa del ecosistema Atomo, diseñada para ofrecer una gestión potente y fluida de servicios digitales directamente desde el dispositivo Android.
 
-### Características del Cotizador
+### Gestión Integral de Servicios
 
-- ⚡ **Cotización Instantánea:** Cálculo automático de precios basado en volumen y personalización.
-- 🎨 **Interfaz Intuitiva:** Experiencia de usuario optimizada para que los vendedores generen presupuestos en segundos.
-- 📱 **Multiplataforma:** Accesible desde cualquier navegador gracias a su arquitectura moderna.
-- 🏗️ **Arquitectura Robusta:** Construido con **Kotlin Multiplatform (WasmJs)** y siguiendo patrones de arquitectura limpia.
+La aplicación permite administrar de forma centralizada todo el ecosistema de Atomo:
+- 🍽️ **Menús Digitales:** Edición de platos, precios y disponibilidad en tiempo real.
+- 🎨 **Portafolios:** Carga de proyectos y actualización de galerías visuales.
+- 🛍️ **Tiendas:** Control de inventario y visualización de productos.
+- 📄 **CVs e Invitaciones:** Personalización rápida de perfiles profesionales y eventos.
 
-Diseñado específicamente para el ecosistema de **EikoColors**, integrándose perfectamente en su flujo de trabajo diario para agilizar la atención al cliente.`,
-    r2Folder: "CotizadorYazbek",
-    link: "https://wasm.christopher.com.mx/cotizador/yazbek",
-    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.WEB],
-    tags: ["WasmJs", "KMP", "Compose Multiplatform", "Clean Architecture"],
-  },
-  {
-    id: "4",
-    slug: "spot",
-    title: "Spot",
-    description: "Aplicación de geocaching emocional para crear cápsulas del tiempo visuales georreferenciadas.",
-    longDescription: `**Spot** es una aplicación móvil innovadora de **geocaching emocional** que transforma coordenadas GPS en experiencias visuales y significativas.
+### Excelencia Técnica (Android Nativo)
 
-### Concepto y Propósito
+- 🎨 **Jetpack Compose & Material 3:** Interfaz de usuario moderna con soporte para **temas dinámicos** y navegación adaptativa.
+- 🏗️ **Clean Architecture:** Estructura modular robusta que separa la lógica de negocio, datos y presentación.
+- 📴 **Offline-First con Room:** Capacidad completa de trabajo sin conexión con sincronización inteligente mediante **WorkManager**.
+- 🔐 **Supabase Integration:** Autenticación segura (Google ID), base de datos en tiempo real y almacenamiento escalable.
+- 🚀 **Kotlin Coroutines & Flow:** Programación asíncrona y reactiva para una experiencia de usuario fluida y sin bloqueos.
+- 🛡️ **Seguridad Biométrica:** Protección adicional de datos sensibles mediante huella digital o reconocimiento facial.
 
-Los usuarios pueden crear "spots" (puntos de interés georreferenciados) con fotografías, títulos y descripciones que solo se revelan cuando otros usuarios se encuentran físicamente dentro de un radio de 30 metros. Es una mezcla única entre **red social, geocaching y realidad aumentada**.
+### Sincronización Inteligente
 
-### Características Técnicas
-
-- 🗺️ **Mapa Interactivo 3D:** Visualización avanzada con **Mapbox SDK** con inclinación de 60° y zoom dinámico.
-- 📸 **Cápsulas del Tiempo:** Creación de spots públicos o privados con hasta 10 imágenes y metadatos detallados.
-- 👥 **Ecosistema Social:** Sistema de amigos, búsqueda de usuarios y perfiles personalizados.
-- 🎨 **Personalización Material You:** Temas dinámicos que se adaptan al sistema y esquemas de color personalizados.
-- 🔐 **Seguridad Avanzada:** Autenticación con Google (Firebase) y protección biométrica opcional.
-- 📴 **Offline-First:** Sincronización inteligente y funcionamiento sin conexión gracias a **Room**.
-
-Desarrollada con **Kotlin 2.3.0** y **Jetpack Compose**, siguiendo principios de **Clean Architecture** y patrones **MVI** para un estado de UI predecible y robusto.`,
-    r2Folder: "Spot",
-    link: "https://github.com/christophertwo/spot",
+Gracias a una arquitectura basada en **Workers**, la aplicación garantiza que cualquier cambio realizado offline se sincronice automáticamente con la nube una vez que se recupera la conexión, manteniendo la integridad de los datos en todo momento.`,
+    r2Folder: "Atomo/app",
+    link: "https://atomo.click",
     categories: [TECH_CATEGORIES.ANDROID],
-    tags: ["Android", "Mapbox SDK", "Clean Architecture", "MVI", "Firebase"],
+    tags: ["Android Native", "Kotlin", "Jetpack Compose", "Room", "WorkManager"],
   },
   {
     id: "5",
@@ -207,60 +195,6 @@ La plataforma cuenta con múltiples plantillas (**Minimalist, Elegance, Modern, 
     tags: ["Astro v5", "Tailwind CSS v4", "Supabase", "Cloudflare Pages"],
   },
   {
-    id: "6",
-    slug: "atomo-app",
-    title: "Atomo App",
-    description: "Aplicación Android nativa para la gestión integral de servicios digitales y presencia profesional.",
-    longDescription: `**Atomo App** es la extensión móvil nativa del ecosistema Atomo, diseñada para ofrecer una gestión potente y fluida de servicios digitales directamente desde el dispositivo Android.
-
-### Gestión Integral de Servicios
-
-La aplicación permite administrar de forma centralizada todo el ecosistema de Atomo:
-- 🍽️ **Menús Digitales:** Edición de platos, precios y disponibilidad en tiempo real.
-- 🎨 **Portafolios:** Carga de proyectos y actualización de galerías visuales.
-- 🛍️ **Tiendas:** Control de inventario y visualización de productos.
-- 📄 **CVs e Invitaciones:** Personalización rápida de perfiles profesionales y eventos.
-
-### Excelencia Técnica (Android Nativo)
-
-- 🎨 **Jetpack Compose & Material 3:** Interfaz de usuario moderna con soporte para **temas dinámicos** y navegación adaptativa.
-- 🏗️ **Clean Architecture:** Estructura modular robusta que separa la lógica de negocio, datos y presentación.
-- 📴 **Offline-First con Room:** Capacidad completa de trabajo sin conexión con sincronización inteligente mediante **WorkManager**.
-- 🔐 **Supabase Integration:** Autenticación segura (Google ID), base de datos en tiempo real y almacenamiento escalable.
-- 🚀 **Kotlin Coroutines & Flow:** Programación asíncrona y reactiva para una experiencia de usuario fluida y sin bloqueos.
-- 🛡️ **Seguridad Biométrica:** Protección adicional de datos sensibles mediante huella digital o reconocimiento facial.
-
-### Sincronización Inteligente
-
-Gracias a una arquitectura basada en **Workers**, la aplicación garantiza que cualquier cambio realizado offline se sincronice automáticamente con la nube una vez que se recupera la conexión, manteniendo la integridad de los datos en todo momento.`,
-    r2Folder: "Atomo/app",
-    link: "https://atomo.click",
-    categories: [TECH_CATEGORIES.ANDROID],
-    tags: ["Android Native", "Kotlin", "Jetpack Compose", "Room", "WorkManager"],
-  },
-  {
-    id: "7",
-    slug: "override-web",
-    title: "Override Official Web",
-    description: "Sitio web oficial de la marca Override, enfocado en servicios de software de alto rendimiento.",
-    longDescription: `**Override Web** es la plataforma central de la marca, diseñada para proyectar una imagen tecnológica, profesional y de alto impacto. El sitio actúa como el hub principal para los servicios de desarrollo de software y soluciones digitales de la compañía.
-
-### Excelencia Técnica
-
-- ⚡ **React + Vite:** Rendimiento optimizado con tiempos de carga instantáneos.
-- 🎨 **Tailwind CSS:** Diseño neobrutalista moderno con tipografías técnicas y acentos de color vibrantes.
-- 🌐 **Vercel Deployment:** Infraestructura de alta disponibilidad y despliegue continuo.
-- 📱 **Responsive Design:** Adaptación fluida para ofrecer una experiencia premium en cualquier dispositivo.
-
-### Propósito del Proyecto
-
-El sitio busca centralizar la identidad de Override, permitiendo a los clientes potenciales explorar el portafolio de servicios, contactar directamente con el equipo y conocer la visión tecnológica de la marca.`,
-    r2Folder: "Override/Web",
-    link: "https://www.override.com.mx",
-    categories: [TECH_CATEGORIES.WEB],
-    tags: ["React", "Vite", "Tailwind CSS", "Vercel"],
-  },
-  {
     id: "8",
     slug: "override-logistics",
     title: "Override Logistics",
@@ -286,6 +220,85 @@ Esta plataforma permite la desmaterialización total de procesos físicos, asegu
     link: "https://logistics.override.com.mx",
     categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID],
     tags: ["KMP", "Jetpack Compose", "Supabase", "Firebase", "Google TV"],
+  },
+  {
+    id: "18",
+    slug: "override-menu",
+    title: "Override Menu",
+    description: "Aplicación multiplataforma premium para la gestión de menús digitales en tiempo real.",
+    longDescription: `**Override Menu** es una solución integral diseñada para revolucionar la gestión de menús en la industria gastronómica, permitiendo a los restaurantes digitalizar su oferta con una experiencia premium.
+
+### Potencia Multiplataforma
+
+Desarrollado bajo un ecosistema **Kotlin Multiplatform (KMP)**, el sistema ofrece una base de código única para Android, iOS, Desktop y Web.
+
+- 🚀 **Sincronización en Tiempo Real:** Gracias a la integración con **Supabase**, cualquier cambio en el menú se refleja instantáneamente en todas las plataformas.
+- 📴 **Filosofía Offline-First:** Capacidad de funcionamiento sin conexión con sincronización inteligente una vez recuperada la red.
+- 📸 **Gestión de Multimedia:** Subida y optimización de imágenes de platillos directamente desde la app.
+- 📐 **Arquitectura de Élite:** Construido sobre **Clean Architecture** y patrón **MVI**, garantizando una robustez industrial y escalabilidad sin límites.
+- 🎨 **Experiencia de Usuario:** Interfaz moderna y fluida desarrollada con **Compose Multiplatform**, siguiendo los estándares del *Override Design System*.
+
+**Override Menu** no es solo un catálogo digital, es una herramienta de gestión multi-tenant que permite a cada establecimiento controlar su inventario, categorías y disponibilidad con la eficiencia de un sistema empresarial de alto nivel.`,
+    r2Folder: "OverrideMenu",
+    link: "https://menu.override.com.mx",
+    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB],
+    tags: ["KMP", "Compose Multiplatform", "Supabase", "Clean Architecture", "MVI", "Koin"],
+  },
+  {
+    id: "20",
+    slug: "parse",
+    title: "Parse",
+    description: "Lector de libros moderno para Android con traducción inteligente (ML Kit) y estética minimalista.",
+    longDescription: `**Parse** es una aplicación de lectura de libros de vanguardia para Android, diseñada para ofrecer una experiencia inmersiva y fluida inspirada en la simplicidad de los dispositivos Kindle.
+
+### Experiencia de Lectura Superior
+
+- 📖 **Lector Tipo Kindle**: Paginación inteligente y renderizado de texto optimizado para largas sesiones de lectura.
+- 📚 **Gestión de Biblioteca**: Organización intuitiva de libros locales y documentos personales.
+- 🌍 **Traducción con IA**: Integración con **Google ML Kit** para traducción de texto y detección de idioma en tiempo real.
+- ⚡ **Navegación de Nueva Generación**: Implementación pionera de la API **Navigation 3** de Jetpack Compose.
+- 🎨 **Estética Minimalista**: Diseño basado en **Material 3** con soporte para temas dinámicos que se adaptan a tu estilo.
+
+### Potencia Tecnológica
+
+- 🏗️ **Arquitectura Multimodular**: Construido bajo principios de **Clean Architecture** para una máxima escalabilidad y testabilidad.
+- 📄 **Soporte Avanzado de PDF**: Integración con **PDFBox-Android** para una gestión robusta de documentos digitales.
+- 🔐 **Autenticación con Google**: Sincronización segura y gestión de perfiles mediante Firebase.
+- 🚀 **Stack Moderno**: Uso extensivo de **Koin**, **Ktor**, **Room** y **DataStore** para una experiencia offline-first reactiva.
+
+Parse representa la evolución de la lectura móvil, combinando el minimalismo visual con una arquitectura de software industrial de alto nivel e inteligencia artificial integrada.`,
+    r2Folder: "Parse",
+    link: "https://parse.christopher.com.mx",
+    categories: [TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.AI],
+    tags: ["Android", "Jetpack Compose", "ML Kit", "Translation", "Navigation 3", "PDFBox"],
+  },
+  {
+    id: "19",
+    slug: "override-sense",
+    title: "Override Sense",
+    description: "Aplicación de accesibilidad que utiliza IA para detectar y visualizar sonidos ambientales críticos en tiempo real.",
+    longDescription: `**Override Sense** es una aplicación de accesibilidad para Android diseñada para empoderar a personas con discapacidad auditiva mediante el uso de **Inteligencia Artificial en el dispositivo**.
+
+### Innovación en Accesibilidad
+
+La aplicación transforma el entorno sonoro en experiencias visuales y sensoriales, permitiendo una mayor consciencia del entorno:
+- 🧠 **Detección Inteligente:** Utiliza el modelo **YAMNet** de TensorFlow Lite para identificar más de 500 tipos de sonidos (alarmas, timbres, llanto de bebé) sin necesidad de internet.
+- 👁️ **Feedback Visual Reactivo:** Animaciones de pulso que cambian de color e intensidad según la prioridad del sonido detectado.
+- 📳 **Alertas Hápticas:** 7 patrones de vibración personalizados para diferenciar tipos de alertas de forma táctil.
+- 🛡️ **Privacidad Total:** El procesamiento se realiza 100% localmente; nunca se graba ni se sube audio a la nube.
+
+### Excelencia Técnica
+
+- 🎨 **Jetpack Compose:** Interfaz moderna con soporte para **Material You** y temas dinámicos.
+- 🏗️ **Arquitectura Robusta:** Implementada bajo principios de **Clean Architecture** y MVVM, garantizando escalabilidad y mantenibilidad.
+- ⚡ **Tecnología On-Device AI:** Integración profunda con **TensorFlow Lite** optimizada para el rendimiento móvil.
+- 📡 **Servicios en Primer Plano:** Uso de **WorkManager** y Foreground Services para una monitorización constante y fiable.
+
+Override Sense no es solo una herramienta, es un puente tecnológico que mejora la seguridad y la independencia de sus usuarios en su vida diaria.`,
+    r2Folder: "Override/Sense",
+    link: "https://pub-d9e5f32907414250918a7f45da3c437e.r2.dev/Sense.apk",
+    categories: [TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.AI],
+    tags: ["Android", "Jetpack Compose", "TensorFlow Lite", "On-Device AI", "Clean Architecture", "Koin"],
   },
   {
     id: "9",
@@ -343,6 +356,74 @@ Charmstar representa la combinación perfecta entre diseño estético y funciona
     tags: ["Next.js 15", "React 19", "Firebase", "Tailwind CSS v4"],
   },
   {
+    id: "7",
+    slug: "override-web",
+    title: "Override Official Web",
+    description: "Sitio web oficial de la marca Override, enfocado en servicios de software de alto rendimiento.",
+    longDescription: `**Override Web** es la plataforma central de la marca, diseñada para proyectar una imagen tecnológica, profesional y de alto impacto. El sitio actúa como el hub principal para los servicios de desarrollo de software y soluciones digitales de la compañía.
+
+### Excelencia Técnica
+
+- ⚡ **React + Vite:** Rendimiento optimizado con tiempos de carga instantáneos.
+- 🎨 **Tailwind CSS:** Diseño neobrutalista moderno con tipografías técnicas y acentos de color vibrantes.
+- 🌐 **Vercel Deployment:** Infraestructura de alta disponibilidad y despliegue continuo.
+- 📱 **Responsive Design:** Adaptación fluida para ofrecer una experiencia premium en cualquier dispositivo.
+
+### Propósito del Proyecto
+
+El sitio busca centralizar la identidad de Override, permitiendo a los clientes potenciales explorar el portafolio de servicios, contactar directamente con el equipo y conocer la visión tecnológica de la marca.`,
+    r2Folder: "Override/Web",
+    link: "https://www.override.com.mx",
+    categories: [TECH_CATEGORIES.WEB],
+    tags: ["React", "Vite", "Tailwind CSS", "Vercel"],
+  },
+  {
+    id: "3",
+    slug: "cotizador-yazbek",
+    title: "Cotizador Yazbek",
+    description: "Solución rápida y sencilla para cotizar productos de Yazbek.",
+    longDescription: `**Cotizador Yazbek** es una herramienta web de alta eficiencia desarrollada para facilitar el proceso de ventas de productos textiles.
+
+### Características del Cotizador
+
+- ⚡ **Cotización Instantánea:** Cálculo automático de precios basado en volumen y personalización.
+- 🎨 **Interfaz Intuitiva:** Experiencia de usuario optimizada para que los vendedores generen presupuestos en segundos.
+- 📱 **Multiplataforma:** Accesible desde cualquier navegador gracias a su arquitectura moderna.
+- 🏗️ **Arquitectura Robusta:** Construido con **Kotlin Multiplatform (WasmJs)** y siguiendo patrones de arquitectura limpia.
+
+Diseñado específicamente para el ecosistema de **EikoColors**, integrándose perfectamente en su flujo de trabajo diario para agilizar la atención al cliente.`,
+    r2Folder: "CotizadorYazbek",
+    link: "https://wasm.christopher.com.mx/cotizador/yazbek",
+    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.WEB],
+    tags: ["WasmJs", "KMP", "Compose Multiplatform", "Clean Architecture"],
+  },
+  {
+    id: "4",
+    slug: "spot",
+    title: "Spot",
+    description: "Aplicación de geocaching emocional para crear cápsulas del tiempo visuales georreferenciadas.",
+    longDescription: `**Spot** es una aplicación móvil innovadora de **geocaching emocional** que transforma coordenadas GPS en experiencias visuales y significativas.
+
+### Concepto y Propósito
+
+Los usuarios pueden crear "spots" (puntos de interés georreferenciados) con fotografías, títulos y descripciones que solo se revelan cuando otros usuarios se encuentran físicamente dentro de un radio de 30 metros. Es una mezcla única entre **red social, geocaching y realidad aumentada**.
+
+### Características Técnicas
+
+- 🗺️ **Mapa Interactivo 3D:** Visualización avanzada con **Mapbox SDK** con inclinación de 60° y zoom dinámico.
+- 📸 **Cápsulas del Tiempo:** Creación de spots públicos o privados con hasta 10 imágenes y metadatos detallados.
+- 👥 **Ecosistema Social:** Sistema de amigos, búsqueda de usuarios y perfiles personalizados.
+- 🎨 **Personalización Material You:** Temas dinámicos que se adaptan al sistema y esquemas de color personalizados.
+- 🔐 **Seguridad Avanzada:** Autenticación con Google (Firebase) y protección biométrica opcional.
+- 📴 **Offline-First:** Sincronización inteligente y funcionamiento sin conexión gracias a **Room**.
+
+Desarrollada con **Kotlin 2.3.0** y **Jetpack Compose**, siguiendo principios de **Clean Architecture** y patrones **MVI** para un estado de UI predecible y robusto.`,
+    r2Folder: "Spot",
+    link: "https://github.com/christophertwo/spot",
+    categories: [TECH_CATEGORIES.ANDROID],
+    tags: ["Android", "Mapbox SDK", "Clean Architecture", "MVI", "Firebase"],
+  },
+  {
     id: "11",
     slug: "dependency",
     title: "Dependency Hub",
@@ -363,46 +444,26 @@ Este proyecto nació de la necesidad de eficientar la fase inicial de configurac
     tags: ["React", "TypeScript", "Tailwind CSS", "Gradle", "KMP"],
   },
   {
-    id: "12",
-    slug: "colors",
-    title: "Colors RGB Guess",
-    description: "Juego de adivinanza de colores desarrollado con Compose Multiplatform.",
-    longDescription: `**Colors RGB Guess** es un mini juego interactivo que desafía a los usuarios a recrear un color aleatorio ajustando sus componentes RGB.
+    id: "15",
+    slug: "lerna",
+    title: "Lerna",
+    description: "Plataforma de productividad para educadores impulsada por inteligencia artificial.",
+    longDescription: `**Lerna** es una herramienta de vanguardia diseñada para transformar la labor docente mediante la automatización y la optimización de flujos de trabajo educativos.
 
-### Características del Juego
+### Empoderando a los Educadores
 
-- 🎲 **Desafío Aleatorio:** Generación dinámica de colores objetivo.
-- 🎨 **Interfaz Adaptativa:** Los elementos visuales cambian según el color actual para mantener la legibilidad.
-- 📊 **Feedback de Precisión:** Muestra un porcentaje de coincidencia exacto tras cada intento.
-- 🏗️ **Compose Multiplatform:** Ejecución nativa en Android, Desktop y Web (WasmJs).
+Lerna se enfoca en devolver el tiempo valioso a los profesores, permitiéndoles concentrarse en lo que realmente importa: la enseñanza.
 
-Construido con una arquitectura **MVI** sólida para una gestión de estado predecible y reactiva.`,
-    r2Folder: "colors",
-    link: "https://wasm.christopher.com.mx/colors",
-    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB],
-    tags: ["Compose Multiplatform", "Kotlin", "WasmJs", "Android", "MVI"],
-  },
-  {
-    id: "13",
-    slug: "webs",
-    title: "Web Experiments & Prototypes",
-    description: "Colección de interfaces experimentales y componentes de vanguardia.",
-    longDescription: `**Web Experiments & Prototypes** es un laboratorio digital donde exploro las fronteras de la interfaz de usuario y la experiencia de desarrollo moderno.
-    
-### Naturaleza del Proyecto
+- 🤖 **Integración con Gemini AI:** Utiliza modelos de lenguaje avanzados para la generación de contenido didáctico, resúmenes y asistencia personalizada.
+- ⚡ **Tecnología de Punta:** Desarrollado con **Kotlin Multiplatform (KMP)** y **Compose Multiplatform**, garantizando una experiencia fluida y nativa en la web mediante **WasmJs**.
+- 📐 **Arquitectura Robusta:** Implementado bajo principios de **Clean Architecture**, asegurando escalabilidad y facilidad de mantenimiento.
+- 🚀 **Productividad Aumentada:** Flujos de trabajo diseñados para reducir drásticamente la carga administrativa y de planeación docente.
 
-Esta es una **colección curada de despliegues rápidos, prototipos de componentes y exploraciones visuales** que no necesariamente forman parte de un producto comercial, pero que demuestran capacidades técnicas específicas:
-
-- 🧪 **Laboratorio de UI:** Experimentación con nuevas librerías de animación como Framer Motion y Three.js.
-- 📐 **Arquitectura de Componentes:** Pruebas de patrones de diseño escalables y sistemas de diseño atómicos.
-- ⚡ **Rendimiento Web:** Optimizaciones extremas en frameworks como Next.js, Astro y Qwik.
-- 🎨 **Estética Visual:** Exploración de tendencias como Neobrutalismo, Glassmorphism y Bento Grids.
-
-Cada pieza en esta colección representa un desafío técnico superado, desde micro-interacciones complejas hasta integraciones experimentales con APIs del navegador.`,
-    r2Folder: "webs",
-    link: "https://www.christopher.com.mx",
-    categories: [TECH_CATEGORIES.WEB],
-    tags: ["Experimental", "UI/UX", "Next.js", "Tailwind CSS", "Framer Motion"],
+Lerna representa el siguiente paso en la evolución educativa, donde la tecnología actúa como un aliado estratégico del docente para crear experiencias de aprendizaje más ricas y efectivas.`,
+    r2Folder: "Lerna",
+    link: "https://lerna.override.com.mx",
+    categories: [TECH_CATEGORIES.WEB, TECH_CATEGORIES.AI, TECH_CATEGORIES.KMP],
+    tags: ["KMP", "Compose Multiplatform", "Gemini AI", "WasmJs", "Clean Architecture"],
   },
   {
     id: "14",
@@ -427,26 +488,46 @@ El proyecto no es solo una landing page, sino el portal de entrada a un ecosiste
     tags: ["React", "Tailwind CSS", "UI/UX", "Space Theme", "Competition"],
   },
   {
-    id: "15",
-    slug: "lerna",
-    title: "Lerna",
-    description: "Plataforma de productividad para educadores impulsada por inteligencia artificial.",
-    longDescription: `**Lerna** es una herramienta de vanguardia diseñada para transformar la labor docente mediante la automatización y la optimización de flujos de trabajo educativos.
+    id: "13",
+    slug: "webs",
+    title: "Web Experiments & Prototypes",
+    description: "Colección de interfaces experimentales y componentes de vanguardia.",
+    longDescription: `**Web Experiments & Prototypes** es un laboratorio digital donde exploro las fronteras de la interfaz de usuario y la experiencia de desarrollo moderno.
+    
+### Naturaleza del Proyecto
 
-### Empoderando a los Educadores
+Esta es una **colección curada de despliegues rápidos, prototipos de componentes y exploraciones visuales** que no necesariamente forman parte de un producto comercial, pero que demuestran capacidades técnicas específicas:
 
-Lerna se enfoca en devolver el tiempo valioso a los profesores, permitiéndoles concentrarse en lo que realmente importa: la enseñanza.
+- 🧪 **Laboratorio de UI:** Experimentación con nuevas librerías de animación como Framer Motion y Three.js.
+- 📐 **Arquitectura de Componentes:** Pruebas de patrones de diseño escalables y sistemas de diseño atómicos.
+- ⚡ **Rendimiento Web:** Optimizaciones extremas en frameworks como Next.js, Astro y Qwik.
+- 🎨 **Estética Visual:** Exploración de tendencias como Neobrutalismo, Glassmorphism y Bento Grids.
 
-- 🤖 **Integración con Gemini AI:** Utiliza modelos de lenguaje avanzados para la generación de contenido didáctico, resúmenes y asistencia personalizada.
-- ⚡ **Tecnología de Punta:** Desarrollado con **Kotlin Multiplatform (KMP)** y **Compose Multiplatform**, garantizando una experiencia fluida y nativa en la web mediante **WasmJs**.
-- 📐 **Arquitectura Robusta:** Implementado bajo principios de **Clean Architecture**, asegurando escalabilidad y facilidad de mantenimiento.
-- 🚀 **Productividad Aumentada:** Flujos de trabajo diseñados para reducir drásticamente la carga administrativa y de planeación docente.
+Cada pieza en esta colección representa un desafío técnico superado, desde micro-interacciones complejas hasta integraciones experimentales con APIs del navegador.`,
+    r2Folder: "webs",
+    link: "https://www.christopher.com.mx",
+    categories: [TECH_CATEGORIES.WEB],
+    tags: ["Experimental", "UI/UX", "Next.js", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    id: "12",
+    slug: "colors",
+    title: "Colors RGB Guess",
+    description: "Juego de adivinanza de colores desarrollado con Compose Multiplatform.",
+    longDescription: `**Colors RGB Guess** es un mini juego interactivo que desafía a los usuarios a recrear un color aleatorio ajustando sus componentes RGB.
 
-Lerna representa el siguiente paso en la evolución educativa, donde la tecnología actúa como un aliado estratégico del docente para crear experiencias de aprendizaje más ricas y efectivas.`,
-    r2Folder: "Lerna",
-    link: "https://lerna.override.com.mx",
-    categories: [TECH_CATEGORIES.WEB, TECH_CATEGORIES.AI, TECH_CATEGORIES.KMP],
-    tags: ["KMP", "Compose Multiplatform", "Gemini AI", "WasmJs", "Clean Architecture"],
+### Características del Juego
+
+- 🎲 **Desafío Aleatorio:** Generación dinámica de colores objetivo.
+- 🎨 **Interfaz Adaptativa:** Los elementos visuales cambian según el color actual para mantener la legibilidad.
+- 📊 **Feedback de Precisión:** Muestra un porcentaje de coincidencia exacto tras cada intento.
+- 🏗️ **Compose Multiplatform:** Ejecución nativa en Android, Desktop y Web (WasmJs).
+
+Construido con una arquitectura **MVI** sólida para una gestión de estado predecible y reactiva.`,
+    r2Folder: "colors",
+    link: "https://wasm.christopher.com.mx/colors",
+    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB],
+    tags: ["Compose Multiplatform", "Kotlin", "WasmJs", "Android", "MVI"],
   },
   {
     id: "16",
@@ -493,28 +574,4 @@ El software de escritorio representa el pilar de robustez del proyecto, demostra
     categories: [TECH_CATEGORIES.WEB],
     tags: ["Desktop Software", "Control System", "Hardware Integration", "Kotlin", "Real-time"],
   },
-  {
-    id: "18",
-    slug: "override-menu",
-    title: "Override Menu",
-    description: "Aplicación multiplataforma premium para la gestión de menús digitales en tiempo real.",
-    longDescription: `**Override Menu** es una solución integral diseñada para revolucionar la gestión de menús en la industria gastronómica, permitiendo a los restaurantes digitalizar su oferta con una experiencia premium.
-
-### Potencia Multiplataforma
-
-Desarrollado bajo un ecosistema **Kotlin Multiplatform (KMP)**, el sistema ofrece una base de código única para Android, iOS, Desktop y Web.
-
-- 🚀 **Sincronización en Tiempo Real:** Gracias a la integración con **Supabase**, cualquier cambio en el menú se refleja instantáneamente en todas las plataformas.
-- 📴 **Filosofía Offline-First:** Capacidad de funcionamiento sin conexión con sincronización inteligente una vez recuperada la red.
-- 📸 **Gestión de Multimedia:** Subida y optimización de imágenes de platillos directamente desde la app.
-- 📐 **Arquitectura de Élite:** Construido sobre **Clean Architecture** y patrón **MVI**, garantizando una robustez industrial y escalabilidad sin límites.
-- 🎨 **Experiencia de Usuario:** Interfaz moderna y fluida desarrollada con **Compose Multiplatform**, siguiendo los estándares del *Override Design System*.
-
-**Override Menu** no es solo un catálogo digital, es una herramienta de gestión multi-tenant que permite a cada establecimiento controlar su inventario, categorías y disponibilidad con la eficiencia de un sistema empresarial de alto nivel.`,
-    r2Folder: "OverrideMenu",
-    link: "https://menu.override.com.mx",
-    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB],
-    tags: ["KMP", "Compose Multiplatform", "Supabase", "Clean Architecture", "MVI", "Koin"],
-  },
 ];
-
