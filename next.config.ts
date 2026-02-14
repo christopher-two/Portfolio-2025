@@ -51,7 +51,7 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'pub-f9c51555bfe841b8af90cf9dc30b962d.r2.dev',
         port: '',
-        pathname: '/projects/cetis27/**',
+        pathname: '/cetis27/**',
       },
       {
         protocol: 'https',
