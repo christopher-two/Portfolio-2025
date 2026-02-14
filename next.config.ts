@@ -49,6 +49,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'pub-f9c51555bfe841b8af90cf9dc30b962d.r2.dev',
+        port: '',
+        pathname: '/projects/cetis27/**',
+      },
+      {
+        protocol: 'https',
         hostname: '1827203a2c62ad3b7a9aaace51eb44b7.r2.cloudflarestorage.com',
         port: '',
         pathname: '/**',
