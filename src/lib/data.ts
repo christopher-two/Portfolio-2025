@@ -574,4 +574,33 @@ El software de escritorio representa el pilar de robustez del proyecto, demostra
     categories: [TECH_CATEGORIES.WEB],
     tags: ["Desktop Software", "Control System", "Hardware Integration", "Kotlin", "Real-time"],
   },
+  {
+    id: "21",
+    slug: "cetis27-library-system",
+    title: "Sistema de Gestión Biblioteca CETIS 27",
+    description: "Sistema web completo para la gestión de bibliotecas escolares desarrollado con Astro, TailwindCSS, Firebase y desplegado en Cloudflare Pages.",
+    longDescription: `**Sistema de Gestión Biblioteca CETIS 27** es una plataforma integral desarrollada para automatizar y optimizar los procesos de préstamo, devolución y administración de recursos bibliográficos de la institución.
+
+### Características del Sistema
+
+- 📚 **Gestión de Inventario:** Control completo de libros, revistas y otros materiales bibliográficos.
+- 👥 **Usuarios y Perfiles:** Administración de estudiantes, docentes y personal administrativo con roles específicos.
+- 🔄 **Préstamos y Devoluciones:** Sistema automatizado de préstamo y seguimiento de devoluciones con notificaciones.
+- 🔍 **Búsqueda Avanzada:** Motor de búsqueda eficiente para encontrar recursos rápidamente.
+- 📊 **Reportes y Estadísticas:** Generación de reportes sobre préstamos, popularidad de libros y actividad general.
+
+### Tecnología y Arquitectura
+
+- ⚡ **Astro:** Framework moderno para sitios web estáticos ultra-rápidos con soporte para múltiples frameworks UI.
+- 🎨 **TailwindCSS:** Framework de utilidades CSS para un desarrollo rápido y consistente de interfaces.
+- 🔥 **Firebase:** Backend como servicio proporcionando autenticación, base de datos en tiempo real y almacenamiento.
+- ☁️ **Cloudflare Pages:** Plataforma de alojamiento para despliegue rápido y seguro con edge computing.
+- 📱 **Diseño Responsivo:** Compatible con dispositivos móviles, tablets y escritorio para acceso desde cualquier lugar.
+
+El sistema ha sido diseñado para mejorar la eficiencia operativa de la biblioteca escolar, reducir errores manuales y proporcionar una experiencia de usuario moderna tanto para administradores como para usuarios finales.`,
+    r2Folder: "Cetis27Library",
+    link: "https://github.com/christopher-two/Cetis27-Library",
+    categories: [TECH_CATEGORIES.WEB],
+    tags: ["Astro", "TailwindCSS", "Firebase", "Cloudflare Pages", "JavaScript", "HTML", "CSS"],
+  },
 ];
