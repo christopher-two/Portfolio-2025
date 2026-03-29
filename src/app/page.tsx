@@ -3,11 +3,9 @@ import Image from "next/image";
 import { ArrowRight, Code, Cpu, Smartphone, Award, Download, MessageSquare, Sparkles, PlayCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TechCard } from "@/components/TechCard";
-import { Card, CardContent } from "@/components/ui/card";
 import { TechMarquee } from "@/components/TechMarquee";
 import { AnimatedName } from "@/components/AnimatedName";
 import { socialLinks, projects } from "@/lib/data";
-import { attachProjectCoversPaged } from "@/lib/r2-client";
 import { cn } from "@/lib/utils";
 import profileImage from "@/assets/images/IMG_6195.jpg";
 
@@ -23,43 +21,87 @@ const homePremiumPriority = [
   "spot",
 ];
 
-const homeDesktopPremiumTiles: Record<string, string> = {
+const homeDesktopFeaturedTiles: Record<string, string> = {
   parse: "col-span-2 row-span-2",
   "override-menu": "col-span-2",
   "override-logistics": "row-span-2",
   "override-sense": "col-span-2",
   parkspot: "col-span-2",
-  "atomo-app": "row-span-2",
-  spot: "col-span-2",
 };
 
-const homeMobileMetroPattern = [
-  "w-[84vw] min-w-[84vw] h-[76vh] -translate-y-6",
-  "w-[56vw] min-w-[56vw] h-[50vh] translate-y-8",
-  "w-[78vw] min-w-[78vw] h-[70vh] -translate-y-2",
-  "w-[62vw] min-w-[62vw] h-[56vh] translate-y-10",
-  "w-[88vw] min-w-[88vw] h-[80vh] -translate-y-4",
+const homeDesktopVentoPattern = [
+  "col-span-2",
+  "",
+  "col-span-2",
+  "",
+  "col-span-2",
+  "",
+  "",
+  "col-span-2",
+  "",
+  "",
 ];
 
 const homeMobileFeaturedTiles: Record<string, string> = {
-  parse: "w-[92vw] min-w-[92vw] h-[82vh] -translate-y-4",
-  "override-menu": "w-[86vw] min-w-[86vw] h-[78vh] -translate-y-1",
-  "override-logistics": "w-[72vw] min-w-[72vw] h-[66vh] translate-y-6",
-  "override-sense": "w-[82vw] min-w-[82vw] h-[74vh] -translate-y-3",
-  parkspot: "w-[80vw] min-w-[80vw] h-[72vh] -translate-y-2",
+  parse: "col-span-2 row-span-2",
+  "override-menu": "col-span-2",
+  "override-logistics": "row-span-2",
+  "override-sense": "col-span-2",
+  parkspot: "col-span-2",
 };
+
+const homeMobileVentoPattern = [
+  "",
+  "col-span-2",
+  "",
+  "",
+  "col-span-2",
+  "",
+  "",
+  "col-span-2",
+];
 
 function getHomePriorityRank(slug: string) {
   const index = homePremiumPriority.indexOf(slug);
   return index === -1 ? Number.POSITIVE_INFINITY : index;
 }
 
-function getDesktopTileUnits(tileClassName?: string) {
-  if (!tileClassName) return 0;
+function isHomeImportantProject(slug: string) {
+  return homePremiumPriority.slice(0, 5).includes(slug);
+}
 
-  const colSpan = tileClassName.includes("col-span-2") ? 2 : 1;
-  const rowSpan = tileClassName.includes("row-span-2") ? 2 : 1;
-  return colSpan * rowSpan - 1;
+function getDesktopVentoClass(slug: string, index: number) {
+  return homeDesktopFeaturedTiles[slug] ?? homeDesktopVentoPattern[index % homeDesktopVentoPattern.length];
+}
+
+function getMobileVentoClass(slug: string, index: number) {
+  return homeMobileFeaturedTiles[slug] ?? homeMobileVentoPattern[index % homeMobileVentoPattern.length];
+}
+
+function getProjectSupportNote(project: (typeof projects)[number]) {
+  const noteBySlug: Record<string, string> = {
+    "override-shop": "E-commerce fullstack con enfoque en conversion y operacion diaria.",
+    "eikocolors-system": "Suite empresarial para gestion, inventario y reportes tecnicos.",
+    "atomo-web": "Servicios digitales premium para negocios gastronomicos y creativos.",
+    "charmstar-web": "Landing comercial optimizada para identidad de marca y ventas.",
+    "override-web": "Sitio institucional orientado a producto, marca y performance.",
+    "cotizador-yazbek": "Cotizador web para acelerar flujo comercial en tiempo real.",
+    "squid-games-app": "Juego movil con foco en dinamica rapida y feedback visual.",
+    "squid-games-desktop": "Control de escritorio para partidas y configuracion en vivo.",
+  };
+
+  const custom = noteBySlug[project.slug];
+  if (custom) return custom;
+
+  if (project.tags.length > 1) {
+    return `Stack clave: ${project.tags.slice(0, 2).join(" + ")}`;
+  }
+
+  if (project.categories.length > 0) {
+    return `Enfoque: ${project.categories.join(" / ")}`;
+  }
+
+  return project.description;
 }
 
 const techSkills = [
@@ -124,206 +166,257 @@ const recognitions = [
   },
 ];
 
-export default async function Home() {
-  const projectsWithCovers = await attachProjectCoversPaged(projects, 6);
+export default function Home() {
+  const parseData = projects.find((project) => project.slug === "parse");
+  const parseCategories = parseData?.categories ?? [];
+  const parseTags = parseData?.tags?.slice(0, 6) ?? [];
 
-  const parseProject = projectsWithCovers.find((project) => project.slug === "parse");
-  const premiumSortedProjects = [...projectsWithCovers].sort((a, b) => {
+  const premiumSortedProjects = [...projects].sort((a, b) => {
     const rankDiff = getHomePriorityRank(a.slug) - getHomePriorityRank(b.slug);
     if (rankDiff !== 0) return rankDiff;
 
     return Number(a.id) - Number(b.id);
   });
 
-  const desktopExtraSlots = premiumSortedProjects.reduce((sum, project) => {
-    return sum + getDesktopTileUnits(homeDesktopPremiumTiles[project.slug]);
-  }, 0);
-
-  const desktopRows = Math.ceil((premiumSortedProjects.length + desktopExtraSlots) / 6);
-
   return (
     <div className="flex-1 w-full">
-      <section className="relative min-h-screen border-b-2 border-border bg-background bg-[radial-gradient(circle_at_top_left,#8f5eff1f,transparent_40%),linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:auto,24px_24px,24px_24px]">
-        <div className="mx-auto grid min-h-screen w-full max-w-screen-2xl items-center gap-8 px-4 py-16 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="animate-fade-in space-y-8">
-            <AnimatedName />
-            <p className="max-w-[760px] text-muted-foreground text-lg md:text-xl">
-              Desarrollo productos multiplataforma con foco en rendimiento, arquitectura limpia y experiencia real de usuario.
-              Hoy, el proyecto que más está creciendo es Parse: un lector Android publicado y en evolución continua.
-            </p>
+      <section className="relative min-h-screen border-b-2 border-border bg-background bg-[radial-gradient(circle_at_top_left,#8f5eff1f,transparent_40%),linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:auto,24px_24px,24px_24px] md:h-[calc(100svh-56px)] md:min-h-0">
+        <div className="h-full w-full">
+          <div className="grid h-full grid-cols-1 border-l-2 border-t-2 border-border md:grid-cols-12 md:[grid-template-rows:1.2fr_1.05fr_0.95fr_0.9fr]">
+            <article className="relative animate-fade-in overflow-hidden border-r-2 border-b-2 border-border bg-card p-6 text-foreground md:col-span-7 md:row-span-2 md:p-8 lg:p-10">
+              <Image
+                src={profileImage}
+                alt="Christopher Alejandro Maldonado Chavez"
+                fill
+                className="object-cover object-center"
+                priority
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(7,7,14,0.78)_0%,rgba(10,10,18,0.62)_42%,rgba(7,7,14,0.82)_100%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(168,85,247,0.2),transparent_46%)]" />
 
-            <div className="flex flex-wrap gap-4">
-              <Link href="/projects">
-                <Button size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                  Ver Mi Trabajo <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link href="#contact">
-                <Button variant="secondary" size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                  Contacto <MessageSquare className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link href="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/sign/docs/CV-2026.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84OTUzOTBiNi0zZDUxLTQ4MGMtOWJjNC03NzE4ZmNhOWVkNjkiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkb2NzL0NWLTIwMjYucGRmIiwiaWF0IjoxNzY1NTE1OTY2LCJleHAiOjE3OTcwNTE5NjZ9.o2DBshiz7dqCMbht2ybjK2xGZnV7oo_eH-w3Dbqa2EE" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                  Descargar CV <Download className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-            </div>
-          </div>
+              <div className="relative z-10 text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.55)]">
+                <AnimatedName />
+                <p className="mt-6 max-w-[760px] text-lg text-white/90 md:text-xl">
+                  Enfocado en construir productos que lleguen a produccion y escalen. Mi trabajo reciente se concentra en Parse, Override Menu, Override Logistics y Override Sense.
+                </p>
+                <p className="mt-3 max-w-[760px] text-base text-white/85 md:text-lg">
+                  Priorizo arquitectura limpia, IA aplicada y experiencias consistentes entre Android, Web y Desktop para convertir ideas en productos lanzables con valor real.
+                </p>
+              </div>
+            </article>
 
-          <div className="group grid h-[70vh] min-h-[420px] grid-rows-[1fr_auto] overflow-hidden border-2 border-border bg-card shadow-[8px_8px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-2 hover:translate-y-2">
-            <div className="relative min-h-0 bg-muted/30">
-              {parseProject?.coverImage && (
-                <Image
-                  src={parseProject.coverImage}
-                  alt="Parse en Google Play"
-                  fill
-                  className="object-contain object-center transition-transform duration-700 group-hover:scale-[1.015]"
-                  unoptimized={parseProject.coverImage.toLowerCase().endsWith(".gif")}
-                />
-              )}
-            </div>
-
-            <div className="border-t-2 border-border bg-background p-6 md:p-8 text-foreground">
-              <div className="inline-flex w-fit items-center gap-2 border border-border bg-background px-3 py-1 text-xs font-black uppercase tracking-[0.2em] text-foreground">
+            <article className="border-r-2 border-b-2 border-border bg-[linear-gradient(135deg,hsl(var(--muted))_0%,hsl(var(--background))_75%)] p-6 text-foreground md:col-span-5 md:row-span-2 md:p-8">
+              <div className="inline-flex w-fit items-center gap-2 border border-border bg-background px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-foreground">
                 <Sparkles className="h-4 w-4" />
                 Proyecto Destacado
               </div>
+              <h2 className="mt-4 text-4xl font-headline font-bold tracking-tight md:text-5xl">{parseData?.title ?? "Parse"}</h2>
+              <p className="mt-4 max-w-2xl text-sm text-muted-foreground md:text-base">
+                {parseData?.description ?? "Lector moderno para Android con traducción inteligente, navegación avanzada y diseño minimalista."}
+              </p>
+            </article>
 
-              <div className="mt-4 space-y-4 md:max-w-xl">
-                <h2 className="text-4xl md:text-5xl font-headline font-bold tracking-tight">Parse</h2>
-                <p className="max-w-xl text-sm md:text-base text-muted-foreground">
-                  Lector moderno para Android con traducción inteligente, navegación avanzada y diseño minimalista.
-                  Ya está publicado en Google Play Store.
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  <Link href={parsePlayStoreUrl} target="_blank" rel="noopener noreferrer">
-                    <Button size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                      Ver en Play Store <PlayCircle className="ml-2 h-5 w-5" />
-                    </Button>
-                  </Link>
-                  <Link href="/projects/parse">
-                    <Button size="lg" variant="outline" className="border-2 border-border bg-background text-foreground hover:bg-muted">
-                      Case Study <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </Link>
+            <Link
+              href="/projects"
+              className="group border-r-2 border-b-2 border-border bg-primary p-5 text-primary-foreground transition-colors hover:bg-primary/90 md:col-span-3 md:row-span-1"
+            >
+              <div className="flex h-full items-center justify-between gap-3">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">Navegacion</p>
+                  <h3 className="mt-2 text-xl font-headline font-bold">Ver Mi Trabajo</h3>
                 </div>
+                <ArrowRight className="h-5 w-5 shrink-0" />
               </div>
-            </div>
+            </Link>
+
+            <Link
+              href="#contact"
+              className="group border-r-2 border-b-2 border-border bg-accent p-5 text-accent-foreground transition-colors hover:bg-accent/90 md:col-span-2 md:row-span-1"
+            >
+              <div className="flex h-full items-center justify-between gap-3">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">Navegacion</p>
+                  <h3 className="mt-2 text-xl font-headline font-bold">Contacto</h3>
+                </div>
+                <MessageSquare className="h-5 w-5 shrink-0" />
+              </div>
+            </Link>
+
+            <Link
+              href="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/sign/docs/CV-2026.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84OTUzOTBiNi0zZDUxLTQ4MGMtOWJjNC03NzE4ZmNhOWVkNjkiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkb2NzL0NWLTIwMjYucGRmIiwiaWF0IjoxNzY1NTE1OTY2LCJleHAiOjE3OTcwNTE5NjZ9.o2DBshiz7dqCMbht2ybjK2xGZnV7oo_eH-w3Dbqa2EE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border-r-2 border-b-2 border-border bg-secondary p-5 text-secondary-foreground transition-colors hover:bg-secondary/80 md:col-span-2 md:row-span-1"
+            >
+              <div className="flex h-full items-center justify-between gap-3">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">Documento</p>
+                  <h3 className="mt-2 text-xl font-headline font-bold">Descargar CV</h3>
+                </div>
+                <Download className="h-5 w-5 shrink-0" />
+              </div>
+            </Link>
+
+            <article className="border-r-2 border-b-2 border-border bg-card p-6 text-foreground md:col-span-3 md:row-span-1">
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Categorias</p>
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                {(parseCategories.length > 0 ? parseCategories : ["Android", "Web"]).map((category) => (
+                  <span
+                    key={category}
+                    className="flex min-h-10 items-center justify-center border-2 border-border bg-background px-3 py-2 text-center text-xs font-bold uppercase tracking-[0.12em] text-foreground"
+                  >
+                    {category}
+                  </span>
+                ))}
+              </div>
+            </article>
+
+            <article className="border-r-2 border-b-2 border-border bg-card p-6 text-foreground md:col-span-2 md:row-span-1">
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Estado</p>
+              <p className="mt-2 text-lg font-bold">Publicado</p>
+              <p className="mt-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Plataforma</p>
+              <p className="mt-2 text-lg font-bold">Android</p>
+            </article>
+
+            <article className="border-r-2 border-b-2 border-border bg-card p-6 text-foreground md:col-span-7 md:row-span-1">
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Tecnologias</p>
+              <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                {(parseTags.length > 0 ? parseTags : ["ML Kit", "Jetpack Compose", "Material 3"]).map((tag) => (
+                  <span
+                    key={tag}
+                    className="flex min-h-10 items-center justify-center border-2 border-border bg-background px-3 py-2 text-center text-xs font-bold text-foreground"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </article>
+
+            <Link
+              href={parsePlayStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border-r-2 border-b-2 border-border bg-primary p-5 text-primary-foreground transition-colors hover:bg-primary/90 md:col-span-3 md:row-span-1"
+            >
+              <div className="flex h-full items-center justify-between gap-3">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">Proyecto Destacado</p>
+                  <h3 className="mt-2 text-xl font-headline font-bold">Ver en Play Store</h3>
+                </div>
+                <PlayCircle className="h-5 w-5 shrink-0" />
+              </div>
+            </Link>
+
+            <Link
+              href="/projects/parse"
+              className="group border-r-2 border-b-2 border-border bg-accent p-5 text-accent-foreground transition-colors hover:bg-accent/90 md:col-span-2 md:row-span-1"
+            >
+              <div className="flex h-full items-center justify-between gap-3">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">Proyecto Destacado</p>
+                  <h3 className="mt-2 text-xl font-headline font-bold">Case Study</h3>
+                </div>
+                <ArrowRight className="h-5 w-5 shrink-0" />
+              </div>
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="hidden h-screen border-b-2 border-border bg-background md:block">
-        <div
-          className="grid h-full grid-cols-6 border-l-2 border-border"
-          style={{ gridTemplateRows: `repeat(${desktopRows}, minmax(0, 1fr))` }}
-        >
-          {premiumSortedProjects.map((project) => {
-            const premiumClass = homeDesktopPremiumTiles[project.slug] ?? "";
-            const isParse = project.slug === "parse";
-            const isPremiumTile = Boolean(premiumClass);
+      <section className="hidden border-b-2 border-border bg-background md:block">
+        <div className="grid grid-flow-dense grid-cols-6 auto-rows-[168px] border-l-2 border-border xl:auto-rows-[186px]">
+          <article className="relative col-span-6 flex items-end border-r-2 border-b-2 border-border bg-[linear-gradient(120deg,hsl(var(--primary))_0%,hsl(var(--accent))_100%)] p-8 text-primary-foreground">
+            <div>
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-foreground/85">Seccion</p>
+              <h2 className="mt-2 text-5xl font-headline font-black uppercase tracking-[0.04em]">Proyectos</h2>
+            </div>
+          </article>
+
+          {premiumSortedProjects.map((project, index) => {
+            const ventoClass = getDesktopVentoClass(project.slug, index);
+            const isImportant = isHomeImportantProject(project.slug);
+            const isExpandedTile = ventoClass.includes("col-span-2") || ventoClass.includes("row-span-2");
 
             return (
               <Link
                 key={project.id}
                 href={`/projects/${project.slug}`}
                 className={cn(
-                  "group relative overflow-hidden border-r-2 border-b-2 border-border bg-card",
-                  premiumClass
+                  "group relative flex min-h-[160px] select-text flex-col items-center justify-center overflow-hidden border-r-2 border-b-2 border-border px-4 py-6 text-center ring-1 ring-inset ring-border transition-colors",
+                  isImportant
+                    ? "bg-accent/15 hover:bg-accent/25"
+                    : "bg-card hover:bg-muted/40",
+                  ventoClass
                 )}
               >
-                {project.coverImage && (
-                  <Image
-                    src={project.coverImage}
-                    alt={project.title}
-                    fill
-                    className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
-                    unoptimized={project.coverImage.toLowerCase().endsWith(".gif")}
-                  />
+                {isImportant && (
+                  <div className="absolute left-3 top-3 z-10 text-foreground">
+                    <span className="inline-block border border-border bg-accent px-2 py-1 text-[9px] font-black uppercase tracking-[0.25em] text-accent-foreground">
+                      Importante
+                    </span>
+                  </div>
                 )}
-                <div className="absolute bottom-3 left-3 right-3 z-10 text-foreground">
-                  <span className="inline-block border border-border bg-background/85 px-2 py-1 text-[9px] font-black uppercase tracking-[0.25em] text-muted-foreground backdrop-blur-sm">
-                    {isParse ? "Publicado" : isPremiumTile ? "Premium" : "Proyecto"}
-                  </span>
-                  <h3 className="mt-2 text-base lg:text-xl font-headline font-bold leading-tight text-foreground [text-shadow:0_2px_12px_rgba(0,0,0,0.6)] group-hover:text-accent transition-colors">
+
+                <h3
+                  className={cn(
+                    "max-w-[92%] text-balance break-words font-headline font-bold leading-[1.05] text-foreground",
+                    isExpandedTile ? "text-[clamp(1.9rem,2.7vw,3.8rem)]" : "text-[clamp(1.4rem,1.7vw,2.6rem)]"
+                  )}
+                >
                     {project.title}
-                  </h3>
-                </div>
+                </h3>
+
+                {!isImportant && (
+                  <p className="mt-2 max-w-[90%] text-balance text-xs font-medium leading-relaxed text-muted-foreground">
+                    {getProjectSupportNote(project)}
+                  </p>
+                )}
               </Link>
             );
           })}
         </div>
       </section>
 
-      <section className="relative h-screen border-b-2 border-border bg-background md:hidden">
-        <div className="pointer-events-none absolute left-3 top-3 z-20 border border-border bg-background/80 px-3 py-1 text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground backdrop-blur-sm">
-          Mapa Metro - Desliza
-        </div>
-        <div className="flex h-full snap-x snap-mandatory items-center gap-2 overflow-x-auto overflow-y-hidden px-2 pb-4 pt-8 no-scrollbar">
-          {premiumSortedProjects.map((project, index) => (
+      <section className="relative min-h-screen border-b-2 border-border bg-background md:hidden">
+        <div className="grid grid-flow-dense grid-cols-2 auto-rows-[124px] border-l-2 border-border">
+          <article className="col-span-2 flex items-end border-r-2 border-b-2 border-border bg-[linear-gradient(120deg,hsl(var(--primary))_0%,hsl(var(--accent))_100%)] px-4 py-5 text-primary-foreground">
+            <div>
+              <p className="text-[9px] font-black uppercase tracking-[0.28em] text-primary-foreground/85">Seccion</p>
+              <h2 className="mt-2 text-3xl font-headline font-black uppercase tracking-[0.06em]">Proyectos</h2>
+            </div>
+          </article>
+
+          {premiumSortedProjects.map((project, index) => {
+            const isImportant = isHomeImportantProject(project.slug);
+            const mobileVentoClass = getMobileVentoClass(project.slug, index);
+            const isExpandedTile = mobileVentoClass.includes("col-span-2") || mobileVentoClass.includes("row-span-2");
+            return (
             <Link
               key={project.id}
               href={`/projects/${project.slug}`}
               className={cn(
-                "group relative shrink-0 snap-center overflow-hidden border-2 border-border bg-card",
-                homeMobileFeaturedTiles[project.slug] ?? homeMobileMetroPattern[index % homeMobileMetroPattern.length]
+                  "group relative flex select-text flex-col items-center justify-center border-r-2 border-b-2 border-border px-3 text-center ring-1 ring-inset ring-border",
+                  isImportant ? "bg-accent/15" : "bg-card",
+                  mobileVentoClass
               )}
             >
-              {project.coverImage && (
-                <Image
-                  src={project.coverImage}
-                  alt={project.title}
-                  fill
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
-                  unoptimized={project.coverImage.toLowerCase().endsWith(".gif")}
-                />
-              )}
-              <div className="absolute bottom-3 left-3 right-3 z-10 text-foreground">
-                <span className="inline-block border border-border bg-background/85 px-2 py-1 text-[9px] font-black uppercase tracking-[0.25em] text-muted-foreground backdrop-blur-sm">
-                  {homeMobileFeaturedTiles[project.slug] ? "Zona Clave" : "Nodo"}
-                </span>
-                <h3 className="mt-2 text-2xl font-headline font-bold leading-tight text-foreground [text-shadow:0_2px_12px_rgba(0,0,0,0.6)]">{project.title}</h3>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-b-2 border-border bg-background overflow-hidden">
-        <div className="grid md:grid-cols-2 items-stretch w-full">
-          <div className="md:col-span-1 space-y-6 container max-w-screen-lg mx-auto py-24 pr-12 flex flex-col justify-center">
-            <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">
-              Sobre Mí
-            </h2>
-            <div className="space-y-4 text-muted-foreground md:text-lg max-w-prose">
-              <p>
-                Soy un <span className="relative inline-block border-2 border-border rounded-md px-2 py-1 align-middle">
-                  <span className="absolute inset-0 scale-x-0 animate-expand-from-center rounded-sm bg-primary/20 origin-center"></span>
-                  <span className="relative font-bold text-primary">
-                    Desarrollador Multiplataforma
+              {isImportant && (
+                <div className="absolute left-2 top-2">
+                  <span className="inline-block border border-border bg-accent px-2 py-1 text-[9px] font-black uppercase tracking-[0.2em] text-accent-foreground">
+                    Clave
                   </span>
-                </span> enfocado en construir productos que lleguen a producción y escalen.
-                Mi trabajo reciente se concentra en Parse, Override Menu, Override Logistics y Override Sense.
-              </p>
-              <p>
-                Actualmente priorizo arquitectura limpia, IA aplicada y experiencias consistentes entre Android, Web y Desktop.
-                El objetivo es convertir ideas en productos lanzables con roadmap claro, buen rendimiento y valor real para usuarios.
-              </p>
-            </div>
-          </div>
-          <div className="relative md:col-span-1 w-full min-h-[400px] md:min-h-0">
-            <div className="md:absolute md:inset-0">
-              <div className="relative h-full w-full aspect-video">
-                <Image
-                  src={profileImage}
-                  alt="Christopher Alejandro Maldonado Chavez"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
+                </div>
+              )}
+              <h3 className={cn("text-balance font-headline font-bold leading-tight text-foreground", isExpandedTile ? "text-2xl" : "text-xl")}>{project.title}</h3>
+
+              {!isImportant && (
+                <p className="mt-2 max-w-[94%] text-balance text-[11px] font-medium leading-relaxed text-muted-foreground">
+                  {getProjectSupportNote(project)}
+                </p>
+              )}
+            </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -340,18 +433,18 @@ export default async function Home() {
       </section>
 
       <section className="border-t-2 border-border bg-background">
-        <div className="flex items-center justify-between border-b-2 border-border px-4 py-6 md:px-8">
-          <h2 className="text-2xl md:text-4xl font-headline font-bold tracking-tighter">
-            Reconocimientos y Certificados
-          </h2>
-          <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-muted-foreground">Vento Grid</span>
-        </div>
-        <div className="grid grid-cols-1 border-l-2 border-border md:grid-cols-4">
+        <div className="grid grid-flow-dense grid-cols-1 border-l-2 border-t-2 border-border md:grid-cols-4 md:auto-rows-[minmax(170px,auto)]">
+          <article className="border-r-2 border-b-2 border-border bg-[linear-gradient(120deg,hsl(var(--primary))_0%,hsl(var(--accent))_100%)] p-6 text-primary-foreground md:col-span-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.28em] text-primary-foreground/85">Seccion</p>
+            <h2 className="mt-2 text-4xl font-headline font-black uppercase tracking-[0.04em] md:text-6xl">Reconocimientos</h2>
+            <p className="mt-3 max-w-3xl text-sm text-primary-foreground/85 md:text-base">Resultados y publicaciones que respaldan el progreso de producto.</p>
+          </article>
+
           {recognitions.map((rec, index) => (
             <article
               key={index}
               className={cn(
-                "border-r-2 border-b-2 border-border p-6 md:p-8 bg-card/40",
+                "h-full overflow-hidden border-r-2 border-b-2 border-border bg-card/40 p-6 md:p-8",
                 index === 0 && "md:col-span-2 md:row-span-2",
                 index === 3 && "md:col-span-2"
               )}
@@ -364,27 +457,43 @@ export default async function Home() {
               <p className="mt-4 text-sm md:text-base text-muted-foreground">{rec.description}</p>
             </article>
           ))}
+
+          <article className="border-r-2 border-b-2 border-border bg-card/30 p-6 md:p-8">
+            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-muted-foreground">Continuidad</p>
+            <h3 className="mt-3 text-2xl font-headline font-bold leading-tight">Proximos Logros</h3>
+            <p className="mt-4 text-sm text-muted-foreground">Cada release y cada concurso suman al siguiente nivel del portfolio.</p>
+          </article>
         </div>
       </section>
 
       <section id="contact" className="border-t-2 border-border bg-background">
-        <div className="container max-w-screen-lg mx-auto py-24 px-4">
-          <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-center mb-12">
-            Conecta Conmigo
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {socialLinks.map((link) => (
-              <Link key={link.title} href={link.href} target="_blank" rel="noopener noreferrer" className="group">
-                <Card className="h-full bg-card/80 backdrop-blur-sm border-2 border-border shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                  <CardContent className="p-6 flex flex-col items-center justify-center text-center">
-                    <link.icon className="h-10 w-10 text-accent mb-4 transition-transform group-hover:scale-110" />
-                    <h3 className="font-bold font-headline text-lg">{link.title}</h3>
-                    <p className="text-sm text-muted-foreground break-all">{link.handle}</p>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
+        <div className="grid grid-flow-dense grid-cols-1 border-l-2 border-t-2 border-border md:grid-cols-4 md:auto-rows-[170px]">
+          <article className="border-r-2 border-b-2 border-border bg-[linear-gradient(120deg,hsl(var(--primary))_0%,hsl(var(--accent))_100%)] p-6 text-primary-foreground md:col-span-2 md:row-span-2 md:p-8">
+            <p className="text-[10px] font-black uppercase tracking-[0.28em] text-primary-foreground/85">Seccion</p>
+            <h2 className="mt-2 text-4xl font-headline font-black uppercase tracking-[0.04em] md:text-6xl">Conecta</h2>
+            <p className="mt-4 max-w-xl text-sm text-primary-foreground/90 md:text-base">Canales directos para colaboraciones, trabajo y contenido.</p>
+          </article>
+
+          {socialLinks.map((link) => (
+            <Link
+              key={link.title}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border-r-2 border-b-2 border-border bg-card p-6 text-foreground transition-colors hover:bg-muted/40 md:p-7"
+            >
+              <div className="flex h-full flex-col justify-between">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-[10px] font-black uppercase tracking-[0.22em] text-muted-foreground">Canal</p>
+                  <link.icon className="h-5 w-5 text-accent transition-transform group-hover:scale-110" />
+                </div>
+                <div className="mt-4">
+                  <h3 className="font-headline text-2xl font-bold leading-tight">{link.title}</h3>
+                  <p className="mt-2 break-all text-sm text-muted-foreground">{link.handle}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
     </div>
