@@ -3,7 +3,7 @@ import { S3Client, ListObjectsV2Command } from "@aws-sdk/client-s3";
 // Public constants
 const ACCOUNT_ID = "1827203a2c62ad3b7a9aaace51eb44b7";
 const BUCKET_NAME = "projects";
-const PUBLIC_URL = "https://pub-f9c51555bfe841b8af90cf9dc30b962d.r2.dev";
+const PROXY_IMAGE_ROUTE = "/api/r2-image?key=";
 let cachedClient: S3Client | null | undefined;
 let hasWarnedMissingCredentials = false;
 const CACHE_TTL_MS = 5 * 60 * 1000;
@@ -45,7 +45,7 @@ async function listMediaForPrefix(
     const mapped = (page.Contents ?? [])
       .filter((item) => item.Key && !item.Key.endsWith("/"))
       .map((item) => ({
-        url: `${PUBLIC_URL}/${item.Key}`,
+        url: `${PROXY_IMAGE_ROUTE}${encodeURIComponent(item.Key || "")}`,
         description: item.Key?.split("/").pop() || "",
         isVideo: Boolean(
           item.Key?.toLowerCase().endsWith(".mp4") || item.Key?.toLowerCase().endsWith(".webm")

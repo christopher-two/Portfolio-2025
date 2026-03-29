@@ -19,7 +19,7 @@ export const socialLinks: SocialLink[] = [
     icon: Linkedin,
     title: 'LinkedIn',
     handle: 'christopher_two',
-    href: 'https://www.linkedin.com/in/christopher_two/',
+    href: 'https://www.linkedin.com/in/christopher-two/',
   },
   {
     icon: Github,

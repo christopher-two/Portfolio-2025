@@ -68,25 +68,27 @@ export function ProjectCard({ slug, title, coverImage, className, tileClassName 
     >
       <div
         className={cn(
-          "group relative flex w-full min-h-[45vh] items-end justify-start overflow-hidden border-b-2 border-r-2 border-border bg-card p-6 transition-all duration-500",
+          "group grid h-full w-full min-h-[45vh] grid-rows-[1fr_auto] overflow-hidden border-b-2 border-r-2 border-border bg-card transition-all duration-500",
           tileClassName,
           !hasUsableImage && "sm:min-h-0 sm:aspect-[16/9] lg:min-h-0 lg:aspect-[16/9]",
           hasUsableImage && isPortraitVento && "lg:aspect-auto lg:min-h-[68vh] xl:min-h-[72vh]"
         )}
       >
-        {hasUsableImage && (
-          <Image
-            src={coverImage}
-            alt={title}
-            fill
-            className="object-cover transition-transform duration-1000 ease-out group-hover:scale-110 opacity-55 group-hover:opacity-30"
-            unoptimized={coverImage.toLowerCase().endsWith('.gif')}
-            onError={() => setImageLoadError(true)}
-          />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/55 to-transparent" />
-        <div className="relative z-10 w-full">
-          <span className="mb-2 block text-[9px] font-black uppercase tracking-[0.2em] text-accent opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 translate-y-3">
+        <div className="relative min-h-0 bg-muted/30">
+          {hasUsableImage && (
+            <Image
+              src={coverImage}
+              alt={title}
+              fill
+              className="object-contain object-center transition-transform duration-700 group-hover:scale-[1.02]"
+              unoptimized={coverImage.toLowerCase().endsWith('.gif')}
+              onError={() => setImageLoadError(true)}
+            />
+          )}
+        </div>
+
+        <div className="w-full border-t-2 border-border bg-background p-4">
+          <span className="mb-2 block text-[9px] font-black uppercase tracking-[0.2em] text-accent">
             Case Study
           </span>
           <h2 className="font-headline font-bold tracking-tighter text-foreground transition-all duration-500 group-hover:text-accent text-3xl sm:text-2xl md:text-3xl lg:text-4xl leading-[0.95]">
@@ -98,11 +100,10 @@ export function ProjectCard({ slug, title, coverImage, className, tileClassName 
              <div className="h-[1px] w-4 bg-accent transition-all duration-500 group-hover:w-8" />
              VIEW
           </div>
-        </div>
-        
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 p-4 opacity-0 transition-all duration-500 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0">
-          <ArrowRight className="h-6 w-6 text-accent -rotate-45" />
+
+          <div className="mt-3 flex justify-end">
+            <ArrowRight className="h-5 w-5 text-accent -rotate-45" />
+          </div>
         </div>
       </div>
     </Link>

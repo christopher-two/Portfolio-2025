@@ -6,7 +6,6 @@ import { TechCard } from "@/components/TechCard";
 import { Card, CardContent } from "@/components/ui/card";
 import { TechMarquee } from "@/components/TechMarquee";
 import { AnimatedName } from "@/components/AnimatedName";
-import { InfiniteProjectsMap } from "@/components/InfiniteProjectsMap";
 import { socialLinks, projects } from "@/lib/data";
 import { attachProjectCoversPaged } from "@/lib/r2-client";
 import { cn } from "@/lib/utils";
@@ -23,6 +22,16 @@ const homePremiumPriority = [
   "atomo-app",
   "spot",
 ];
+
+const homeDesktopPremiumTiles: Record<string, string> = {
+  parse: "col-span-2 row-span-2",
+  "override-menu": "col-span-2",
+  "override-logistics": "row-span-2",
+  "override-sense": "col-span-2",
+  parkspot: "col-span-2",
+  "atomo-app": "row-span-2",
+  spot: "col-span-2",
+};
 
 const homeMobileMetroPattern = [
   "w-[84vw] min-w-[84vw] h-[76vh] -translate-y-6",
@@ -43,6 +52,14 @@ const homeMobileFeaturedTiles: Record<string, string> = {
 function getHomePriorityRank(slug: string) {
   const index = homePremiumPriority.indexOf(slug);
   return index === -1 ? Number.POSITIVE_INFINITY : index;
+}
+
+function getDesktopTileUnits(tileClassName?: string) {
+  if (!tileClassName) return 0;
+
+  const colSpan = tileClassName.includes("col-span-2") ? 2 : 1;
+  const rowSpan = tileClassName.includes("row-span-2") ? 2 : 1;
+  return colSpan * rowSpan - 1;
 }
 
 const techSkills = [
@@ -118,6 +135,12 @@ export default async function Home() {
     return Number(a.id) - Number(b.id);
   });
 
+  const desktopExtraSlots = premiumSortedProjects.reduce((sum, project) => {
+    return sum + getDesktopTileUnits(homeDesktopPremiumTiles[project.slug]);
+  }, 0);
+
+  const desktopRows = Math.ceil((premiumSortedProjects.length + desktopExtraSlots) / 6);
+
   return (
     <div className="flex-1 w-full">
       <section className="relative min-h-screen border-b-2 border-border bg-background bg-[radial-gradient(circle_at_top_left,#8f5eff1f,transparent_40%),linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:auto,24px_24px,24px_24px]">
@@ -148,23 +171,26 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="group relative h-[70vh] min-h-[420px] overflow-hidden border-2 border-border bg-muted/30 shadow-[8px_8px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-2 hover:translate-y-2">
-            {parseProject?.coverImage && (
-              <Image
-                src={parseProject.coverImage}
-                alt="Parse en Google Play"
-                fill
-                className="object-cover object-center opacity-90 transition-all duration-700 group-hover:opacity-100 md:object-contain md:group-hover:scale-[1.01]"
-                unoptimized={parseProject.coverImage.toLowerCase().endsWith(".gif")}
-              />
-            )}
-            <div className="relative z-10 flex h-full flex-col justify-between p-6 md:p-8 text-foreground">
-              <div className="inline-flex w-fit items-center gap-2 border border-border bg-background/80 px-3 py-1 text-xs font-black uppercase tracking-[0.2em] text-foreground">
+          <div className="group grid h-[70vh] min-h-[420px] grid-rows-[1fr_auto] overflow-hidden border-2 border-border bg-card shadow-[8px_8px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-2 hover:translate-y-2">
+            <div className="relative min-h-0 bg-muted/30">
+              {parseProject?.coverImage && (
+                <Image
+                  src={parseProject.coverImage}
+                  alt="Parse en Google Play"
+                  fill
+                  className="object-contain object-center transition-transform duration-700 group-hover:scale-[1.015]"
+                  unoptimized={parseProject.coverImage.toLowerCase().endsWith(".gif")}
+                />
+              )}
+            </div>
+
+            <div className="border-t-2 border-border bg-background p-6 md:p-8 text-foreground">
+              <div className="inline-flex w-fit items-center gap-2 border border-border bg-background px-3 py-1 text-xs font-black uppercase tracking-[0.2em] text-foreground">
                 <Sparkles className="h-4 w-4" />
                 Proyecto Destacado
               </div>
 
-              <div className="space-y-4 border border-border bg-background/82 p-4 backdrop-blur-sm md:max-w-xl">
+              <div className="mt-4 space-y-4 md:max-w-xl">
                 <h2 className="text-4xl md:text-5xl font-headline font-bold tracking-tight">Parse</h2>
                 <p className="max-w-xl text-sm md:text-base text-muted-foreground">
                   Lector moderno para Android con traducción inteligente, navegación avanzada y diseño minimalista.
@@ -177,7 +203,7 @@ export default async function Home() {
                     </Button>
                   </Link>
                   <Link href="/projects/parse">
-                    <Button size="lg" variant="outline" className="border-2 border-border bg-background/70 text-foreground hover:bg-muted">
+                    <Button size="lg" variant="outline" className="border-2 border-border bg-background text-foreground hover:bg-muted">
                       Case Study <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
@@ -189,7 +215,47 @@ export default async function Home() {
       </section>
 
       <section className="hidden h-screen border-b-2 border-border bg-background md:block">
-        <InfiniteProjectsMap projects={premiumSortedProjects} />
+        <div
+          className="grid h-full grid-cols-6 border-l-2 border-border"
+          style={{ gridTemplateRows: `repeat(${desktopRows}, minmax(0, 1fr))` }}
+        >
+          {premiumSortedProjects.map((project) => {
+            const premiumClass = homeDesktopPremiumTiles[project.slug] ?? "";
+            const isParse = project.slug === "parse";
+            const isPremiumTile = Boolean(premiumClass);
+
+            return (
+              <Link
+                key={project.id}
+                href={`/projects/${project.slug}`}
+                className={cn(
+                  "group flex h-full flex-col overflow-hidden border-r-2 border-b-2 border-border bg-card",
+                  premiumClass
+                )}
+              >
+                <div className="relative min-h-0 flex-1 bg-muted/30">
+                  {project.coverImage && (
+                    <Image
+                      src={project.coverImage}
+                      alt={project.title}
+                      fill
+                      className="object-contain object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                      unoptimized={project.coverImage.toLowerCase().endsWith(".gif")}
+                    />
+                  )}
+                </div>
+                <div className="border-t-2 border-border bg-background p-4 text-foreground">
+                  <span className="text-[9px] font-black uppercase tracking-[0.25em] text-muted-foreground">
+                    {isParse ? "Publicado" : isPremiumTile ? "Premium" : "Proyecto"}
+                  </span>
+                  <h3 className="mt-2 text-base lg:text-xl font-headline font-bold leading-tight group-hover:text-accent transition-colors">
+                    {project.title}
+                  </h3>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </section>
 
       <section className="relative h-screen border-b-2 border-border bg-background md:hidden">
@@ -202,21 +268,22 @@ export default async function Home() {
               key={project.id}
               href={`/projects/${project.slug}`}
               className={cn(
-                "group relative shrink-0 snap-center overflow-hidden border-2 border-border bg-card",
+                "group relative flex shrink-0 snap-center flex-col overflow-hidden border-2 border-border bg-card",
                 homeMobileFeaturedTiles[project.slug] ?? homeMobileMetroPattern[index % homeMobileMetroPattern.length]
               )}
             >
-              {project.coverImage && (
-                <Image
-                  src={project.coverImage}
-                  alt={project.title}
-                  fill
-                  className="object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-35"
-                  unoptimized={project.coverImage.toLowerCase().endsWith(".gif")}
-                />
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/45 to-transparent" />
-              <div className="relative z-10 flex h-full flex-col justify-end p-4 text-foreground">
+              <div className="relative min-h-0 flex-1 bg-muted/30">
+                {project.coverImage && (
+                  <Image
+                    src={project.coverImage}
+                    alt={project.title}
+                    fill
+                    className="object-contain object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                    unoptimized={project.coverImage.toLowerCase().endsWith(".gif")}
+                  />
+                )}
+              </div>
+              <div className="border-t-2 border-border bg-background p-4 text-foreground">
                 <span className="mb-2 text-[9px] font-black uppercase tracking-[0.25em] text-muted-foreground">
                   {homeMobileFeaturedTiles[project.slug] ? "Zona Clave" : "Nodo"}
                 </span>
