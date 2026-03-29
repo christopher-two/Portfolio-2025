@@ -80,6 +80,7 @@ export const products = [
   { id: "prod-12", title: "Colors RGB", href: "/projects/colors", bgColor: "bg-gradient-to-br from-red-500 via-green-500 to-blue-500" },
   { id: "prod-16", title: "Squid Games App", href: "/projects/squid-games-app", bgColor: "bg-pink-900" },
   { id: "prod-17", title: "Squid Games Desktop", href: "/projects/squid-games-desktop", bgColor: "bg-slate-900" },
+  { id: "prod-22", title: "ParkSpot", href: "/projects/parkspot", bgColor: "bg-lime-700" },
 ];
 
 export const TECH_CATEGORIES = {
@@ -276,29 +277,66 @@ Parse representa la evolución de la lectura móvil, combinando el minimalismo v
     id: "19",
     slug: "override-sense",
     title: "Override Sense",
-    description: "Aplicación de accesibilidad que utiliza IA para detectar y visualizar sonidos ambientales críticos en tiempo real.",
-    longDescription: `**Override Sense** es una aplicación de accesibilidad para Android diseñada para empoderar a personas con discapacidad auditiva mediante el uso de **Inteligencia Artificial en el dispositivo**.
+    description: "Aplicación de accesibilidad para Android con IA en dispositivo que detecta sonidos críticos y los convierte en alertas visuales y hápticas.",
+    longDescription: `**Override Sense** es una aplicación de accesibilidad para Android diseñada para ayudar a personas con discapacidad auditiva.
 
-### Innovación en Accesibilidad
+Mediante **On-Device AI**, la app detecta, clasifica y visualiza sonidos ambientales críticos en tiempo real, transformando audio en alertas visuales y sensoriales sin depender de la nube.
 
-La aplicación transforma el entorno sonoro en experiencias visuales y sensoriales, permitiendo una mayor consciencia del entorno:
-- 🧠 **Detección Inteligente:** Utiliza el modelo **YAMNet** de TensorFlow Lite para identificar más de 500 tipos de sonidos (alarmas, timbres, llanto de bebé) sin necesidad de internet.
-- 👁️ **Feedback Visual Reactivo:** Animaciones de pulso que cambian de color e intensidad según la prioridad del sonido detectado.
-- 📳 **Alertas Hápticas:** 7 patrones de vibración personalizados para diferenciar tipos de alertas de forma táctil.
-- 🛡️ **Privacidad Total:** El procesamiento se realiza 100% localmente; nunca se graba ni se sube audio a la nube.
+### Detección Inteligente
 
-### Excelencia Técnica
+La clasificación de eventos sonoros se realiza con **YAMNet + TensorFlow Lite**, cubriendo más de 500 tipos de sonidos y priorizando por niveles:
 
-- 🎨 **Jetpack Compose:** Interfaz moderna con soporte para **Material You** y temas dinámicos.
-- 🏗️ **Arquitectura Robusta:** Implementada bajo principios de **Clean Architecture** y MVVM, garantizando escalabilidad y mantenibilidad.
-- ⚡ **Tecnología On-Device AI:** Integración profunda con **TensorFlow Lite** optimizada para el rendimiento móvil.
-- 📡 **Servicios en Primer Plano:** Uso de **WorkManager** y Foreground Services para una monitorización constante y fiable.
+- 🔴 **Crítico:** alarmas de incendio, detectores de humo y sirenas de emergencia.
+- 🟡 **Advertencia:** timbres, golpes en la puerta y zumbadores.
+- 🔵 **Información:** llanto de bebé, risas y habla.
 
-Override Sense no es solo una herramienta, es un puente tecnológico que mejora la seguridad y la independencia de sus usuarios en su vida diaria.`,
-    r2Folder: "Override/Sense",
-    link: "https://pub-d9e5f32907414250918a7f45da3c437e.r2.dev/Sense.apk",
+### Feedback Visual y Sensorial
+
+- 👁️ **Animación de Pulso:** visualización reactiva que cambia color e intensidad según la prioridad del sonido.
+- 🚨 **Notificaciones de Alto Impacto:** alertas heads-up incluso con la pantalla bloqueada.
+- 📳 **Patrones de Vibración:** 7 patrones personalizados (Doble, Triple, Latido y más) con intensidad ajustable.
+- 💡 **Alertas LED:** uso del flash para eventos críticos en entornos oscuros.
+
+### Personalización y Rendimiento
+
+- 🎨 **Temas Dinámicos:** soporte para Material You y modos claro/oscuro.
+- 🎚️ **Sensibilidad Ajustable:** control de ganancia del micrófono y umbrales de detección.
+- 🔋 **Optimización de Batería:** modos de ahorro y ejecución condicionada a carga cuando se requiere.
+
+### Privacidad Primero
+
+Todo el procesamiento de audio ocurre **100% en el dispositivo**. Ningún audio se graba, almacena ni envía a servicios externos.
+
+### Stack Tecnológico
+
+- **Kotlin**
+- **Jetpack Compose + Material3**
+- **MVVM + Clean Architecture**
+- **Koin**
+- **Coroutines + Kotlin Flow**
+- **TensorFlow Lite (Audio Classification)**
+- **WorkManager + Foreground Services**
+- **DataStore Preferences**
+- **Gradle (Kotlin DSL)**
+
+Override Sense combina accesibilidad, privacidad y arquitectura Android moderna para ofrecer una experiencia confiable en escenarios de vida diaria donde cada segundo importa.`,
+    r2Folder: "projects/OverrideSense",
+    link: "https://sense.override.com.mx/",
     categories: [TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.AI],
-    tags: ["Android", "Jetpack Compose", "TensorFlow Lite", "On-Device AI", "Clean Architecture", "Koin"],
+    tags: [
+      "Android",
+      "Kotlin",
+      "Jetpack Compose",
+      "Material 3",
+      "TensorFlow Lite",
+      "On-Device AI",
+      "MVVM",
+      "Clean Architecture",
+      "Koin",
+      "Kotlin Flow",
+      "WorkManager",
+      "DataStore",
+    ],
   },
   {
     id: "9",
@@ -602,6 +640,77 @@ El sistema ha sido diseñado para mejorar la eficiencia operativa de la bibliote
     link: "https://github.com/christopher-two/Cetis27-Library",
     categories: [TECH_CATEGORIES.WEB],
     tags: ["Astro", "TailwindCSS", "Firebase", "Cloudflare Pages", "JavaScript", "HTML", "CSS"],
+  },
+  {
+    id: "22",
+    slug: "parkspot",
+    title: "ParkSpot",
+    description: "App Kotlin Multiplatform para guardar la ubicacion del auto, gestionar historial y controlar tickets de parking con timer y notificaciones.",
+    longDescription: `**ParkSpot** es una aplicacion **Kotlin Multiplatform** enfocada en resolver un problema diario: recordar donde quedo estacionado tu auto y controlar el tiempo del ticket de parking sin fricciones.
+
+### Lo que hace el proyecto
+
+- 🧭 **Onboarding inicial** para configurar el flujo de uso.
+- 📍 **Seleccion y guardado de ubicaciones** de estacionamiento.
+- 🗂️ **Historial de lugares guardados** con pantalla de detalle por ticket.
+- 🗺️ **Mapa en Android con Mapbox** para crear spots de forma visual.
+- 🍎 **Soporte iOS** para la app compartida (mapa nativo iOS en estado base).
+- ⏱️ **Timer de ticket de parking** con notificaciones inteligentes.
+
+### Timer y notificaciones de parking
+
+#### Flujo funcional
+
+1. El usuario crea un spot desde la pantalla de mapa (Car) y puede definir \
+\`parkUntil\`.
+2. Si hay \
+\`parkUntil\`, se solicita permiso de notificaciones en Android (\`POST_NOTIFICATIONS\`).
+3. Al guardar, se inicia un timer nativo sin depender de abrir ParkingDetail.
+4. El timer sigue activo con Foreground Service mientras haya tiempo restante.
+
+#### Android
+
+- Implementacion nativa en \`composeApp/src/androidMain/.../ParkingForegroundService.kt\`.
+- Notificacion persistente con cronometro (\`setUsesChronometer(true)\`).
+- Deep link al ticket al tocar la notificacion.
+- Alertas adicionales automaticas al 50%, 10% y fin del ticket.
+- Servicio desacoplado de la pantalla de detalle para mantener el timer fuera de UI.
+
+#### iOS
+
+- Implementacion base en \`composeApp/src/iosMain/.../ParkingNotificationService.ios.kt\`.
+- Estructura minima de notificaciones con \`UNUserNotificationCenter\`.
+- Aun no replica la experiencia foreground en vivo de Android.
+
+### Stack tecnico
+
+- ⚙️ **Kotlin Multiplatform + Compose Multiplatform**.
+- 🧩 **Koin** para inyeccion de dependencias.
+- 💾 **Room y DataStore** para persistencia local.
+- 🌐 **Ktor** para networking.
+- 🗺️ **Mapbox (maps-compose)** en Android.
+
+### Arquitectura y estructura
+
+El proyecto esta organizado por feature y capas:
+
+- \`feature/*/data\`: repositorios e implementaciones de data sources.
+- \`feature/*/domain\`: modelos y casos de uso.
+- \`feature/*/presentation\`: ViewModel y UI en Compose.
+- DI centralizada en \`composeApp/src/commonMain/kotlin/org/christophertwo/car/di/FeaturesModules.kt\`.
+
+### Notas de configuracion
+
+- El token de Mapbox se inyecta en build time desde \`androidapp/build.gradle.kts\` como \`mapbox_access_token\`.
+- Configuracion recomendada local: \`local.properties\` con \`MAPBOX_ACCESS_TOKEN=pk.your_token_here\`.
+- Tambien existe fallback con \`MAPBOX_SECRET_TOKEN\`.
+- Si el usuario deniega notificaciones en Android, el timer visual sigue funcionando en app, pero las notificaciones pueden no mostrarse.
+
+ParkSpot prioriza una experiencia util en el mundo real: guardar rapido, consultar facil y no perder el control del tiempo de estacionamiento.`,
+    r2Folder: "projects/parkspot",
+    link: "https://parkspot.christopher.com.mx/",
+    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID],
+    tags: ["Kotlin Multiplatform", "Compose Multiplatform", "Koin", "Room", "DataStore", "Ktor", "Mapbox SDK", "Foreground Service", "Notifications", "iOS"],
   },
 ];
 

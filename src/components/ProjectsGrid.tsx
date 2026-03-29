@@ -17,6 +17,7 @@ const ventoPriorityOrder = [
   "override-menu",
   "override-logistics",
   "override-sense",
+  "parkspot",
   "atomo-app",
   "spot",
 ];
@@ -26,6 +27,7 @@ const ventoPremiumTiles: Record<string, string> = {
   "override-menu": "xl:col-span-2",
   "override-logistics": "md:row-span-2",
   "override-sense": "xl:col-span-2",
+  parkspot: "md:col-span-2 xl:col-span-2",
   "atomo-app": "md:col-span-2",
   spot: "md:row-span-2",
 };

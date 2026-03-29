@@ -18,6 +18,7 @@ const homePremiumPriority = [
   "override-menu",
   "override-logistics",
   "override-sense",
+  "parkspot",
   "atomo-app",
   "spot",
 ];
@@ -27,6 +28,7 @@ const homeDesktopPremiumTiles: Record<string, string> = {
   "override-menu": "col-span-2",
   "override-logistics": "row-span-2",
   "override-sense": "col-span-2",
+  parkspot: "col-span-2",
   "atomo-app": "row-span-2",
   spot: "col-span-2",
 };
@@ -44,6 +46,7 @@ const homeMobileFeaturedTiles: Record<string, string> = {
   "override-menu": "w-[86vw] min-w-[86vw] h-[78vh] -translate-y-1",
   "override-logistics": "w-[72vw] min-w-[72vw] h-[66vh] translate-y-6",
   "override-sense": "w-[82vw] min-w-[82vw] h-[74vh] -translate-y-3",
+  parkspot: "w-[80vw] min-w-[80vw] h-[72vh] -translate-y-2",
 };
 
 function getHomePriorityRank(slug: string) {
