@@ -177,37 +177,37 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="group relative h-[70vh] min-h-[420px] overflow-hidden border-2 border-border bg-black shadow-[8px_8px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-2 hover:translate-y-2">
+          <div className="group relative h-[70vh] min-h-[420px] overflow-hidden border-2 border-border bg-card shadow-[8px_8px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-2 hover:translate-y-2">
             {parseProject?.coverImage && (
               <Image
                 src={parseProject.coverImage}
                 alt="Parse en Google Play"
                 fill
-                className="object-cover opacity-65 transition-all duration-700 group-hover:scale-105 group-hover:opacity-45"
+                className="object-cover opacity-55 transition-all duration-700 group-hover:scale-105 group-hover:opacity-35"
                 unoptimized={parseProject.coverImage.toLowerCase().endsWith(".gif")}
               />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
-            <div className="relative z-10 flex h-full flex-col justify-between p-6 md:p-8 text-white">
-              <div className="inline-flex w-fit items-center gap-2 border border-white/30 bg-black/50 px-3 py-1 text-xs font-black uppercase tracking-[0.2em]">
+            <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/55 to-transparent" />
+            <div className="relative z-10 flex h-full flex-col justify-between p-6 md:p-8 text-foreground">
+              <div className="inline-flex w-fit items-center gap-2 border border-border bg-background/80 px-3 py-1 text-xs font-black uppercase tracking-[0.2em] text-foreground">
                 <Sparkles className="h-4 w-4" />
                 Proyecto Destacado
               </div>
 
               <div className="space-y-4">
                 <h2 className="text-4xl md:text-5xl font-headline font-bold tracking-tight">Parse</h2>
-                <p className="max-w-xl text-sm md:text-base text-white/85">
+                <p className="max-w-xl text-sm md:text-base text-muted-foreground">
                   Lector moderno para Android con traducción inteligente, navegación avanzada y diseño minimalista.
                   Ya está publicado en Google Play Store.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <Link href={parsePlayStoreUrl} target="_blank" rel="noopener noreferrer">
-                    <Button size="lg" className="border-2 border-white bg-white text-black font-bold hover:bg-white/90">
+                    <Button size="lg" className="border-2 border-border font-bold shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
                       Ver en Play Store <PlayCircle className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
                   <Link href="/projects/parse">
-                    <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
+                    <Button size="lg" variant="outline" className="border-2 border-border bg-background/70 text-foreground hover:bg-muted">
                       Case Study <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
@@ -233,7 +233,7 @@ export default async function Home() {
                 key={project.id}
                 href={`/projects/${project.slug}`}
                 className={cn(
-                  "group relative overflow-hidden border-r-2 border-b-2 border-border bg-black",
+                  "group relative overflow-hidden border-r-2 border-b-2 border-border bg-card",
                   premiumClass
                 )}
               >
@@ -246,9 +246,9 @@ export default async function Home() {
                     unoptimized={project.coverImage.toLowerCase().endsWith(".gif")}
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                <div className="relative z-10 flex h-full flex-col justify-between p-4 text-white">
-                  <span className="text-[9px] font-black uppercase tracking-[0.25em] text-white/70">
+                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/45 to-transparent" />
+                <div className="relative z-10 flex h-full flex-col justify-between p-4 text-foreground">
+                  <span className="text-[9px] font-black uppercase tracking-[0.25em] text-muted-foreground">
                     {isParse ? "Publicado" : isPremiumTile ? "Premium" : "Proyecto"}
                   </span>
                   <h3 className="text-base lg:text-xl font-headline font-bold leading-tight group-hover:text-accent transition-colors">
@@ -271,7 +271,7 @@ export default async function Home() {
               key={project.id}
               href={`/projects/${project.slug}`}
               className={cn(
-                "group relative shrink-0 snap-center overflow-hidden border-2 border-border bg-black",
+                "group relative shrink-0 snap-center overflow-hidden border-2 border-border bg-card",
                 homeMobileFeaturedTiles[project.slug] ?? homeMobileMetroPattern[index % homeMobileMetroPattern.length]
               )}
             >
@@ -284,9 +284,9 @@ export default async function Home() {
                   unoptimized={project.coverImage.toLowerCase().endsWith(".gif")}
                 />
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-              <div className="relative z-10 flex h-full flex-col justify-end p-4 text-white">
-                <span className="mb-2 text-[9px] font-black uppercase tracking-[0.25em] text-white/80">
+              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/45 to-transparent" />
+              <div className="relative z-10 flex h-full flex-col justify-end p-4 text-foreground">
+                <span className="mb-2 text-[9px] font-black uppercase tracking-[0.25em] text-muted-foreground">
                   {homeMobileFeaturedTiles[project.slug] ? "Zona Clave" : "Nodo"}
                 </span>
                 <h3 className="text-2xl font-headline font-bold leading-tight">{project.title}</h3>

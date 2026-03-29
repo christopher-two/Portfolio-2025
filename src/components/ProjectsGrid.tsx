@@ -173,7 +173,7 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
               placeholder="Buscar proyecto..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-10 h-12 border-2 border-border rounded-none focus-visible:ring-0 focus-visible:border-accent bg-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:translate-x-[2px] focus:translate-y-[2px] focus:shadow-none transition-all"
+              className="pl-10 h-12 border-2 border-border rounded-none focus-visible:ring-0 focus-visible:border-accent bg-background shadow-[4px_4px_0px_theme(colors.border)] focus:translate-x-[2px] focus:translate-y-[2px] focus:shadow-none transition-all"
             />
             {search && (
               <button 
@@ -193,7 +193,7 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
                 className={cn(
                   "px-4 py-2 text-xs font-black uppercase tracking-widest border-2 transition-all whitespace-nowrap",
                   !activeTech
-                    ? "bg-accent text-accent-foreground border-border shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" 
+                    ? "bg-accent text-accent-foreground border-border shadow-[4px_4px_0px_theme(colors.border)]"
                     : "bg-background text-muted-foreground border-border/50 hover:border-border hover:text-foreground"
                 )}
               >
@@ -206,7 +206,7 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
                   className={cn(
                     "px-4 py-2 text-xs font-black uppercase tracking-widest border-2 transition-all whitespace-nowrap",
                     activeTech === category
-                      ? "bg-accent text-accent-foreground border-border shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                      ? "bg-accent text-accent-foreground border-border shadow-[4px_4px_0px_theme(colors.border)]"
                       : "bg-background text-muted-foreground border-border/50 hover:border-border hover:text-foreground"
                   )}
                 >
@@ -269,7 +269,7 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
         size="icon"
         onClick={scrollToTop}
         className={cn(
-          "fixed bottom-8 right-8 z-50 h-12 w-12 rounded-none border-2 border-border bg-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none",
+          "fixed bottom-8 right-8 z-50 h-12 w-12 rounded-none border-2 border-border bg-background shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none",
           showScrollTop ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none"
         )}
       >
