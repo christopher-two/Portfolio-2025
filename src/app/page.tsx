@@ -6,6 +6,7 @@ import { TechCard } from "@/components/TechCard";
 import { Card, CardContent } from "@/components/ui/card";
 import { TechMarquee } from "@/components/TechMarquee";
 import { AnimatedName } from "@/components/AnimatedName";
+import { InfiniteProjectsMap } from "@/components/InfiniteProjectsMap";
 import { socialLinks, projects } from "@/lib/data";
 import { getProjectImages } from "@/lib/r2-client";
 import { cn } from "@/lib/utils";
@@ -22,16 +23,6 @@ const homePremiumPriority = [
   "atomo-app",
   "spot",
 ];
-
-const homeDesktopPremiumTiles: Record<string, string> = {
-  parse: "col-span-2 row-span-2",
-  "override-menu": "col-span-2",
-  "override-logistics": "row-span-2",
-  "override-sense": "col-span-2",
-  parkspot: "col-span-2",
-  "atomo-app": "row-span-2",
-  spot: "col-span-2",
-};
 
 const homeMobileMetroPattern = [
   "w-[84vw] min-w-[84vw] h-[76vh] -translate-y-6",
@@ -52,14 +43,6 @@ const homeMobileFeaturedTiles: Record<string, string> = {
 function getHomePriorityRank(slug: string) {
   const index = homePremiumPriority.indexOf(slug);
   return index === -1 ? Number.POSITIVE_INFINITY : index;
-}
-
-function getDesktopTileUnits(tileClassName?: string) {
-  if (!tileClassName) return 0;
-
-  const colSpan = tileClassName.includes("col-span-2") ? 2 : 1;
-  const rowSpan = tileClassName.includes("row-span-2") ? 2 : 1;
-  return colSpan * rowSpan - 1;
 }
 
 const techSkills = [
@@ -144,12 +127,6 @@ export default async function Home() {
     return Number(a.id) - Number(b.id);
   });
 
-  const desktopExtraSlots = premiumSortedProjects.reduce((sum, project) => {
-    return sum + getDesktopTileUnits(homeDesktopPremiumTiles[project.slug]);
-  }, 0);
-
-  const desktopRows = Math.ceil((premiumSortedProjects.length + desktopExtraSlots) / 6);
-
   return (
     <div className="flex-1 w-full">
       <section className="relative min-h-screen border-b-2 border-border bg-background bg-[radial-gradient(circle_at_top_left,#8f5eff1f,transparent_40%),linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:auto,24px_24px,24px_24px]">
@@ -222,46 +199,7 @@ export default async function Home() {
       </section>
 
       <section className="hidden h-screen border-b-2 border-border bg-background md:block">
-        <div
-          className="grid h-full grid-cols-6 border-l-2 border-border"
-          style={{ gridTemplateRows: `repeat(${desktopRows}, minmax(0, 1fr))` }}
-        >
-          {premiumSortedProjects.map((project) => {
-            const premiumClass = homeDesktopPremiumTiles[project.slug] ?? "";
-            const isParse = project.slug === "parse";
-            const isPremiumTile = Boolean(premiumClass);
-
-            return (
-              <Link
-                key={project.id}
-                href={`/projects/${project.slug}`}
-                className={cn(
-                  "group relative overflow-hidden border-r-2 border-b-2 border-border bg-card",
-                  premiumClass
-                )}
-              >
-                {project.coverImage && (
-                  <Image
-                    src={project.coverImage}
-                    alt={project.title}
-                    fill
-                    className="object-cover opacity-55 transition-all duration-700 group-hover:scale-105 group-hover:opacity-30"
-                    unoptimized={project.coverImage.toLowerCase().endsWith(".gif")}
-                  />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/45 to-transparent" />
-                <div className="relative z-10 flex h-full flex-col justify-between p-4 text-foreground">
-                  <span className="text-[9px] font-black uppercase tracking-[0.25em] text-muted-foreground">
-                    {isParse ? "Publicado" : isPremiumTile ? "Premium" : "Proyecto"}
-                  </span>
-                  <h3 className="text-base lg:text-xl font-headline font-bold leading-tight group-hover:text-accent transition-colors">
-                    {project.title}
-                  </h3>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+        <InfiniteProjectsMap projects={premiumSortedProjects} />
       </section>
 
       <section className="relative h-screen border-b-2 border-border bg-background md:hidden">
