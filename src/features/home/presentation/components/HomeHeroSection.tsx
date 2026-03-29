@@ -15,7 +15,7 @@ export function HomeHeroSection({ parseData }: HomeHeroSectionProps) {
   const parseTags = parseData?.tags?.slice(0, 6) ?? [];
 
   return (
-    <section className="relative min-h-screen border-b-2 border-border bg-background bg-[radial-gradient(circle_at_top_left,#8f5eff1f,transparent_40%),linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:auto,24px_24px,24px_24px] md:h-[calc(100svh-56px)] md:min-h-0">
+    <section className="relative min-h-screen border-b-2 border-border bg-background bg-[radial-gradient(circle_at_top_left,#8f5eff1f,transparent_40%),linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:auto,24px_24px,24px_24px] md:min-h-[calc(100vh-56px)] md:min-h-[calc(100dvh-56px)] md:h-[calc(100vh-56px)] md:h-[calc(100dvh-56px)]">
       <div className="h-full w-full">
         <div className="grid h-full grid-cols-1 border-l-2 border-t-2 border-border md:grid-cols-12 md:[grid-template-rows:1.2fr_1.05fr_0.95fr_0.9fr]">
           <article className="order-1 relative animate-fade-in overflow-hidden border-r-2 border-b-2 border-border bg-card p-6 text-foreground md:order-none md:col-span-7 md:row-span-2 md:p-8 lg:p-10">

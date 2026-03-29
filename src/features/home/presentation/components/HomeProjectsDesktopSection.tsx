@@ -15,7 +15,7 @@ export function HomeProjectsDesktopSection({ projects, totalProjects }: HomeProj
   const hasMoreDesktopProjects = totalProjects > projects.length;
 
   return (
-    <section className="hidden border-b-2 border-border bg-background md:block md:h-[calc(100svh-56px)] md:overflow-hidden">
+    <section className="hidden border-b-2 border-border bg-background md:block md:h-[calc(100vh-56px)] md:h-[calc(100dvh-56px)] md:overflow-hidden">
       <div className="grid h-full grid-flow-dense grid-cols-6 border-l-2 border-border md:[grid-template-rows:160px_repeat(3,minmax(0,1fr))]">
         <article className="relative col-span-6 flex items-end border-r-2 border-b-2 border-border bg-[linear-gradient(120deg,hsl(var(--primary))_0%,hsl(var(--accent))_100%)] p-8 text-primary-foreground">
           <div>

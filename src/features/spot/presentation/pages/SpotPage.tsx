@@ -58,7 +58,7 @@ export default function SpotPage() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(163,230,53,0.1),transparent_70%)] pointer-events-none"></div>
             </section>
 
-            {spotSections.map((section, index) => (
+            {spotSections.map((section) => (
                 <section
                     key={section.id}
                     id={section.id}

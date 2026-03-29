@@ -65,7 +65,7 @@ export default function OverridePage() {
         </div>
       </section>
 
-      {sections.map((section, index) => (
+      {sections.map((section) => (
         <section
           key={section.id}
           id={section.id}
