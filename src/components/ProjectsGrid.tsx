@@ -234,7 +234,8 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
       <div className="grid grid-cols-1 border-l-2 border-border sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
         {sortedFilteredProjects.length > 0 ? (
           sortedFilteredProjects.map((project) => {
-            const premiumClass = usePremiumLayout ? ventoPremiumTiles[project.slug] ?? "" : "";
+            const hasCoverImage = Boolean(project.coverImage?.trim());
+            const premiumClass = usePremiumLayout && hasCoverImage ? ventoPremiumTiles[project.slug] ?? "" : "";
             const isTallTile = premiumClass.includes("row-span-2");
 
             return (
@@ -245,8 +246,9 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
               coverImage={project.coverImage}
               className={cn("col-span-1", premiumClass)}
               tileClassName={cn(
-                "min-h-[38vh] sm:min-h-[36vh] lg:min-h-[30vh]",
-                isTallTile && "lg:min-h-[62vh]"
+                "min-h-[38vh] sm:min-h-[36vh] lg:min-h-0 lg:aspect-[16/9]",
+                !hasCoverImage && "sm:min-h-0 sm:aspect-[16/9]",
+                isTallTile && "lg:aspect-auto lg:min-h-[62vh]"
               )}
             />
           );})
