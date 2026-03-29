@@ -61,6 +61,9 @@ const homeMobileVentoPattern = [
   "col-span-2",
 ];
 
+const homeDesktopProjectsLimit = 8;
+const homeMobileProjectsLimit = 8;
+
 function getHomePriorityRank(slug: string) {
   const index = homePremiumPriority.indexOf(slug);
   return index === -1 ? Number.POSITIVE_INFINITY : index;
@@ -178,12 +181,17 @@ export default function Home() {
     return Number(a.id) - Number(b.id);
   });
 
+  const desktopProjectsForHome = premiumSortedProjects.slice(0, homeDesktopProjectsLimit);
+  const mobileProjectsForHome = premiumSortedProjects.slice(0, homeMobileProjectsLimit);
+  const hasMoreDesktopProjects = premiumSortedProjects.length > desktopProjectsForHome.length;
+  const hasMoreMobileProjects = premiumSortedProjects.length > mobileProjectsForHome.length;
+
   return (
     <div className="flex-1 w-full">
       <section className="relative min-h-screen border-b-2 border-border bg-background bg-[radial-gradient(circle_at_top_left,#8f5eff1f,transparent_40%),linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:auto,24px_24px,24px_24px] md:h-[calc(100svh-56px)] md:min-h-0">
         <div className="h-full w-full">
           <div className="grid h-full grid-cols-1 border-l-2 border-t-2 border-border md:grid-cols-12 md:[grid-template-rows:1.2fr_1.05fr_0.95fr_0.9fr]">
-            <article className="relative animate-fade-in overflow-hidden border-r-2 border-b-2 border-border bg-card p-6 text-foreground md:col-span-7 md:row-span-2 md:p-8 lg:p-10">
+            <article className="order-1 relative animate-fade-in overflow-hidden border-r-2 border-b-2 border-border bg-card p-6 text-foreground md:order-none md:col-span-7 md:row-span-2 md:p-8 lg:p-10">
               <Image
                 src={profileImage}
                 alt="Christopher Alejandro Maldonado Chavez"
@@ -205,7 +213,7 @@ export default function Home() {
               </div>
             </article>
 
-            <article className="border-r-2 border-b-2 border-border bg-[linear-gradient(135deg,hsl(var(--muted))_0%,hsl(var(--background))_75%)] p-6 text-foreground md:col-span-5 md:row-span-2 md:p-8">
+            <article className="order-5 border-r-2 border-b-2 border-border bg-[linear-gradient(135deg,hsl(var(--muted))_0%,hsl(var(--background))_75%)] p-6 text-foreground md:order-none md:col-span-5 md:row-span-2 md:p-8">
               <div className="inline-flex w-fit items-center gap-2 border border-border bg-background px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-foreground">
                 <Sparkles className="h-4 w-4" />
                 Proyecto Destacado
@@ -218,7 +226,7 @@ export default function Home() {
 
             <Link
               href="/projects"
-              className="group border-r-2 border-b-2 border-border bg-primary p-5 text-primary-foreground transition-colors hover:bg-primary/90 md:col-span-3 md:row-span-1"
+              className="order-2 group border-r-2 border-b-2 border-border bg-primary p-5 text-primary-foreground transition-colors hover:bg-primary/90 md:order-none md:col-span-3 md:row-span-1"
             >
               <div className="flex h-full items-center justify-between gap-3">
                 <div>
@@ -231,7 +239,7 @@ export default function Home() {
 
             <Link
               href="#contact"
-              className="group border-r-2 border-b-2 border-border bg-accent p-5 text-accent-foreground transition-colors hover:bg-accent/90 md:col-span-2 md:row-span-1"
+              className="order-3 group border-r-2 border-b-2 border-border bg-accent p-5 text-accent-foreground transition-colors hover:bg-accent/90 md:order-none md:col-span-2 md:row-span-1"
             >
               <div className="flex h-full items-center justify-between gap-3">
                 <div>
@@ -246,7 +254,7 @@ export default function Home() {
               href="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/sign/docs/CV-2026.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84OTUzOTBiNi0zZDUxLTQ4MGMtOWJjNC03NzE4ZmNhOWVkNjkiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkb2NzL0NWLTIwMjYucGRmIiwiaWF0IjoxNzY1NTE1OTY2LCJleHAiOjE3OTcwNTE5NjZ9.o2DBshiz7dqCMbht2ybjK2xGZnV7oo_eH-w3Dbqa2EE"
               target="_blank"
               rel="noopener noreferrer"
-              className="group border-r-2 border-b-2 border-border bg-secondary p-5 text-secondary-foreground transition-colors hover:bg-secondary/80 md:col-span-2 md:row-span-1"
+              className="order-4 group border-r-2 border-b-2 border-border bg-secondary p-5 text-secondary-foreground transition-colors hover:bg-secondary/80 md:order-none md:col-span-2 md:row-span-1"
             >
               <div className="flex h-full items-center justify-between gap-3">
                 <div>
@@ -257,7 +265,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <article className="border-r-2 border-b-2 border-border bg-card p-6 text-foreground md:col-span-3 md:row-span-1">
+            <article className="order-6 border-r-2 border-b-2 border-border bg-card p-6 text-foreground md:order-none md:col-span-3 md:row-span-1">
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Categorias</p>
               <div className="mt-3 grid grid-cols-2 gap-2">
                 {(parseCategories.length > 0 ? parseCategories : ["Android", "Web"]).map((category) => (
@@ -271,14 +279,14 @@ export default function Home() {
               </div>
             </article>
 
-            <article className="border-r-2 border-b-2 border-border bg-card p-6 text-foreground md:col-span-2 md:row-span-1">
+            <article className="order-7 border-r-2 border-b-2 border-border bg-card p-6 text-foreground md:order-none md:col-span-2 md:row-span-1">
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Estado</p>
               <p className="mt-2 text-lg font-bold">Publicado</p>
               <p className="mt-4 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Plataforma</p>
               <p className="mt-2 text-lg font-bold">Android</p>
             </article>
 
-            <article className="border-r-2 border-b-2 border-border bg-card p-6 text-foreground md:col-span-7 md:row-span-1">
+            <article className="order-8 border-r-2 border-b-2 border-border bg-card p-6 text-foreground md:order-none md:col-span-7 md:row-span-1">
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Tecnologias</p>
               <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
                 {(parseTags.length > 0 ? parseTags : ["ML Kit", "Jetpack Compose", "Material 3"]).map((tag) => (
@@ -296,7 +304,7 @@ export default function Home() {
               href={parsePlayStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group border-r-2 border-b-2 border-border bg-primary p-5 text-primary-foreground transition-colors hover:bg-primary/90 md:col-span-3 md:row-span-1"
+              className="order-9 group border-r-2 border-b-2 border-border bg-primary p-5 text-primary-foreground transition-colors hover:bg-primary/90 md:order-none md:col-span-3 md:row-span-1"
             >
               <div className="flex h-full items-center justify-between gap-3">
                 <div>
@@ -309,7 +317,7 @@ export default function Home() {
 
             <Link
               href="/projects/parse"
-              className="group border-r-2 border-b-2 border-border bg-accent p-5 text-accent-foreground transition-colors hover:bg-accent/90 md:col-span-2 md:row-span-1"
+              className="order-10 group border-r-2 border-b-2 border-border bg-accent p-5 text-accent-foreground transition-colors hover:bg-accent/90 md:order-none md:col-span-2 md:row-span-1"
             >
               <div className="flex h-full items-center justify-between gap-3">
                 <div>
@@ -323,8 +331,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="hidden border-b-2 border-border bg-background md:block">
-        <div className="grid grid-flow-dense grid-cols-6 auto-rows-[168px] border-l-2 border-border xl:auto-rows-[186px]">
+      <section className="hidden border-b-2 border-border bg-background md:block md:h-[calc(100svh-56px)] md:overflow-hidden">
+        <div className="grid h-full grid-flow-dense grid-cols-6 border-l-2 border-border md:[grid-template-rows:160px_repeat(3,minmax(0,1fr))]">
           <article className="relative col-span-6 flex items-end border-r-2 border-b-2 border-border bg-[linear-gradient(120deg,hsl(var(--primary))_0%,hsl(var(--accent))_100%)] p-8 text-primary-foreground">
             <div>
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-foreground/85">Seccion</p>
@@ -332,7 +340,7 @@ export default function Home() {
             </div>
           </article>
 
-          {premiumSortedProjects.map((project, index) => {
+          {desktopProjectsForHome.map((project, index) => {
             const ventoClass = getDesktopVentoClass(project.slug, index);
             const isImportant = isHomeImportantProject(project.slug);
             const isExpandedTile = ventoClass.includes("col-span-2") || ventoClass.includes("row-span-2");
@@ -342,7 +350,7 @@ export default function Home() {
                 key={project.id}
                 href={`/projects/${project.slug}`}
                 className={cn(
-                  "group relative flex min-h-[160px] select-text flex-col items-center justify-center overflow-hidden border-r-2 border-b-2 border-border px-4 py-6 text-center ring-1 ring-inset ring-border transition-colors",
+                  "group relative flex h-full select-text flex-col items-center justify-center overflow-hidden border-r-2 border-b-2 border-border px-4 py-6 text-center ring-1 ring-inset ring-border transition-colors",
                   isImportant
                     ? "bg-accent/15 hover:bg-accent/25"
                     : "bg-card hover:bg-muted/40",
@@ -374,6 +382,22 @@ export default function Home() {
               </Link>
             );
           })}
+
+          {hasMoreDesktopProjects && (
+            <Link
+              href="/projects"
+              className="group col-span-2 flex h-full items-center justify-between border-r-2 border-b-2 border-border bg-primary px-6 py-6 text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-primary-foreground/85">Mas Proyectos</p>
+                <h3 className="mt-2 text-2xl font-headline font-black leading-tight">Ver todos</h3>
+                <p className="mt-2 text-sm text-primary-foreground/85">
+                  {premiumSortedProjects.length - desktopProjectsForHome.length} adicionales en /projects
+                </p>
+              </div>
+              <ArrowRight className="h-6 w-6 shrink-0" />
+            </Link>
+          )}
         </div>
       </section>
 
@@ -386,7 +410,7 @@ export default function Home() {
             </div>
           </article>
 
-          {premiumSortedProjects.map((project, index) => {
+          {mobileProjectsForHome.map((project, index) => {
             const isImportant = isHomeImportantProject(project.slug);
             const mobileVentoClass = getMobileVentoClass(project.slug, index);
             const isExpandedTile = mobileVentoClass.includes("col-span-2") || mobileVentoClass.includes("row-span-2");
@@ -417,6 +441,19 @@ export default function Home() {
             </Link>
             );
           })}
+
+          {hasMoreMobileProjects && (
+            <Link
+              href="/projects"
+              className="col-span-2 flex min-h-[124px] items-center justify-between border-r-2 border-b-2 border-border bg-primary px-4 py-5 text-primary-foreground"
+            >
+              <div>
+                <p className="text-[9px] font-black uppercase tracking-[0.22em] text-primary-foreground/85">Mas Proyectos</p>
+                <h3 className="mt-2 text-2xl font-headline font-black leading-tight">Ver todos en /projects</h3>
+              </div>
+              <ArrowRight className="h-5 w-5 shrink-0" />
+            </Link>
+          )}
         </div>
       </section>
 
