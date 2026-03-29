@@ -23,6 +23,12 @@ type Placement = {
   rowSpan: number;
 };
 
+type ImageVisualMeta = {
+  isPortrait916: boolean;
+  isBright: boolean;
+  hasImage: boolean;
+};
+
 type DragState = {
   active: boolean;
   pointerId: number;
@@ -76,8 +82,19 @@ function sortProjectsForMap(projects: MapProject[]) {
   });
 }
 
-function getTileSpan(project: MapProject, index: number): [number, number] {
-  return FEATURED_SPANS[project.slug] ?? RHYTHM_SPANS[index % RHYTHM_SPANS.length];
+function getTileSpan(
+  project: MapProject,
+  index: number,
+  imageMetaBySlug: Record<string, ImageVisualMeta>
+): [number, number] {
+  const imageMeta = imageMetaBySlug[project.slug];
+  const hasImage = imageMeta?.hasImage ?? Boolean(project.coverImage?.trim());
+  if (!hasImage) return [1, 1];
+
+  const baseSpan = FEATURED_SPANS[project.slug] ?? RHYTHM_SPANS[index % RHYTHM_SPANS.length];
+  if (!imageMeta?.isPortrait916) return baseSpan;
+
+  return [baseSpan[0], Math.max(baseSpan[1], 2)];
 }
 
 function canPlace(
@@ -129,13 +146,17 @@ function getTouchScore(occupied: Set<string>, row: number, col: number, colSpan:
   return { edgeTouch, cornerTouch };
 }
 
-function buildChunkLayout(projects: MapProject[], columns: number) {
+function buildChunkLayout(
+  projects: MapProject[],
+  columns: number,
+  imageMetaBySlug: Record<string, ImageVisualMeta>
+) {
   const occupied = new Set<string>();
   const placements: Placement[] = [];
   let maxRow = 0;
 
   projects.forEach((project, index) => {
-    const [colSpan, rowSpan] = getTileSpan(project, index);
+    const [colSpan, rowSpan] = getTileSpan(project, index, imageMetaBySlug);
     const scanLimit = Math.min(Math.max(maxRow + 8, 8), 140);
     let bestCandidate: { row: number; col: number; score: number } | null = null;
 
@@ -179,6 +200,52 @@ function wrapToNegativePeriod(value: number, period: number) {
   return normalized - period;
 }
 
+async function analyzeImageVisual(url: string): Promise<{ isPortrait916: boolean; isBright: boolean }> {
+  return await new Promise((resolve, reject) => {
+    const image = new window.Image();
+    image.crossOrigin = "anonymous";
+    image.decoding = "async";
+
+    image.onload = () => {
+      const width = image.naturalWidth || 1;
+      const height = image.naturalHeight || 1;
+      const ratio = width / height;
+      const isPortrait916 = ratio >= 0.49 && ratio <= 0.64;
+
+      let isBright = false;
+      try {
+        const canvas = document.createElement("canvas");
+        canvas.width = 24;
+        canvas.height = 24;
+        const context = canvas.getContext("2d", { willReadFrequently: true });
+
+        if (context) {
+          context.drawImage(image, 0, 0, 24, 24);
+          const { data } = context.getImageData(0, 0, 24, 24);
+          let luminanceSum = 0;
+
+          for (let i = 0; i < data.length; i += 4) {
+            const r = data[i];
+            const g = data[i + 1];
+            const b = data[i + 2];
+            luminanceSum += 0.2126 * r + 0.7152 * g + 0.0722 * b;
+          }
+
+          const avgLuminance = luminanceSum / (data.length / 4);
+          isBright = avgLuminance >= 156;
+        }
+      } catch {
+        // If pixel analysis fails due CORS/canvas restrictions, keep safe default.
+      }
+
+      resolve({ isPortrait916, isBright });
+    };
+
+    image.onerror = () => reject(new Error("Image load failed"));
+    image.src = url;
+  });
+}
+
 export function InfiniteProjectsMap({ projects }: { projects: MapProject[] }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapPlaneRef = useRef<HTMLDivElement | null>(null);
@@ -200,8 +267,10 @@ export function InfiniteProjectsMap({ projects }: { projects: MapProject[] }) {
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [scale, setScale] = useState(0.86);
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
+  const [imageMetaBySlug, setImageMetaBySlug] = useState<Record<string, ImageVisualMeta>>({});
 
   const scaleRef = useRef(scale);
+  const imageMetaCacheRef = useRef<Record<string, ImageVisualMeta>>({});
   const randomizedProjects = useMemo(() => sortProjectsForMap(projects), [projects]);
 
   useEffect(() => {
@@ -255,8 +324,8 @@ export function InfiniteProjectsMap({ projects }: { projects: MapProject[] }) {
   const rowHeight = useMemo(() => Math.round(cellWidth * 0.58), [cellWidth]);
 
   const { placements, rows } = useMemo(
-    () => buildChunkLayout(randomizedProjects, columns),
-    [randomizedProjects]
+    () => buildChunkLayout(randomizedProjects, columns, imageMetaBySlug),
+    [randomizedProjects, imageMetaBySlug]
   );
 
   const chunkWidth = columns * cellWidth + (columns - 1) * gap;
@@ -308,6 +377,61 @@ export function InfiniteProjectsMap({ projects }: { projects: MapProject[] }) {
     if (selectedSlug && randomizedProjects.some((project) => project.slug === selectedSlug)) return;
     setSelectedSlug(randomizedProjects[0]?.slug ?? null);
   }, [randomizedProjects, selectedSlug]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const detectVisuals = async () => {
+      const nextMeta: Record<string, ImageVisualMeta> = {};
+
+      for (const project of randomizedProjects) {
+        const imageUrl = project.coverImage?.trim();
+
+        if (!imageUrl) {
+          nextMeta[project.slug] = {
+            isPortrait916: false,
+            isBright: false,
+            hasImage: false,
+          };
+          continue;
+        }
+
+        const cached = imageMetaCacheRef.current[imageUrl];
+        if (cached) {
+          nextMeta[project.slug] = cached;
+          continue;
+        }
+
+        try {
+          const analyzed = await analyzeImageVisual(imageUrl);
+          const meta: ImageVisualMeta = {
+            ...analyzed,
+            hasImage: true,
+          };
+          imageMetaCacheRef.current[imageUrl] = meta;
+          nextMeta[project.slug] = meta;
+        } catch {
+          const fallback: ImageVisualMeta = {
+            isPortrait916: false,
+            isBright: false,
+            hasImage: false,
+          };
+          imageMetaCacheRef.current[imageUrl] = fallback;
+          nextMeta[project.slug] = fallback;
+        }
+      }
+
+      if (!cancelled) {
+        setImageMetaBySlug(nextMeta);
+      }
+    };
+
+    detectVisuals();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [randomizedProjects]);
 
   const selectedProject = useMemo(
     () => randomizedProjects.find((project) => project.slug === selectedSlug) ?? randomizedProjects[0],
@@ -496,6 +620,9 @@ export function InfiniteProjectsMap({ projects }: { projects: MapProject[] }) {
             {placements.map((placement) => {
               const isSelected = selectedSlug === placement.project.slug;
               const isFeatured = placement.colSpan > 1 || placement.rowSpan > 1;
+              const visualMeta = imageMetaBySlug[placement.project.slug];
+              const hasImage = visualMeta?.hasImage ?? Boolean(placement.project.coverImage?.trim());
+              const isBrightImage = visualMeta?.isBright ?? false;
 
               return (
                 <button
@@ -520,7 +647,7 @@ export function InfiniteProjectsMap({ projects }: { projects: MapProject[] }) {
                     setSelectedSlug(placement.project.slug);
                   }}
                 >
-                  {placement.project.coverImage && (
+                  {hasImage && placement.project.coverImage && (
                     <img
                       src={placement.project.coverImage}
                       alt={placement.project.title}
@@ -528,15 +655,49 @@ export function InfiniteProjectsMap({ projects }: { projects: MapProject[] }) {
                       decoding="async"
                       draggable={false}
                       onDragStart={(event) => event.preventDefault()}
+                      onError={() => {
+                        setImageMetaBySlug((current) => ({
+                          ...current,
+                          [placement.project.slug]: {
+                            isPortrait916: false,
+                            isBright: false,
+                            hasImage: false,
+                          },
+                        }));
+                      }}
                       className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-55"
                     />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/55 to-transparent" />
-                  <div className="relative z-10 flex h-full flex-col justify-between p-4 text-foreground">
-                    <span className="text-[9px] font-black uppercase tracking-[0.22em] text-muted-foreground">
+                  {hasImage && (
+                    <div
+                      className={cn(
+                        "pointer-events-none absolute inset-0",
+                        isBrightImage ? "bg-black/8" : "bg-black/28"
+                      )}
+                    />
+                  )}
+                  <div
+                    className={cn(
+                      "relative z-10 flex h-full flex-col justify-between p-4",
+                      isBrightImage ? "text-zinc-900" : "text-zinc-50"
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        "text-[9px] font-black uppercase tracking-[0.22em]",
+                        isBrightImage ? "text-zinc-800/80" : "text-zinc-200/85"
+                      )}
+                    >
                       {isFeatured ? "Hub" : "Node"}
                     </span>
-                    <h3 className="text-sm font-headline font-bold leading-tight lg:text-lg">
+                    <h3
+                      className={cn(
+                        "text-sm font-headline font-bold leading-tight lg:text-lg",
+                        isBrightImage
+                          ? "[text-shadow:0_1px_0_rgba(255,255,255,0.5)]"
+                          : "[text-shadow:0_2px_10px_rgba(0,0,0,0.65)]"
+                      )}
+                    >
                       {placement.project.title}
                     </h3>
                   </div>
