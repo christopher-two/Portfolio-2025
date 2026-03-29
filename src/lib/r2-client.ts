@@ -22,6 +22,49 @@ type CacheEntry = {
 const imagesCache = new Map<string, CacheEntry>();
 const inflightCache = new Map<string, Promise<ProjectMedia[]>>();
 
+async function listMediaForPrefix(
+  s3Client: S3Client,
+  prefix: string,
+  maxItems?: number
+): Promise<ProjectMedia[]> {
+  const pageSize = typeof maxItems === "number" ? Math.max(25, maxItems * 8) : 1000;
+  const targetCount = typeof maxItems === "number" ? maxItems : Number.POSITIVE_INFINITY;
+  const media: ProjectMedia[] = [];
+
+  let continuationToken: string | undefined;
+  do {
+    const page = await s3Client.send(
+      new ListObjectsV2Command({
+        Bucket: BUCKET_NAME,
+        Prefix: prefix,
+        MaxKeys: pageSize,
+        ContinuationToken: continuationToken,
+      })
+    );
+
+    const mapped = (page.Contents ?? [])
+      .filter((item) => item.Key && !item.Key.endsWith("/"))
+      .map((item) => ({
+        url: `${PUBLIC_URL}/${item.Key}`,
+        description: item.Key?.split("/").pop() || "",
+        isVideo: Boolean(
+          item.Key?.toLowerCase().endsWith(".mp4") || item.Key?.toLowerCase().endsWith(".webm")
+        ),
+      }));
+
+    for (const entry of mapped) {
+      media.push(entry);
+      if (media.length >= targetCount) {
+        return media;
+      }
+    }
+
+    continuationToken = page.IsTruncated ? page.NextContinuationToken : undefined;
+  } while (continuationToken);
+
+  return media;
+}
+
 /**
  * Helper to initialize the S3 client lazily.
  */
@@ -92,46 +135,22 @@ export async function getProjectImages(folder: string, options?: { maxItems?: nu
         )
       );
 
-      let Contents: Awaited<ReturnType<S3Client["send"]>>["Contents"];
+      let foundMedia: ProjectMedia[] = [];
       for (const prefix of candidatePrefixes) {
-        const withSlash = await s3Client.send(
-          new ListObjectsV2Command({
-            Bucket: BUCKET_NAME,
-            Prefix: `${prefix}/`,
-            MaxKeys: maxItems,
-          })
-        );
-
-        if (withSlash.Contents && withSlash.Contents.length > 0) {
-          Contents = withSlash.Contents;
+        const withSlashMedia = await listMediaForPrefix(s3Client, `${prefix}/`, maxItems);
+        if (withSlashMedia.length > 0) {
+          foundMedia = withSlashMedia;
           break;
         }
 
-        const withoutSlash = await s3Client.send(
-          new ListObjectsV2Command({
-            Bucket: BUCKET_NAME,
-            Prefix: prefix,
-            MaxKeys: maxItems,
-          })
-        );
-
-        if (withoutSlash.Contents && withoutSlash.Contents.length > 0) {
-          Contents = withoutSlash.Contents;
+        const withoutSlashMedia = await listMediaForPrefix(s3Client, prefix, maxItems);
+        if (withoutSlashMedia.length > 0) {
+          foundMedia = withoutSlashMedia;
           break;
         }
       }
 
-      if (!Contents) return [];
-
-      const mapped = Contents
-        .filter((item) => item.Key && !item.Key.endsWith("/"))
-        .map((item) => ({
-          url: `${PUBLIC_URL}/${item.Key}`,
-          description: item.Key?.split("/").pop() || "",
-          isVideo: (item.Key?.toLowerCase().endsWith(".mp4") || item.Key?.toLowerCase().endsWith(".webm")),
-        }));
-
-      const result = typeof maxItems === "number" ? mapped.slice(0, maxItems) : mapped;
+      const result = foundMedia;
       imagesCache.set(cacheKey, {
         expiresAt: Date.now() + CACHE_TTL_MS,
         data: result,
