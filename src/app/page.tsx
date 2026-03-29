@@ -229,26 +229,24 @@ export default async function Home() {
                 key={project.id}
                 href={`/projects/${project.slug}`}
                 className={cn(
-                  "group flex h-full flex-col overflow-hidden border-r-2 border-b-2 border-border bg-card",
+                  "group relative overflow-hidden border-r-2 border-b-2 border-border bg-card",
                   premiumClass
                 )}
               >
-                <div className="relative min-h-0 flex-1 bg-muted/30">
-                  {project.coverImage && (
-                    <Image
-                      src={project.coverImage}
-                      alt={project.title}
-                      fill
-                      className="object-contain object-center transition-transform duration-700 group-hover:scale-[1.02]"
-                      unoptimized={project.coverImage.toLowerCase().endsWith(".gif")}
-                    />
-                  )}
-                </div>
-                <div className="border-t-2 border-border bg-background p-4 text-foreground">
-                  <span className="text-[9px] font-black uppercase tracking-[0.25em] text-muted-foreground">
+                {project.coverImage && (
+                  <Image
+                    src={project.coverImage}
+                    alt={project.title}
+                    fill
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
+                    unoptimized={project.coverImage.toLowerCase().endsWith(".gif")}
+                  />
+                )}
+                <div className="absolute bottom-3 left-3 right-3 z-10 text-foreground">
+                  <span className="inline-block border border-border bg-background/85 px-2 py-1 text-[9px] font-black uppercase tracking-[0.25em] text-muted-foreground backdrop-blur-sm">
                     {isParse ? "Publicado" : isPremiumTile ? "Premium" : "Proyecto"}
                   </span>
-                  <h3 className="mt-2 text-base lg:text-xl font-headline font-bold leading-tight group-hover:text-accent transition-colors">
+                  <h3 className="mt-2 text-base lg:text-xl font-headline font-bold leading-tight text-foreground [text-shadow:0_2px_12px_rgba(0,0,0,0.6)] group-hover:text-accent transition-colors">
                     {project.title}
                   </h3>
                 </div>
@@ -268,26 +266,24 @@ export default async function Home() {
               key={project.id}
               href={`/projects/${project.slug}`}
               className={cn(
-                "group relative flex shrink-0 snap-center flex-col overflow-hidden border-2 border-border bg-card",
+                "group relative shrink-0 snap-center overflow-hidden border-2 border-border bg-card",
                 homeMobileFeaturedTiles[project.slug] ?? homeMobileMetroPattern[index % homeMobileMetroPattern.length]
               )}
             >
-              <div className="relative min-h-0 flex-1 bg-muted/30">
-                {project.coverImage && (
-                  <Image
-                    src={project.coverImage}
-                    alt={project.title}
-                    fill
-                    className="object-contain object-center transition-transform duration-700 group-hover:scale-[1.02]"
-                    unoptimized={project.coverImage.toLowerCase().endsWith(".gif")}
-                  />
-                )}
-              </div>
-              <div className="border-t-2 border-border bg-background p-4 text-foreground">
-                <span className="mb-2 text-[9px] font-black uppercase tracking-[0.25em] text-muted-foreground">
+              {project.coverImage && (
+                <Image
+                  src={project.coverImage}
+                  alt={project.title}
+                  fill
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
+                  unoptimized={project.coverImage.toLowerCase().endsWith(".gif")}
+                />
+              )}
+              <div className="absolute bottom-3 left-3 right-3 z-10 text-foreground">
+                <span className="inline-block border border-border bg-background/85 px-2 py-1 text-[9px] font-black uppercase tracking-[0.25em] text-muted-foreground backdrop-blur-sm">
                   {homeMobileFeaturedTiles[project.slug] ? "Zona Clave" : "Nodo"}
                 </span>
-                <h3 className="text-2xl font-headline font-bold leading-tight">{project.title}</h3>
+                <h3 className="mt-2 text-2xl font-headline font-bold leading-tight text-foreground [text-shadow:0_2px_12px_rgba(0,0,0,0.6)]">{project.title}</h3>
               </div>
             </Link>
           ))}
