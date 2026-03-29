@@ -265,7 +265,7 @@ export function InfiniteProjectsMap({ projects }: { projects: MapProject[] }) {
 
   const [isDragging, setIsDragging] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
-  const [scale, setScale] = useState(0.86);
+  const [scale, setScale] = useState(1);
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const [imageMetaBySlug, setImageMetaBySlug] = useState<Record<string, ImageVisualMeta>>({});
 
@@ -356,7 +356,7 @@ export function InfiniteProjectsMap({ projects }: { projects: MapProject[] }) {
     if (!viewport.width || !viewport.height || !chunkWidth || !chunkHeight) return;
     if (initializedRef.current) return;
 
-    const initialScale = viewport.width > 1600 ? 0.94 : viewport.width > 1200 ? 0.88 : 0.8;
+    const initialScale = 1;
     scaleRef.current = initialScale;
     setScale(initialScale);
 
@@ -583,7 +583,7 @@ export function InfiniteProjectsMap({ projects }: { projects: MapProject[] }) {
           variant="outline"
           className="h-10 w-10 rounded-none border-2 border-border bg-background/90"
           onClick={() => {
-            const nextScale = 0.88;
+            const nextScale = 1;
             scaleRef.current = nextScale;
             setScale(nextScale);
             offsetRef.current = {

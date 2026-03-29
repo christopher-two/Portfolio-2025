@@ -8,7 +8,7 @@ import { TechMarquee } from "@/components/TechMarquee";
 import { AnimatedName } from "@/components/AnimatedName";
 import { InfiniteProjectsMap } from "@/components/InfiniteProjectsMap";
 import { socialLinks, projects } from "@/lib/data";
-import { getProjectImages } from "@/lib/r2-client";
+import { attachProjectCoversPaged } from "@/lib/r2-client";
 import { cn } from "@/lib/utils";
 import profileImage from "@/assets/images/IMG_6195.jpg";
 
@@ -108,16 +108,7 @@ const recognitions = [
 ];
 
 export default async function Home() {
-  const projectsWithCovers = await Promise.all(
-    projects.map(async (project) => {
-      if (!project.r2Folder) return { ...project, coverImage: "" };
-      const images = await getProjectImages(project.r2Folder);
-      return {
-        ...project,
-        coverImage: images[0]?.url || ""
-      };
-    })
-  );
+  const projectsWithCovers = await attachProjectCoversPaged(projects, 6);
 
   const parseProject = projectsWithCovers.find((project) => project.slug === "parse");
   const premiumSortedProjects = [...projectsWithCovers].sort((a, b) => {
@@ -157,24 +148,23 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="group relative h-[70vh] min-h-[420px] overflow-hidden border-2 border-border bg-card shadow-[8px_8px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-2 hover:translate-y-2">
+          <div className="group relative h-[70vh] min-h-[420px] overflow-hidden border-2 border-border bg-muted/30 shadow-[8px_8px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-2 hover:translate-y-2">
             {parseProject?.coverImage && (
               <Image
                 src={parseProject.coverImage}
                 alt="Parse en Google Play"
                 fill
-                className="object-cover opacity-55 transition-all duration-700 group-hover:scale-105 group-hover:opacity-35"
+                className="object-cover object-center opacity-90 transition-all duration-700 group-hover:opacity-100 md:object-contain md:group-hover:scale-[1.01]"
                 unoptimized={parseProject.coverImage.toLowerCase().endsWith(".gif")}
               />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/55 to-transparent" />
             <div className="relative z-10 flex h-full flex-col justify-between p-6 md:p-8 text-foreground">
               <div className="inline-flex w-fit items-center gap-2 border border-border bg-background/80 px-3 py-1 text-xs font-black uppercase tracking-[0.2em] text-foreground">
                 <Sparkles className="h-4 w-4" />
                 Proyecto Destacado
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-4 border border-border bg-background/82 p-4 backdrop-blur-sm md:max-w-xl">
                 <h2 className="text-4xl md:text-5xl font-headline font-bold tracking-tight">Parse</h2>
                 <p className="max-w-xl text-sm md:text-base text-muted-foreground">
                   Lector moderno para Android con traducción inteligente, navegación avanzada y diseño minimalista.
