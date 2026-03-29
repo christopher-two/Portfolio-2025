@@ -48,22 +48,46 @@ export async function getProjectImages(folder: string) {
   if (!s3Client) return [];
 
   try {
-    const command = new ListObjectsV2Command({
-      Bucket: BUCKET_NAME,
-      Prefix: `${cleanFolder}/`,
-    });
+    const withoutProjectsPrefix = cleanFolder.replace(/^projects\//i, "");
+    const withProjectsPrefix = cleanFolder.startsWith("projects/")
+      ? cleanFolder
+      : `projects/${cleanFolder}`;
 
-    const response = await s3Client.send(command);
-    let { Contents } = response;
+    // Try both naming conventions because some folders exist under "projects/..."
+    // while others are stored at the bucket root.
+    const candidatePrefixes = Array.from(
+      new Set(
+        [cleanFolder, withProjectsPrefix, withoutProjectsPrefix]
+          .map((value) => value.replace(/^\/+|\/+$/g, ""))
+          .filter(Boolean)
+      )
+    );
 
-    // Fallback if prefix with slash returns nothing
-    if (!Contents || Contents.length === 0) {
-      const fallbackCommand = new ListObjectsV2Command({
-        Bucket: BUCKET_NAME,
-        Prefix: cleanFolder,
-      });
-      const fallbackRes = await s3Client.send(fallbackCommand);
-      Contents = fallbackRes.Contents;
+    let Contents: Awaited<ReturnType<S3Client["send"]>>["Contents"];
+    for (const prefix of candidatePrefixes) {
+      const withSlash = await s3Client.send(
+        new ListObjectsV2Command({
+          Bucket: BUCKET_NAME,
+          Prefix: `${prefix}/`,
+        })
+      );
+
+      if (withSlash.Contents && withSlash.Contents.length > 0) {
+        Contents = withSlash.Contents;
+        break;
+      }
+
+      const withoutSlash = await s3Client.send(
+        new ListObjectsV2Command({
+          Bucket: BUCKET_NAME,
+          Prefix: prefix,
+        })
+      );
+
+      if (withoutSlash.Contents && withoutSlash.Contents.length > 0) {
+        Contents = withoutSlash.Contents;
+        break;
+      }
     }
 
     if (!Contents) return [];
