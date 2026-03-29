@@ -244,6 +244,8 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
               slug={project.slug}
               title={project.title}
               coverImage={project.coverImage}
+              description={project.description}
+              isImportant={ventoPriorityOrder.slice(0, 5).includes(project.slug)}
               className={cn("col-span-1", premiumClass)}
               tileClassName={cn(
                 "min-h-[38vh] sm:min-h-[36vh] lg:min-h-0 lg:aspect-[16/9]",
