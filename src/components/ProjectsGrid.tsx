@@ -22,16 +22,6 @@ const ventoPriorityOrder = [
   "spot",
 ];
 
-const ventoPremiumTiles: Record<string, string> = {
-  parse: "md:col-span-2 xl:col-span-2 md:row-span-2",
-  "override-menu": "xl:col-span-2",
-  "override-logistics": "md:row-span-2",
-  "override-sense": "xl:col-span-2",
-  parkspot: "md:col-span-2 xl:col-span-2",
-  "atomo-app": "md:col-span-2",
-  spot: "md:row-span-2",
-};
-
 function getPriorityRank(slug: string) {
   const index = ventoPriorityOrder.indexOf(slug);
   return index === -1 ? Number.POSITIVE_INFINITY : index;
@@ -226,18 +216,14 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
           {sortedFilteredProjects.length} resultados encontrados
         </p>
         <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
-          {usePremiumLayout ? "Layout premium activo" : "Layout filtrado"}
+          {usePremiumLayout ? "Layout 16:9 activo" : "Layout filtrado"}
         </p>
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 border-l-2 border-border sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
+      <div className="grid grid-cols-1 border-l-2 border-border md:grid-cols-2 xl:grid-cols-3">
         {sortedFilteredProjects.length > 0 ? (
           sortedFilteredProjects.map((project) => {
-            const hasCoverImage = Boolean(project.coverImage?.trim());
-            const premiumClass = usePremiumLayout && hasCoverImage ? ventoPremiumTiles[project.slug] ?? "" : "";
-            const isTallTile = premiumClass.includes("row-span-2");
-
             return (
             <ProjectCard
               key={project.id}
@@ -246,12 +232,8 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
               coverImage={project.coverImage}
               description={project.description}
               isImportant={ventoPriorityOrder.slice(0, 5).includes(project.slug)}
-              className={cn("col-span-1", premiumClass)}
-              tileClassName={cn(
-                "min-h-[38vh] sm:min-h-[36vh] lg:min-h-0 lg:aspect-[16/9]",
-                !hasCoverImage && "sm:min-h-0 sm:aspect-[16/9]",
-                isTallTile && "lg:aspect-auto lg:min-h-[62vh]"
-              )}
+              className="col-span-1"
+              tileClassName="aspect-[16/9]"
             />
           );})
         ) : (

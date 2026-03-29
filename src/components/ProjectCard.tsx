@@ -17,45 +17,10 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ slug, title, coverImage, description, isImportant = false, className, tileClassName }: ProjectCardProps) {
-  const [isPortraitVento, setIsPortraitVento] = useState(false);
   const [imageLoadError, setImageLoadError] = useState(false);
 
   useEffect(() => {
     setImageLoadError(false);
-  }, [coverImage]);
-
-  useEffect(() => {
-    if (!coverImage) {
-      setIsPortraitVento(false);
-      return;
-    }
-
-    let isMounted = true;
-    const probe = new window.Image();
-    probe.decoding = "async";
-
-    probe.onload = () => {
-      if (!isMounted) return;
-
-      const width = probe.naturalWidth || 1;
-      const height = probe.naturalHeight || 1;
-      const ratio = width / height;
-
-      // Portrait around 9:16 (0.5625) with small tolerance for compression/crops.
-      const is916Portrait = ratio >= 0.49 && ratio <= 0.64;
-      setIsPortraitVento(is916Portrait);
-    };
-
-    probe.onerror = () => {
-      if (!isMounted) return;
-      setIsPortraitVento(false);
-    };
-
-    probe.src = coverImage;
-
-    return () => {
-      isMounted = false;
-    };
   }, [coverImage]);
 
   const hasUsableImage = Boolean(coverImage) && !imageLoadError;
@@ -63,17 +28,12 @@ export function ProjectCard({ slug, title, coverImage, description, isImportant 
   return (
     <Link
       href={`/projects/${slug}`}
-      className={cn(
-        className,
-        !hasUsableImage && "lg:col-span-1 lg:row-span-1 xl:col-span-1"
-      )}
+      className={className}
     >
       <div
         className={cn(
-          "group relative h-full w-full min-h-[45vh] overflow-hidden border-b-2 border-r-2 border-border bg-card transition-all duration-500",
-          tileClassName,
-          !hasUsableImage && "sm:min-h-0 sm:aspect-[16/9] lg:min-h-0 lg:aspect-[16/9]",
-          hasUsableImage && isPortraitVento && "lg:aspect-auto lg:min-h-[68vh] xl:min-h-[72vh]"
+          "group relative h-full w-full overflow-hidden border-b-2 border-r-2 border-border bg-card transition-all duration-500",
+          tileClassName
         )}
       >
         {hasUsableImage ? (
@@ -108,11 +68,11 @@ export function ProjectCard({ slug, title, coverImage, description, isImportant 
         </div>
 
         <div className="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-5">
-          <h2 className="text-2xl font-headline font-bold leading-[0.95] text-white drop-shadow-sm sm:text-3xl lg:text-4xl">
+          <h2 className="overflow-hidden text-balance text-2xl font-headline font-bold leading-[0.95] text-white drop-shadow-sm sm:text-3xl lg:text-[2rem] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
             {title}
           </h2>
           {description && (
-            <p className="mt-2 text-xs font-medium leading-relaxed text-white/80 sm:text-sm">
+            <p className="mt-2 overflow-hidden text-xs font-medium leading-relaxed text-white/80 sm:text-sm [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
               {description}
             </p>
           )}
