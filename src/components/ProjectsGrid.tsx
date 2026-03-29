@@ -12,12 +12,38 @@ interface ProjectsGridProps {
   initialProjects: any[];
 }
 
+const ventoPriorityOrder = [
+  "parse",
+  "override-menu",
+  "override-logistics",
+  "override-sense",
+  "atomo-app",
+  "spot",
+];
+
+const ventoPremiumTiles: Record<string, string> = {
+  parse: "md:col-span-2 xl:col-span-2 md:row-span-2",
+  "override-menu": "xl:col-span-2",
+  "override-logistics": "md:row-span-2",
+  "override-sense": "xl:col-span-2",
+  "atomo-app": "md:col-span-2",
+  spot: "md:row-span-2",
+};
+
+function getPriorityRank(slug: string) {
+  const index = ventoPriorityOrder.indexOf(slug);
+  return index === -1 ? Number.POSITIVE_INFINITY : index;
+}
+
 export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
   const [search, setSearch] = useState("");
   const [activeTech, setActiveTech] = useState<string | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [hideToolbar, setHideToolbar] = useState(false);
   const lastScrollYRef = useRef(0);
+  const scrollDirectionRef = useRef<"up" | "down" | null>(null);
+  const accumulatedScrollRef = useRef(0);
+  const suppressUntilRef = useRef(0);
 
   const categories = useMemo(
     () => getUnifiedTechFilters(initialProjects).slice(0, 20),
@@ -25,25 +51,57 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
   );
 
   useEffect(() => {
+    lastScrollYRef.current = window.scrollY;
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setShowScrollTop(currentScrollY > 400);
 
-      const scrollingDown = currentScrollY > lastScrollYRef.current + 8;
-      const scrollingUp = currentScrollY < lastScrollYRef.current - 8;
+      const now = performance.now();
+      if (now < suppressUntilRef.current) {
+        lastScrollYRef.current = currentScrollY;
+        return;
+      }
 
-      if (currentScrollY < 120 || scrollingUp) {
+      const delta = currentScrollY - lastScrollYRef.current;
+      if (Math.abs(delta) < 2) {
+        lastScrollYRef.current = currentScrollY;
+        return;
+      }
+
+      const direction = delta > 0 ? "down" : "up";
+
+      if (currentScrollY <= 120) {
         setHideToolbar(false);
-      } else if (scrollingDown) {
-        setHideToolbar(true);
+        scrollDirectionRef.current = null;
+        accumulatedScrollRef.current = 0;
+      } else {
+        if (scrollDirectionRef.current !== direction) {
+          scrollDirectionRef.current = direction;
+          accumulatedScrollRef.current = 0;
+        }
+
+        accumulatedScrollRef.current += Math.abs(delta);
+
+        if (direction === "down" && accumulatedScrollRef.current > 40 && !hideToolbar) {
+          setHideToolbar(true);
+          accumulatedScrollRef.current = 0;
+          suppressUntilRef.current = now + 320;
+        }
+
+        if (direction === "up" && accumulatedScrollRef.current > 16 && hideToolbar) {
+          setHideToolbar(false);
+          accumulatedScrollRef.current = 0;
+          suppressUntilRef.current = now + 220;
+        }
       }
 
       lastScrollYRef.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [hideToolbar]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -64,21 +122,52 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
     });
   }, [search, activeTech, initialProjects]);
 
+  const sortedFilteredProjects = useMemo(() => {
+    return [...filteredProjects].sort((a, b) => {
+      const rankDiff = getPriorityRank(a.slug) - getPriorityRank(b.slug);
+      if (rankDiff !== 0) return rankDiff;
+
+      return Number(a.id) - Number(b.id);
+    });
+  }, [filteredProjects]);
+
+  const usePremiumLayout = !search.trim() && !activeTech;
+
   return (
-    <div className="w-full space-y-8 pb-20">
+    <div className="w-full border-t-2 border-border bg-background pb-20">
+      <section className="grid grid-cols-1 border-b-2 border-border md:grid-cols-[1fr_auto]">
+        <div className="px-4 py-6 md:px-8 md:py-8">
+          <p className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground">Vento Project Atlas</p>
+          <h1 className="mt-2 text-2xl font-headline font-bold tracking-tight md:text-4xl">Explora Todos Los Proyectos</h1>
+          <p className="mt-3 max-w-2xl text-sm text-muted-foreground md:text-base">
+            Grid vivo con jerarquias visuales, filtros unificados por tecnologia y una lectura pensada para desktop y movil.
+          </p>
+        </div>
+        <div className="flex items-center gap-2 border-t-2 border-border px-4 py-6 md:border-l-2 md:border-t-0 md:px-8">
+          <div className="border-2 border-border bg-card px-4 py-3 shadow-[4px_4px_0px_theme(colors.border)]">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Proyectos</p>
+            <p className="text-2xl font-headline font-bold">{initialProjects.length}</p>
+          </div>
+          <div className="border-2 border-border bg-card px-4 py-3 shadow-[4px_4px_0px_theme(colors.border)]">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Tecnologias</p>
+            <p className="text-2xl font-headline font-bold">{categories.length}</p>
+          </div>
+        </div>
+      </section>
+
       {/* Search and Filter Bar */}
       <div
         className={cn(
           "sticky top-[58px] z-30 w-full overflow-hidden bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300 ease-out",
           hideToolbar
             ? "max-h-0 border-b-0 py-0 opacity-0"
-            : "max-h-[240px] border-b-2 border-border p-4 opacity-100 md:p-6"
+            : "max-h-[320px] border-b-2 border-border p-4 opacity-100 md:p-6"
         )}
       >
-        <div className="container max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-6 items-center justify-between">
+        <div className="mx-auto flex w-full max-w-screen-2xl flex-col items-center justify-between gap-6">
           
           {/* Search Input */}
-          <div className="relative w-full md:max-w-md group">
+          <div className="relative w-full md:max-w-2xl group">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-accent transition-colors" />
             <Input
               placeholder="Buscar proyecto..."
@@ -97,8 +186,8 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
           </div>
 
           {/* Category Filters */}
-          <div className="w-full md:w-auto overflow-x-auto pb-2 md:pb-0 no-scrollbar">
-            <div className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 min-w-max md:min-w-0 px-2 md:px-0">
+          <div className="w-full overflow-x-auto pb-2 no-scrollbar">
+            <div className="flex min-w-max flex-nowrap justify-start gap-2 px-2 md:min-w-0 md:flex-wrap md:justify-center md:px-0">
               <button
                 onClick={() => setActiveTech(null)}
                 className={cn(
@@ -130,24 +219,37 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
       </div>
 
       {/* Grid Result Info */}
-      <div className="px-6 text-sm font-bold uppercase tracking-widest text-muted-foreground">
-        {filteredProjects.length} Resultados encontrados
+      <div className="flex items-center justify-between border-b-2 border-border px-4 py-3 md:px-6">
+        <p className="text-[11px] font-black uppercase tracking-[0.2em] text-muted-foreground">
+          {sortedFilteredProjects.length} resultados encontrados
+        </p>
+        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
+          {usePremiumLayout ? "Layout premium activo" : "Layout filtrado"}
+        </p>
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-t-2 border-l-2 border-border">
-        {filteredProjects.length > 0 ? (
-          filteredProjects.map((project) => (
+      <div className="grid grid-cols-1 border-l-2 border-border sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
+        {sortedFilteredProjects.length > 0 ? (
+          sortedFilteredProjects.map((project) => {
+            const premiumClass = usePremiumLayout ? ventoPremiumTiles[project.slug] ?? "" : "";
+            const isTallTile = premiumClass.includes("row-span-2");
+
+            return (
             <ProjectCard
               key={project.id}
               slug={project.slug}
               title={project.title}
               coverImage={project.coverImage}
-              className="col-span-1"
+              className={cn("col-span-1", premiumClass)}
+              tileClassName={cn(
+                "min-h-[38vh] sm:min-h-[36vh] lg:min-h-[30vh]",
+                isTallTile && "lg:min-h-[62vh]"
+              )}
             />
-          ))
+          );})
         ) : (
-          <div className="col-span-full py-40 text-center space-y-4 bg-muted/5">
+          <div className="col-span-full py-40 text-center space-y-4 bg-muted/5 border-r-2 border-b-2 border-border">
             <h3 className="text-4xl font-headline font-bold uppercase italic">No se encontraron proyectos</h3>
             <p className="text-muted-foreground">Prueba ajustando los filtros o la búsqueda</p>
             <Button 

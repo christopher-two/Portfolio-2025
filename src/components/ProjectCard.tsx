@@ -8,12 +8,18 @@ interface ProjectCardProps {
   title: string;
   coverImage: string;
   className?: string;
+  tileClassName?: string;
 }
 
-export function ProjectCard({ slug, title, coverImage, className }: ProjectCardProps) {
+export function ProjectCard({ slug, title, coverImage, className, tileClassName }: ProjectCardProps) {
   return (
     <Link href={`/projects/${slug}`} className={className}>
-      <div className="group relative flex w-full min-h-[45vh] items-end justify-start overflow-hidden border-b-2 border-r-2 border-border bg-black p-6 transition-all duration-500">
+      <div
+        className={cn(
+          "group relative flex w-full min-h-[45vh] items-end justify-start overflow-hidden border-b-2 border-r-2 border-border bg-black p-6 transition-all duration-500",
+          tileClassName
+        )}
+      >
         {coverImage && (
           <Image
             src={coverImage}

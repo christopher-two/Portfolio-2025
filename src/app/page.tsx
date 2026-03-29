@@ -13,6 +13,52 @@ import profileImage from "@/assets/images/IMG_6195.jpg";
 
 const parsePlayStoreUrl = "https://play.google.com/store/apps/details?id=org.christophertwo.parse&pcampaignid=web_share";
 
+const homePremiumPriority = [
+  "parse",
+  "override-menu",
+  "override-logistics",
+  "override-sense",
+  "atomo-app",
+  "spot",
+];
+
+const homeDesktopPremiumTiles: Record<string, string> = {
+  parse: "col-span-2 row-span-2",
+  "override-menu": "col-span-2",
+  "override-logistics": "row-span-2",
+  "override-sense": "col-span-2",
+  "atomo-app": "row-span-2",
+  spot: "col-span-2",
+};
+
+const homeMobileMetroPattern = [
+  "w-[84vw] min-w-[84vw] h-[76vh] -translate-y-6",
+  "w-[56vw] min-w-[56vw] h-[50vh] translate-y-8",
+  "w-[78vw] min-w-[78vw] h-[70vh] -translate-y-2",
+  "w-[62vw] min-w-[62vw] h-[56vh] translate-y-10",
+  "w-[88vw] min-w-[88vw] h-[80vh] -translate-y-4",
+];
+
+const homeMobileFeaturedTiles: Record<string, string> = {
+  parse: "w-[92vw] min-w-[92vw] h-[82vh] -translate-y-4",
+  "override-menu": "w-[86vw] min-w-[86vw] h-[78vh] -translate-y-1",
+  "override-logistics": "w-[72vw] min-w-[72vw] h-[66vh] translate-y-6",
+  "override-sense": "w-[82vw] min-w-[82vw] h-[74vh] -translate-y-3",
+};
+
+function getHomePriorityRank(slug: string) {
+  const index = homePremiumPriority.indexOf(slug);
+  return index === -1 ? Number.POSITIVE_INFINITY : index;
+}
+
+function getDesktopTileUnits(tileClassName?: string) {
+  if (!tileClassName) return 0;
+
+  const colSpan = tileClassName.includes("col-span-2") ? 2 : 1;
+  const rowSpan = tileClassName.includes("row-span-2") ? 2 : 1;
+  return colSpan * rowSpan - 1;
+}
+
 const techSkills = [
   {
     icon: Code,
@@ -88,8 +134,18 @@ export default async function Home() {
   );
 
   const parseProject = projectsWithCovers.find((project) => project.slug === "parse");
-  const desktopRows = Math.ceil((projectsWithCovers.length + (parseProject ? 3 : 0)) / 6);
-  const mobileOffsets = ["-translate-y-8", "translate-y-6", "-translate-y-2", "translate-y-10"];
+  const premiumSortedProjects = [...projectsWithCovers].sort((a, b) => {
+    const rankDiff = getHomePriorityRank(a.slug) - getHomePriorityRank(b.slug);
+    if (rankDiff !== 0) return rankDiff;
+
+    return Number(a.id) - Number(b.id);
+  });
+
+  const desktopExtraSlots = premiumSortedProjects.reduce((sum, project) => {
+    return sum + getDesktopTileUnits(homeDesktopPremiumTiles[project.slug]);
+  }, 0);
+
+  const desktopRows = Math.ceil((premiumSortedProjects.length + desktopExtraSlots) / 6);
 
   return (
     <div className="flex-1 w-full">
@@ -167,8 +223,10 @@ export default async function Home() {
           className="grid h-full grid-cols-6 border-l-2 border-border"
           style={{ gridTemplateRows: `repeat(${desktopRows}, minmax(0, 1fr))` }}
         >
-          {projectsWithCovers.map((project) => {
+          {premiumSortedProjects.map((project) => {
+            const premiumClass = homeDesktopPremiumTiles[project.slug] ?? "";
             const isParse = project.slug === "parse";
+            const isPremiumTile = Boolean(premiumClass);
 
             return (
               <Link
@@ -176,7 +234,7 @@ export default async function Home() {
                 href={`/projects/${project.slug}`}
                 className={cn(
                   "group relative overflow-hidden border-r-2 border-b-2 border-border bg-black",
-                  isParse && "col-span-2 row-span-2"
+                  premiumClass
                 )}
               >
                 {project.coverImage && (
@@ -191,7 +249,7 @@ export default async function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                 <div className="relative z-10 flex h-full flex-col justify-between p-4 text-white">
                   <span className="text-[9px] font-black uppercase tracking-[0.25em] text-white/70">
-                    {isParse ? "Publicado" : "Proyecto"}
+                    {isParse ? "Publicado" : isPremiumTile ? "Premium" : "Proyecto"}
                   </span>
                   <h3 className="text-base lg:text-xl font-headline font-bold leading-tight group-hover:text-accent transition-colors">
                     {project.title}
@@ -203,15 +261,18 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="h-screen border-b-2 border-border bg-background md:hidden">
-        <div className="flex h-full snap-x snap-mandatory items-center gap-3 overflow-x-auto overflow-y-hidden px-2 no-scrollbar">
-          {projectsWithCovers.map((project, index) => (
+      <section className="relative h-screen border-b-2 border-border bg-background md:hidden">
+        <div className="pointer-events-none absolute left-3 top-3 z-20 border border-border bg-background/80 px-3 py-1 text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground backdrop-blur-sm">
+          Mapa Metro - Desliza
+        </div>
+        <div className="flex h-full snap-x snap-mandatory items-center gap-2 overflow-x-auto overflow-y-hidden px-2 pb-4 pt-8 no-scrollbar">
+          {premiumSortedProjects.map((project, index) => (
             <Link
               key={project.id}
               href={`/projects/${project.slug}`}
               className={cn(
-                "group relative h-[82vh] w-[78vw] min-w-[78vw] max-w-[340px] shrink-0 snap-center overflow-hidden border-2 border-border bg-black",
-                mobileOffsets[index % mobileOffsets.length]
+                "group relative shrink-0 snap-center overflow-hidden border-2 border-border bg-black",
+                homeMobileFeaturedTiles[project.slug] ?? homeMobileMetroPattern[index % homeMobileMetroPattern.length]
               )}
             >
               {project.coverImage && (
@@ -225,7 +286,9 @@ export default async function Home() {
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
               <div className="relative z-10 flex h-full flex-col justify-end p-4 text-white">
-                <span className="mb-2 text-[9px] font-black uppercase tracking-[0.25em] text-white/80">Mapa de Proyectos</span>
+                <span className="mb-2 text-[9px] font-black uppercase tracking-[0.25em] text-white/80">
+                  {homeMobileFeaturedTiles[project.slug] ? "Zona Clave" : "Nodo"}
+                </span>
                 <h3 className="text-2xl font-headline font-bold leading-tight">{project.title}</h3>
               </div>
             </Link>
