@@ -1,0 +1,43 @@
+export const lumiSections = [
+  {
+    id: "l",
+    letter: "L",
+    title: "UZ",
+    description: "Iluminando ideas con simplicidad. Claridad en cada funcion.",
+    bgColor: "bg-yellow-100",
+    textColor: "text-yellow-900",
+    scrollbarColor: "hsl(54, 100%, 80%)",
+    scrollbarHoverColor: "hsl(54, 100%, 70%)",
+  },
+  {
+    id: "u",
+    letter: "U",
+    title: "TILIDAD",
+    description: "Herramientas que resuelven problemas reales. Sin adornos innecesarios.",
+    bgColor: "bg-yellow-200",
+    textColor: "text-yellow-900",
+    scrollbarColor: "hsl(54, 100%, 75%)",
+    scrollbarHoverColor: "hsl(54, 100%, 65%)",
+  },
+  {
+    id: "m",
+    letter: "M",
+    title: "AGIA",
+    description:
+      "La tecnologia avanzada es indistinguible de la magia. Sorprende en cada interaccion.",
+    bgColor: "bg-yellow-300",
+    textColor: "text-yellow-800",
+    scrollbarColor: "hsl(54, 100%, 70%)",
+    scrollbarHoverColor: "hsl(54, 100%, 60%)",
+  },
+  {
+    id: "i",
+    letter: "I",
+    title: "NTELIGENCIA",
+    description: "Potenciando la creatividad humana con IA. Tus ideas, multiplicadas.",
+    bgColor: "bg-yellow-400",
+    textColor: "text-yellow-950",
+    scrollbarColor: "hsl(54, 100%, 65%)",
+    scrollbarHoverColor: "hsl(54, 100%, 55%)",
+  },
+];
