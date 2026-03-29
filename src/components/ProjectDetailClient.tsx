@@ -150,7 +150,7 @@ export function ProjectDetailClient({ project, gallery = [] }: ProjectDetailClie
               </div>
             </div>
 
-            <div className="border-4 border-border p-8 bg-accent/5 shadow-[12px_12px_0px_theme(colors.accent)]">
+            <div className="border-4 border-border p-8 bg-accent/5 shadow-[12px_12px_0px_hsl(var(--accent))]">
               <h3 className="text-xl font-headline font-bold mb-6 uppercase tracking-widest flex items-center gap-2">
                  <div className="h-2 w-2 bg-foreground" /> Acceso Directo
               </h3>

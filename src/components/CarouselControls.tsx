@@ -44,7 +44,7 @@ export function CarouselControls({ api, className }: CarouselControlsProps) {
         {scrollSnaps.map((_, index) => (
           <button
             key={index}
-            onClick={() => api.scrollTo(index)}
+            onClick={() => api?.scrollTo(index)}
             className={cn(
               "h-3 w-3 rounded-sm border-2 border-border bg-background transition-all duration-300",
               index === selectedIndex ? "shadow-[2px_2px_0px_theme(colors.border)] scale-110" : "shadow-[1px_1px_0px_theme(colors.border)]",

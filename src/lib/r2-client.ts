@@ -4,24 +4,30 @@ import { S3Client, ListObjectsV2Command } from "@aws-sdk/client-s3";
 const ACCOUNT_ID = "1827203a2c62ad3b7a9aaace51eb44b7";
 const BUCKET_NAME = "projects";
 const PUBLIC_URL = "https://pub-f9c51555bfe841b8af90cf9dc30b962d.r2.dev";
+let cachedClient: S3Client | null | undefined;
+let hasWarnedMissingCredentials = false;
 
 /**
  * Helper to initialize the S3 client lazily.
  */
 function createS3Client() {
+  if (cachedClient !== undefined) {
+    return cachedClient;
+  }
+
   const accessKeyId = process.env.R2_ACCESS_KEY_ID?.trim();
   const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY?.trim();
 
   if (!accessKeyId || !secretAccessKey) {
-    console.error("[R2 CLIENT] MISSING CREDENTIALS in environment variables.");
-    return null;
+    if (!hasWarnedMissingCredentials) {
+      console.warn("[R2 CLIENT] MISSING CREDENTIALS in environment variables.");
+      hasWarnedMissingCredentials = true;
+    }
+    cachedClient = null;
+    return cachedClient;
   }
 
-  // Debug log (Safe: only shows first/last chars and length)
-  console.log(`[R2 CLIENT] Initializing with Key ID: ${accessKeyId.substring(0, 4)}...${accessKeyId.slice(-4)} (Len: ${accessKeyId.length})`);
-  console.log(`[R2 CLIENT] Secret Key Check (Len: ${secretAccessKey.length})`);
-
-  return new S3Client({
+  cachedClient = new S3Client({
     region: "auto",
     endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
     credentials: {
@@ -31,6 +37,8 @@ function createS3Client() {
     // Required for Cloudflare R2 to avoid virtual-hosted style issues
     forcePathStyle: true,
   });
+
+  return cachedClient;
 }
 
 export async function getProjectImages(folder: string) {

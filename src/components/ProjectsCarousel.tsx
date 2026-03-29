@@ -8,11 +8,15 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { projects } from "@/lib/data";
 import { ProjectCard } from "./ProjectCard";
 import { CarouselControls } from "./CarouselControls";
 
-type Project = typeof projects[0];
+type Project = {
+  id: string;
+  slug: string;
+  title: string;
+  coverImage: string;
+};
 
 interface ProjectsCarouselProps {
     projects: Project[];

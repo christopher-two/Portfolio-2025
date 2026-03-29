@@ -3,8 +3,9 @@ import { projects, socialLinks } from '@/lib/data';
 
 const navLinks = [
   { name: 'Inicio', href: '/' },
-  { name: 'Override', href: '/override' },
   { name: 'Proyectos', href: '/projects' },
+  { name: 'Resumen', href: '/projects/resume' },
+  { name: 'Bio', href: '/bio' },
 ];
 
 export function Footer() {
@@ -12,13 +13,19 @@ export function Footer() {
     (link) => link.title === 'GitHub' || link.title === 'LinkedIn' || link.title === 'Email'
   );
 
+  const featuredProjects = projects.filter((project) =>
+    ['parse', 'override-menu', 'override-logistics', 'override-sense'].includes(project.slug)
+  );
+
   return (
     <footer className="w-full border-t-2 border-border bg-background" suppressHydrationWarning>
-      <div className="container max-w-screen-lg mx-auto p-8 text-foreground">
+      <div className="container max-w-screen-xl mx-auto p-8 text-foreground">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-          {/* Brand and Socials */}
           <div className="flex flex-col gap-4">
             <Link href="/" className="font-bold font-headline text-lg">ChristopherTwo</Link>
+            <p className="text-sm text-muted-foreground max-w-[260px]">
+              Construyendo productos multiplataforma listos para producción, con foco en Android, KMP e IA aplicada.
+            </p>
             <div className="flex gap-4">
               {socialMediaLinks.map((social) => (
                 <Link key={social.title} href={social.href} target="_blank" rel="noopener noreferrer" className="block p-2 border-2 border-border bg-background rounded-md shadow-[4px_4px_0px_theme(colors.border)] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
@@ -29,7 +36,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Navigation */}
           <div>
             <h4 className="font-headline font-semibold mb-4">Navegación</h4>
             <ul className="space-y-2">
@@ -43,11 +49,10 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Projects */}
           <div>
-            <h4 className="font-headline font-semibold mb-4">Proyectos</h4>
+            <h4 className="font-headline font-semibold mb-4">Proyectos Actuales</h4>
             <ul className="space-y-2">
-              {projects.slice(0, 3).map((project) => (
+              {featuredProjects.map((project) => (
                 <li key={project.id}>
                   <Link href={`/projects/${project.slug}`} className="text-muted-foreground hover:text-accent transition-colors">
                     {project.title}
@@ -57,13 +62,17 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Other */}
           <div>
-            <h4 className="font-headline font-semibold mb-4">Otros</h4>
+            <h4 className="font-headline font-semibold mb-4">Enlaces</h4>
             <ul className="space-y-2">
                <li>
                   <Link href="mailto:christopher_two@proton.me" className="text-muted-foreground hover:text-accent transition-colors">
                     Email
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://www.linkedin.com/in/christopher_two/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
+                    LinkedIn / christopher_two
                   </Link>
                 </li>
                 <li>
@@ -76,8 +85,8 @@ export function Footer() {
         </div>
         
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Christopher Alejandro Maldonado Chavez. Todos los derechos reservados.</p>
-          <p className="mt-2 md:mt-0">Desarrollado con &lt;3 por Override</p>
+          <p>&copy; {new Date().getFullYear()} Christopher Alejandro Maldonado Chavez. Portafolio 2026.</p>
+          <p className="mt-2 md:mt-0">Parse en Play Store | Override Product Lab</p>
         </div>
       </div>
     </footer>

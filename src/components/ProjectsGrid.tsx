@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
-import { projects, TECH_CATEGORIES } from "@/lib/data";
+import { useState, useMemo, useEffect, useRef } from "react";
+import { getProjectTechFilters, getUnifiedTechFilters } from "@/lib/data";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Search, X, ArrowUp } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -15,14 +14,31 @@ interface ProjectsGridProps {
 
 export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
   const [search, setSearch] = useState("");
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [activeTech, setActiveTech] = useState<string | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [hideToolbar, setHideToolbar] = useState(false);
+  const lastScrollYRef = useRef(0);
 
-  const categories = Object.values(TECH_CATEGORIES);
+  const categories = useMemo(
+    () => getUnifiedTechFilters(initialProjects).slice(0, 20),
+    [initialProjects]
+  );
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400);
+      const currentScrollY = window.scrollY;
+      setShowScrollTop(currentScrollY > 400);
+
+      const scrollingDown = currentScrollY > lastScrollYRef.current + 8;
+      const scrollingUp = currentScrollY < lastScrollYRef.current - 8;
+
+      if (currentScrollY < 120 || scrollingUp) {
+        setHideToolbar(false);
+      } else if (scrollingDown) {
+        setHideToolbar(true);
+      }
+
+      lastScrollYRef.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -37,20 +53,28 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
     return initialProjects.filter((project) => {
       const matchesSearch = 
         project.title.toLowerCase().includes(search.toLowerCase()) ||
-        project.description.toLowerCase().includes(search.toLowerCase());
+        project.description.toLowerCase().includes(search.toLowerCase()) ||
+        (project.tags ?? []).some((tag: string) => tag.toLowerCase().includes(search.toLowerCase()));
       
-      const matchesCategory = activeCategory 
-        ? project.categories?.includes(activeCategory)
+      const matchesCategory = activeTech
+        ? getProjectTechFilters(project).includes(activeTech)
         : true;
 
       return matchesSearch && matchesCategory;
     });
-  }, [search, activeCategory, initialProjects]);
+  }, [search, activeTech, initialProjects]);
 
   return (
     <div className="w-full space-y-8 pb-20">
       {/* Search and Filter Bar */}
-      <div className="sticky top-[58px] z-30 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b-2 border-border p-4 md:p-6">
+      <div
+        className={cn(
+          "sticky top-[58px] z-30 w-full overflow-hidden bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300 ease-out",
+          hideToolbar
+            ? "max-h-0 border-b-0 py-0 opacity-0"
+            : "max-h-[240px] border-b-2 border-border p-4 opacity-100 md:p-6"
+        )}
+      >
         <div className="container max-w-screen-2xl mx-auto flex flex-col md:flex-row gap-6 items-center justify-between">
           
           {/* Search Input */}
@@ -76,10 +100,10 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
           <div className="w-full md:w-auto overflow-x-auto pb-2 md:pb-0 no-scrollbar">
             <div className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 min-w-max md:min-w-0 px-2 md:px-0">
               <button
-                onClick={() => setActiveCategory(null)}
+                onClick={() => setActiveTech(null)}
                 className={cn(
                   "px-4 py-2 text-xs font-black uppercase tracking-widest border-2 transition-all whitespace-nowrap",
-                  !activeCategory 
+                  !activeTech
                     ? "bg-accent text-accent-foreground border-border shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" 
                     : "bg-background text-muted-foreground border-border/50 hover:border-border hover:text-foreground"
                 )}
@@ -89,10 +113,10 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
               {categories.map((category) => (
                 <button
                   key={category}
-                  onClick={() => setActiveCategory(category === activeCategory ? null : category)}
+                  onClick={() => setActiveTech(category === activeTech ? null : category)}
                   className={cn(
                     "px-4 py-2 text-xs font-black uppercase tracking-widest border-2 transition-all whitespace-nowrap",
-                    activeCategory === category
+                    activeTech === category
                       ? "bg-accent text-accent-foreground border-border shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                       : "bg-background text-muted-foreground border-border/50 hover:border-border hover:text-foreground"
                   )}
@@ -128,7 +152,7 @@ export function ProjectsGrid({ initialProjects }: ProjectsGridProps) {
             <p className="text-muted-foreground">Prueba ajustando los filtros o la búsqueda</p>
             <Button 
               variant="outline" 
-              onClick={() => { setSearch(""); setActiveCategory(null); }}
+              onClick={() => { setSearch(""); setActiveTech(null); }}
               className="border-2 rounded-none"
             >
               Limpiar filtros

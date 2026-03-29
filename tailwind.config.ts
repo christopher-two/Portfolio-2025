@@ -138,6 +138,7 @@ export default {
         'neon-border': 'neon-border 3s ease-in-out infinite',
         'expand-from-center': 'expand-from-center 0.4s ease-out forwards 0.5s',
         'marquee': 'marquee 40s linear infinite',
+        'marquee-reverse': 'marquee 40s linear infinite reverse',
       },
     },
   },

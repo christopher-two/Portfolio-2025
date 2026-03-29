@@ -18,8 +18,8 @@ export const socialLinks: SocialLink[] = [
   {
     icon: Linkedin,
     title: 'LinkedIn',
-    handle: 'christopher-alejandro-maldonado-chavez',
-    href: 'https://www.linkedin.com/in/christopher-alejandro-maldonado-chavez-8784ba37a/',
+    handle: 'christopher_two',
+    href: 'https://www.linkedin.com/in/christopher_two/',
   },
   {
     icon: Github,
@@ -576,10 +576,10 @@ El software de escritorio representa el pilar de robustez del proyecto, demostra
   },
   {
     id: "21",
-    slug: "cetis27-library-system",
-    title: "Sistema de Gestión Biblioteca CETIS 27",
+    slug: "override-index",
+    title: "Override Index",
     description: "Sistema web completo para la gestión de bibliotecas escolares desarrollado con Astro, TailwindCSS, Firebase y desplegado en Cloudflare Pages.",
-    longDescription: `**Sistema de Gestión Biblioteca CETIS 27** es una plataforma integral desarrollada para automatizar y optimizar los procesos de préstamo, devolución y administración de recursos bibliográficos de la institución.
+    longDescription: `**Override Index** es una plataforma integral desarrollada para automatizar y optimizar los procesos de préstamo, devolución y administración de recursos bibliográficos.
 
 ### Características del Sistema
 
@@ -604,3 +604,103 @@ El sistema ha sido diseñado para mejorar la eficiencia operativa de la bibliote
     tags: ["Astro", "TailwindCSS", "Firebase", "Cloudflare Pages", "JavaScript", "HTML", "CSS"],
   },
 ];
+
+const TECH_ALIAS_MAP: Record<string, string> = {
+  web: "Web",
+  "jetpack compose": "Jetpack Compose",
+  android: "Android",
+  "android native": "Android",
+  "kotlin multiplatform": "Kotlin Multiplatform",
+  kmp: "Kotlin Multiplatform",
+  "kmp jvm": "Kotlin Multiplatform",
+  ia: "IA",
+  ai: "IA",
+  "on-device ai": "IA On-Device",
+  "gemini ai": "Gemini AI",
+  "compose multiplatform": "Compose Multiplatform",
+  kotlin: "Kotlin",
+  ktor: "Ktor",
+  koin: "Koin",
+  room: "Room",
+  firebase: "Firebase",
+  supabase: "Supabase",
+  "google tv": "Google TV",
+  "navigation 3": "Navigation 3",
+  "ml kit": "ML Kit",
+  "tensorflow lite": "TensorFlow Lite",
+  mapbox: "Mapbox",
+  "mapbox sdk": "Mapbox",
+  workmanager: "WorkManager",
+  datastore: "DataStore",
+  "pdfbox-android": "PDFBox",
+  pdfbox: "PDFBox",
+  astro: "Astro",
+  "astro v5": "Astro",
+  "next.js": "Next.js",
+  "next.js 15": "Next.js",
+  react: "React",
+  "react 19": "React",
+  typescript: "TypeScript",
+  tailwind: "Tailwind CSS",
+  "tailwind css": "Tailwind CSS",
+  tailwindcss: "Tailwind CSS",
+  "tailwind css v4": "Tailwind CSS",
+  "cloudflare pages": "Cloudflare Pages",
+  vercel: "Vercel",
+  wasmjs: "Wasm",
+  "framer motion": "Framer Motion",
+  gradle: "Gradle",
+};
+
+const TECH_FILTER_ORDER = [
+  "Kotlin Multiplatform",
+  "Compose Multiplatform",
+  "Jetpack Compose",
+  "Kotlin",
+  "IA",
+  "ML Kit",
+  "TensorFlow Lite",
+  "Gemini AI",
+  "Navigation 3",
+  "Ktor",
+  "Koin",
+  "Room",
+  "WorkManager",
+  "Firebase",
+  "Supabase",
+  "Next.js",
+  "React",
+  "Astro",
+  "Tailwind CSS",
+  "Cloudflare Pages",
+  "Wasm",
+  "Mapbox",
+];
+
+const toKey = (value: string) => value.toLowerCase().trim();
+
+function normalizeTechLabel(value: string): string {
+  const key = toKey(value);
+  return TECH_ALIAS_MAP[key] ?? value.trim();
+}
+
+export function getProjectTechFilters(project: { categories?: string[]; tags?: string[] }): string[] {
+  const labels = [...(project.categories ?? []), ...(project.tags ?? [])]
+    .map(normalizeTechLabel)
+    .filter(Boolean);
+
+  return Array.from(new Set(labels));
+}
+
+export function getUnifiedTechFilters(projectList: Array<{ categories?: string[]; tags?: string[] }>): string[] {
+  const discovered = new Set<string>();
+
+  projectList.forEach((project) => {
+    getProjectTechFilters(project).forEach((label) => discovered.add(label));
+  });
+
+  const ordered = TECH_FILTER_ORDER.filter((label) => discovered.has(label));
+  const remaining = Array.from(discovered).filter((label) => !TECH_FILTER_ORDER.includes(label)).sort();
+
+  return [...ordered, ...remaining];
+}

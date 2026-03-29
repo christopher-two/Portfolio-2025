@@ -30,7 +30,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     notFound();
   }
 
-  let gallery = [];
+  let gallery: Awaited<ReturnType<typeof getProjectImages>> = [];
   try {
     if (project.r2Folder) {
       console.log(`[R2] Scanning folder: "${project.r2Folder}"`);
