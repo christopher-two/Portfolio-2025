@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectRow from '../components/ProjectRow.astro';
+import { projects, recognitions, skills, socialLinks } from '../data/portfolio';
+import profileImage from '../assets/images/IMG_6195.jpg';
+import { siteUrl } from '../data/site';
+
+const homeProjects = projects.slice(0, 10);
+const landingSchema = [
+  {
+    '@type': 'ProfilePage',
+    '@id': `${siteUrl}/landing#profile`,
+    url: `${siteUrl}/landing`,
+    name: 'Christopher Two · Portfolio',
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    mainEntity: { '@id': `${siteUrl}/bio#person` },
+  },
+  {
+    '@type': 'ItemList',
+    '@id': `${siteUrl}/landing#featured-projects`,
+    name: 'Proyectos destacados de Christopher Two',
+    itemListElement: homeProjects.map((project, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: project.title,
+      url: `${siteUrl}/projects/${project.slug}`,
+    })),
+  },
+];
+---
+
+<BaseLayout title="Christopher Two · Software que llega a producción" description="Portfolio de Christopher Two: productos multiplataforma con Kotlin, Android, Astro, IA y Cloudflare." schema={landingSchema}>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow" style="color: var(--paper)">Desarrollador multiplataforma · Uruapan, MX</span>
+        <h1 class="display">Ideas que se vuelven <span class="accent">productos.</span></h1>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/projects">Explorar trabajo ↗</a>
+          <a class="button button-ghost" href="#contact">Hablemos ↓</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-label="Tecnologías">
+    <div class="ticker-track">
+      {['Kotlin Multiplatform', 'Jetpack Compose', 'Astro', 'Cloudflare', 'Clean Architecture', 'IA On-Device', 'Ktor', 'Supabase'].map((item) => <span>{item}</span>)}
+      {['Kotlin Multiplatform', 'Jetpack Compose', 'Astro', 'Cloudflare', 'Clean Architecture', 'IA On-Device', 'Ktor', 'Supabase'].map((item) => <span>{item}</span>)}
+    </div>
+  </div>
+
+  <section class="section presentation-section" id="about">
+    <div class="wrap presentation-grid">
+      <div class="presentation-visual">
+        <img src={profileImage.src} alt="Christopher Alejandro Maldonado Chávez" />
+        <span class="presentation-stamp">Kotlin<br />+ Astro<br />+ ideas</span>
+      </div>
+      <div class="presentation-copy">
+        <span class="eyebrow">La persona detrás del código</span>
+        <h2 class="section-title">Hola, soy Christopher.</h2>
+        <p class="presentation-lede">Desarrollador multiplataforma obsesionado con convertir problemas complejos en productos que se sienten simples.</p>
+        <p>Trabajo entre el ecosistema Android, Kotlin Multiplatform y la Web. Me interesan las arquitecturas que resisten el crecimiento, las interfaces con carácter y los equipos que prefieren lanzar antes que prometer.</p>
+        <a class="button button-ghost" href="/bio">Conocer mi historia ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Selección de trabajo</span>
+          <h2 class="section-title">No hago demos. Hago cosas que <em>viven.</em></h2>
+        </div>
+        <p class="section-note">Una selección de productos, sistemas y experimentos que han pasado de la idea a usuarios reales.</p>
+      </div>
+      <div class="project-list">
+        {homeProjects.map((project, index) => <ProjectRow project={project} index={index} />)}
+      </div>
+      <a class="button button-primary" href="/projects" style="margin-top: 34px">Ver todos los proyectos ↗</a>
+    </div>
+  </section>
+
+  <section class="section skills-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Cómo trabajo</span>
+          <h2 class="section-title">Código con criterio, no por deporte.</h2>
+        </div>
+        <p class="section-note">El stack cambia. La intención permanece: construir software claro, útil y difícil de romper.</p>
+      </div>
+      <div class="skills-list">
+        {skills.map((skill) => (
+          <article class="skill">
+            <span class="skill-index">{skill.index} / PRINCIPIO</span>
+            <div>
+              <h3>{skill.title}</h3>
+              <span class="skill-stack">{skill.stack}</span>
+            </div>
+            <p>{skill.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Prueba de trabajo</span>
+          <h2 class="section-title">Los resultados también cuentan.</h2>
+        </div>
+        <p class="section-note">Reconocimientos, lanzamientos y momentos que dejaron una marca más allá del repositorio.</p>
+      </div>
+      <div class="recognitions">
+        {recognitions.map(([number, title, issuer, copy]) => (
+          <article class="recognition">
+            <span class="recognition-number">{number}</span>
+            <div>
+              <span class="mono">{issuer}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow">¿Tienes una idea?</span>
+        <h2 class="section-title">Hagamos algo que merezca ser lanzado.</h2>
+        <a class="button button-primary" href="mailto:hola@christopher.com.mx" style="margin-top: 35px">Escribir un correo ↗</a>
+      </div>
+      <div class="social-list">
+        {socialLinks.map((link) => <a class="social-link" href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noreferrer' : undefined}><span>{link.title}</span><span>{link.handle} ↗</span></a>)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

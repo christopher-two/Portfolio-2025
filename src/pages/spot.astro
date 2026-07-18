@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const features = [
+  ['SENTIMIENTO', 'Recuerdos anclados a un lugar, listos para aparecer cuando vuelves.'],
+  ['PROXIMIDAD', 'Contenido que solo se revela cuando estás realmente cerca.'],
+  ['OBJETIVO', 'Una experiencia visual-first para guardar momentos que importan.'],
+  ['TESOROS', 'Geocaching emocional para convertir coordenadas en historias.'],
+];
+---
+
+<BaseLayout title="Spot · Christopher Two" description="Spot es una red social sentimental basada en ubicación para guardar recuerdos visuales en lugares reales.">
+  <section class="hero" style="background: var(--ink)">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow" style="color: var(--paper)">Producto · Geocaching emocional</span>
+        <h1 class="display" style="color: var(--paper)">Lo que importa <span class="accent">deja rastro.</span></h1>
+      </div>
+      <div class="hero-copy"><strong>Spot / 2026</strong><p>Una red social basada en ubicación para crear cápsulas del tiempo visuales y encontrarlas en el mundo real.</p></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">La idea</span><h2 class="section-title">Un mapa lleno de pequeñas historias.</h2></div><p class="section-note">Diseñado para Android con Kotlin, Compose, Mapbox y una filosofía offline-first.</p></div>
+      <div class="recognitions">
+        {features.map(([title, copy], index) => <article class="recognition"><span class="recognition-number">0{index + 1}</span><div><span class="mono">Spot / principio</span><h3>{title}</h3><p>{copy}</p></div></article>)}
+      </div>
+      <div class="hero-actions"><a class="button button-primary" href="/projects/spot">Ver case study ↗</a><a class="button button-ghost" href="/spot/privacy">Privacidad</a><a class="button button-ghost" href="/spot/terms">Términos</a></div>
+    </div>
+  </section>
+</BaseLayout>

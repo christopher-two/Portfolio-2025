@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BrandPage from '../components/BrandPage.astro';
+
+const sections = [
+  { letter: 'D', title: 'ISRUPCIÓN', description: 'Rompiendo paradigmas establecidos. Si no es diferente, no es Daelia.' },
+  { letter: 'A', title: 'RTE', description: 'Donde la lógica se encuentra con la estética. Cada pixel cuenta una historia.' },
+  { letter: 'E', title: 'XPLORACIÓN', description: 'Navegando nuevas fronteras tecnológicas. El mapa no es el territorio.' },
+  { letter: 'L', title: 'ABORATORIO', description: 'Espacio para la innovación constante. Fallar rápido, aprender más rápido.' },
+  { letter: 'I', title: 'MAGINACIÓN', description: 'Visualizando lo imposible. Lo que puedes soñar, lo puedes codificar.' },
+  { letter: 'A', title: 'UDACIA', description: 'Atrévete a crear diferente. El conformismo es el enemigo de la evolución.' },
+];
+---
+
+<BaseLayout title="Daelia · Christopher Two" description="Daelia es el laboratorio de experimentos de Christopher Two: interfaces, productos pequeños y nuevas tecnologías.">
+  <BrandPage name="Daelia" kicker="Laboratorio de experimentos" intro="Un espacio para explorar interfaces, ideas y tecnologías sin pedir permiso al manual de marca." sections={sections} tone="daelia" />
+</BaseLayout>

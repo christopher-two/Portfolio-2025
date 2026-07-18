@@ -1,0 +1,90 @@
+---
+import { projects, socialLinks } from '../data/portfolio';
+
+const workPreview = projects.slice(0, 3);
+const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHub'].includes(link.title));
+---
+
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menú</button>
+  <nav id="main-nav" class="nav-links" aria-label="Navegación principal">
+    <div class="nav-item">
+      <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="work-preview">Trabajo <span aria-hidden="true">↘</span></button>
+      <div id="work-preview" class="nav-panel nav-panel-work">
+        <div class="nav-panel-heading"><span class="mono">Archivo / selección</span><span>{projects.length} proyectos</span></div>
+        <div class="nav-work-list">
+          {workPreview.map((project, index) => (
+            <a class="nav-work-card" href={`/projects/${project.slug}`}>
+              <span class="nav-card-number">0{index + 1}</span>
+              <span><strong>{project.title}</strong><small>{project.description}</small></span>
+              <span class="nav-card-arrow" aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+        <a class="nav-panel-link" href="/projects">Ver todos los proyectos <span>↗</span></a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="about-preview">Sobre mí <span aria-hidden="true">↘</span></button>
+      <div id="about-preview" class="nav-panel nav-panel-about">
+        <span class="mono">La persona detrás del código</span>
+        <h2>Christopher Two</h2>
+        <p>Desarrollador multiplataforma. Kotlin, Android, Web e ideas que llegan a producción.</p>
+        <a class="nav-panel-link" href="/bio">Conocer mi historia <span>↗</span></a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="override-preview">Override <span aria-hidden="true">↘</span></button>
+      <div id="override-preview" class="nav-panel nav-panel-override">
+        <span class="mono">Empresa / laboratorio</span>
+        <h2>Software con intención.</h2>
+        <p>Productos digitales, sistemas y experimentos construidos desde Uruapan para donde sea.</p>
+        <a class="nav-panel-link" href="/override">Ver manifiesto <span>↗</span></a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="contact-preview">Contacto <span aria-hidden="true">↘</span></button>
+      <div id="contact-preview" class="nav-panel nav-panel-contact">
+        <span class="mono">Abramos una conversación</span>
+        <a class="nav-contact-email" href="mailto:hola@christopher.com.mx">hola@christopher.com.mx ↗</a>
+        <div class="nav-contact-links">
+          {contactPreview.map((link) => <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noreferrer' : undefined}>{link.title}</a>)}
+        </div>
+        <a class="nav-panel-link" href="/landing#contact">Ver contacto completo <span>↗</span></a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const nav = document.querySelector<HTMLElement>('#main-nav');
+  const items = document.querySelectorAll<HTMLElement>('.nav-item');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('is-open') ?? false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  items.forEach((item) => {
+    const trigger = item.querySelector<HTMLButtonElement>('.nav-trigger');
+    trigger?.addEventListener('click', () => {
+      const isOpen = item.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', String(isOpen));
+      items.forEach((other) => {
+        if (other !== item) {
+          other.classList.remove('is-open');
+          other.querySelector<HTMLButtonElement>('.nav-trigger')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Node) || (event.target as Element).closest('.site-header')) return;
+    items.forEach((item) => item.classList.remove('is-open'));
+  });
+</script>

@@ -1,0 +1,64 @@
+---
+interface Section {
+  letter: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  name: string;
+  kicker: string;
+  intro: string;
+  sections: Section[];
+  tone: string;
+}
+
+const { name, kicker, intro, sections, tone } = Astro.props;
+---
+
+<section class={`brand-page brand-${tone}`}>
+  <div class="wrap">
+    <span class="eyebrow">{kicker}</span>
+    <h1 class="display">{name}</h1>
+    <p class="brand-intro">{intro}</p>
+  </div>
+  <div class="brand-sections wrap">
+    {sections.map((section, index) => (
+      <article class="brand-section">
+        <span class="brand-letter">{section.letter}</span>
+        <div>
+          <span class="mono">0{index + 1} / manifiesto</span>
+          <h2>{section.title}</h2>
+          <p>{section.description}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .brand-page { padding: 90px 0 110px; background: var(--lilac); }
+  .brand-page .display { margin-top: 25px; }
+  .brand-intro { max-width: 600px; margin: 30px 0 80px; font-size: clamp(1.2rem, 3vw, 2rem); line-height: 1.15; }
+  .brand-sections { display: flex; flex-direction: column; }
+  .brand-section { display: grid; grid-template-columns: 150px 1fr; gap: 30px; align-items: center; min-height: 230px; border-top: var(--line); padding: 25px 0; }
+  .brand-section:last-child { border-bottom: var(--line); }
+  .brand-letter { font-size: clamp(6rem, 16vw, 13rem); font-weight: 700; line-height: .7; letter-spacing: -.15em; }
+  .brand-section h2 { margin: 12px 0; font-size: clamp(2.3rem, 5vw, 5.5rem); line-height: .85; letter-spacing: -.09em; }
+  .brand-section p { max-width: 500px; margin: 0; font-size: 16px; line-height: 1.4; }
+  .brand-override { background: var(--ink); color: var(--paper); }
+  .brand-override .eyebrow::before { border-color: var(--paper); }
+  .brand-override .brand-section { border-color: var(--paper); }
+  .brand-override .brand-letter { color: var(--violet); }
+  .brand-override .brand-section p { color: var(--lilac); }
+  .brand-lumi { background: var(--acid); }
+  .brand-lumi .brand-letter { color: var(--magenta); }
+  .brand-daelia { background: var(--purple); color: var(--paper); }
+  .brand-daelia .eyebrow::before { border-color: var(--paper); }
+  .brand-daelia .brand-letter { color: var(--acid); }
+  .brand-daelia .brand-section { border-color: var(--paper); }
+  .brand-daelia .brand-section p { color: var(--lilac); }
+  .brand-parse { background: var(--violet); }
+  .brand-parse .brand-letter { color: var(--paper); }
+  @media (max-width: 760px) { .brand-section { grid-template-columns: 72px 1fr; gap: 18px; } .brand-letter { font-size: 5rem; } }
+</style>

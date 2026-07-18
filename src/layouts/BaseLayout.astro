@@ -1,0 +1,83 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import profileImage from '../assets/images/IMG_6195.jpg';
+import { authorSchema, siteDescription, siteName, siteUrl } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
+  ogType?: 'website' | 'article';
+}
+
+const {
+  title = 'Christopher Two · Portfolio',
+  description = siteDescription,
+  image,
+  schema = [],
+  noindex = false,
+  ogType = 'website',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, siteUrl);
+const socialImage = new URL(image ?? profileImage.src, siteUrl).href;
+const pageSchema = Array.isArray(schema) ? schema : [schema];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: siteName,
+      description: siteDescription,
+      inLanguage: 'es-MX',
+      publisher: { '@id': `${siteUrl}/bio#person` },
+    },
+    authorSchema,
+    ...pageSchema,
+  ],
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content="Christopher Alejandro Maldonado Chávez" />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
+    <meta name="googlebot" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
+    <meta name="theme-color" content="#7547ff" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%237547ff'/%3E%3Ctext x='50' y='67' text-anchor='middle' font-size='55' fill='white'%3ECT%3C/text%3E%3C/svg%3E" />
+    <link rel="canonical" href={canonical.href} />
+    <link rel="alternate" type="text/plain" href={`${siteUrl}/llms.txt`} title="AI-readable site summary" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:locale" content="es_MX" />
+    {ogType === 'article' && <meta property="article:author" content="Christopher Alejandro Maldonado Chávez" />}
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={title} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={title} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

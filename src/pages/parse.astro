@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BrandPage from '../components/BrandPage.astro';
+
+const sections = [
+  { letter: 'F', title: 'EATURES', description: 'Experiencia de lectura inmersiva estilo Kindle. Gestión de biblioteca, soporte PDF y más.' },
+  { letter: 'S', title: 'TACK', description: 'Kotlin, Jetpack Compose, Koin, Ktor, Room y Coil 3. Tecnología de punta para Android.' },
+  { letter: 'M', title: 'ODULAR', description: 'Clean Architecture modular. Separación clara por features: auth, home, book y settings.' },
+  { letter: 'G', title: 'ET IT', description: 'Clona el repo, configura Firebase y compila. Open source y listo para contribuir.' },
+];
+---
+
+<BaseLayout title="Parse · Christopher Two" description="Parse es un lector de libros y PDFs para Android con traducción inteligente, navegación moderna y diseño enfocado.">
+  <BrandPage name="Parse" kicker="Android · Reading without noise" intro="Un lector de libros moderno para Android con traducción inteligente y una experiencia que respeta la concentración." sections={sections} tone="parse" />
+</BaseLayout>

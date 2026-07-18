@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getUnifiedTechFilters, projects } from '../../data/portfolio';
+import { siteUrl } from '../../data/site';
+
+const filters = getUnifiedTechFilters(projects).slice(0, 14);
+const projectsSchema = [
+  {
+    '@type': 'CollectionPage',
+    '@id': `${siteUrl}/projects#collection`,
+    url: `${siteUrl}/projects`,
+    name: 'Proyectos · Christopher Two',
+    description: 'Catálogo de productos, sistemas y experimentos desarrollados por Christopher Two.',
+  },
+  {
+    '@type': 'ItemList',
+    '@id': `${siteUrl}/projects#projects`,
+    name: 'Catálogo de proyectos',
+    itemListElement: projects.map((project, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: project.title,
+      url: `${siteUrl}/projects/${project.slug}`,
+    })),
+  },
+];
+---
+
+<BaseLayout title="Proyectos · Christopher Two" description="Explora productos multiplataforma, aplicaciones Android, plataformas web y sistemas desarrollados por Christopher Two." schema={projectsSchema}>
+  <section class="page-intro">
+    <div class="wrap">
+      <span class="eyebrow">Archivo de proyectos · {projects.length} entradas</span>
+      <h1 class="section-title">Trabajo que dejó el laboratorio.</h1>
+      <p>Productos móviles, plataformas web, herramientas internas y experimentos. Cada proyecto es una decisión de ingeniería contada desde el resultado.</p>
+      <div class="filter-row" aria-label="Tecnologías utilizadas">
+        <span class="filter filter-active">Todos</span>
+        {filters.map((filter) => <span class="filter">{filter}</span>)}
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap projects-grid">
+      {projects.map((project, index) => <ProjectCard project={project} index={index} />)}
+    </div>
+  </section>
+</BaseLayout>

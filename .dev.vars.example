@@ -1,0 +1,2 @@
+# Local-only Cloudflare secrets. Copy to .dev.vars when a private binding needs them.
+# The portfolio currently reads media through the PROJECTS_BUCKET R2 binding.

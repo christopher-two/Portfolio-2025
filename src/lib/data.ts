@@ -1,8 +1,6 @@
 
-import { Github, Linkedin, Mail, Instagram, Youtube, Film, Newspaper, Globe, LucideIcon } from "lucide-react";
-
 export type SocialLink = {
-  icon: LucideIcon;
+  icon: string;
   title: string;
   handle: string;
   href: string;
@@ -10,49 +8,49 @@ export type SocialLink = {
 
 export const socialLinks: SocialLink[] = [
   {
-    icon: Mail,
+    icon: "mail",
     title: 'Email',
-    handle: 'christopher_two@proton.me',
-    href: 'mailto:christopher_two@proton.me',
+    handle: 'hola@christopher.com.mx',
+    href: 'mailto:hola@christopher.com.mx',
   },
   {
-    icon: Linkedin,
+    icon: "linkedin",
     title: 'LinkedIn',
     handle: 'christopher_two',
     href: 'https://www.linkedin.com/in/christopher-two/',
   },
   {
-    icon: Github,
+    icon: "github",
     title: 'GitHub',
     handle: 'christopher-two',
     href: 'https://github.com/christopher-two',
   },
   {
-    icon: Instagram,
+    icon: "instagram",
     title: 'Instagram',
     handle: '@christopher_two_',
     href: 'https://www.instagram.com/christopher_two_/',
   },
   {
-    icon: Youtube,
+    icon: "youtube",
     title: 'YouTube',
     handle: 'ChristopherTwo',
     href: 'https://www.youtube.com/@ChristopherTwo',
   },
   {
-    icon: Film,
+    icon: "film",
     title: 'TikTok',
     handle: '@christopher_two',
     href: 'https://www.tiktok.com/@christopher_two',
   },
   {
-    icon: Newspaper,
+    icon: "newspaper",
     title: 'Blog',
     handle: 'blog.christopher.com.mx',
     href: 'https://blog.christopher.com.mx',
   },
   {
-    icon: Globe,
+    icon: "globe",
     title: 'Override',
     handle: 'override.com.mx',
     href: 'https://www.override.com.mx',
@@ -91,6 +89,114 @@ export const TECH_CATEGORIES = {
 } as const;
 
 export const projects = [
+  {
+    id: "27",
+    slug: "jukskani",
+    title: "Jukskani",
+    description: "Plataforma inmobiliaria multiplataforma para explorar, publicar y gestionar propiedades, asesores y agencias.",
+    longDescription: `**Jukskani** es una plataforma inmobiliaria de alta gama que conecta compradores, asesores y agencias en un ecosistema multiplataforma.
+
+### Un ecosistema inmobiliario completo
+
+- 🏠 **Exploración de propiedades:** Feed con búsqueda, filtros, favoritos y detalle de inmuebles.
+- 🗺️ **Mapa interactivo:** Visualización geográfica con clustering y búsqueda por ubicación.
+- 👤 **Perfiles profesionales:** Registro y gestión de asesores, agencias y compradores.
+- 📊 **Operación de agencias:** Dashboard, estadísticas, propiedades y administración de agentes.
+- 💳 **Flujos comerciales:** Suscripciones, pagos con Stripe y validación KYC para perfiles profesionales.
+
+### Arquitectura multiplataforma
+
+El producto reúne la aplicación Android/iOS de **Eje**, sus landings web y el backend de **Morisqueta** en una sola iniciativa. Está construido con **Kotlin Multiplatform**, **Compose Multiplatform**, **FastAPI**, **Supabase**, **Stripe**, **Room**, **Koin**, **MapLibre** y **Clean Architecture**.
+
+Las pantallas y galerías visuales quedan pendientes para una siguiente etapa.`,
+    r2Folder: "",
+    link: "https://github.com/OverrideLLC/Eje",
+    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB],
+    tags: ["Kotlin Multiplatform", "Compose Multiplatform", "FastAPI", "Supabase", "Stripe", "Room", "Koin", "MapLibre", "Clean Architecture"],
+  },
+  {
+    id: "26",
+    slug: "quickness",
+    title: "Quickness",
+    description: "Ecosistema multiplataforma para gestionar accesos mediante QR dinámicos, operación offline e inteligencia aplicada.",
+    longDescription: `**Quickness** es una plataforma de control de accesos pensada para edificios, eventos, gimnasios, estacionamientos y transporte público.
+
+### Acceso seguro y distribuido
+
+- 🔐 **QR dinámicos:** Tokens seguros para validar accesos sin contacto.
+- 📴 **Operación offline:** Aplicaciones y dispositivos preparados para trabajar sin conexión constante.
+- 📱 **Aplicación multiplataforma:** Gestión de credenciales, servicios y métodos de acceso.
+- 🧠 **EVA AI:** Automatización y análisis avanzado para usuarios y operadores.
+- 🚍 **Fleet Manager:** Integración con puntos de acceso y transporte público.
+- 📊 **Analytics y monitorización:** Lectura operativa de datos y estado de microservicios.
+
+El ecosistema integra **Kotlin Multiplatform**, **Compose Multiplatform**, **Ktor**, **Apollo Kotlin**, **Firebase**, **Room**, **DataStore**, **Koin**, **Wasm** y servicios backend en Cloud Run.`,
+    r2Folder: "",
+    link: "https://github.com/OverrideLLC/Quickness-Mobile",
+    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB, TECH_CATEGORIES.AI],
+    tags: ["Kotlin Multiplatform", "Compose Multiplatform", "Ktor", "Apollo Kotlin", "Firebase", "Room", "DataStore", "Koin", "Wasm", "QR", "Offline-first"],
+  },
+  {
+    id: "25",
+    slug: "calabozos-compuertas",
+    title: "Calabozos y Compuertas",
+    description: "Experiencia educativa multiplataforma que convierte las compuertas lógicas en una aventura de puzzles y exploración.",
+    longDescription: `**Calabozos y Compuertas** es un proyecto educativo y lúdico ambientado en el reino de Itsu. Su objetivo es enseñar lógica digital a través de una aventura interactiva.
+
+### Aprender jugando
+
+- 🧩 **Puzzles de lógica:** Retos basados en compuertas AND, OR, XOR y sus combinaciones.
+- 📖 **Libro de runas:** Exploración de conceptos y elementos del universo narrativo.
+- 🧠 **Libro de lógica:** Tutoriales y ejemplos interactivos para aprender haciendo.
+- 🎮 **Controlador:** Experiencia complementaria para interactuar con el juego.
+- 🌐 **Experiencia web y app:** El contenido se distribuye entre una aplicación multiplataforma y una web interactiva.
+
+La solución combina **Kotlin Multiplatform**, **Jetpack Compose**, **SwiftUI**, **Koin**, **Lottie**, **Kotlinx Serialization** y una experiencia web en JavaScript.`,
+    r2Folder: "",
+    link: "https://github.com/OverrideLLC/Calabozos-Compuertas-Web",
+    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB],
+    tags: ["Kotlin Multiplatform", "Jetpack Compose", "SwiftUI", "Koin", "Lottie", "Educación", "Puzzles", "JavaScript"],
+  },
+  {
+    id: "24",
+    slug: "override-health",
+    title: "Override Health",
+    description: "Producto multiplataforma de Override orientado a experiencias de salud y bienestar con arquitectura compartida.",
+    longDescription: `**Override Health** es un producto construido con Kotlin Multiplatform y Compose Multiplatform para compartir lógica, dominio y experiencia entre plataformas.
+
+La base del proyecto está organizada por capas y features, con módulos compartidos para dominio, datos y presentación. Esta estructura permite evolucionar la experiencia de salud sin duplicar la lógica entre clientes.
+
+El proyecto queda integrado como producto de Override; sus pantallas y material visual quedan pendientes para la siguiente fase.`,
+    r2Folder: "",
+    link: "https://github.com/OverrideLLC/Override-Health",
+    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID],
+    tags: ["Kotlin Multiplatform", "Compose Multiplatform", "Clean Architecture", "Koin", "Room", "DataStore"],
+  },
+  {
+    id: "23",
+    slug: "override-system-monitor",
+    title: "Override System Monitor",
+    description: "Monitor de sistema para Android con dashboard adaptativo y una presencia web asociada para el producto.",
+    longDescription: `**Override System Monitor** es una aplicación nativa para Android enfocada en observar el estado real de un dispositivo desde un dashboard claro y accionable.
+
+### Señales del dispositivo
+
+- 🔋 **Batería:** Estado, nivel y métricas de energía.
+- 🧠 **Memoria y almacenamiento:** Lectura del uso de RAM y espacio disponible.
+- 📡 **Red:** Conectividad y estado de las interfaces de red.
+- 🧭 **Sensores:** Información de acelerómetro, giroscopio y sensores disponibles.
+- 🪪 **Identidad del sistema:** Datos del dispositivo y de su versión de Android.
+
+### Arquitectura
+
+Construido con **Kotlin**, **Jetpack Compose**, **Navigation 3**, **Koin**, **DataStore**, **CameraX** y **Clean Architecture** con MVVM. El dashboard se adapta a teléfonos y tablets, mientras que la presencia web acompaña el lanzamiento del producto.
+
+Las pantallas quedan pendientes de integrar en el portfolio para una segunda etapa visual.`,
+    r2Folder: "",
+    link: "https://monitor.override.com.mx",
+    categories: [TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB],
+    tags: ["Android", "Kotlin", "Jetpack Compose", "Navigation 3", "Koin", "DataStore", "CameraX", "Astro"],
+  },
   {
     id: "1",
     slug: "override-shop",
@@ -243,7 +349,7 @@ Desarrollado bajo un ecosistema **Kotlin Multiplatform (KMP)**, el sistema ofrec
     r2Folder: "OverrideMenu",
     link: "https://menu.override.com.mx",
     categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB],
-    tags: ["KMP", "Compose Multiplatform", "Supabase", "Clean Architecture", "MVI", "Koin"],
+    tags: ["KMP", "Compose Multiplatform", "Supabase", "Clean Architecture", "MVI", "Koin", "Astro"],
   },
   {
     id: "20",
@@ -270,8 +376,8 @@ Desarrollado bajo un ecosistema **Kotlin Multiplatform (KMP)**, el sistema ofrec
 Parse representa la evolución de la lectura móvil, combinando el minimalismo visual con una arquitectura de software industrial de alto nivel e inteligencia artificial integrada.`,
     r2Folder: "Parse",
     link: "https://parse.christopher.com.mx",
-    categories: [TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.AI],
-    tags: ["Android", "Jetpack Compose", "ML Kit", "Translation", "Navigation 3", "PDFBox"],
+    categories: [TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB, TECH_CATEGORIES.AI],
+    tags: ["Android", "Jetpack Compose", "ML Kit", "Translation", "Navigation 3", "PDFBox", "Astro"],
   },
   {
     id: "19",
@@ -322,7 +428,7 @@ Todo el procesamiento de audio ocurre **100% en el dispositivo**. Ningún audio 
 Override Sense combina accesibilidad, privacidad y arquitectura Android moderna para ofrecer una experiencia confiable en escenarios de vida diaria donde cada segundo importa.`,
     r2Folder: "projects/OverrideSense",
     link: "https://sense.override.com.mx/",
-    categories: [TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.AI],
+    categories: [TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB, TECH_CATEGORIES.AI],
     tags: [
       "Android",
       "Kotlin",
@@ -336,6 +442,7 @@ Override Sense combina accesibilidad, privacidad y arquitectura Android moderna 
       "Kotlin Flow",
       "WorkManager",
       "DataStore",
+      "Astro",
     ],
   },
   {
@@ -457,9 +564,9 @@ Los usuarios pueden crear "spots" (puntos de interés georreferenciados) con fot
 
 Desarrollada con **Kotlin 2.3.0** y **Jetpack Compose**, siguiendo principios de **Clean Architecture** y patrones **MVI** para un estado de UI predecible y robusto.`,
     r2Folder: "Spot",
-    link: "https://github.com/christophertwo/spot",
-    categories: [TECH_CATEGORIES.ANDROID],
-    tags: ["Android", "Mapbox SDK", "Clean Architecture", "MVI", "Firebase"],
+    link: "https://spot.christopher.com.mx",
+    categories: [TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB],
+    tags: ["Android", "Astro", "Mapbox SDK", "Clean Architecture", "MVI", "Firebase"],
   },
   {
     id: "11",
@@ -523,7 +630,7 @@ El proyecto no es solo una landing page, sino el portal de entrada a un ecosiste
     r2Folder: "Mindstack",
     link: "https://mindstack.override.com.mx",
     categories: [TECH_CATEGORIES.WEB],
-    tags: ["React", "Tailwind CSS", "UI/UX", "Space Theme", "Competition"],
+    tags: ["React", "Tailwind CSS", "Python", "REST API", "UI/UX", "Space Theme", "Competition"],
   },
   {
     id: "13",
@@ -616,7 +723,7 @@ El software de escritorio representa el pilar de robustez del proyecto, demostra
     id: "21",
     slug: "override-index",
     title: "Override Index",
-    description: "Sistema web completo para la gestión de bibliotecas escolares desarrollado con Astro, TailwindCSS, Firebase y desplegado en Cloudflare Pages.",
+    description: "Sistema de gestión bibliotecaria con dashboard, inventario, alumnos e historial de préstamos en tiempo real.",
     longDescription: `**Override Index** es una plataforma integral desarrollada para automatizar y optimizar los procesos de préstamo, devolución y administración de recursos bibliográficos.
 
 ### Características del Sistema
@@ -625,21 +732,22 @@ El software de escritorio representa el pilar de robustez del proyecto, demostra
 - 👥 **Usuarios y Perfiles:** Administración de estudiantes, docentes y personal administrativo con roles específicos.
 - 🔄 **Préstamos y Devoluciones:** Sistema automatizado de préstamo y seguimiento de devoluciones con notificaciones.
 - 🔍 **Búsqueda Avanzada:** Motor de búsqueda eficiente para encontrar recursos rápidamente.
-- 📊 **Reportes y Estadísticas:** Generación de reportes sobre préstamos, popularidad de libros y actividad general.
+- 📊 **Reportes y Estadísticas:** Gráficos de préstamos, categorías y actividad de usuarios.
 
 ### Tecnología y Arquitectura
 
 - ⚡ **Astro:** Framework moderno para sitios web estáticos ultra-rápidos con soporte para múltiples frameworks UI.
-- 🎨 **TailwindCSS:** Framework de utilidades CSS para un desarrollo rápido y consistente de interfaces.
-- 🔥 **Firebase:** Backend como servicio proporcionando autenticación, base de datos en tiempo real y almacenamiento.
-- ☁️ **Cloudflare Pages:** Plataforma de alojamiento para despliegue rápido y seguro con edge computing.
+- 🎨 **Vanilla CSS:** Sistema visual propio basado en componentes reutilizables.
+- 🔥 **Firebase:** Firestore y Authentication para operar el sistema en tiempo real.
+- 📈 **ApexCharts:** Visualización de métricas y tendencias del negocio.
+- ☁️ **Cloudflare:** Despliegue edge para una operación rápida y segura.
 - 📱 **Diseño Responsivo:** Compatible con dispositivos móviles, tablets y escritorio para acceso desde cualquier lugar.
 
 El sistema ha sido diseñado para mejorar la eficiencia operativa de la biblioteca escolar, reducir errores manuales y proporcionar una experiencia de usuario moderna tanto para administradores como para usuarios finales.`,
     r2Folder: "Cetis27Library",
-    link: "https://github.com/christopher-two/Cetis27-Library",
+    link: "https://github.com/christopher-two/Override-Index-Web",
     categories: [TECH_CATEGORIES.WEB],
-    tags: ["Astro", "TailwindCSS", "Firebase", "Cloudflare Pages", "JavaScript", "HTML", "CSS"],
+    tags: ["Astro", "Firebase", "Firestore", "ApexCharts", "Cloudflare", "Vanilla CSS"],
   },
   {
     id: "22",

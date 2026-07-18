@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProject } from '../../data/portfolio';
+import { getProjectMedia } from '../../lib/r2';
+import { siteUrl } from '../../data/site';
+
+export const prerender = false;
+
+const project = getProject(Astro.params.slug ?? '');
+if (!project) return Astro.redirect('/projects');
+
+const media = await getProjectMedia(project.r2Folder, 12);
+const paragraphs = project.longDescription.split(/\n\n+/).filter(Boolean);
+const projectSchema = [
+  {
+    '@type': 'CreativeWork',
+    '@id': `${siteUrl}/projects/${project.slug}#project`,
+    url: `${siteUrl}/projects/${project.slug}`,
+    name: project.title,
+    description: project.description,
+    keywords: project.tags.join(', '),
+    creator: { '@id': `${siteUrl}/bio#person` },
+    isPartOf: { '@id': `${siteUrl}/projects#collection` },
+    ...(project.link ? { sameAs: project.link } : {}),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${siteUrl}/landing` },
+      { '@type': 'ListItem', position: 2, name: 'Proyectos', item: `${siteUrl}/projects` },
+      { '@type': 'ListItem', position: 3, name: project.title, item: `${siteUrl}/projects/${project.slug}` },
+    ],
+  },
+];
+---
+
+<BaseLayout title={`${project.title} · Christopher Two`} description={project.description} ogType="article" schema={projectSchema}>
+  <section class="page-intro">
+    <div class="wrap">
+      <span class="eyebrow">Case study · {project.categories.join(' / ')}</span>
+      <h1 class="section-title">{project.title}</h1>
+      <p>{project.description}</p>
+      <div class="detail-meta">
+        {project.tags.map((tag) => <span class="tag">{tag}</span>)}
+      </div>
+      {project.link && <a class="button button-primary" href={project.link} target="_blank" rel="noreferrer">Visitar proyecto ↗</a>}
+    </div>
+  </section>
+
+  <article class="article">
+    {media.length > 0 && (
+      <div class="media-strip">
+        {media.map((item) => item.isVideo ? <video src={item.url} controls preload="metadata" aria-label={item.description}></video> : <img src={item.url} alt={item.description} loading="lazy" />)}
+      </div>
+    )}
+    <p class="detail-lede">{project.description}</p>
+    {paragraphs.map((paragraph) => (
+      paragraph.startsWith('### ') ? <h2>{paragraph.replace(/^### /, '')}</h2> : <p set:html={paragraph.replace(/\n- /g, '<br />• ').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')} />
+    ))}
+    <a class="button button-ghost" href="/projects">← Volver al archivo</a>
+  </article>
+</BaseLayout>

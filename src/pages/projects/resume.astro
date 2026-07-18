@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects } from '../../data/portfolio';
+---
+
+<BaseLayout title="Resumen de proyectos · Christopher Two" description="Resumen imprimible de los productos, sistemas y proyectos multiplataforma desarrollados por Christopher Two.">
+  <section class="page-intro">
+    <div class="wrap">
+      <span class="eyebrow">Resumen imprimible</span>
+      <h1 class="section-title">Una vista rápida del trabajo.</h1>
+      <p>Experiencia construyendo productos multiplataforma, sistemas operativos de negocio y herramientas digitales.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap project-list">
+      {projects.map((project, index) => <a class="project-row" href={`/projects/${project.slug}`}><span class="project-number">{String(index + 1).padStart(2, '0')}</span><div><h2 class="project-name">{project.title}</h2><p class="project-description">{project.description}</p></div><span class="project-arrow">↗</span></a>)}
+    </div>
+  </section>
+</BaseLayout>

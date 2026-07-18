@@ -17,7 +17,7 @@ Bienvenido a mi portafolio profesional, una plataforma digital que showcasea mis
 
 ## 🎯 Acerca del Sitio
 
-Este portafolio digital es una plataforma completa que presenta mi experiencia profesional, proyectos innovadores y visión empresarial. Construido con **Next.js 15+**, **TypeScript**, **Tailwind CSS** y componentes de **Radix UI**, representa un showcase moderno y funcional de mis capacidades como desarrollador full-stack.
+Este portafolio digital es una plataforma completa que presenta mi experiencia profesional, proyectos innovadores y visión empresarial. Construido con **Astro**, **TypeScript**, CSS nativo y **Cloudflare Workers**, representa un showcase rápido y funcional de mis capacidades como desarrollador multiplataforma.
 
 ### Propósito Principal
 
@@ -38,7 +38,7 @@ Este portafolio digital es una plataforma completa que presenta mi experiencia p
 - Componentes reutilizables con shadcn/ui
 
 ### 🚀 Rendimiento
-- Next.js con Turbopack en desarrollo
+- Astro SSR ejecutado en Cloudflare Workers
 - Optimización de imágenes automática
 - TypeScript para type-safety
 - Compilación eficiente para producción
@@ -283,13 +283,9 @@ src/
 ## 🛠️ Tecnologías Utilizadas
 
 ### Frontend
-- **Next.js 15+** - Framework React moderno
+- **Astro** - Renderizado rápido orientado a contenido
 - **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first CSS
-- **Radix UI / shadcn/ui** - Componentes accesibles
-- **Lucide React** - Iconografía
-- **React Hook Form** - Manejo de formularios
-- **Zustand/Context API** - State management
+- **CSS nativo** - Sistema visual neo-brutalista propio
 
 ### Backend & Cloud
 - **Ktor** - Framework Kotlin multiplataforma
@@ -314,10 +310,9 @@ src/
 
 ### DevOps & Tools
 - **GitHub Actions** - CI/CD
-- **Vercel** - Deployment
+- **Cloudflare Workers** - Deployment edge
 - **Docker** - Containerización
 - **pnpm** - Package manager
-- **ESLint** - Linting
 
 ---
 
@@ -430,7 +425,7 @@ Red social basada en ubicación con:
 ## 🔗 Enlaces Importantes
 
 ### Redes Sociales
-- **Email:** christopher_two@proton.me
+- **Email:** hola@christopher.com.mx
 - **LinkedIn:** christopher-alejandro-maldonado-chavez
 - **GitHub:** christopher-two
 - **Instagram:** @christopher_two_
@@ -457,8 +452,8 @@ Red social basada en ubicación con:
 ## 🚀 Cómo Ejecutar
 
 ### Requisitos
-- Node.js 18+
-- pnpm (o npm/yarn)
+- Node.js 20+
+- pnpm
 
 ### Instalación
 
@@ -466,30 +461,31 @@ Red social basada en ubicación con:
 # Instalar dependencias
 pnpm install
 
-# Ejecutar en desarrollo (puerto 9002)
+# Ejecutar en desarrollo con el runtime de Cloudflare (puerto 9002)
 pnpm dev
 
-# Compilar para producción
+# Verificar Astro y los tipos de Wrangler
+pnpm check
+
+# Compilar para Cloudflare Workers
 pnpm build
 
-# Ejecutar en producción
-pnpm start
+# Previsualizar el Worker compilado
+pnpm preview
 
-# Verificar tipos
-pnpm typecheck
+# Desplegar a Cloudflare Workers
+pnpm deploy
 
-# Linting
-pnpm lint
 ```
 
 El sitio estará disponible en `http://localhost:9002` en desarrollo.
 
 ### Configuración
 
-- **Next.js Config:** next.config.ts
+- **Astro Config:** astro.config.ts
 - **TypeScript Config:** tsconfig.json
-- **Tailwind Config:** tailwind.config.ts
-- **PostCSS Config:** postcss.config.mjs
+- **Cloudflare Config:** wrangler.jsonc
+- **Variables locales:** .dev.vars
 
 ---
 
@@ -518,7 +514,7 @@ El sitio estará disponible en `http://localhost:9002` en desarrollo.
 
 Para colaboraciones, consultoría o preguntas:
 
-- Email: christopher_two@proton.me
+- Email: hola@christopher.com.mx
 - LinkedIn: https://www.linkedin.com/in/christopher-alejandro-maldonado-chavez-8784ba37a/
 - GitHub: https://github.com/christopher-two
 
@@ -526,4 +522,4 @@ Para colaboraciones, consultoría o preguntas:
 
 **Última actualización:** 22 de enero de 2026
 
-Construido con ❤️ usando Next.js, TypeScript y Tailwind CSS
+Construido con ❤️ usando Astro, TypeScript, CSS nativo y Cloudflare Workers

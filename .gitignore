@@ -16,6 +16,8 @@
 # next.js
 /.next/
 /out/
+/dist/
+/.astro/
 
 # production
 /build
@@ -39,7 +41,13 @@ next-env.d.ts
 
 .genkit/*
 .env*
+.dev.vars*
+!.dev.vars.example
 
 # firebase
 firebase-debug.log
 firestore-debug.log
+
+# Cloudflare
+.wrangler/
+worker-configuration.d.ts

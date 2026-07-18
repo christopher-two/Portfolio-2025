@@ -66,7 +66,7 @@ export function Footer() {
             <h4 className="font-headline font-semibold mb-4">Enlaces</h4>
             <ul className="space-y-2">
                <li>
-                  <Link href="mailto:christopher_two@proton.me" className="text-muted-foreground hover:text-accent transition-colors">
+                  <Link href="mailto:hola@christopher.com.mx" className="text-muted-foreground hover:text-accent transition-colors">
                     Email
                   </Link>
                 </li>
