@@ -50,7 +50,7 @@ const projectSchema = [
   <article class="article">
     {media.length > 0 && (
       <div class="media-strip">
-        {media.map((item) => item.isVideo ? <video src={item.url} controls preload="metadata" aria-label={item.description}></video> : <img src={item.url} alt={item.description} loading="lazy" />)}
+        {media.map((item) => item.isVideo ? <video src={item.url} width="800" height="600" controls preload="metadata" aria-label={item.description}></video> : <img src={item.url} width="800" height="600" alt={item.description} loading="lazy" />)}
       </div>
     )}
     <p class="detail-lede">{project.description}</p>

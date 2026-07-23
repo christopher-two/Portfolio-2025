@@ -9,7 +9,7 @@ const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHu
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menú</button>
   <nav id="main-nav" class="nav-links" aria-label="Navegación principal">
     <div class="nav-item">
-      <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="work-preview">Trabajo <span aria-hidden="true">↘</span></button>
+      <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="work-preview">Trabajo <span aria-hidden="true">↘</span></button>
       <div id="work-preview" class="nav-panel nav-panel-work">
         <div class="nav-panel-heading"><span class="mono">Archivo / selección</span><span>{projects.length} proyectos</span></div>
         <div class="nav-work-list">
@@ -26,27 +26,27 @@ const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHu
     </div>
 
     <div class="nav-item">
-      <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="about-preview">Sobre mí <span aria-hidden="true">↘</span></button>
+      <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="about-preview">Sobre mí <span aria-hidden="true">↘</span></button>
       <div id="about-preview" class="nav-panel nav-panel-about">
         <span class="mono">La persona detrás del código</span>
-        <h2>Christopher Two</h2>
+        <span class="nav-panel-title">Christopher Two</span>
         <p>Desarrollador multiplataforma. Kotlin, Android, Web e ideas que llegan a producción.</p>
         <a class="nav-panel-link" href="/bio">Conocer mi historia <span>↗</span></a>
       </div>
     </div>
 
     <div class="nav-item">
-      <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="override-preview">Override <span aria-hidden="true">↘</span></button>
+      <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="override-preview">Override <span aria-hidden="true">↘</span></button>
       <div id="override-preview" class="nav-panel nav-panel-override">
         <span class="mono">Empresa / laboratorio</span>
-        <h2>Software con intención.</h2>
+        <span class="nav-panel-title">Software con intención.</span>
         <p>Productos digitales, sistemas y experimentos construidos desde Uruapan para donde sea.</p>
         <a class="nav-panel-link" href="/override">Ver manifiesto <span>↗</span></a>
       </div>
     </div>
 
     <div class="nav-item">
-      <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="contact-preview">Contacto <span aria-hidden="true">↘</span></button>
+      <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="contact-preview">Contacto <span aria-hidden="true">↘</span></button>
       <div id="contact-preview" class="nav-panel nav-panel-contact">
         <span class="mono">Abramos una conversación</span>
         <a class="nav-contact-email" href="mailto:hola@christopher.com.mx">hola@christopher.com.mx ↗</a>
@@ -85,6 +85,11 @@ const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHu
 
   document.addEventListener('click', (event) => {
     if (!(event.target instanceof Node) || (event.target as Element).closest('.site-header')) return;
-    items.forEach((item) => item.classList.remove('is-open'));
+    items.forEach((item) => {
+      item.classList.remove('is-open');
+      item.querySelector<HTMLButtonElement>('.nav-trigger')?.setAttribute('aria-expanded', 'false');
+    });
+    nav?.classList.remove('is-open');
+    toggle?.setAttribute('aria-expanded', 'false');
   });
 </script>

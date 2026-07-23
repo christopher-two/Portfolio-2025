@@ -1,11 +1,38 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectRow from '../components/ProjectRow.astro';
+import HeroAnimation from '../components/HeroAnimation.astro';
 import { projects, recognitions, skills, socialLinks } from '../data/portfolio';
 import profileImage from '../assets/images/IMG_6195.jpg';
 import { siteUrl } from '../data/site';
 
 const homeProjects = projects.slice(0, 10);
+const publishedApps = [
+  {
+    index: '01',
+    name: 'Parse',
+    mark: 'P',
+    description: 'Lector de libros y PDFs para Android con traducción inteligente y una experiencia enfocada.',
+    href: 'https://play.google.com/store/apps/details?id=org.christophertwo.parse',
+    tone: 'app-violet',
+  },
+  {
+    index: '02',
+    name: 'Helix',
+    mark: 'H',
+    description: 'Monitor de sistema para Android con métricas de batería, memoria, almacenamiento y sensores.',
+    href: 'https://play.google.com/store/apps/details?id=org.override.system.monitor',
+    tone: 'app-acid',
+  },
+  {
+    index: '03',
+    name: 'Jukskani',
+    mark: 'J',
+    description: 'Plataforma inmobiliaria para explorar, publicar y gestionar propiedades desde Android.',
+    href: 'https://play.google.com/store/apps/details?id=org.override.eje.android',
+    tone: 'app-pink',
+  },
+];
 const landingSchema = [
   {
     '@type': 'ProfilePage',
@@ -26,20 +53,30 @@ const landingSchema = [
       url: `${siteUrl}/projects/${project.slug}`,
     })),
   },
+  ...publishedApps.map((app) => ({
+    '@type': 'SoftwareApplication',
+    name: app.name,
+    description: app.description,
+    applicationCategory: 'MobileApplication',
+    operatingSystem: 'Android',
+    downloadUrl: app.href,
+    creator: { '@id': `${siteUrl}/bio#person` },
+  })),
 ];
 ---
 
 <BaseLayout title="Christopher Two · Software que llega a producción" description="Portfolio de Christopher Two: productos multiplataforma con Kotlin, Android, Astro, IA y Cloudflare." schema={landingSchema}>
   <section class="hero">
     <div class="wrap hero-grid">
-      <div>
-        <span class="eyebrow" style="color: var(--paper)">Desarrollador multiplataforma · Uruapan, MX</span>
+      <div class="hero-content">
+        <span class="eyebrow">Desarrollador multiplataforma · Uruapan, MX</span>
         <h1 class="display">Ideas que se vuelven <span class="accent">productos.</span></h1>
         <div class="hero-actions">
           <a class="button button-primary" href="/projects">Explorar trabajo ↗</a>
           <a class="button button-ghost" href="#contact">Hablemos ↓</a>
         </div>
       </div>
+      <HeroAnimation />
     </div>
   </section>
 
@@ -53,7 +90,7 @@ const landingSchema = [
   <section class="section presentation-section" id="about">
     <div class="wrap presentation-grid">
       <div class="presentation-visual">
-        <img src={profileImage.src} alt="Christopher Alejandro Maldonado Chávez" />
+        <img src={profileImage.src} alt="Christopher Alejandro Maldonado Chávez" width="725" height="967" loading="lazy" />
         <span class="presentation-stamp">Kotlin<br />+ Astro<br />+ ideas</span>
       </div>
       <div class="presentation-copy">
@@ -78,7 +115,7 @@ const landingSchema = [
       <div class="project-list">
         {homeProjects.map((project, index) => <ProjectRow project={project} index={index} />)}
       </div>
-      <a class="button button-primary" href="/projects" style="margin-top: 34px">Ver todos los proyectos ↗</a>
+      <a class="button button-primary button-spaced" href="/projects">Ver todos los proyectos ↗</a>
     </div>
   </section>
 
@@ -100,6 +137,33 @@ const landingSchema = [
               <span class="skill-stack">{skill.stack}</span>
             </div>
             <p>{skill.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section apps-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Publicado en Google Play</span>
+          <h2 class="section-title">Productos que ya puedes instalar.</h2>
+        </div>
+        <p class="section-note">No se quedaron en el prototipo. Estas aplicaciones están disponibles para usuarios Android.</p>
+      </div>
+      <div class="published-apps">
+        {publishedApps.map((app) => (
+          <article class={`published-app ${app.tone}`}>
+            <div class="published-app-top">
+              <span class="mono">{app.index} / Android</span>
+              <span class="published-app-mark">{app.mark}</span>
+            </div>
+            <div>
+              <h3>{app.name}</h3>
+              <p>{app.description}</p>
+            </div>
+            <a class="published-app-link" href={app.href} target="_blank" rel="noreferrer">Ver en Google Play <span>↗</span></a>
           </article>
         ))}
       </div>
@@ -135,7 +199,7 @@ const landingSchema = [
       <div>
         <span class="eyebrow">¿Tienes una idea?</span>
         <h2 class="section-title">Hagamos algo que merezca ser lanzado.</h2>
-        <a class="button button-primary" href="mailto:hola@christopher.com.mx" style="margin-top: 35px">Escribir un correo ↗</a>
+        <a class="button button-primary contact-cta" href="mailto:hola@christopher.com.mx">Escribir un correo ↗</a>
       </div>
       <div class="social-list">
         {socialLinks.map((link) => <a class="social-link" href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noreferrer' : undefined}><span>{link.title}</span><span>{link.handle} ↗</span></a>)}

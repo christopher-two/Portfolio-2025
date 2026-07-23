@@ -13,10 +13,10 @@ import profileImage from '../assets/images/IMG_6195.jpg';
     </div>
   </section>
   <article class="article">
-    <img src={profileImage.src} alt="Christopher Alejandro Maldonado Chávez" style="width: 190px; aspect-ratio: 1; border: var(--line); object-fit: cover; box-shadow: var(--shadow-small);" />
+    <img class="profile-image" src={profileImage.src} alt="Christopher Alejandro Maldonado Chávez" width="725" height="967" />
     <h2>{childhoodDream.question}</h2>
     <p>{childhoodDream.answer}</p>
     <h2>Hacia dónde voy</h2>
-    {goals.map((goal) => <section style="border-top: var(--line); padding: 22px 0"><span class="mono">{goal.term}</span><h3>{goal.meta}</h3><p>{goal.motivation}</p><p><strong>Estrategia:</strong> {goal.strategy}</p></section>)}
+    {goals.map((goal) => <section class="bio-goal"><span class="mono">{goal.term}</span><h3>{goal.meta}</h3><p>{goal.motivation}</p><p><strong>Estrategia:</strong> {goal.strategy}</p></section>)}
   </article>
 </BaseLayout>

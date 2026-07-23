@@ -47,8 +47,10 @@ const jsonLd = {
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="author" content="Christopher Alejandro Maldonado Chávez" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
     <meta name="googlebot" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
     <meta name="theme-color" content="#7547ff" />
@@ -74,8 +76,9 @@ const jsonLd = {
     <title>{title}</title>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Saltar al contenido</a>
     <Header />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />
