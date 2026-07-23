@@ -1,5 +1,3 @@
-import { Code, Cpu, Smartphone, type LucideIcon } from "lucide-react";
-
 export const parsePlayStoreUrl =
   "https://play.google.com/store/apps/details?id=org.christophertwo.parse&pcampaignid=web_share";
 
@@ -46,7 +44,7 @@ export function getMobileVentoClass(slug: string, index: number) {
 }
 
 export type HomeTechSkill = {
-  icon: LucideIcon;
+  icon: string;
   title: string;
   skills: string;
   description: string;
@@ -55,7 +53,7 @@ export type HomeTechSkill = {
 
 export const homeTechSkills: HomeTechSkill[] = [
   {
-    icon: Code,
+    icon: "Code",
     title: "Multiplataforma Productiva",
     skills: "Kotlin Multiplatform, Compose Multiplatform, Jetpack Compose, Navigation 3",
     description:
@@ -63,7 +61,7 @@ export const homeTechSkills: HomeTechSkill[] = [
     bgColor: "bg-skill-1 dark:bg-skill-1-dark",
   },
   {
-    icon: Smartphone,
+    icon: "Smartphone",
     title: "Android + IA Aplicada",
     skills: "ML Kit, TensorFlow Lite, Material 3, WorkManager, Room",
     description:
@@ -71,7 +69,7 @@ export const homeTechSkills: HomeTechSkill[] = [
     bgColor: "bg-skill-2 dark:bg-skill-2-dark",
   },
   {
-    icon: Cpu,
+    icon: "Cpu",
     title: "Backend y Entrega Continua",
     skills: "Ktor, Koin, Firebase, Supabase, Cloudflare Pages, Docker",
     description:
